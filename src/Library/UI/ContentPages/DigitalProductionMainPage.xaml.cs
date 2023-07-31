@@ -48,10 +48,6 @@ public partial class DigitalProductionMainPage : ContentPage
 	{
 #if WINDOWS
 		AppWindow appWindow = GetAppWindow();
-		//if (appWindow == null)
-		//{
-		//	return;
-		//}
 
 		switch (appWindow.Presenter)
 		{
