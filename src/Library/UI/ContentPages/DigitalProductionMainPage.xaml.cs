@@ -2,7 +2,6 @@
 using Microsoft.Maui.Storage;
 using Microsoft.Maui.Controls;
 using System.Windows.Input;
-//using Microsoft.UI.Windowing;
 
 namespace DigitalProduction.UI;
 
@@ -16,7 +15,9 @@ public partial class DigitalProductionMainPage : ContentPage
 
 	public DigitalProductionMainPage()
 	{
-//		InitializeComponent();
+		//		InitializeComponent();
+		//this.Loaded += this.OnLoaded;
+		DoNothing();
 	}
 
 	#endregion
@@ -26,6 +27,9 @@ public partial class DigitalProductionMainPage : ContentPage
 	#endregion
 
 	#region Methods
+	partial void DoNothing();
+
+	//private partial void OnLoaded(object sender, EventArgs eventArgs);
 
 	/// <summary>
 	/// Exit command.
