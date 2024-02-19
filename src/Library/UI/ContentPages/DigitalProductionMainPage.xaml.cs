@@ -1,12 +1,10 @@
-﻿namespace DigitalProduction.Controls;
-using Microsoft.Maui.Platform;
+﻿using Microsoft.Maui.Platform;
 using Microsoft.Maui.Storage;
 using Microsoft.Maui.Controls;
 using System.Windows.Input;
+//using Microsoft.UI.Windowing;
 
-#if WINDOWS
-using Microsoft.UI.Windowing;
-#endif
+namespace DigitalProduction.UI;
 
 public partial class DigitalProductionMainPage : ContentPage
 {
@@ -18,7 +16,7 @@ public partial class DigitalProductionMainPage : ContentPage
 
 	public DigitalProductionMainPage()
 	{
-		InitializeComponent();
+//		InitializeComponent();
 	}
 
 	#endregion
