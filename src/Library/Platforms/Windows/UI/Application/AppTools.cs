@@ -39,7 +39,7 @@ public static class AppTools
 		return appWindow;
 	}
 
-	public static void SaveWindowState(string name, OverlappedPresenterState state)
+	public static void SaveWindowState(OverlappedPresenterState state, string name)
 	{
 		Preferences.Default.Set(name+".Position.State", (int)state);
 	}
@@ -52,20 +52,10 @@ public static class AppTools
 
 	public static void SaveWindowPosition(Window window, string name)
 	{
-		MauiWinUIWindow mauiWinUIWindow = window.Handler.PlatformView as Microsoft.Maui.MauiWinUIWindow;
-		AppWindow appWindow             = GetAppWindow(mauiWinUIWindow);
-		switch (appWindow.Presenter)
-		{
-			case Microsoft.UI.Windowing.OverlappedPresenter overLappedPresenter:
-				if (overLappedPresenter.State == OverlappedPresenterState.Restored)
-				{
-					Preferences.Default.Set(name+".Position.X", window.X);
-					Preferences.Default.Set(name+".Position.Y", window.Y);
-					Preferences.Default.Set(name+".Position.Width", window.Width);
-					Preferences.Default.Set(name+".Position.Height", window.Height);
-				}
-				break;
-		}
+		Preferences.Default.Set(name+".Position.X", window.X);
+		Preferences.Default.Set(name+".Position.Y", window.Y);
+		Preferences.Default.Set(name+".Position.Width", window.Width);
+		Preferences.Default.Set(name+".Position.Height", window.Height);
 	}
 
 	public static void RestoreWindowPosition(Window window, string name, bool ensureOnScreen = true)

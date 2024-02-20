@@ -38,6 +38,12 @@
 	  <Compile Update="Platforms\Windows\UI\ContentPages\DigitalProductionMainPage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
+	  <Compile Update="Platforms\Windows\UI\Application\LifecycleEventsInstaller.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	  <Compile Update="UI\Application\LifecycleEventsInstaller.cs">
+	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
+	  </Compile>
 	  <Compile Update="UI\ContentPages\DigitalProductionMainPage.xaml.cs">
 	    <DependentUpon>DigitalProductionMainPage.xaml</DependentUpon>
 	  </Compile>

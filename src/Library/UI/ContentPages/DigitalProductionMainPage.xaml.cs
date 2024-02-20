@@ -15,9 +15,7 @@ public partial class DigitalProductionMainPage : ContentPage
 
 	public DigitalProductionMainPage()
 	{
-		//		InitializeComponent();
-		//this.Loaded += this.OnLoaded;
-		DoNothing();
+		this.Loaded += this.OnLoaded;	
 	}
 
 	#endregion
@@ -27,9 +25,13 @@ public partial class DigitalProductionMainPage : ContentPage
 	#endregion
 
 	#region Methods
-	partial void DoNothing();
 
-	//private partial void OnLoaded(object sender, EventArgs eventArgs);
+	void OnLoaded(object sender, EventArgs eventArgs)
+	{
+		InstallOnLoaded(sender, eventArgs);
+	}
+
+	partial void InstallOnLoaded(object sender, EventArgs eventArgs);
 
 	/// <summary>
 	/// Exit command.
