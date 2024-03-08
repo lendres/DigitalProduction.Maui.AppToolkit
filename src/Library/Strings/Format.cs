@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -34,6 +32,99 @@ namespace DigitalProduction.Strings
 		#endregion
 
 		#region Methods
+
+
+		/// <summary>
+		/// Removes a substring from the beginning of a string.
+		/// </summary>
+		/// <param name="target">Current string.</param>
+		/// <param name="trimString">The string to remove from the current string.</param>
+		public static string TrimStart(string target, string trimString)
+		{
+			if (string.IsNullOrEmpty(trimString)) return target;
+
+			string result = target;
+			while (result.StartsWith(trimString))
+			{
+				result = result.Substring(trimString.Length);
+			}
+
+			return result;
+		}
+
+		/// <summary>
+		/// Removes a substring from the end of a string.
+		/// </summary>
+		/// <param name="target">Current string.</param>
+		/// <param name="trimString">The string to remove from the current string.</param>
+		public static string TrimEnd(string target, string trimString)
+		{
+			if (string.IsNullOrEmpty(trimString)) return target;
+
+			string result = target;
+			while (result.EndsWith(trimString))
+			{
+				result = result.Substring(0, result.Length - trimString.Length);
+			}
+
+			return result;
+		}
+
+
+		/// <summary>
+		/// Calcuate how similar two strings are using the Levenshtein Distance algorithm.
+		/// </summary>
+		/// <param name="string1">First string for comparison.</param>
+		/// <param name="string2">Second string for comparison.</param>
+		public static double Similarity(string string1, string string2)
+		{
+			int maxLength = Math.Max(string1.Length, string2.Length);
+
+			// If both strings are empty, they are identical.
+			if (maxLength == 0)
+			{
+				return 1.0;
+			}
+
+			int distance = LevenshteinDistance(string1, string2);
+			return 1.0 - (double)distance / maxLength;
+		}
+
+		/// <summary>
+		/// Levenshtein Distance algorithm, which calculates the minimum number of single-character edits (insertions, deletions, or substitutions) required to change one string into the other
+		/// </summary>
+		/// <param name="string1">First string for comparison.</param>
+		/// <param name="string2">Second string for comparison.</param>
+		private static int LevenshteinDistance(string string1, string string2)
+		{
+			int[,] distance = new int[string1.Length + 1, string2.Length + 1];
+
+			for (int i = 0; i <= string1.Length; i++)
+			{
+				distance[i, 0] = i;
+			}
+
+			for (int j = 0; j <= string2.Length; j++)
+			{
+				distance[0, j] = j;
+			}
+
+			for (int i = 1; i <= string1.Length; i++)
+			{
+				for (int j = 1; j <= string2.Length; j++)
+				{
+					int cost   = (string1[i - 1] == string2[j - 1]) ? 0 : 1;
+
+					int value1 = distance[i-1, j] + 1;
+					int value2 = distance[i, j-1] + 1;
+					int value3 = distance[i-1, j-1] + cost;
+
+					distance[i, j] = Math.Min(Math.Min(value1, value2), value3);
+				}
+			}
+
+			return distance[string1.Length, string2.Length];
+		}
 
 		/// <summary>
 		/// Removes white spaces from the specified string.
