@@ -3,11 +3,11 @@ using DigitalProduction.XML.Serialization;
 
 namespace DigitalProduction.UnitTests;
 
-public class UnitTests
+public class XmlTests
 {
 	#region XML Serialization
 
-#if WINDOWS
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 	/// <summary>
 	/// Basic serialization and deserialization test.
 	/// </summary>
@@ -15,12 +15,12 @@ public class UnitTests
 	public void XmlSerialization1()
 	{
 
-		const string path = "test1.xml";
+		string path = Path.Combine(Path.GetTempPath(), "test1.xml");
 
 		Family family = CreateFamily();
 
 		Serialization.SerializeObject(family, path);
-		Family familyDeserialized = Serialization.DeserializeObject<Family>(path);
+		Family? familyDeserialized = Serialization.DeserializeObject<Family>(path);
 		Assert.NotNull(familyDeserialized);
 
 		Person? person = familyDeserialized.GetPerson("Mom");
@@ -33,15 +33,15 @@ public class UnitTests
 
 		System.IO.File.Delete(path);
 }
-#endif
 
 	/// <summary>
 	/// 
 	/// </summary>
 	[Fact]
+
 	public void XmlSerialization2()
 	{
-		const string path = "test2.xml";
+		string path = Path.Combine(Path.GetTempPath(), "test2.xml");
 
 		AirlineCompany company = CreateAirline();
 
@@ -55,8 +55,9 @@ public class UnitTests
 		Assert.Equal(36, person.Age);
 		Assert.Equal(10, deserialized.NumberOfPlanes);
 
-		System.IO.File.Delete(path);
+		File.Delete(path);
 	}
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
 	/// <summary>
 	/// Test the XML writer that writes full closing elements and never uses the short element close.
@@ -64,7 +65,7 @@ public class UnitTests
 	[Fact]
 	public void XmlTextWriterFullTest()
 	{
-		const string path = "test1.xml";
+		string path = Path.Combine(Path.GetTempPath(), "test1.xml");
 
 		AirlineCompany company = CreateAirline();
 		//company.Employees.Add(new Person("", 20, Gender.Male));
@@ -76,6 +77,8 @@ public class UnitTests
 		company.Assets.Add(new Asset("", 4, ""));
 
 		Serialization.SerializeObjectFullEndElement(company, path);
+
+		File.Delete(path);
 	}
 
 	/// <summary>
@@ -84,8 +87,8 @@ public class UnitTests
 	[Fact]
 	public void SerializationSettingsTest()
 	{
-		const string path1 = "test1.xml";
-		const string path2 = "test2.xml";
+		string path1 = Path.Combine(Path.GetTempPath(), "test1.xml");
+		string path2 = Path.Combine(Path.GetTempPath(), "test2.xml");
 
 		AirlineCompany company = CreateAirline();
 
@@ -97,9 +100,12 @@ public class UnitTests
 		settings.XmlSettings.NewLineOnAttributes	= true;
 		settings.OutputFile							= path2;
 		Serialization.SerializeObject(settings);
+
+		File.Delete(path1);
+		File.Delete(path2);
 	}
 
-#endregion
+	#endregion
 
 	#region Attribute Tests
 
