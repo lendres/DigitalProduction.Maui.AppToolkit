@@ -22,25 +22,28 @@ public static partial class LifecycleEventsInstaller
 					// Microsoft.UI.Xaml.Window window
 					window.ExtendsContentIntoTitleBar = false;
 
-					AppWindow appWindow = DigitalProduction.UI.AppTools.GetAppWindow((MauiWinUIWindow)window);
+					AppWindow? appWindow = DigitalProduction.UI.AppTools.GetAppWindow((MauiWinUIWindow)window);
 
-					switch (appWindow.Presenter)
+					switch (appWindow?.Presenter)
 					{
 						case Microsoft.UI.Windowing.OverlappedPresenter overLappedPresenter:
-							MauiWinUIWindow winUIWindow = (MauiWinUIWindow)window;
-							Window mauiWindow           = (Window)winUIWindow.GetWindow();
+							MauiWinUIWindow winUIWindow	= (MauiWinUIWindow)window;
+							Window? mauiWindow			= winUIWindow.GetWindow() as Window;
 
-							// Set the restored position.
-							DigitalProduction.UI.AppTools.RestoreWindowPosition(mauiWindow, "MainWindow");
+							if (mauiWindow != null)
+							{
+								// Set the restored position.
+								DigitalProduction.UI.AppTools.RestoreWindowPosition(mauiWindow, "MainWindow");
 
-							OverlappedPresenterState state = DigitalProduction.UI.AppTools.GetWindowState("MainWindow");
-							if (state == OverlappedPresenterState.Maximized)
-							{
-								overLappedPresenter.Maximize();
-							}
-							else
-							{
-								overLappedPresenter.Restore();
+								OverlappedPresenterState state = DigitalProduction.UI.AppTools.GetWindowState("MainWindow");
+								if (state == OverlappedPresenterState.Maximized)
+								{
+									overLappedPresenter.Maximize();
+								}
+								else
+								{
+									overLappedPresenter.Restore();
+								}
 							}
 							break;
 					}

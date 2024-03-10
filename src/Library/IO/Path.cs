@@ -69,7 +69,12 @@ namespace DigitalProduction.IO
 		/// <param name="path">Path (directory and file name).</param>
 		public static string GetFullPathWithoutExtension(string path)
 		{
-			return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), System.IO.Path.GetFileNameWithoutExtension(path));
+			string? directory	= System.IO.Path.GetDirectoryName(path);
+			if (directory is null)
+			{
+				directory = "";
+			}
+			return System.IO.Path.Combine(directory, System.IO.Path.GetFileNameWithoutExtension(path));
 		}
 
 		/// <summary>
@@ -79,7 +84,11 @@ namespace DigitalProduction.IO
 		/// <param name="newExtension">New file extension.</param>
 		public static string ChangeFileExtension(string path, string newExtension)
 		{
-			string newPath	= System.IO.Path.GetDirectoryName(path);
+			string? newPath	= System.IO.Path.GetDirectoryName(path);
+			if (newPath is null)
+			{
+				newPath = "";
+			}
 			newPath			= System.IO.Path.Combine(newPath, System.IO.Path.GetFileNameWithoutExtension(path));
 
 			if (newExtension[0] != '.')
@@ -98,8 +107,12 @@ namespace DigitalProduction.IO
 		/// <param name="subdirectory">Name of the subdirectory to insert.</param>
 		public static string InsertSubdirectory(string path, string subdirectory)
 		{
-			string newPath	= System.IO.Path.GetDirectoryName(path);
-			newPath			= System.IO.Path.Combine(newPath, subdirectory);
+			string? newPath	= System.IO.Path.GetDirectoryName(path);
+			if (newPath is null)
+			{
+				newPath = "";
+			}
+			newPath         = System.IO.Path.Combine(newPath, subdirectory);
 			newPath			= System.IO.Path.Combine(newPath, System.IO.Path.GetFileName(path));
 			return newPath;
 		}
@@ -155,7 +168,7 @@ namespace DigitalProduction.IO
 			{
 				try
 				{
-					string initdir = System.IO.Path.GetDirectoryName(path);
+					string initdir = System.IO.Path.GetDirectoryName(path) ?? "";
 					if (Directory.Exists(initdir))
 					{
 						return initdir;
@@ -500,7 +513,7 @@ namespace DigitalProduction.IO
 			// If the path is required to exist, we will check that now.
 			if (options.RequirePathToExist)
 			{
-				string path = System.IO.Path.GetDirectoryName(file);
+				string path = System.IO.Path.GetDirectoryName(file) ?? "";
 				if (!Directory.Exists(path))
 				{
 					return ValidFileNameResult.PathDoesNotExist;

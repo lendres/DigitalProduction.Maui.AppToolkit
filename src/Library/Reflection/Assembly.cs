@@ -30,7 +30,7 @@ namespace DigitalProduction.Reflection
 		/// If the library and any executable that calls it are installed in the same directory, this can be used
 		/// as a shortcut to get the path of the running executable.
 		/// </remarks>
-		public static string LibraryPath
+		public static string? LibraryPath
 		{
 			get
 			{
@@ -63,7 +63,7 @@ namespace DigitalProduction.Reflection
 		/// <summary>
 		/// Path of the executing assembly (does not include the name of the assembly).
 		/// </summary>
-		public static string Path()
+		public static string? Path()
 		{
 			return System.IO.Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
 		}
@@ -71,7 +71,7 @@ namespace DigitalProduction.Reflection
 		/// <summary>
 		/// Path of the assembly (does not include the name of the assembly).
 		/// </summary>
-		public static string Path(System.Reflection.Assembly assembly)
+		public static string? Path(System.Reflection.Assembly assembly)
 		{
 			return System.IO.Path.GetDirectoryName(Assembly.Location(assembly));
 		}
@@ -113,7 +113,7 @@ namespace DigitalProduction.Reflection
 		/// <summary>
 		/// Get the calling assembly's version.
 		/// </summary>
-		public static string Version()
+		public static string? Version()
 		{
 			return Version(System.Reflection.Assembly.GetCallingAssembly());
 		}
@@ -121,9 +121,9 @@ namespace DigitalProduction.Reflection
 		/// <summary>
 		/// Get the assembly version.
 		/// </summary>
-		public static string Version(System.Reflection.Assembly assembly)
+		public static string? Version(System.Reflection.Assembly assembly)
 		{
-			return assembly.GetName().Version.ToString();
+			return assembly.GetName().Version?.ToString();
 		}
 
 		/// <summary>

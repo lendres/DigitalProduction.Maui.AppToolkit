@@ -22,7 +22,7 @@ namespace DigitalProduction.UnitTests
 		[Fact]
 		public void Covariance()
 		{
-			string errorMessage			= "Covariance is not correct.";
+			//string errorMessage			= "Covariance is not correct.";
 			const int numberOfEntries	= 6;
 			double[] xValues			= new double[numberOfEntries] { 5, 6, 7, 8, 9, 10 };
 			double[] yValues			= new double[numberOfEntries] { 1, 2, 3, 4, 5, 6 };
@@ -36,7 +36,7 @@ namespace DigitalProduction.UnitTests
 		[Fact]
 		public void PearsonCorrelation()
 		{
-			string errorMessage			= "Person Correlation Coefficient is not correct.";
+			//string errorMessage			= "Person Correlation Coefficient is not correct.";
 			const int numberOfEntries	= 4;
 			double[] xValues			= new double[numberOfEntries] { 1, 2, 3, 4 };
 			double[] yValues			= new double[numberOfEntries] { 1, 2, 3, 4 };
@@ -70,7 +70,7 @@ namespace DigitalProduction.UnitTests
 		[Fact]
 		public void StandardDeviation()
 		{
-			string errorMessage			= "Standard deviation is not correct.";
+			//string errorMessage			= "Standard deviation is not correct.";
 			const int numberOfEntries	= 8;
 			double[] xValues			= new double[numberOfEntries] { 10, 12, 23, 23, 16, 23, 21, 16 };
 

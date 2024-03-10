@@ -10,9 +10,9 @@ public partial class DigitalProductionMainPage
 
 	#region Methods
 
-	partial void InstallOnLoaded(object sender, EventArgs eventArgs)
+	partial void InstallOnLoaded(object? sender, EventArgs eventArgs)
 	{
-		AppWindow appWindow = this.GetAppWindow();
+		AppWindow? appWindow = this.GetAppWindow();
 		if (appWindow == null)
 		{
 			return;
@@ -30,11 +30,11 @@ public partial class DigitalProductionMainPage
 		}
 	}
 
-	private void OnSizeChanged(object sender, EventArgs eventArgs)
+	private void OnSizeChanged(object? sender, EventArgs eventArgs)
 	{
-		AppWindow appWindow = GetAppWindow();
+		AppWindow? appWindow = GetAppWindow();
 
-		switch (appWindow.Presenter)
+		switch (appWindow?.Presenter)
 		{
 			case OverlappedPresenter overLappedPresenter:
 				DigitalProduction.UI.AppTools.SaveWindowState(overLappedPresenter.State, "MainWindow");
@@ -49,10 +49,17 @@ public partial class DigitalProductionMainPage
 		}
 	}
 
-	protected AppWindow GetAppWindow()
+	protected AppWindow? GetAppWindow()
 	{
-		MauiWinUIWindow mauiWinUIWindow = GetParentWindow().Handler.PlatformView as MauiWinUIWindow;
-		return DigitalProduction.UI.AppTools.GetAppWindow(mauiWinUIWindow);
+		MauiWinUIWindow? mauiWinUIWindow = GetParentWindow().Handler.PlatformView as MauiWinUIWindow;
+		if (mauiWinUIWindow is null)
+		{
+			return null;
+		}
+		else
+		{
+			return DigitalProduction.UI.AppTools.GetAppWindow(mauiWinUIWindow);
+		}
 	}
 
 	#endregion

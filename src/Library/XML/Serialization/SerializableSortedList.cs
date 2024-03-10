@@ -15,7 +15,7 @@ namespace DigitalProduction.XML.Serialization
 	/// <typeparam name="KeyType">Dictionary key type.</typeparam>
 	/// <typeparam name="ValueType">Dictionary value type.</typeparam>
 	[XmlRoot("dictionary")]
-	public class SerializableSortedList<KeyType, ValueType> : SortedList<KeyType, ValueType>, IXmlSerializable
+	public class SerializableSortedList<KeyType, ValueType> : SortedList<KeyType, ValueType>, IXmlSerializable where KeyType : notnull
 	{
 		#region Construction
 
@@ -35,7 +35,7 @@ namespace DigitalProduction.XML.Serialization
 		///
 		/// Returns null.  This object does not have a schema.
 		/// </summary>
-		public System.Xml.Schema.XmlSchema GetSchema()
+		public System.Xml.Schema.XmlSchema? GetSchema()
 		{
 			return null;
 		}
@@ -46,7 +46,7 @@ namespace DigitalProduction.XML.Serialization
 		/// <param name="reader">XmlReader.</param>
 		public void ReadXml(XmlReader reader)
 		{
-			XDocument document = null;
+			XDocument? document = null;
 			using (XmlReader subtreereader = reader.ReadSubtree())
 			{
 				document = XDocument.Load(subtreereader);
@@ -56,8 +56,14 @@ namespace DigitalProduction.XML.Serialization
 			{
 				using (XmlReader itemReader =  item.CreateReader())
 				{
-					SerializableKeyValuePair<KeyType, ValueType> keyvaluepair = serializer.Deserialize(itemReader) as SerializableKeyValuePair<KeyType, ValueType>;
-					Add(keyvaluepair.Key, keyvaluepair.Value);
+					SerializableKeyValuePair<KeyType, ValueType>? keyValuePair = serializer.Deserialize(itemReader) as SerializableKeyValuePair<KeyType, ValueType>;
+					if (keyValuePair != null)
+					{
+						if (keyValuePair.Key != null && keyValuePair.Value != null)
+						{
+							Add(keyValuePair.Key, keyValuePair.Value);
+						}
+					}
 				}
 			}
 			reader.ReadEndElement();

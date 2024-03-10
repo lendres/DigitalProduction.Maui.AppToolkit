@@ -1,54 +1,53 @@
-﻿namespace DigitalProduction.ComponentModel
+﻿namespace DigitalProduction.ComponentModel;
+
+/// <summary>
+/// Attribute for applying alternate names to a class.
+/// </summary>
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
+public class AliasAttribute : Attribute
 {
+	#region Fields
+
+	private string			_alias		= "";
+
+	#endregion
+
+	#region Construction
+
 	/// <summary>
-	/// Attribute for applying alternate names to a class.
+	/// Default constructor.
 	/// </summary>
-	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
-	public class AliasAttribute : Attribute
-	{
-		#region Fields
-
-		private string			_alias;
-
-		#endregion
-
-		#region Construction
-
-		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		public AliasAttribute() {}
+	public AliasAttribute() {}
 
 		
-		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		public AliasAttribute(string alias)
+	/// <summary>
+	/// Default constructor.
+	/// </summary>
+	public AliasAttribute(string alias)
+	{
+		_alias = alias;
+	}
+
+	#endregion
+
+	#region Properties
+
+	/// <summary>
+	/// An alternate name for the class/structure.
+	/// </summary>
+	public string Alias
+	{
+		get
 		{
-			_alias = alias;
+			return _alias;
 		}
 
-		#endregion
-
-		#region Properties
-
-		/// <summary>
-		/// An alternate name for the class/structure.
-		/// </summary>
-		public string Alias
+		set
 		{
-			get
-			{
-				return _alias;
-			}
-
-			set
-			{
-				_alias = value;
-			}
+			_alias = value;
 		}
+	}
 
-		#endregion
+	#endregion
 
-	} // End class.
-} // End namespace.
+} // End class.

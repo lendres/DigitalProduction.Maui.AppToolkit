@@ -18,7 +18,7 @@ public static class AppTools
 
 	#region Methods
 
-	public static AppWindow GetAppWindow(MauiWinUIWindow window)
+	public static AppWindow? GetAppWindow(MauiWinUIWindow window)
 	{
 		if (window == null)
 		{

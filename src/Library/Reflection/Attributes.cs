@@ -32,7 +32,7 @@ namespace DigitalProduction.Reflection
 		{
 			string name = defaultValue;
 
-			DisplayNameAttribute attribute = GetAttribute<DisplayNameAttribute>(type);
+			DisplayNameAttribute? attribute = GetAttribute<DisplayNameAttribute>(type);
 			if (attribute != null)
 			{
 				name = attribute.DisplayName;
@@ -58,7 +58,7 @@ namespace DigitalProduction.Reflection
 		{
 			string name = defaultValue;
 
-			DisplayNameAttribute attribute = GetAttribute<DisplayNameAttribute>(instance);
+			DisplayNameAttribute? attribute = GetAttribute<DisplayNameAttribute>(instance);
 			if (attribute != null)
 			{
 				name = attribute.DisplayName;
@@ -88,7 +88,7 @@ namespace DigitalProduction.Reflection
 		{
 			string description = defaultValue;
 
-			DescriptionAttribute attribute = GetAttribute<DescriptionAttribute>(type);
+			DescriptionAttribute? attribute = GetAttribute<DescriptionAttribute>(type);
 			if (attribute != null)
 			{
 				description = attribute.Description;
@@ -114,7 +114,7 @@ namespace DigitalProduction.Reflection
 		{
 			string description = defaultValue;
 
-			DescriptionAttribute attribute = GetAttribute<DescriptionAttribute>(instance);
+			DescriptionAttribute? attribute = GetAttribute<DescriptionAttribute>(instance);
 			if (attribute != null)
 			{
 				description = attribute.Description;
@@ -146,7 +146,7 @@ namespace DigitalProduction.Reflection
 		{
 			string alternateName = defaultValue;
 
-			AlternateNamesAttribute attribute = GetAttribute<AlternateNamesAttribute>(type);
+			AlternateNamesAttribute? attribute = GetAttribute<AlternateNamesAttribute>(type);
 			if (attribute != null)
 			{
 				alternateName = attribute.GetName(nameType);
@@ -174,7 +174,7 @@ namespace DigitalProduction.Reflection
 		{
 			string alternateName = defaultValue;
 
-			AlternateNamesAttribute attribute = GetAttribute<AlternateNamesAttribute>(instance);
+			AlternateNamesAttribute? attribute = GetAttribute<AlternateNamesAttribute>(instance);
 			if (attribute != null)
 			{
 				alternateName = attribute.GetName(nameType);
@@ -223,18 +223,19 @@ namespace DigitalProduction.Reflection
 		/// </summary>
 		/// <typeparam name="T">Type of attribute to get (not type of the object).</typeparam>
 		/// <param name="instance">Instance of the object type to retrieve the Attribute from.</param>
-		public static T GetAttribute<T>(object instance) where T : Attribute
+		public static T? GetAttribute<T>(object instance) where T : Attribute
 		{
 			Type type		= instance.GetType();
-			T attribute		= default(T);
+			T? attribute	= default(T);
 
 			if (type.IsEnum)
 			{
 				// An "instance" of an enum is one of the members of the enumerator list.  They have to be
 				// handled differently.
-				FieldInfo fieldinfo = instance.GetType().GetField(instance.ToString());
+				string instanceString = instance.ToString() ?? "";
+				FieldInfo? fieldinfo = instance.GetType().GetField(instanceString);
 
-				if (null != fieldinfo)
+				if (fieldinfo != null)
 				{
 					object[] attributes = fieldinfo.GetCustomAttributes(typeof(T), true);
 					if (attributes != null && attributes.Length > 0)
@@ -256,9 +257,9 @@ namespace DigitalProduction.Reflection
 		/// </summary>
 		/// <typeparam name="T">Type of attribute to get (not type of the object).</typeparam>
 		/// <param name="type">Type of the object to retrieve the Attribute from.</param>
-		public static T GetAttribute<T>(System.Type type) where T : Attribute
+		public static T? GetAttribute<T>(System.Type type) where T : Attribute
 		{
-			T attribute = default(T);
+			T? attribute = default(T);
 
 			Attribute[] attributes = Attribute.GetCustomAttributes(type);
 

@@ -1,6 +1,5 @@
-using System;
-using System.Xml;
 using System.Text;
+using System.Xml;
 
 namespace DigitalProduction.XML.Serialization
 {
@@ -18,45 +17,38 @@ namespace DigitalProduction.XML.Serialization
 		private object					_serializeObject;
 
 		/// <summary>Name of the output file.</summary>
-		private string					_outputFile;
+		private string					_outputFile			= "";
 		
 		/// <summary>Xml writer settings.</summary>
-		private XmlWriterSettings		_xmlSettings;
+		private XmlWriterSettings		_xmlSettings		= new XmlWriterSettings();
 
 		#endregion
 
 		#region Construction
 
 		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		public SerializationSettings()
-		{
-			CreateXmlWriterSettings();
-		}
-
-		/// <summary>
 		/// Constructor.
 		/// </summary>
 		/// <param name="objectToSerialize">Object to serialize.</param>
 		/// <param name="outputFile">Output file.</param>
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 		public SerializationSettings(object objectToSerialize, string outputFile)
 		{
 			this.SerializeObject		= objectToSerialize;
 			_outputFile					= outputFile;
 			CreateXmlWriterSettings();
 		}
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
 		/// <summary>
 		/// Creates the default XmlWriterSettings.
 		/// </summary>
 		private void CreateXmlWriterSettings()
 		{
-			XmlSettings						= new XmlWriterSettings();
-			XmlSettings.Indent				= true;
-			XmlSettings.NewLineOnAttributes	= true;
-			XmlSettings.IndentChars			= "    ";
-			XmlSettings.Encoding			= Encoding.ASCII;
+			this.XmlSettings.Indent					= true;
+			this.XmlSettings.NewLineOnAttributes	= true;
+			this.XmlSettings.IndentChars			= "    ";
+			this.XmlSettings.Encoding				= Encoding.ASCII;
 		}
 
 		#endregion

@@ -12,17 +12,17 @@ namespace DigitalProduction.XML.Serialization
 	/// <typeparam name="KeyType">Dictionary key type.</typeparam>
 	/// <typeparam name="ValueType">Dictionary value type.</typeparam>
 	[XmlRoot("item")]
-	public class SerializableKeyValuePair<KeyType, ValueType>
+	public class SerializableKeyValuePair<KeyType, ValueType> where KeyType : notnull
 	{
 		#region Fields
 
 		/// <summary>Dictionary key.</summary>
 		[XmlAttribute("key")]
-		public KeyType Key;
+		public KeyType? Key			= default;
 
 		/// <summary>Dictionary value.</summary>
 		[XmlElement("value")]
-		public ValueType Value;
+		public ValueType? Value;
 
 		#endregion
 
