@@ -16,7 +16,7 @@ public static partial class Serialization
 	/// <param name="settings">SerializationSettings to use for writing.</param>
 	public static void SerializeObject(SerializationSettings settings)
 	{
-		XmlSerializer serializer	= new XmlSerializer(settings.SerializeType);
+		XmlSerializer serializer	= new(settings.SerializeType);
 		XmlWriter xmlwriter			= XmlWriter.Create(settings.OutputFile, settings.XmlSettings);
 
 		serializer.Serialize(xmlwriter, settings.SerializeObject);
@@ -30,7 +30,7 @@ public static partial class Serialization
 	/// <param name="outputFile">Output file.</param>
 	public static void SerializeObject(object objectToSerialize, string outputFile)
 	{
-		SerializationSettings settings	= new SerializationSettings(objectToSerialize, outputFile);
+		SerializationSettings settings	= new(objectToSerialize, outputFile);
 		SerializeObject(settings);
 	}
 
@@ -40,9 +40,9 @@ public static partial class Serialization
 	/// <param name="settings">SerializationSettings to use for writing.</param>
 	public static void SerializeObjectFullEndElement(SerializationSettings settings)
 	{
-		XmlSerializer serializer					= new XmlSerializer(settings.SerializeType);
+		XmlSerializer serializer					= new(settings.SerializeType);
 
-		XmlTextWriterFullEndElement textwriter		= new XmlTextWriterFullEndElement(settings.OutputFile, settings.XmlSettings);
+		XmlTextWriterFullEndElement textwriter		= new(settings.OutputFile, settings.XmlSettings);
 		XmlWriter xmlwriter							= XmlTextWriterFullEndElement.Create(textwriter, settings.XmlSettings);
 
 		serializer.Serialize(xmlwriter, settings.SerializeObject);
@@ -56,7 +56,7 @@ public static partial class Serialization
 	/// <param name="outputFile">Output file.</param>
 	public static void SerializeObjectFullEndElement(object objectToSerialize, string outputFile)
 	{
-		SerializationSettings settings	= new SerializationSettings(objectToSerialize, outputFile);
+		SerializationSettings settings	= new(objectToSerialize, outputFile);
 		SerializeObjectFullEndElement(settings);
 	}
 

@@ -50,18 +50,16 @@ public class SerializableSortedList<KeyType, ValueType> : SortedList<KeyType, Va
 		{
 			document = XDocument.Load(subtreereader);
 		}
-		XmlSerializer serializer = new XmlSerializer(typeof(SerializableKeyValuePair<KeyType, ValueType>));
+		XmlSerializer serializer = new(typeof(SerializableKeyValuePair<KeyType, ValueType>));
 		foreach (XElement item in document.Descendants(XName.Get("item")))
 		{
-			using (XmlReader itemReader =  item.CreateReader())
+			using XmlReader itemReader = item.CreateReader();
+			SerializableKeyValuePair<KeyType, ValueType>? keyValuePair = serializer.Deserialize(itemReader) as SerializableKeyValuePair<KeyType, ValueType>;
+			if (keyValuePair != null)
 			{
-				SerializableKeyValuePair<KeyType, ValueType>? keyValuePair = serializer.Deserialize(itemReader) as SerializableKeyValuePair<KeyType, ValueType>;
-				if (keyValuePair != null)
+				if (keyValuePair.Key != null && keyValuePair.Value != null)
 				{
-					if (keyValuePair.Key != null && keyValuePair.Value != null)
-					{
-						Add(keyValuePair.Key, keyValuePair.Value);
-					}
+					Add(keyValuePair.Key, keyValuePair.Value);
 				}
 			}
 		}
@@ -74,14 +72,14 @@ public class SerializableSortedList<KeyType, ValueType> : SortedList<KeyType, Va
 	/// <param name="writer">XmlWriter.</param>
 	public void WriteXml(System.Xml.XmlWriter writer)
 	{
-		XmlSerializer serializer			= new XmlSerializer(typeof(SerializableKeyValuePair<KeyType, ValueType>));
-		XmlSerializerNamespaces namespaces	= new XmlSerializerNamespaces();
+		XmlSerializer serializer			= new(typeof(SerializableKeyValuePair<KeyType, ValueType>));
+		XmlSerializerNamespaces namespaces	= new();
 		namespaces.Add("", "");
 
 		foreach (KeyType key in this.Keys)
 		{
 			ValueType value		= this[key];
-			SerializableKeyValuePair<KeyType, ValueType> keyvaluepair	= new SerializableKeyValuePair<KeyType, ValueType>(key, value);
+			SerializableKeyValuePair<KeyType, ValueType> keyvaluepair	= new(key, value);
 			serializer.Serialize(writer, keyvaluepair, namespaces);
 		}
 	}

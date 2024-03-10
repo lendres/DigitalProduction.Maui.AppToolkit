@@ -30,7 +30,7 @@ public class MappingList<TKey, TData>
 	// TKey.First		3.1		4.2		5.5		6.1		7.1
 	// TKey.Second		98.6	86.3	76.5	92.4	82.3
 	// TKey.Third		15351	16523	18352	14366	13546
-	private List<TData?>					_data					= new List<TData?>();
+	private readonly List<TData?>                    _data                   = new();
 
 	#endregion
 
@@ -42,7 +42,7 @@ public class MappingList<TKey, TData>
 	protected MappingList()
 	{
 		_numberOfKeys       = Reflection.Enumerations.NumberOfDefinedItems<TKey>();
-		_activeKeys         = new List<TKey>();
+		_activeKeys         = new();
 		_numberOfActiveKeys = _activeKeys.Count;
 		_map                = new int[_numberOfKeys];
 	}

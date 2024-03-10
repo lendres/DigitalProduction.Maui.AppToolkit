@@ -7,7 +7,7 @@ public static class Precision
 {
 	#region Fields
 
-	private static PrecisionSettings		_defaultPrecisionSettings = new PrecisionSettings();
+	private static readonly PrecisionSettings		_defaultPrecisionSettings = new();
 
 	#endregion
 

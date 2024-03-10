@@ -70,10 +70,7 @@ public static class Path
 	public static string GetFullPathWithoutExtension(string path)
 	{
 		string? directory	= System.IO.Path.GetDirectoryName(path);
-		if (directory is null)
-		{
-			directory = "";
-		}
+		directory ??= "";
 		return System.IO.Path.Combine(directory, System.IO.Path.GetFileNameWithoutExtension(path));
 	}
 
@@ -85,10 +82,7 @@ public static class Path
 	public static string ChangeFileExtension(string path, string newExtension)
 	{
 		string? newPath	= System.IO.Path.GetDirectoryName(path);
-		if (newPath is null)
-		{
-			newPath = "";
-		}
+		newPath ??= "";
 		newPath			= System.IO.Path.Combine(newPath, System.IO.Path.GetFileNameWithoutExtension(path));
 
 		if (newExtension[0] != '.')
@@ -107,13 +101,10 @@ public static class Path
 	/// <param name="subdirectory">Name of the subdirectory to insert.</param>
 	public static string InsertSubdirectory(string path, string subdirectory)
 	{
-		string? newPath	= System.IO.Path.GetDirectoryName(path);
-		if (newPath is null)
-		{
-			newPath = "";
-		}
-		newPath         = System.IO.Path.Combine(newPath, subdirectory);
-		newPath			= System.IO.Path.Combine(newPath, System.IO.Path.GetFileName(path));
+		string? newPath	=   System.IO.Path.GetDirectoryName(path);
+		newPath			??= "";
+		newPath         =   System.IO.Path.Combine(newPath, subdirectory);
+		newPath			=   System.IO.Path.Combine(newPath, System.IO.Path.GetFileName(path));
 		return newPath;
 	}
 
@@ -188,14 +179,8 @@ public static class Path
 	/// <param name="path">Path to test.</param>
 	public static bool IsRelativePath(string path)
     {
-		if (path.StartsWith("."))
-		{
-			return true;
-		}
-		{
-			return false;
-		}
-    }
+		return path.StartsWith('.');
+	}
 
 	/// <summary>
 	/// If the path is relative, it converts it to absolute by using the current directory as the base.
@@ -254,8 +239,8 @@ public static class Path
 		{
 			fromLocation += System.IO.Path.DirectorySeparatorChar;
 		}
-		Uri folderUri		= new Uri(fromLocation);
-		Uri pathUri			= new Uri(toLocation);
+		Uri folderUri       = new(fromLocation);
+		Uri pathUri			= new(toLocation);
 		string relativePath	= folderUri.MakeRelativeUri(pathUri).ToString();
 
 		relativePath = relativePath.Replace('/', System.IO.Path.DirectorySeparatorChar);
@@ -263,7 +248,7 @@ public static class Path
 
 		// If the from location is the start of the to location it will not contain the ".\" which
 		// indicates relative from the current directory.
-		if (!relativePath.StartsWith(".") && toLocation.StartsWith(fromLocation))
+		if (!relativePath.StartsWith('.') && toLocation.StartsWith(fromLocation))
 		{
 			relativePath = "." + System.IO.Path.DirectorySeparatorChar + relativePath;
 		}
@@ -290,7 +275,7 @@ public static class Path
 	public static string ChangeDirectoryDotDot(string directory, int levels)
 	{
 		// Ensure that the path is in a format we expect, i.e. it should not end in "\".
-		if (directory.EndsWith(@"\"))
+		if (directory.EndsWith('\\'))
 		{
 			directory = directory.Remove(directory.Length-1);
 		}
@@ -303,7 +288,7 @@ public static class Path
 		for (int i = 0; i < levels; i++)
 		{
 			// Remove all the text from the last back slash to the end.
-			directory = directory.Remove(directory.LastIndexOf(@"\"));
+			directory = directory.Remove(directory.LastIndexOf('\\'));
 		}
 
 		// Return the result.
@@ -358,7 +343,7 @@ public static class Path
 	/// </remarks>
 	public static void DirectoryCopy(string sourcedirname, string destdirname, bool copysubdirs, bool overwrite, List<string> excludedfiles)
 	{
-		DirectoryInfo	dir		= new DirectoryInfo(sourcedirname);
+		DirectoryInfo   dir     = new(sourcedirname);
 		DirectoryInfo[] dirs	= dir.GetDirectories();
 
 		// If the source directory does not exist, throw an exception.
@@ -442,11 +427,11 @@ public static class Path
 	/// <param name="drive">String of the drive letter to get the volume label of.</param>
 	public static string DiskDriveName(string drive)
 	{
-		StringBuilder volumename	= new StringBuilder(256);
-		long serialnumber			= new long();
-		long maxcomponetlength		= new long();
-		long systemflags			= new long();
-		StringBuilder systemname	= new StringBuilder(256);
+		StringBuilder volumename	= new(256);
+		long serialnumber			= new();
+		long maxcomponetlength		= new();
+		long systemflags			= new();
+		StringBuilder systemname	= new(256);
 		long returnvalue			= GetVolumeInformation(drive, volumename, 256, serialnumber, maxcomponetlength, systemflags, systemname, 256);
 
 		if (returnvalue != 0)
@@ -504,7 +489,7 @@ public static class Path
 		//
 		// For reference the call is:
 		// char[] invalidpathchars2 = Path.GetInvalidPathChars();
-		char[] invalidpathchars = { '\"', '*', '/', ':', '<', '>', '?', '\\', '|' };
+		char[] invalidpathchars = ['\"', '*', '/', ':', '<', '>', '?', '\\', '|'];
 		if (filename.IndexOfAny(invalidpathchars) > 0)
 		{
 			return ValidFileNameResult.InvalidCharacters;
@@ -521,17 +506,17 @@ public static class Path
 		}
 
 		// The file name cannot start with a "dot."
-		if (filename.StartsWith("."))
+		if (filename.StartsWith('.'))
 		{
 			return ValidFileNameResult.FileNameNotProvided;
 		}
 
 		// Check to see if the file name starts with any device names.
 		string[] devicenames =
-		{
+		[
 			"CLOCK$",	"AUX",	"CON",	"NUL",	"PRN",	"COM1",	"COM2",	"COM3",	"COM4",	"COM5",	"COM6",	"COM7", 
 			"COM8",		"COM9",	"LPT1",	"LPT2",	"LPT3",	"LPT4",	"LPT5",	"LPT6",	"LPT7",	"LPT8",	"LPT9"
-		};
+		];
 
 		string filenamenoextension = System.IO.Path.GetFileNameWithoutExtension(filename);
 		foreach (string name in devicenames)

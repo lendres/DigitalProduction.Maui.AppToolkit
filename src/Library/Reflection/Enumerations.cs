@@ -24,7 +24,7 @@ public static class Enumerations
 	{
 		int length = NumberOfDefinedItems<T>();
 
-		List<string> descriptions = new List<string>(length);
+		List<string> descriptions = new(length);
 
 		Array enumValueArray = Enum.GetValues(typeof(T));
 
@@ -52,8 +52,6 @@ public static class Enumerations
 	/// <param name="description">Description string to search for.</param>
 	public static T GetInstanceFromDescription<T>(string description) where T : struct
 	{
-		int length = NumberOfDefinedItems<T>();
-
 		Array enumValueArray = Enum.GetValues(typeof(T));
 
 		foreach (T value in enumValueArray)
@@ -64,7 +62,7 @@ public static class Enumerations
 			}
 		}
 
-		return default(T);
+		return default;
 	}
 
 	#endregion

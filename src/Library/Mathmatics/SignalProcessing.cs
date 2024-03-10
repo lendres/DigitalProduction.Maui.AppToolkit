@@ -128,7 +128,7 @@ public static class SignalProcessing
 		double	tolerance		= System.Math.PI;
 		int		count			= angles.Count;
 
-		List<double> output = new List<double>(count);
+		List<double> output = new(count);
 
 		for (int i = 0; i < count-1; i++)
 		{
@@ -138,11 +138,11 @@ public static class SignalProcessing
 			{
 				if (angles[i+1] < angles[i])
 				{
-					revolutionCount = revolutionCount + 1;
+					revolutionCount++;
 				}
 				else
 				{
-					revolutionCount = revolutionCount - 1;
+					revolutionCount--;
 				}
 			}
 		}

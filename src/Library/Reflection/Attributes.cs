@@ -202,7 +202,7 @@ public static class Attributes
 	/// <param name="type">Type of object to retrieve the aliases from.</param>
 	public static List<string> GetAliases(Type type)
 	{
-		List<string> aliases = new List<string>();
+		List<string> aliases = new();
 
 		List<AliasAttribute> attributes = GetAllAttributes<AliasAttribute>(type);
 
@@ -226,7 +226,7 @@ public static class Attributes
 	public static T? GetAttribute<T>(object instance) where T : Attribute
 	{
 		Type type		= instance.GetType();
-		T? attribute	= default(T);
+		T? attribute	= default;
 
 		if (type.IsEnum)
 		{
@@ -259,7 +259,7 @@ public static class Attributes
 	/// <param name="type">Type of the object to retrieve the Attribute from.</param>
 	public static T? GetAttribute<T>(System.Type type) where T : Attribute
 	{
-		T? attribute = default(T);
+		T? attribute = default;
 
 		Attribute[] attributes = Attribute.GetCustomAttributes(type);
 
@@ -291,7 +291,7 @@ public static class Attributes
 	/// <param name="type">Type of the object to retrieve the Attribute from.</param>
 	public static List<T> GetAllAttributes<T>(Type type) where T : Attribute
 	{
-		List<T> attribute = new List<T>();
+		List<T> attribute = new();
 
 		Attribute[] attributes = Attribute.GetCustomAttributes(type);
 

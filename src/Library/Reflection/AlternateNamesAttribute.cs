@@ -8,7 +8,7 @@ public class AlternateNamesAttribute : Attribute
 {
 	#region Fields
 
-	private string[]          _names					= new string[2];
+	private readonly string[]          _names					= new string[2];
 
 	#endregion
 

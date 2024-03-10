@@ -44,7 +44,7 @@ public static class Conversion
 	public static List<double> DegreesToRadians(List<double> angles)
 	{
 		int				count		= angles.Count;
-		List<double>	output		= new List<double>(count);
+		List<double>    output      = new(count);
 
 		for (int i = 0; i < count; i++)
 		{
@@ -83,7 +83,7 @@ public static class Conversion
 	public static List<double> RadiansToDegrees(List<double> angles)
 	{
 		int				count		= angles.Count;
-		List<double>	output		= new List<double>(count);
+		List<double>	output		= new(count);
 
 		for (int i = 0; i < count; i++)
 		{
@@ -113,7 +113,7 @@ public static class Conversion
 	public static List<double> RadiansToRevolutions(List<double> angles)
 	{
 		int				count		= angles.Count;
-		List<double>	output		= new List<double>(count);
+		List<double>	output		= new(count);
 
 		for (int i = 0; i < count; i++)
 		{

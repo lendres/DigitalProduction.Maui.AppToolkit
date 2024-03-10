@@ -46,7 +46,7 @@ public static class Statistics
 	{
 		System.Diagnostics.Debug.Assert(xValues.Length == yValues.Length, "Array lengths do not match in covariance calculation.");
 
-		double[] average = new double[2] { 0, 0 };
+		double[] average = [0, 0];
 
 		int numberOfEntries = xValues.Length;
 		for (int i = 0; i < numberOfEntries; i++)

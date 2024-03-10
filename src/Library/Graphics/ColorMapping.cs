@@ -55,7 +55,7 @@ public static class ColorMapping
 	public static List<Color> MorelandCoolToWarm(List<double> values)
 	{
 		int size			= values.Count;
-		List<Color> colors	= new List<Color>(size);
+		List<Color> colors  = new(size);
 
 		for (int i = 0; i < size; i++)
 		{

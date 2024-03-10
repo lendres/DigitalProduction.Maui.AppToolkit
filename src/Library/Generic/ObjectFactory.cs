@@ -14,7 +14,7 @@ public class ObjectFactory<KeyType, GeneralType> where KeyType : notnull
 
 	#region Fields
 
-	private SortedList<KeyType, CreateDelegate>				_products;
+	private readonly SortedList<KeyType, CreateDelegate>				_products;
 
 	#endregion
 
@@ -38,7 +38,7 @@ public class ObjectFactory<KeyType, GeneralType> where KeyType : notnull
 	/// <param name="key">Key used to retrieve the new object from.</param>
 	public void Register<SpecificType>(KeyType key) where SpecificType : GeneralType, new()
 	{
-		CreateDelegate creator = new CreateDelegate(Creator<SpecificType>);
+		CreateDelegate creator = new(ObjectFactory<KeyType, GeneralType>.Creator<SpecificType>);
 		_products.Add(key, creator);
 	}
 
@@ -79,7 +79,7 @@ public class ObjectFactory<KeyType, GeneralType> where KeyType : notnull
 	/// </summary>
 	public List<KeyType> GetListOfKeys()
 	{
-		List<KeyType> keys = new List<KeyType>();
+		List<KeyType> keys = new();
 
 		for (int i = 0; i < _products.Count; i++)
 		{
@@ -94,7 +94,7 @@ public class ObjectFactory<KeyType, GeneralType> where KeyType : notnull
 	/// in the form of the super class (base class) type.
 	/// </summary>
 	/// <typeparam name="SpecificType">Subclass type to return.</typeparam>
-	private GeneralType Creator<SpecificType>() where SpecificType : GeneralType, new()
+	private static GeneralType Creator<SpecificType>() where SpecificType : GeneralType, new()
 	{
 		return new SpecificType();
 	}

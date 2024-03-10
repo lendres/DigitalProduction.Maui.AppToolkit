@@ -17,9 +17,9 @@ public static partial class Serialization
 	/// <param name="file">File to deserialize from.</param>
 	public static T? DeserializeObject<T>(string file) where T : class
 	{
-		XmlSerializer serializer			= new XmlSerializer(typeof(T));
+		XmlSerializer serializer			= new(typeof(T));
 
-		XIncludingReader xmlincludingreader	= new XIncludingReader(file);
+		XIncludingReader xmlincludingreader	= new(file);
 		T? deserializedobject				= serializer.Deserialize(xmlincludingreader) as T;
 		xmlincludingreader.Close();
 

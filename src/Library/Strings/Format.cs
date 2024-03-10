@@ -12,7 +12,7 @@ public static class Format
 	#region Fields
 
 	// To properly work, this list needs to be culture specific as well.
-	private static HashSet<string> _lowerCaseWords = new HashSet<string>() { "a", "an", "and", "as", "at", "but", "by", "for", "from", "if", "in", "into", "nor", "of", "off", "on", "or", "out", "per", "so", "till", "the", "to", "up", "with", "via", "yet" };
+	private static readonly HashSet<string> _lowerCaseWords = new() { "a", "an", "and", "as", "at", "but", "by", "for", "from", "if", "in", "into", "nor", "of", "off", "on", "or", "out", "per", "so", "till", "the", "to", "up", "with", "via", "yet" };
 
 	#endregion
 
@@ -46,7 +46,7 @@ public static class Format
 		string result = target;
 		while (result.StartsWith(trimString))
 		{
-			result = result.Substring(trimString.Length);
+			result = result[trimString.Length..];
 		}
 
 		return result;
@@ -199,23 +199,15 @@ public static class Format
 	/// <param name="culture">Culture to use when converting.</param>
 	public static string ChangeCase(string input, StringCase toCase, string culture = "en-US")
 	{
-		switch (toCase)
+		return toCase switch
 		{
-			case StringCase.None:
-				return input;
-
-			case StringCase.LowerCase:
-				return input.ToLower();
-
-			case StringCase.UpperCase:
-				return input.ToUpper();
-
-			case StringCase.TitleCase:
-				return ToTitleCase(input, culture);
-
-			default:
-				throw new ArgumentException("The StringCase specified is invalid.");
-		}
+			StringCase.None => input,
+			StringCase.LowerCase => input.ToLower(),
+			StringCase.UpperCase => input.ToUpper(),
+			StringCase.TitleCase => ToTitleCase(input, culture),
+			StringCase.Length => throw new Exception("Cannot use Length as a value."),
+			_ => throw new ArgumentException("The StringCase specified is invalid."),
+		};
 	}
 
 	/// <summary>
@@ -237,7 +229,7 @@ public static class Format
 		string[] splitText      = Regex.Split(replacement, @"(?=[" + delimeters + "])|(?<=[" + delimeters + "])");
 
 		// Skip the first word, that needs to stay capital.
-		StringBuilder output	= new StringBuilder(splitText[0]);
+		StringBuilder output	= new(splitText[0]);
 
 		// Skip the first word, that needs to stay capital.
 		for (int i = 1; i < splitText.Length; i++)

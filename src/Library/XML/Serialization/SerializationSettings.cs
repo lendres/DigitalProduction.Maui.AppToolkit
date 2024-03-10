@@ -20,7 +20,7 @@ public class SerializationSettings
 	private string					_outputFile			= "";
 	
 	/// <summary>Xml writer settings.</summary>
-	private XmlWriterSettings		_xmlSettings		= new XmlWriterSettings();
+	private XmlWriterSettings		_xmlSettings		= new();
 
 	#endregion
 

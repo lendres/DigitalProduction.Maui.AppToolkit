@@ -33,7 +33,7 @@ public class Algorithms
 	{
 		// Random number generator.  Generate a new generator each time to increase
 		// the amount of entropy in the system calling the shuffle function.
-		Random random = new Random(DateTime.Now.Millisecond);
+		Random random = new(DateTime.Now.Millisecond);
 
 		// Do the shuffle.
 		int shuffles = random.Next(70, 90);

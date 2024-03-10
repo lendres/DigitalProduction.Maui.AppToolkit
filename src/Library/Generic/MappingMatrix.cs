@@ -30,7 +30,7 @@ public class MappingMatrix<TKey, TData>
 	// TKey.First		3.1		4.2		5.5		6.1		7.1
 	// TKey.Second		98.6	86.3	76.5	92.4	82.3
 	// TKey.Third		15351	16523	18352	14366	13546
-	private List<List<TData>>				_data					= new List<List<TData>>();
+	private List<List<TData>>               _data                   = new();
 
 	#endregion
 
@@ -376,7 +376,7 @@ public class MappingMatrix<TKey, TData>
 
 		// Create a new data structure for our data.  Because all the data is now loaded, we can provide the List constructor
 		// with size information, which should help keep things a little more efficient.
-		List<List<TData>> newdata = new List<List<TData>>(_numberOfActiveKeys);
+		List<List<TData>> newdata = new(_numberOfActiveKeys);
 		for (int i = 0; i < _numberOfActiveKeys; i++)
 		{
 			newdata.Add(new List<TData>());
