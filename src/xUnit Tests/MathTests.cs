@@ -27,7 +27,7 @@ namespace DigitalProduction.UnitTests
 			double[] xValues			= new double[numberOfEntries] { 5, 6, 7, 8, 9, 10 };
 			double[] yValues			= new double[numberOfEntries] { 1, 2, 3, 4, 5, 6 };
 
-			Assert.Equal(Statistics.Covariance(xValues, yValues), 2.9167, 0.0001, errorMessage);
+			Assert.Equal(2.9167, Statistics.Covariance(xValues, yValues), 4);
 		}
 
 		/// <summary>
@@ -42,26 +42,26 @@ namespace DigitalProduction.UnitTests
 			double[] yValues			= new double[numberOfEntries] { 1, 2, 3, 4 };
 
 			// Perfect correlation.
-			Assert.Equal(Statistics.PearsonCorrelationCoefficient(xValues, yValues), 1, _epsilon, errorMessage);
+			Assert.Equal(1.0, Statistics.PearsonCorrelationCoefficient(xValues, yValues), _epsilon);
 
 			// Perfect negative correlation.
 			xValues						= new double[numberOfEntries] { -1, -2, -3, -4 };
-			Assert.Equal(Statistics.PearsonCorrelationCoefficient(xValues, yValues), -1, _epsilon, errorMessage);
+			Assert.Equal(-1.0, Statistics.PearsonCorrelationCoefficient(xValues, yValues), _epsilon);
 
 			// Horizontal line.
 			xValues						= new double[numberOfEntries] {  1,  2,  3,  4 };
 			yValues						= new double[numberOfEntries] { 10, 10, 10, 10 };
-			Assert.Equal(Statistics.PearsonCorrelationCoefficient(xValues, yValues), 1, _epsilon, errorMessage);
+			Assert.Equal(1.0, Statistics.PearsonCorrelationCoefficient(xValues, yValues), _epsilon);
 
 			// Vertical line.
 			xValues						= new double[numberOfEntries] { 10, 10, 10, 10 };
 			yValues						= new double[numberOfEntries] {  1,  2,  3,  4 };
-			Assert.Equal(Statistics.PearsonCorrelationCoefficient(xValues, yValues), 1, _epsilon, errorMessage);
+			Assert.Equal(1.0, Statistics.PearsonCorrelationCoefficient(xValues, yValues), _epsilon);
 
 			// Test on a circle.
 			xValues						= new double[numberOfEntries] { 1, 0, -1, 0 };
 			yValues						= new double[numberOfEntries] { 0, 1, 0, -1 };
-			Assert.Equal(Statistics.PearsonCorrelationCoefficient(xValues, yValues), 0, _epsilon, errorMessage);
+			Assert.Equal(0.0, Statistics.PearsonCorrelationCoefficient(xValues, yValues), _epsilon);
 		}
 
 		/// <summary>
@@ -74,7 +74,7 @@ namespace DigitalProduction.UnitTests
 			const int numberOfEntries	= 8;
 			double[] xValues			= new double[numberOfEntries] { 10, 12, 23, 23, 16, 23, 21, 16 };
 
-			Assert.Equal(Statistics.StandardDeviation(xValues), 4.8989794855664, _epsilon, errorMessage);
+			Assert.Equal(4.8989794855664, Statistics.StandardDeviation(xValues), _epsilon);
 		}
 
 		#endregion
