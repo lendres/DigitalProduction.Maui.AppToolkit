@@ -1,55 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿namespace DigitalProduction.Numerics;
 
-namespace DigitalProduction.Numerics
+/// <summary>
+/// A set of methods related to the use of finite precision numbers.
+/// </summary>
+public static class Precision
 {
-	/// <summary>
-	/// A set of methods related to the use of finite precision numbers.
-	/// </summary>
-	public static class Precision
-	{
-		#region Enumerations
+	#region Fields
 
-		#endregion
+	private static PrecisionSettings		_defaultPrecisionSettings = new PrecisionSettings();
 
-		#region Delegates
+	#endregion
 
-		#endregion
+	#region Construction
 
-		#region Events
+	///// <summary>
+	///// Default constructor.
+	///// </summary>
+	//public static Precision()
+	//{
+	//}
 
-		#endregion
+	#endregion
 
-		#region Fields
+	#region Properties
 
-		private static PrecisionSettings		_defaultPrecisionSettings = new PrecisionSettings();
+	#endregion
 
-		#endregion
+	#region Methods
 
-		#region Construction
+	#endregion
 
-		///// <summary>
-		///// Default constructor.
-		///// </summary>
-		//public static Precision()
-		//{
-		//}
+	#region XML
 
-		#endregion
+	#endregion
 
-		#region Properties
-
-		#endregion
-
-		#region Methods
-
-		#endregion
-
-		#region XML
-
-		#endregion
-
-	} // End class.
-} // End namespace.
+} // End class.

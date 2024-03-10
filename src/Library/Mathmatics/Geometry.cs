@@ -1,50 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Xml.Serialization;
+﻿namespace DigitalProduction.Mathmatics;
 
-namespace DigitalProduction.Mathmatics
+/// <summary>
+/// 
+/// </summary>
+public static class Geometry
 {
+	#region Fields
+
+	#endregion
+
+	#region Construction
+
 	/// <summary>
-	/// 
+	/// Default constructor.
 	/// </summary>
-	public static class Geometry
+	static Geometry()
 	{
-		#region Fields
+	}
 
-		#endregion
+	#endregion
 
-		#region Construction
+	#region Properties
 
-		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		static Geometry()
-		{
-		}
+	#endregion
 
-		#endregion
+	#region Methods
 
-		#region Properties
+	/// <summary>
+	/// Area of a ring (circle with inner concentric circle subtracted).
+	/// </summary>
+	/// <param name="outerdiameter">Diameter of outer circle.</param>
+	/// <param name="innerdiameter">Diameter of inner circle.</param>
+	public static double AreaOfCircleByDiameter(double outerdiameter, double innerdiameter)
+	{
+		return System.Math.PI / 4 * (System.Math.Pow(outerdiameter, 2) - System.Math.Pow(innerdiameter, 2));
+	}
 
-		#endregion
+	#endregion
 
-		#region Methods
-
-		/// <summary>
-		/// Area of a ring (circle with inner concentric circle subtracted).
-		/// </summary>
-		/// <param name="outerdiameter">Diameter of outer circle.</param>
-		/// <param name="innerdiameter">Diameter of inner circle.</param>
-		public static double AreaOfCircleByDiameter(double outerdiameter, double innerdiameter)
-		{
-			return System.Math.PI / 4 * (System.Math.Pow(outerdiameter, 2) - System.Math.Pow(innerdiameter, 2));
-		}
-
-		#endregion
-
-	} // End class.
-} // End namespace.
+} // End class.

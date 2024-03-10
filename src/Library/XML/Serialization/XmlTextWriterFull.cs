@@ -1,70 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using System.Xml;
-using System.Xml.Serialization;
-using System.IO;
+﻿using System.Xml;
 
-namespace DigitalProduction.XML.Serialization
+namespace DigitalProduction.XML.Serialization;
+
+/// <summary>
+/// 
+/// </summary>
+public class XmlTextWriterFullEndElement : XmlTextWriter
 {
+	#region Fields
+
+	#endregion
+
+	#region Construction
+
 	/// <summary>
-	/// 
+	/// Constructor.
 	/// </summary>
-	public class XmlTextWriterFullEndElement : XmlTextWriter
+	/// <param name="textWriter">TextWriter.</param>
+	public XmlTextWriterFullEndElement(TextWriter textWriter) :
+		base(textWriter)
 	{
-		#region Fields
+	}
 
-		#endregion
-
-		#region Construction
-
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="textWriter">TextWriter.</param>
-		public XmlTextWriterFullEndElement(TextWriter textWriter) :
-			base(textWriter)
+	/// <summary>
+	/// Constructor.
+	/// </summary>
+	/// <param name="filename">File (path) to write to.</param>
+	/// <param name="settings">Settings to use for writing.</param>
+	public XmlTextWriterFullEndElement(string filename, XmlWriterSettings settings) :
+		base(filename, settings.Encoding)
+	{
+		if (settings.Indent)
 		{
+			this.Formatting = Formatting.Indented;
 		}
-
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="filename">File (path) to write to.</param>
-		/// <param name="settings">Settings to use for writing.</param>
-		public XmlTextWriterFullEndElement(string filename, XmlWriterSettings settings) :
-			base(filename, settings.Encoding)
+		else
 		{
-			if (settings.Indent)
-			{
-				this.Formatting = Formatting.Indented;
-			}
-			else
-			{
-				this.Formatting = Formatting.None;
-			}
+			this.Formatting = Formatting.None;
 		}
+	}
 
-		#endregion
+	#endregion
 
-		#region Properties
+	#region Properties
 
-		#endregion
+	#endregion
 
-		#region Methods
+	#region Methods
 
-		/// <summary>
-		/// Override the writing of the end element to use the full end element (&lt;element&gt;&lt;/element&gt;) instead
-		/// of the short method (&lt;element/&gt;);
-		/// </summary>
-		public override void WriteEndElement()
-		{
-			base.WriteFullEndElement();
-		}
+	/// <summary>
+	/// Override the writing of the end element to use the full end element (&lt;element&gt;&lt;/element&gt;) instead
+	/// of the short method (&lt;element/&gt;);
+	/// </summary>
+	public override void WriteEndElement()
+	{
+		base.WriteFullEndElement();
+	}
 
-		#endregion
+	#endregion
 
-	} // End class.
-} // End namespace.
+} // End class.

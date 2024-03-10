@@ -1,9 +1,4 @@
-﻿using Microsoft.Maui.Platform;
-using Microsoft.Maui.Storage;
-using Microsoft.Maui.Controls;
-using System.Windows.Input;
-
-namespace DigitalProduction.UI;
+﻿namespace DigitalProduction.UI;
 
 public partial class DigitalProductionMainPage : ContentPage
 {

@@ -80,4 +80,4 @@ namespace DigitalProduction.UnitTests
 		#endregion
 
 	} // End class.
-} // End namespace.
+}

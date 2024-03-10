@@ -1,39 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Xml.Serialization;
+﻿namespace DigitalProduction.Mathmatics;
 
-namespace DigitalProduction.Mathmatics
+/// <summary>
+/// 
+/// </summary>
+public static class Constants
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public static class Constants
-	{
-		#region Fields
+	#region Fields
 
-		/// <summary>Gravity in ft/s^2.</summary>
-		public const double GravityInImperial			= 32.17405;
+	/// <summary>Gravity in ft/s^2.</summary>
+	public const double GravityInImperial			= 32.17405;
 
-		/// <summary>Gravity in m/s^2.</summary>
-		public const double GravityInSI					=  9.80665;
+	/// <summary>Gravity in m/s^2.</summary>
+	public const double GravityInSI					=  9.80665;
 
-		#endregion
+	#endregion
 
-		#region Construction
+	#region Construction
 
-		#endregion
+	#endregion
 
-		#region Properties
+	#region Properties
 
-		#endregion
+	#endregion
 
-		#region Methods
+	#region Methods
 
-		#endregion
+	#endregion
 
-	} // End class.
-} // End namespace.
+} // End class.

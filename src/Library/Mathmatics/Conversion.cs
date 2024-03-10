@@ -1,264 +1,261 @@
-﻿using System.Collections.Generic;
+﻿namespace DigitalProduction.Mathmatics;
 
-namespace DigitalProduction.Mathmatics
+/// <summary>
+/// Class for converting units.
+/// </summary>
+public static class Conversion
 {
+	#region Fields
+
+	#endregion
+
+	#region Construction
+
 	/// <summary>
-	/// Class for converting units.
+	/// Default constructor.
 	/// </summary>
-	public static class Conversion
+	static Conversion()
 	{
-		#region Fields
+	}
 
-		#endregion
+	#endregion
 
-		#region Construction
+	#region Properties
 
-		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		static Conversion()
+	#endregion
+
+	#region Methods
+
+	#region Angles
+
+	/// <summary>
+	/// Convert degrees to radians.
+	/// </summary>
+	/// <param name="angle">Angle to convert.</param>
+	public static double DegreesToRadians(double angle)
+	{
+		return angle * System.Math.PI / 180.0;
+	}
+
+	/// <summary>
+	/// Convert degrees to radians.
+	/// </summary>
+	/// <param name="angles">Angle to convert.</param>
+	public static List<double> DegreesToRadians(List<double> angles)
+	{
+		int				count		= angles.Count;
+		List<double>	output		= new List<double>(count);
+
+		for (int i = 0; i < count; i++)
 		{
+			output.Add(angles[i] * System.Math.PI / 180.0);
 		}
+		return output;
+	}
 
-		#endregion
+	/// <summary>
+	/// Convert degrees to radians.
+	/// </summary>
+	/// <param name="angles">Angle to convert.</param>
+	public static void DegreesToRadiansInPlace(List<double> angles)
+	{
+		int				count		= angles.Count;
 
-		#region Properties
-
-		#endregion
-
-		#region Methods
-
-		#region Angles
-
-		/// <summary>
-		/// Convert degrees to radians.
-		/// </summary>
-		/// <param name="angle">Angle to convert.</param>
-		public static double DegreesToRadians(double angle)
+		for (int i = 0; i < count; i++)
 		{
-			return angle * System.Math.PI / 180.0;
+			angles[i] *= System.Math.PI / 180.0;
 		}
+	}
 
-		/// <summary>
-		/// Convert degrees to radians.
-		/// </summary>
-		/// <param name="angles">Angle to convert.</param>
-		public static List<double> DegreesToRadians(List<double> angles)
+	/// <summary>
+	/// Convert radians to degrees.
+	/// </summary>
+	/// <param name="angle">Angle to convert.</param>
+	public static double RadiansToDegrees(double angle)
+	{
+		return angle * 180.0 / System.Math.PI;
+	}
+
+	/// <summary>
+	/// Convert radians to degrees.
+	/// </summary>
+	/// <param name="angles">Angle to convert.</param>
+	public static List<double> RadiansToDegrees(List<double> angles)
+	{
+		int				count		= angles.Count;
+		List<double>	output		= new List<double>(count);
+
+		for (int i = 0; i < count; i++)
 		{
-			int				count		= angles.Count;
-			List<double>	output		= new List<double>(count);
-
-			for (int i = 0; i < count; i++)
-			{
-				output.Add(angles[i] * System.Math.PI / 180.0);
-			}
-			return output;
+			output.Add(angles[i] * 180.0 / System.Math.PI);
 		}
+		return output;
+	}
 
-		/// <summary>
-		/// Convert degrees to radians.
-		/// </summary>
-		/// <param name="angles">Angle to convert.</param>
-		public static void DegreesToRadiansInPlace(List<double> angles)
+	/// <summary>
+	/// Convert radians to degrees.
+	/// </summary>
+	/// <param name="angles">Angle to convert.</param>
+	public static void RadiansToDegreesInPlace(List<double> angles)
+	{
+		int				count		= angles.Count;
+
+		for (int i = 0; i < count; i++)
 		{
-			int				count		= angles.Count;
-
-			for (int i = 0; i < count; i++)
-			{
-				angles[i] *= System.Math.PI / 180.0;
-			}
+			angles[i] *= 180.0 / System.Math.PI;
 		}
+	}
 
-		/// <summary>
-		/// Convert radians to degrees.
-		/// </summary>
-		/// <param name="angle">Angle to convert.</param>
-		public static double RadiansToDegrees(double angle)
+	/// <summary>
+	/// Convert radians to degrees.
+	/// </summary>
+	/// <param name="angles">Angle to convert.</param>
+	public static List<double> RadiansToRevolutions(List<double> angles)
+	{
+		int				count		= angles.Count;
+		List<double>	output		= new List<double>(count);
+
+		for (int i = 0; i < count; i++)
 		{
-			return angle * 180.0 / System.Math.PI;
+			output.Add(angles[i] / 2.0 / System.Math.PI);
 		}
+		return output;
+	}
 
-		/// <summary>
-		/// Convert radians to degrees.
-		/// </summary>
-		/// <param name="angles">Angle to convert.</param>
-		public static List<double> RadiansToDegrees(List<double> angles)
+	/// <summary>
+	/// Convert radians to degrees.
+	/// </summary>
+	/// <param name="angles">Angle to convert.</param>
+	public static void RadiansToRevolutionsInPlace(List<double> angles)
+	{
+		int				count		= angles.Count;
+
+		for (int i = 0; i < count; i++)
 		{
-			int				count		= angles.Count;
-			List<double>	output		= new List<double>(count);
-
-			for (int i = 0; i < count; i++)
-			{
-				output.Add(angles[i] * 180.0 / System.Math.PI);
-			}
-			return output;
+			angles[i] /= 2.0 * System.Math.PI;
 		}
+	}
 
-		/// <summary>
-		/// Convert radians to degrees.
-		/// </summary>
-		/// <param name="angles">Angle to convert.</param>
-		public static void RadiansToDegreesInPlace(List<double> angles)
-		{
-			int				count		= angles.Count;
+	#endregion
 
-			for (int i = 0; i < count; i++)
-			{
-				angles[i] *= 180.0 / System.Math.PI;
-			}
-		}
+	#region Angular Velocity
 
-		/// <summary>
-		/// Convert radians to degrees.
-		/// </summary>
-		/// <param name="angles">Angle to convert.</param>
-		public static List<double> RadiansToRevolutions(List<double> angles)
-		{
-			int				count		= angles.Count;
-			List<double>	output		= new List<double>(count);
+	/// <summary>
+	/// Convert RPM to Hertz (where 1 revolution in 1 second is 1 Hertz).  Hertz would be
+	/// equivalent to 1 revolution per 1 second.
+	/// </summary>
+	/// <param name="rpm">Revolutions per minute.</param>
+	public static double RpmToHertz(double rpm)
+	{
+		return rpm / 60.0;
+	}
 
-			for (int i = 0; i < count; i++)
-			{
-				output.Add(angles[i] / 2.0 / System.Math.PI);
-			}
-			return output;
-		}
+	#endregion
 
-		/// <summary>
-		/// Convert radians to degrees.
-		/// </summary>
-		/// <param name="angles">Angle to convert.</param>
-		public static void RadiansToRevolutionsInPlace(List<double> angles)
-		{
-			int				count		= angles.Count;
+	#region Length
 
-			for (int i = 0; i < count; i++)
-			{
-				angles[i] /= 2.0 * System.Math.PI;
-			}
-		}
+	/// <summary>
+	/// Convert feet to inches.
+	/// </summary>
+	/// <param name="feet">Feet.</param>
+	public static double FeetToInches(double feet)
+	{
+		return feet * 12.0;
+	}
 
-		#endregion
+	/// <summary>
+	/// Convert inches to feet.
+	/// </summary>
+	/// <param name="inches">Inches.</param>
+	public static double InchesToFeet(double inches)
+	{
+		return inches / 12.0;
+	}
 
-		#region Angular Velocity
+	#endregion
 
-		/// <summary>
-		/// Convert RPM to Hertz (where 1 revolution in 1 second is 1 Hertz).  Hertz would be
-		/// equivalent to 1 revolution per 1 second.
-		/// </summary>
-		/// <param name="rpm">Revolutions per minute.</param>
-		public static double RpmToHertz(double rpm)
-		{
-			return rpm / 60.0;
-		}
+	#region Vibration
 
-		#endregion
+	/// <summary>
+	/// Convert frequency (Hertz) into period (seconds).
+	/// </summary>
+	/// <param name="frequency">Frequency in Hertz.</param>
+	public static double FrequencyToPeriod(double frequency)
+	{
+		return 1.0 / frequency;
+	}
 
-		#region Length
+	/// <summary>
+	/// Convert frequency Hertz into period (seconds).
+	/// </summary>
+	/// <param name="period">Period in seconds.</param>
+	public static double PeriodToFrequency(double period)
+	{
+		return 1.0 / period;
+	}
 
-		/// <summary>
-		/// Convert feet to inches.
-		/// </summary>
-		/// <param name="feet">Feet.</param>
-		public static double FeetToInches(double feet)
-		{
-			return feet * 12.0;
-		}
+	/// <summary>
+	/// Convert angular frequency (radians) to frequency (Hertz).
+	/// </summary>
+	/// <param name="angularFrequency">Angular frequency in radians.</param>
+	public static double AngularFrequencyToFrequency(double angularFrequency)
+	{
+		return angularFrequency / 2 / System.Math.PI;
+	}
 
-		/// <summary>
-		/// Convert inches to feet.
-		/// </summary>
-		/// <param name="inches">Inches.</param>
-		public static double InchesToFeet(double inches)
-		{
-			return inches / 12.0;
-		}
+	/// <summary>
+	/// Convert frequency (Hertz) to angular frequency (radians).
+	/// </summary>
+	/// <param name="frequency">Angular frequency in radians.</param>
+	public static double FrequencyToAngularFrequency(double frequency)
+	{
+		return frequency * 2.0 * System.Math.PI;
+	}
 
-		#endregion
+	/// <summary>
+	/// Convert angular frequency (radians) to frequency (Hertz).
+	/// </summary>
+	/// <param name="angularFrequency">Angular frequency in radians.</param>
+	public static double AngularFrequencyToPeriod(double angularFrequency)
+	{
+		return 2.0 * System.Math.PI / angularFrequency;
+	}
 
-		#region Vibration
+	/// <summary>
+	/// Convert angular frequency (radians) to frequency (Hertz).
+	/// </summary>
+	/// <param name="period">Angular frequency in radians.</param>
+	public static double PeriodToAngularFrequency(double period)
+	{
+		return 2.0 * System.Math.PI / period;
+	}
 
-		/// <summary>
-		/// Convert frequency (Hertz) into period (seconds).
-		/// </summary>
-		/// <param name="frequency">Frequency in Hertz.</param>
-		public static double FrequencyToPeriod(double frequency)
-		{
-			return 1.0 / frequency;
-		}
+	#endregion
 
-		/// <summary>
-		/// Convert frequency Hertz into period (seconds).
-		/// </summary>
-		/// <param name="period">Period in seconds.</param>
-		public static double PeriodToFrequency(double period)
-		{
-			return 1.0 / period;
-		}
+	#region Rounding
 
-		/// <summary>
-		/// Convert angular frequency (radians) to frequency (Hertz).
-		/// </summary>
-		/// <param name="angularFrequency">Angular frequency in radians.</param>
-		public static double AngularFrequencyToFrequency(double angularFrequency)
-		{
-			return angularFrequency / 2 / System.Math.PI;
-		}
+	/// <summary>
+	/// Round down the integer part (characteristic) of a number.
+	/// </summary>
+	/// <param name="value">Value to round.</param>
+	/// <param name="position">Integer position to round to.</param>
+	public static int FloorToIntegerPart(double value, int position)
+	{
+		return (int)System.Math.Floor(value / position) * position;
+	}
 
-		/// <summary>
-		/// Convert frequency (Hertz) to angular frequency (radians).
-		/// </summary>
-		/// <param name="frequency">Angular frequency in radians.</param>
-		public static double FrequencyToAngularFrequency(double frequency)
-		{
-			return frequency * 2.0 * System.Math.PI;
-		}
+	/// <summary>
+	/// Round up the integer part (characteristic) of a number.
+	/// </summary>
+	/// <param name="value">Value to round.</param>
+	/// <param name="position">Integer position to round to.</param>
+	public static int CeilingToIntegerPart(double value, int position)
+	{
+		return (int)System.Math.Ceiling(value / position) * position;
+	}
 
-		/// <summary>
-		/// Convert angular frequency (radians) to frequency (Hertz).
-		/// </summary>
-		/// <param name="angularFrequency">Angular frequency in radians.</param>
-		public static double AngularFrequencyToPeriod(double angularFrequency)
-		{
-			return 2.0 * System.Math.PI / angularFrequency;
-		}
+	#endregion
 
-		/// <summary>
-		/// Convert angular frequency (radians) to frequency (Hertz).
-		/// </summary>
-		/// <param name="period">Angular frequency in radians.</param>
-		public static double PeriodToAngularFrequency(double period)
-		{
-			return 2.0 * System.Math.PI / period;
-		}
+	#endregion
 
-		#endregion
-
-		#region Rounding
-
-		/// <summary>
-		/// Round down the integer part (characteristic) of a number.
-		/// </summary>
-		/// <param name="value">Value to round.</param>
-		/// <param name="position">Integer position to round to.</param>
-		public static int FloorToIntegerPart(double value, int position)
-		{
-			return (int)System.Math.Floor(value / position) * position;
-		}
-
-		/// <summary>
-		/// Round up the integer part (characteristic) of a number.
-		/// </summary>
-		/// <param name="value">Value to round.</param>
-		/// <param name="position">Integer position to round to.</param>
-		public static int CeilingToIntegerPart(double value, int position)
-		{
-			return (int)System.Math.Ceiling(value / position) * position;
-		}
-
-		#endregion
-
-		#endregion
-
-	} // End class.
-} // End namespace.
+} // End class.

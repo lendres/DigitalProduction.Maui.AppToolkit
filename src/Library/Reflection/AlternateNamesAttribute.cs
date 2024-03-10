@@ -1,85 +1,84 @@
-﻿namespace DigitalProduction.Reflection
+﻿namespace DigitalProduction.Reflection;
+
+/// <summary>
+/// An attribute to add additional names to a class, structure, or enumeration.
+/// </summary>
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = false)]
+public class AlternateNamesAttribute : Attribute
 {
+	#region Fields
+
+	private string[]          _names					= new string[2];
+
+	#endregion
+
+	#region Construction
+
 	/// <summary>
-	/// An attribute to add additional names to a class, structure, or enumeration.
+	/// Default constructor.
 	/// </summary>
-	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Field, AllowMultiple = false)]
-	public class AlternateNamesAttribute : Attribute
+	public AlternateNamesAttribute()
 	{
-		#region Fields
+	}
 
-		private string[]          _names					= new string[2];
+	/// <summary>
+	/// Default constructor.
+	/// </summary>
+	public AlternateNamesAttribute(string shortName, string longName)
+	{
+		_names[(int)AlternateNameType.ShortName]	= shortName;
+		_names[(int)AlternateNameType.LongName]		= longName;
+	}
 
-		#endregion
+	#endregion
 
-		#region Construction
+	#region Properties
 
-		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		public AlternateNamesAttribute()
+	/// <summary>
+	/// Short name.
+	/// </summary>
+	public string ShortName
+	{
+		get
 		{
+			return _names[(int)AlternateNameType.ShortName];
 		}
 
-		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		public AlternateNamesAttribute(string shortName, string longName)
+		set
 		{
-			_names[(int)AlternateNameType.ShortName]	= shortName;
-			_names[(int)AlternateNameType.LongName]		= longName;
+			_names[(int)AlternateNameType.ShortName] = value;
+		}
+	}
+
+	/// <summary>
+	/// Long name.
+	/// </summary>
+	public string LongName
+	{
+		get
+		{
+			return _names[(int)AlternateNameType.LongName];
 		}
 
-		#endregion
-
-		#region Properties
-
-		/// <summary>
-		/// Short name.
-		/// </summary>
-		public string ShortName
+		set
 		{
-			get
-			{
-				return _names[(int)AlternateNameType.ShortName];
-			}
-
-			set
-			{
-				_names[(int)AlternateNameType.ShortName] = value;
-			}
+			_names[(int)AlternateNameType.LongName] = value;
 		}
+	}
 
-		/// <summary>
-		/// Long name.
-		/// </summary>
-		public string LongName
-		{
-			get
-			{
-				return _names[(int)AlternateNameType.LongName];
-			}
+	#endregion
 
-			set
-			{
-				_names[(int)AlternateNameType.LongName] = value;
-			}
-		}
+	#region Methods
 
-		#endregion
+	/// <summary>
+	/// Get a name by using the enumeration.
+	/// </summary>
+	/// <param name="nameType">Name type to get.</param>
+	public string GetName(AlternateNameType nameType)
+	{
+		return _names[(int)nameType];
+	}
 
-		#region Methods
+	#endregion
 
-		/// <summary>
-		/// Get a name by using the enumeration.
-		/// </summary>
-		/// <param name="nameType">Name type to get.</param>
-		public string GetName(AlternateNameType nameType)
-		{
-			return _names[(int)nameType];
-		}
-
-		#endregion
-
-	} // End class.
-} // End namespace.
+} // End class.

@@ -1,121 +1,120 @@
 using System.Text;
 using System.Xml;
 
-namespace DigitalProduction.XML.Serialization
+namespace DigitalProduction.XML.Serialization;
+
+/// <summary>
+/// Summary not provided for the class SerializationSettings.
+/// </summary>
+public class SerializationSettings
 {
+	#region Fields
+
+	/// <summary>Type of the object to serialize.</summary>
+	private Type					_serializeType;
+
+	/// <summary>Object to serialize.</summary>
+	private object					_serializeObject;
+
+	/// <summary>Name of the output file.</summary>
+	private string					_outputFile			= "";
+	
+	/// <summary>Xml writer settings.</summary>
+	private XmlWriterSettings		_xmlSettings		= new XmlWriterSettings();
+
+	#endregion
+
+	#region Construction
+
 	/// <summary>
-	/// Summary not provided for the class SerializationSettings.
+	/// Constructor.
 	/// </summary>
-	public class SerializationSettings
-	{
-		#region Fields
-
-		/// <summary>Type of the object to serialize.</summary>
-		private Type					_serializeType;
-
-		/// <summary>Object to serialize.</summary>
-		private object					_serializeObject;
-
-		/// <summary>Name of the output file.</summary>
-		private string					_outputFile			= "";
-		
-		/// <summary>Xml writer settings.</summary>
-		private XmlWriterSettings		_xmlSettings		= new XmlWriterSettings();
-
-		#endregion
-
-		#region Construction
-
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		/// <param name="objectToSerialize">Object to serialize.</param>
-		/// <param name="outputFile">Output file.</param>
+	/// <param name="objectToSerialize">Object to serialize.</param>
+	/// <param name="outputFile">Output file.</param>
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-		public SerializationSettings(object objectToSerialize, string outputFile)
-		{
-			this.SerializeObject		= objectToSerialize;
-			_outputFile					= outputFile;
-			CreateXmlWriterSettings();
-		}
+	public SerializationSettings(object objectToSerialize, string outputFile)
+	{
+		this.SerializeObject		= objectToSerialize;
+		_outputFile					= outputFile;
+		CreateXmlWriterSettings();
+	}
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-		/// <summary>
-		/// Creates the default XmlWriterSettings.
-		/// </summary>
-		private void CreateXmlWriterSettings()
+	/// <summary>
+	/// Creates the default XmlWriterSettings.
+	/// </summary>
+	private void CreateXmlWriterSettings()
+	{
+		this.XmlSettings.Indent					= true;
+		this.XmlSettings.NewLineOnAttributes	= true;
+		this.XmlSettings.IndentChars			= "    ";
+		this.XmlSettings.Encoding				= Encoding.ASCII;
+	}
+
+	#endregion
+
+	#region Properties
+
+	/// <summary>
+	/// Type of the object to serialize.
+	/// </summary>
+	public Type SerializeType
+	{
+		get
 		{
-			this.XmlSettings.Indent					= true;
-			this.XmlSettings.NewLineOnAttributes	= true;
-			this.XmlSettings.IndentChars			= "    ";
-			this.XmlSettings.Encoding				= Encoding.ASCII;
+			return _serializeType;
+		}
+	}
+
+	/// <summary>
+	/// Object to serialize.
+	/// </summary>
+	public object SerializeObject
+	{
+		get
+		{
+			return _serializeObject;
 		}
 
-		#endregion
-
-		#region Properties
-
-		/// <summary>
-		/// Type of the object to serialize.
-		/// </summary>
-		public Type SerializeType
+		set
 		{
-			get
-			{
-				return _serializeType;
-			}
+			_serializeObject	= value;
+			_serializeType		= _serializeObject.GetType();
+		}
+	}
+
+	/// <summary>
+	/// Name of the output file.
+	/// </summary>
+	public string OutputFile
+	{
+		get
+		{
+			return _outputFile;
 		}
 
-		/// <summary>
-		/// Object to serialize.
-		/// </summary>
-		public object SerializeObject
+		set
 		{
-			get
-			{
-				return _serializeObject;
-			}
+			_outputFile = value;
+		}
+	}
 
-			set
-			{
-				_serializeObject	= value;
-				_serializeType		= _serializeObject.GetType();
-			}
+	/// <summary>
+	/// Xml writer settings.
+	/// </summary>
+	public XmlWriterSettings XmlSettings
+	{
+		get
+		{
+			return _xmlSettings;
 		}
 
-		/// <summary>
-		/// Name of the output file.
-		/// </summary>
-		public string OutputFile
+		set
 		{
-			get
-			{
-				return _outputFile;
-			}
-
-			set
-			{
-				_outputFile = value;
-			}
+			_xmlSettings = value;
 		}
+	}
 
-		/// <summary>
-		/// Xml writer settings.
-		/// </summary>
-		public XmlWriterSettings XmlSettings
-		{
-			get
-			{
-				return _xmlSettings;
-			}
+	#endregion
 
-			set
-			{
-				_xmlSettings = value;
-			}
-		}
-
-		#endregion
-
-	} // End class.
-} // End namespace.
+} // End class.
