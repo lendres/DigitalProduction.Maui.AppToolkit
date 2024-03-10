@@ -28,9 +28,8 @@ public static partial class LifecycleEventsInstaller
 					{
 						case Microsoft.UI.Windowing.OverlappedPresenter overLappedPresenter:
 							MauiWinUIWindow winUIWindow	= (MauiWinUIWindow)window;
-							Window? mauiWindow			= winUIWindow.GetWindow() as Window;
 
-							if (mauiWindow != null)
+							if (winUIWindow.GetWindow() is Window mauiWindow)
 							{
 								// Set the restored position.
 								DigitalProduction.UI.AppTools.RestoreWindowPosition(mauiWindow, "MainWindow");

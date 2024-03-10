@@ -12,7 +12,7 @@ namespace DigitalProduction.UnitTests
 		#region Members
 
 		private string				_name			= "";
-		private List<Person>		_employees		= new();
+		private List<Person>        _employees      = new();
 		private List<Asset>			_assets			= new();
 
 		#endregion
@@ -113,12 +113,16 @@ namespace DigitalProduction.UnitTests
 		/// </summary>
 		/// <param name="path">The file to read from.</param>
 		/// <returns>The deserialized file types.</returns>
-		public static T Deserialize<T>(string path) where T : Company
+		public static T? Deserialize<T>(string path) where T : Company
 		{
 			// Deserialize the object creating a new instance.  Then we set the path to the location the file was deserialized
 			// from.  That way the file can be saved back to that location if required.
+#if WINDOWS
 			T company		= Serialization.DeserializeObject<T>(path);
 			return company;
+#else
+			return null;
+#endif
 		}
 
 		/// <summary>
@@ -130,7 +134,7 @@ namespace DigitalProduction.UnitTests
 			Serialization.SerializeObject(this, path);
 		}
 
-		#endregion
+#endregion
 
 	} // End class.
 } // End namespace.

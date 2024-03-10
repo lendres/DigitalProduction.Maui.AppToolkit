@@ -6,12 +6,12 @@ namespace DigitalProduction.IO;
 /// <summary>
 /// Additional path utilities.
 /// </summary>
-public static class Path
+public static partial class Path
 {
 	#region DLL Imports
 
-	[DllImport("kernel32.dll")]
-	private static extern int GetDriveType(string drive);
+	[LibraryImport("kernel32.dll", StringMarshalling = StringMarshalling.Utf16)]
+	private static partial int GetDriveType(string drive);
 
 	/// <summary>
 	/// Get information about volume.  Imported from kernel32.dll.  Returns 0 if failed and not zero if succeeded.
@@ -36,7 +36,7 @@ public static class Path
 	/// if (returnvalue != 0) // do something.
 	/// else // do nothing.
 	/// </example>
-	[DllImport("kernel32.dll")]
+	[DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
 	public static extern long GetVolumeInformation(string PathName, StringBuilder VolumeName, long VolumeNameSize, long VolumeSerialNumber, long MaximumComponentLength, long FileSystemFlags, StringBuilder FileSystemName, long FileSystemNameSize);
 
 	#endregion
@@ -527,7 +527,7 @@ public static class Path
 				continue;
 			}
 
-			if (name == filenamenoextension.ToUpper())
+			if (name.Equals(filenamenoextension, StringComparison.CurrentCultureIgnoreCase))
 			{
 				return ValidFileNameResult.DeviceName;
 			}

@@ -265,9 +265,9 @@ public static class Attributes
 
 		foreach (Attribute attr in attributes)
 		{
-			if (attr is T)
+			if (attr is T t)
 			{
-				attribute = (T)attr;
+				attribute = t;
 			}
 		}
 
@@ -297,9 +297,9 @@ public static class Attributes
 
 		foreach (System.Attribute attr in attributes)
 		{
-			if (attr is T)
+			if (attr is T typeAttribute)
 			{
-				attribute.Add((T)attr);
+				attribute.Add(typeAttribute);
 			}
 		}
 

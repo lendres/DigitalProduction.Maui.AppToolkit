@@ -51,14 +51,13 @@ public partial class DigitalProductionMainPage
 
 	protected AppWindow? GetAppWindow()
 	{
-		MauiWinUIWindow? mauiWinUIWindow = GetParentWindow().Handler.PlatformView as MauiWinUIWindow;
-		if (mauiWinUIWindow is null)
+		if (GetParentWindow().Handler.PlatformView is MauiWinUIWindow mauiWinUIWindow)
 		{
-			return null;
+			return DigitalProduction.UI.AppTools.GetAppWindow(mauiWinUIWindow);
 		}
 		else
 		{
-			return DigitalProduction.UI.AppTools.GetAppWindow(mauiWinUIWindow);
+			return null;
 		}
 	}
 

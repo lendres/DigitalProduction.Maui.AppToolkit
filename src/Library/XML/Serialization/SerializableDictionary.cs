@@ -54,8 +54,7 @@ public class SerializableDictionary<KeyType, ValueType> : Dictionary<KeyType, Va
 		foreach (XElement item in document.Elements().First().Elements(XName.Get("item")))
 		{
 			using XmlReader itemReader = item.CreateReader();
-			SerializableKeyValuePair<KeyType, ValueType>? keyValuePair = serializer.Deserialize(itemReader) as SerializableKeyValuePair<KeyType, ValueType>;
-			if (keyValuePair != null)
+			if (serializer.Deserialize(itemReader) is SerializableKeyValuePair<KeyType, ValueType> keyValuePair)
 			{
 				if (keyValuePair.Key != null && keyValuePair.Value != null)
 				{
