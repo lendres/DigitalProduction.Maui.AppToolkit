@@ -203,6 +203,11 @@ public static partial class Path
 			return path;
 		}
 
+		if (path == ".")
+		{
+			return pathRelativeFrom;
+		}
+
 		if (path.StartsWith("./") || path.StartsWith(".\\"))
 		{
 			// Need to remove the leading notation indicating a relative path or "Combine" does not work right.
