@@ -12,7 +12,7 @@ namespace DigitalProduction.UnitTests
 		#region Members
 
 		private string				_name			= "";
-		private List<Person>        _employees      = new();
+		private List<Person>		_employees		= new();
 		private List<Asset>			_assets			= new();
 
 		#endregion
