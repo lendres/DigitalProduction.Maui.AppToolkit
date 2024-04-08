@@ -1,3 +1,4 @@
+using GotDotNet.XInclude;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -58,6 +59,26 @@ public static partial class Serialization
 	{
 		SerializationSettings settings	= new(objectToSerialize, outputFile);
 		SerializeObjectFullEndElement(settings);
+	}
+
+	#endregion
+
+	#region Deserialize
+
+	/// <summary>
+	/// Deserialize an object from a file.
+	/// </summary>
+	/// <typeparam name="T">Type of object to deserialize.</typeparam>
+	/// <param name="file">File to deserialize from.</param>
+	public static T DeserializeObject<T>(string file)
+	{
+		XmlSerializer serializer            = new XmlSerializer(typeof(T));
+
+		XIncludingReader xmlincludingreader = new XIncludingReader(file);
+		T deserializedobject                = (T)serializer.Deserialize(xmlincludingreader);
+		xmlincludingreader.Close();
+
+		return deserializedobject;
 	}
 
 	#endregion
