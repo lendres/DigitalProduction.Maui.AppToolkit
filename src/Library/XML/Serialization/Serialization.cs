@@ -7,7 +7,7 @@ namespace DigitalProduction.XML.Serialization;
 /// <summary>
 /// Summary not provided for the class Serialization.
 /// </summary>
-public static partial class Serialization
+public static class Serialization
 {
 	#region Serialize
 

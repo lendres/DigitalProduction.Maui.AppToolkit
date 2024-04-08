@@ -7,7 +7,7 @@ namespace DigitalProduction.XML;
 /// <summary>
 /// 
 /// </summary>
-public static partial class XsltTools
+public static class XsltTools
 {
 	#region Fields
 
