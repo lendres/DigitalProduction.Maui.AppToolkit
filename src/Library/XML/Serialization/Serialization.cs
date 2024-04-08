@@ -70,12 +70,12 @@ public static partial class Serialization
 	/// </summary>
 	/// <typeparam name="T">Type of object to deserialize.</typeparam>
 	/// <param name="file">File to deserialize from.</param>
-	public static T DeserializeObject<T>(string file)
+	public static T? DeserializeObject<T>(string file)
 	{
 		XmlSerializer serializer            = new XmlSerializer(typeof(T));
 
 		XIncludingReader xmlincludingreader = new XIncludingReader(file);
-		T deserializedobject                = (T)serializer.Deserialize(xmlincludingreader);
+		T? deserializedobject                = (T?)serializer.Deserialize(xmlincludingreader);
 		xmlincludingreader.Close();
 
 		return deserializedobject;
