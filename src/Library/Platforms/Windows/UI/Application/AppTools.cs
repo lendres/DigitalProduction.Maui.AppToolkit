@@ -11,7 +11,6 @@ public static class AppTools
 
 	#endregion
 
-
 	#region Properties
 
 	#endregion
