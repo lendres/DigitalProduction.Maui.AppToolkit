@@ -93,7 +93,7 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 		}
 	}
 
-	public void InsertItem(T item, int position = 0)
+	public void Insert(T item, int position = 0)
 	{
 		if (Items != null)
 		{
@@ -108,7 +108,7 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 		}
 	}
 
-	public void DeleteItem()
+	public void Delete()
 	{
 		if (SelectedItem != null && Items != null)
 		{
