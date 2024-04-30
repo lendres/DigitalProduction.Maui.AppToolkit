@@ -16,13 +16,13 @@ public class FieldNullException : NullReferenceException
 	{
 	}
 
-	public FieldNullException(string? message)
-	: base(message)
+	public FieldNullException(string? message) :
+		base(message)
 	{
 	}
 
-	public FieldNullException(string? message, Exception? innerException)
-		: base(message, innerException)
+	public FieldNullException(string? message, Exception? innerException) :
+		base(message, innerException)
 	{
 	}
 
@@ -78,4 +78,3 @@ public class FieldNullException : NullReferenceException
 	internal static void Throw(string? paramName, string message) =>
 		throw new FieldNullException(message + Environment.NewLine + "Parameter: " + paramName);
 }
-
