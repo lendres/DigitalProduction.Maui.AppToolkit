@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Maui.Behaviors;
 using DigitalProduction.Behaviors;
 
-namespace DigitalProduction.Maui.Behaviors;
+namespace DigitalProduction.Behaviors;
 
 /// <summary>
 /// The <see cref="DirectoryExistsValidationBehavior"/> is a behavior that allows the user to determine if a directory exists. Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
