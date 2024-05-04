@@ -51,6 +51,8 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 
 	#endregion
 
+	#region Commands
+
 	[RelayCommand]
 	private void Refresh()
 	{
@@ -77,9 +79,13 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 	{
 		if (item is T tItem)
 		{
-			Debug.WriteLine($@"Item tapped: {tItem}");
+			Debug.WriteLine($@"Item tapped: {item}");
 		}
 	}
+
+	#endregion
+
+	#region Methods
 
 	public void ReplaceSelected(T newItem)
 	{
@@ -116,4 +122,7 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 			Modified = true;
 		}
 	}
-}
+
+	#endregion
+
+} // End class.
