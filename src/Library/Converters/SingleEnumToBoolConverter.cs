@@ -70,5 +70,4 @@ public class SingleEnumToBoolConverter<TEnum> : IValueConverter where TEnum : En
 	{
 		throw new NotImplementedException();
 	}
-
 }
