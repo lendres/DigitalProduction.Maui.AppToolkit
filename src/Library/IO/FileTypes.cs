@@ -2,7 +2,9 @@
 
 public static class FileTypes
 {
-
+	/// <summary>
+	/// CSV (comma separated value) file.
+	/// </summary>
 	public static FilePickerFileType CommaSeparatedValue
 	{
 		get
@@ -45,7 +47,9 @@ public static class FileTypes
 		}
 	}
 
-
+	/// <summary>
+	/// Word document file types.
+	/// </summary>
 	public static FilePickerFileType WordDoc
 	{
 		get
@@ -83,6 +87,9 @@ public static class FileTypes
 		}
 	}
 
+	/// <summary>
+	/// XML file types.
+	/// </summary>
 	public static FilePickerFileType Xml
 	{
 		get
@@ -124,5 +131,4 @@ public static class FileTypes
 			});
 		}
 	}
-
 }
