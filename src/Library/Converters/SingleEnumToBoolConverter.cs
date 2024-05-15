@@ -34,7 +34,15 @@ public class SingleEnumToBoolConverter<TEnum> : IValueConverter where TEnum : En
 	{
 		ArgumentNullException.ThrowIfNull(value);
 
-		return TrueValue is null ? CompareTwoEnums((Enum)value, (TEnum)parameter) : CompareTwoEnums((Enum)value, (TEnum)TrueValue);
+		if (TrueValue is null)
+		{
+			ArgumentNullException.ThrowIfNull(parameter);
+			return CompareTwoEnums((Enum)value, (TEnum)parameter);
+		}
+		else
+		{
+			return CompareTwoEnums((Enum)value, (TEnum)TrueValue);
+		}
 
 		static bool CompareTwoEnums(in Enum valueToCheck, in TEnum? referenceEnumValue)
 		{

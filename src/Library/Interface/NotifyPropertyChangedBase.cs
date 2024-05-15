@@ -10,7 +10,7 @@ namespace DigitalProduction.Interface;
 
 public abstract class NotifyPropertyChangedBase : INotifyPropertyChanged
 {
-	#region Members
+	#region Fields
 
 	public event PropertyChangedEventHandler? PropertyChanged;
 	private readonly Dictionary<string, object?> _properties = [];
