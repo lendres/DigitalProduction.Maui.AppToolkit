@@ -13,7 +13,7 @@ namespace DigitalProduction.Behaviors
 	/// the number of items in the enumeration changes.  The "Length" enumeration must be the last item.
 	/// for (int i = 0; i &lt; (int)EnumType.Length; i++) {...}
 	/// </summary>
-	public enum FileErrorType
+	public enum PathErrorType
 	{
 		/// <summary>File not found error.</summary>
 		[Message("The directory was not found.")]
