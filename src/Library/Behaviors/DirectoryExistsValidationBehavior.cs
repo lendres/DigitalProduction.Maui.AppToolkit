@@ -6,7 +6,7 @@ namespace DigitalProduction.Behaviors;
 /// <summary>
 /// The <see cref="DirectoryExistsValidationBehavior"/> is a behavior that allows the user to determine if a directory exists. Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
 /// </summary>
-public class DirectoryExistsValidationBehavior : ErrorReportableValidationBehavior<string, FileErrorType>
+public class DirectoryExistsValidationBehavior : ErrorReportableValidationBehavior<string, PathErrorType>
 {
 	/// <inheritdoc/>
 	protected override ValueTask<bool> ValidateAsync(string? value, CancellationToken token)
@@ -16,11 +16,11 @@ public class DirectoryExistsValidationBehavior : ErrorReportableValidationBehavi
 		bool passed = Directory.Exists(value);
 		if (passed)
 		{
-			Error = FileErrorType.None;
+			Error = PathErrorType.None;
 		}
 		else
 		{
-			Error = FileErrorType.DirectoryNotFound;
+			Error = PathErrorType.DirectoryNotFound;
 		}
 
 		return new ValueTask<bool>(passed);

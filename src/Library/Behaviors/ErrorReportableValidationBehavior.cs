@@ -18,7 +18,7 @@ public abstract class ErrorReportableValidationBehavior<T, TError> : ValidationB
 	/// </summary>
 	public TError Error
 	{
-		get => (TError) GetValue(ErrorMessageProperty);
+		get => (TError)GetValue(ErrorMessageProperty);
 		set => SetValue(ErrorMessageProperty, value);
 	}
 }
