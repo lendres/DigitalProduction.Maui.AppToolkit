@@ -113,13 +113,27 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 			Modified = true;
 		}
 	}
-
+	
 	public void Delete()
 	{
 		if (SelectedItem != null && Items != null)
 		{
 			Items.Remove(SelectedItem);
 			Modified = true;
+		}
+	}
+
+	public void Sort(IComparer<T> comparer)
+	{
+		if (Items is not null)
+		{
+			List<T> ordered = Items.Order(comparer).ToList();
+			Items.Clear();
+
+			foreach (T item in ordered)
+			{
+				Items.Add(item);
+			}
 		}
 	}
 
