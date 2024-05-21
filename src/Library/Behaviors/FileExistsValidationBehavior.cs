@@ -5,7 +5,7 @@ namespace DigitalProduction.Behaviors;
 /// <summary>
 /// The <see cref="FileExistsValidationBehavior"/> is a behavior that allows the user to determine if a file exists.  Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
 /// </summary>
-public class FileExistsValidationBehavior : ErrorReportableValidationBehavior<string, FileErrorType>
+public class FileExistsValidationBehavior : ErrorReportableValidationBehavior<string, PathErrorType>
 {
 	/// <inheritdoc/>
 	protected override ValueTask<bool> ValidateAsync(string? value, CancellationToken token)
@@ -15,11 +15,11 @@ public class FileExistsValidationBehavior : ErrorReportableValidationBehavior<st
 		bool passed = File.Exists(value);
 		if (passed)
 		{
-			Error = FileErrorType.None;
+			Error = PathErrorType.None;
 		}
 		else
 		{
-			Error = FileErrorType.FileNotFound;
+			Error = PathErrorType.FileNotFound;
 		}
 
 		return new ValueTask<bool>(passed);
