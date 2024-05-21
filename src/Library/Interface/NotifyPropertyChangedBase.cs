@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DigitalProduction.Interface;
 
@@ -12,8 +7,8 @@ public abstract class NotifyPropertyChangedBase : INotifyPropertyChanged
 {
 	#region Fields
 
-	public event PropertyChangedEventHandler? PropertyChanged;
-	private readonly Dictionary<string, object?> _properties = [];
+	public event		PropertyChangedEventHandler?	PropertyChanged;
+	private readonly	Dictionary<string, object?>		_properties			= [];
 
 	#endregion
 
