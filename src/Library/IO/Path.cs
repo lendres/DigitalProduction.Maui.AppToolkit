@@ -1,3 +1,4 @@
+using Microsoft.Maui.Storage;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -38,6 +39,18 @@ public static partial class Path
 	/// </example>
 	[DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
 	public static extern long GetVolumeInformation(string PathName, StringBuilder VolumeName, long VolumeNameSize, long VolumeSerialNumber, long MaximumComponentLength, long FileSystemFlags, StringBuilder FileSystemName, long FileSystemNameSize);
+
+	#endregion
+
+	#region Fields
+
+	private static readonly char[] _invalidPathChars = ['\"', '*', '/', ':', '<', '>', '?', '\\', '|'];
+
+	private static readonly string[] _deviceNames =
+	[
+		"CLOCK$",   "AUX",  "CON",  "NUL",  "PRN",  "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7",
+		"COM8",     "COM9", "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
+	];
 
 	#endregion
 
@@ -116,7 +129,7 @@ public static partial class Path
 	public static bool PathIsWritable(string path)
 	{
 		// First thing to check is that we have a file name.
-		bool saveable = IsValidFileName(path) == ValidFileNameResult.Valid;
+		bool saveable = IsValidFileName(path) == PathValidationResult.Valid;
 
 		if (saveable)
 		{
@@ -337,8 +350,8 @@ public static partial class Path
 	/// Copies a directory from one location to another.
 	/// </summary>
 	/// <param name="sourcedirname">Path to the source directory.</param>
-	/// <param name="destdirname">Path to the destination directory.</param>
-	/// <param name="copysubdirs">Specifies if the subdirectories should be copied.</param>
+	/// <param name="destinationDirName">Path to the destination directory.</param>
+	/// <param name="copySubDirs">Specifies if the subdirectories should be copied.</param>
 	/// <param name="overwrite">Overwrite existing files.</param>
 	/// <param name="excludedfiles">A list of files not to copy.</param>
 	/// <remarks>
@@ -346,7 +359,7 @@ public static partial class Path
 	///		URL: http://msdn.microsoft.com/en-us/library/bb762914.aspx
 	///		Modified to provided additional functionality.
 	/// </remarks>
-	public static void DirectoryCopy(string sourcedirname, string destdirname, bool copysubdirs, bool overwrite, List<string> excludedfiles)
+	public static void DirectoryCopy(string sourcedirname, string destinationDirName, bool copySubDirs, bool overwrite, List<string> excludedfiles)
 	{
 		DirectoryInfo   dir     = new(sourcedirname);
 		DirectoryInfo[] dirs	= dir.GetDirectories();
@@ -358,9 +371,9 @@ public static partial class Path
 		}
 
 		// If the destination directory does not exist, create it.
-		if (!Directory.Exists(destdirname))
+		if (!Directory.Exists(destinationDirName))
 		{
-			Directory.CreateDirectory(destdirname);
+			Directory.CreateDirectory(destinationDirName);
 		}
 
 		// Get the file contents of the directory to copy.
@@ -369,7 +382,7 @@ public static partial class Path
 		foreach (FileInfo file in files)
 		{
 			// Create the path to the new copy of the file.
-			string temppath = System.IO.Path.Combine(destdirname, file.Name);
+			string temppath = System.IO.Path.Combine(destinationDirName, file.Name);
 
 			// Copy the file.
 			if (!excludedfiles.Contains(file.Name))
@@ -379,15 +392,15 @@ public static partial class Path
 		}
 
 		// If copysubdirs is true, copy the subdirectories.
-		if (copysubdirs)
+		if (copySubDirs)
 		{
 			foreach (DirectoryInfo subdir in dirs)
 			{
 				// Create the subdirectory.
-				string temppath = System.IO.Path.Combine(destdirname, subdir.Name);
+				string temppath = System.IO.Path.Combine(destinationDirName, subdir.Name);
 
 				// Copy the subdirectories.
-				DirectoryCopy(subdir.FullName, temppath, copysubdirs, overwrite, excludedfiles);
+				DirectoryCopy(subdir.FullName, temppath, copySubDirs, overwrite, excludedfiles);
 			}
 		}
 	}
@@ -411,6 +424,57 @@ public static partial class Path
 	{
 		// The Path.Combine will eat the blank string.
 		return GetTemporaryDirectory("");
+	}
+
+	/// <summary>
+	/// Checks to insure that a directory name passes the criteria to be valid.
+	///
+	/// Returns a <see cref="PathValidationOptions"/> result that indicates if the directory name is valid, or if not, what the error was.
+	/// </summary>
+	/// <param name="path">Path to check.</param>
+	public static PathValidationResult IsValidDirectory(string? path)
+	{
+		return IsValidDirectory(path, new PathValidationOptions());
+	}
+
+	/// <summary>
+	/// Checks to insure that a directory name passes the criteria to be valid.
+	///
+	/// Returns a <see cref="PathValidationOptions"/> result that indicates if the directory name is valid, or if not, what the error was.
+	/// </summary>
+	/// <param name="path">Path to check.</param>
+	/// <param name="options">Validation options.</param>
+	public static PathValidationResult IsValidDirectory(string? path, PathValidationOptions options)
+	{
+		if (path is null)
+		{
+			return PathValidationResult.ZeroLength;
+		}
+
+		path = path.Trim();
+
+		// A path was not provided.
+		if (path.Length == 0)
+		{
+			return PathValidationResult.ZeroLength;
+		}
+
+		// If the path is required to exist, we will check that now.
+		if (options.RequirePathToExist)
+		{
+			if (!Directory.Exists(path))
+			{
+				return PathValidationResult.PathDoesNotExist;
+			}
+		}
+
+		// Check to see if the file name starts with any device names.
+		if (IsDeviceName(path))
+		{
+			return PathValidationResult.DeviceName;
+		}
+
+		return PathValidationResult.Valid;
 	}
 
 	#endregion
@@ -456,48 +520,52 @@ public static partial class Path
 	/// <summary>
 	/// Checks to insure that a file name passes the criteria to be valid.
 	///
-	/// Returns a ValidFileNameResult result that indicates if the file name is valid, or if not, what the error was.
+	/// Returns a <see cref="PathValidationOptions"/> result that indicates if the file name is valid, or if not, what the error was.
 	/// </summary>
 	/// <param name="file">File name to check.</param>
-	public static ValidFileNameResult IsValidFileName(string file)
+	public static PathValidationResult IsValidFileName(string? file)
 	{
-		return IsValidFileName(file, new ValidFileNameOptions());
+		return IsValidFileName(file, new PathValidationOptions());
 	}
 
 	/// <summary>
 	/// Checks to insure that a file name passes the criteria to be valid.
 	///
-	/// Returns a ValidFileNameResult result that indicates if the file name is valid, or if not, what the error was.
+	/// Returns a <see cref="PathValidationOptions"/> result that indicates if the file name is valid, or if not, what the error was.
 	/// </summary>
 	/// <param name="file">File name to check.</param>
-	/// <param name="options">Options to controlling what determines if a file name is valid or not.</param>
-	public static ValidFileNameResult IsValidFileName(string file, ValidFileNameOptions options)
+	/// <param name="options">Validation options.</param>
+	public static PathValidationResult IsValidFileName(string? file, PathValidationOptions options)
 	{
+		if (file is null)
+		{
+			return PathValidationResult.ZeroLength;
+		}
+
 		file = file.Trim();
 		string filename = System.IO.Path.GetFileName(file);
 
 		// A file name was not provided.
 		if (filename.Length == 0)
 		{
-			return ValidFileNameResult.ZeroLength;
+			return PathValidationResult.ZeroLength;
 		}
 
 		// The file name is too long.
 		if (file.Length > 255)
 		{
-			return ValidFileNameResult.TooLong;
+			return PathValidationResult.TooLong;
 		}
 
 		// Check for invalid characters.
-		// I would prefer to use the Path.GetInvalidPathChars() method, but it doesn't seem to handle all cases,
+		// It would be preferable to use the Path.GetInvalidPathChars() method, but it doesn't seem to handle all cases,
 		// for example, the "*" is not included in the returned values.
 		//
 		// For reference the call is:
 		// char[] invalidpathchars2 = Path.GetInvalidPathChars();
-		char[] invalidpathchars = ['\"', '*', '/', ':', '<', '>', '?', '\\', '|'];
-		if (filename.IndexOfAny(invalidpathchars) > 0)
+		if (filename.IndexOfAny(_invalidPathChars) > 0)
 		{
-			return ValidFileNameResult.InvalidCharacters;
+			return PathValidationResult.InvalidCharacters;
 		}
 
 		// If the path is required to exist, we will check that now.
@@ -506,39 +574,42 @@ public static partial class Path
 			string path = System.IO.Path.GetDirectoryName(file) ?? "";
 			if (!Directory.Exists(path))
 			{
-				return ValidFileNameResult.PathDoesNotExist;
+				return PathValidationResult.PathDoesNotExist;
 			}
 		}
 
 		// The file name cannot start with a "dot."
 		if (filename.StartsWith('.'))
 		{
-			return ValidFileNameResult.FileNameNotProvided;
+			return PathValidationResult.FileNameNotProvided;
 		}
 
 		// Check to see if the file name starts with any device names.
-		string[] devicenames =
-		[
-			"CLOCK$",	"AUX",	"CON",	"NUL",	"PRN",	"COM1",	"COM2",	"COM3",	"COM4",	"COM5",	"COM6",	"COM7", 
-			"COM8",		"COM9",	"LPT1",	"LPT2",	"LPT3",	"LPT4",	"LPT5",	"LPT6",	"LPT7",	"LPT8",	"LPT9"
-		];
+		if (IsDeviceName(System.IO.Path.GetFileNameWithoutExtension(filename)))
+		{
+			return PathValidationResult.DeviceName;
+		}
 
-		string filenamenoextension = System.IO.Path.GetFileNameWithoutExtension(filename);
-		foreach (string name in devicenames)
+		return PathValidationResult.Valid;
+	}
+
+	public static bool IsDeviceName(string name)
+	{
+		foreach (string deviceName in _deviceNames)
 		{
 			// If the file name is shorter or longer than the device name, it is ok.
-			if (filenamenoextension.Length < name.Length || filenamenoextension.Length > name.Length)
+			if (name.Length < deviceName.Length || name.Length > deviceName.Length)
 			{
 				continue;
 			}
 
-			if (name.Equals(filenamenoextension, StringComparison.CurrentCultureIgnoreCase))
+			if (deviceName.Equals(name, StringComparison.CurrentCultureIgnoreCase))
 			{
-				return ValidFileNameResult.DeviceName;
+				return true;
 			}
 		}
 
-		return ValidFileNameResult.Valid;
+		return false;
 	}
 
 	#endregion

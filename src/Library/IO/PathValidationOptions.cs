@@ -3,7 +3,7 @@
 /// <summary>
 /// Options for controlling what determines if a file name is valid or not.
 /// </summary>
-public class ValidFileNameOptions
+public class PathValidationOptions
 {
 	#region Fields
 
@@ -17,17 +17,9 @@ public class ValidFileNameOptions
 	/// <summary>
 	/// Default constructor.
 	/// </summary>
-	public ValidFileNameOptions()
+	public PathValidationOptions()
 	{
 	}
-
-	#endregion
-
-	#region Properties
-
-	#endregion
-
-	#region Methods
 
 	#endregion
 

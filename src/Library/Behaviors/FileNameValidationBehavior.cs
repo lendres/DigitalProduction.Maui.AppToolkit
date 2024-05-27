@@ -7,7 +7,7 @@ namespace DigitalProduction.Behaviors;
 /// <summary>
 /// The <see cref="FileNameValidationBehavior"/> is a behavior that allows the user to determine if a file exists.  Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
 /// </summary>
-public class FileNameValidationBehavior : ErrorReportableValidationBehavior<string, ValidFileNameResult>
+public class FileNameValidationBehavior : ErrorReportableValidationBehavior<string, PathValidationResult>
 {
 	/// <summary>
 	/// Backing BindableProperty for the <see cref="RequireFileToExist"/> property.
@@ -31,13 +31,13 @@ public class FileNameValidationBehavior : ErrorReportableValidationBehavior<stri
 
 		if (RequireFileToExist)
 		{
-			Error = DigitalProduction.IO.Path.IsValidFileName(value, new ValidFileNameOptions() { RequirePathToExist = true });
+			Error = DigitalProduction.IO.Path.IsValidFileName(value, new PathValidationOptions() { RequirePathToExist = true });
 		}
 		else
 		{
 			Error = DigitalProduction.IO.Path.IsValidFileName(value);
 		}
 
-		return new ValueTask<bool>(Error == ValidFileNameResult.Valid);
+		return new ValueTask<bool>(Error == PathValidationResult.Valid);
 	}
 }
