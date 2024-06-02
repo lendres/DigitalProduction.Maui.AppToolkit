@@ -1,7 +1,5 @@
-﻿using System.ComponentModel;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Reflection;
-using CommunityToolkit.Maui.Converters;
 
 namespace DigitalProduction.Converters;
 
