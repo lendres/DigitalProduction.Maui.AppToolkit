@@ -10,16 +10,16 @@ public class XmlTextProcessor
 	#region Fields
 
 	/// <summary>Base stream that reads the file.</summary>
-	private FileStream					_inputStream;
+	private FileStream?					_inputStream;
 
 	/// <summary>XML reader that reads the file.</summary>
-	private XmlTextReader				_xmlReader;
+	private XmlTextReader?				_xmlReader;
 
 	/// <summary>The name of the top element.</summary>
-	private string						_topElement;
+	private string						_topElement				= "";
 
 	/// <summary>Flag to indicate the first call to process.</summary>
-	private bool						_firstCall;
+	private bool						_firstCall				= true;
 
 	#endregion
 
@@ -234,11 +234,11 @@ public class XmlTextProcessor
 		{
 			RunProcess(handlers, data);
 		}
-		catch (Exception exception)
+		catch
 		{
 			// Try to clean up.
 			Close();
-			throw exception;
+			throw;
 		}
 	}
 
@@ -352,7 +352,9 @@ public class XmlTextProcessor
 	/// <param name="defaultValue">Value to return if nothing is found or an error occurs.</param>
 	public int GetAttribute(string name, int defaultValue)
 	{
-		string val	= _xmlReader.GetAttribute(name);
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+
+		string? val	= _xmlReader.GetAttribute(name);
 		int convval	= defaultValue;
 		try
 		{
@@ -373,7 +375,9 @@ public class XmlTextProcessor
 	/// <param name="defaultValue">Value to return if nothing is found or an error occurs.</param>
 	public double GetAttribute(string name, double defaultValue)
 	{
-		string val		= _xmlReader.GetAttribute(name);
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+		
+		string? val		= _xmlReader.GetAttribute(name);
 		double convval	= defaultValue;
 		try
 		{
@@ -394,7 +398,9 @@ public class XmlTextProcessor
 	/// <param name="defaultValue">Value to return if nothing is found or an error occurs.</param>
 	public bool GetAttribute(string name, bool defaultValue)
 	{
-		string val		= _xmlReader.GetAttribute(name);
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+
+		string? val		= _xmlReader.GetAttribute(name);
 		bool convval	= defaultValue;
 		try
 		{
@@ -415,7 +421,9 @@ public class XmlTextProcessor
 	/// <param name="defaultValue">Value to return if nothing is found or an error occurs.</param>
 	public string GetAttribute(string name, string defaultValue)
 	{
-		string val = _xmlReader.GetAttribute(name);
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+		
+		string? val = _xmlReader.GetAttribute(name);
 
 		if (val == null)
 		{
@@ -435,7 +443,9 @@ public class XmlTextProcessor
 	/// <param name="defaultValue">Value to return if nothing is found or an error occurs.</param>
 	public object GetAttribute(string name, object defaultValue)
 	{
-		object val = _xmlReader.GetAttribute(name);
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+		
+		object? val = _xmlReader.GetAttribute(name);
 
 		if (val == null)
 		{
@@ -455,6 +465,8 @@ public class XmlTextProcessor
 	/// </remarks>
 	public AttributeList GetAttributes()
 	{
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+		
 		AttributeList attributes = new AttributeList();
 
 		if (_xmlReader.HasAttributes)
@@ -485,6 +497,8 @@ public class XmlTextProcessor
 	/// </summary>
 	public string GetElementString(string defaultValue)
 	{
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+		
 		string val = _xmlReader.ReadString();
 
 		if (val == null)
@@ -502,6 +516,8 @@ public class XmlTextProcessor
 	/// </summary>
 	public int GetElementString(int defaultValue)
 	{
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+		
 		string val	= _xmlReader.ReadString();
 		int convval	= defaultValue;
 		try
@@ -520,6 +536,8 @@ public class XmlTextProcessor
 	/// </summary>
 	public double GetElementString(double defaultValue)
 	{
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+		
 		string val		= _xmlReader.ReadString();
 		double convval	= defaultValue;
 		try
@@ -538,6 +556,8 @@ public class XmlTextProcessor
 	/// </summary>
 	public bool GetElementString(bool defaultValue)
 	{
+		System.Diagnostics.Debug.Assert(_xmlReader != null);
+		
 		string val		= _xmlReader.ReadString();
 		bool convval	= defaultValue;
 		try
