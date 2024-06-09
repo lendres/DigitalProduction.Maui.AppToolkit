@@ -8,7 +8,7 @@ public class XmlHandlerList
 	#region Fields
 
 	private Dictionary<string, XmlHandler>			_handlers;
-	private XmlHandler[]							_uniquehandlers;
+	private XmlHandler[]							_uniqueHandlers;
 
 	#endregion
 
@@ -20,7 +20,7 @@ public class XmlHandlerList
 	public XmlHandlerList()
 	{
 		_handlers		= new Dictionary<string, XmlHandler>();
-		_uniquehandlers	= new XmlHandler[(int)HandlerType.Count];
+		_uniqueHandlers	= new XmlHandler[(int)HandlerType.Count];
 	}
 
 	#endregion
@@ -34,7 +34,7 @@ public class XmlHandlerList
 	/// <param name="elementhandler">Function which handles the element if it is found.</param>
 	public void AddHandler(string elementname, XmlHandlerFunction elementhandler)
 	{
-		XmlHandler handler		= new XmlHandler();
+		XmlHandler handler		= new();
 		handler.Type			= HandlerType.Element;
 		handler.ElementName		= elementname;
 		handler.HandlerFunction	= elementhandler;
@@ -54,7 +54,7 @@ public class XmlHandlerList
 			case HandlerType.Default:
 			case HandlerType.Text:
 			{
-				_uniquehandlers[(int)type] = new XmlHandler(type, elementhandler);
+				_uniqueHandlers[(int)type] = new XmlHandler(type, elementhandler);
 				break;
 			}
 
@@ -88,7 +88,7 @@ public class XmlHandlerList
 		// Try to find the element name.
 		if (_handlers.ContainsKey(elementname))
 		{
-			_handlers[elementname].HandlerFunction(xmlprocessor, data);
+			_handlers[elementname].HandlerFunction?.Invoke(xmlprocessor, data);
 			return;
 		}
 
@@ -101,12 +101,9 @@ public class XmlHandlerList
 	/// <param name="handler">The HandlerType to look for.</param>
 	/// <param name="xmlprocessor">XML processor that is doing the processing.</param>
 	/// <param name="data">Optional data passed to the handler.</param>
-	public void Process(HandlerType handler, XmlTextProcessor xmlprocessor, object data)
+	public void Process(HandlerType handler, XmlTextProcessor xmlprocessor, object? data)
 	{
-		if (_uniquehandlers[(int)handler] != null)
-		{
-			_uniquehandlers[(int)handler].HandlerFunction(xmlprocessor, data);
-		}
+		_uniqueHandlers[(int)handler]?.HandlerFunction?.Invoke(xmlprocessor, data);
 	}
 
 	#endregion

@@ -74,12 +74,11 @@ public class XmlHandler
 	/// <param name="obj">An object of type XMLHandler.</param>
 	public int CompareTo(object obj)
 	{
+		// Cast the input object and do the comparison.  The actual comparison is done by the CompareTo method
+		// of the string.
 		// Ensure we have an object of this type.
-		if (obj is XmlHandler)
+		if (obj is XmlHandler handler)
 		{
-			// Cast the input object and do the comparison.  The actual comparison is done by the CompareTo method
-			// of the string.
-			XmlHandler handler = (XmlHandler)obj;
 			return _elementName.CompareTo(handler._elementName);
 		}
 		else

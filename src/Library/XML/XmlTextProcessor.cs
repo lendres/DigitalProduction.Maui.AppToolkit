@@ -155,35 +155,17 @@ public class XmlTextProcessor
 	/// <summary>
 	/// The base input stream used.  Read only.
 	/// </summary>
-	public FileStream FileStream
-	{
-		get
-		{
-			return _inputStream;
-		}
-	}
+	public FileStream? FileStream { get => _inputStream; }
 
 	/// <summary>
 	/// The text reader used.  Read only.
 	/// </summary>
-	public XmlTextReader XmlTextReader
-	{
-		get
-		{
-			return _xmlReader;
-		}
-	}
+	public XmlTextReader? XmlTextReader { get => _xmlReader; }
 
 	/// <summary>
 	/// Is the XML file open for reading?
 	/// </summary>
-	public bool IsFileOpen
-	{
-		get
-		{
-			return _xmlReader != null;
-		}
-	}
+	public bool IsFileOpen { get => _xmlReader != null; }
 
 	/// <summary>
 	/// Returns the information necessary to display a message to the user so that they can figure out what
@@ -193,9 +175,9 @@ public class XmlTextProcessor
 	{
 		get
 		{
-			string message = "\n\nFile: " + _inputStream.Name;
-			message += "\n\nLine: " + _xmlReader.LineNumber;
-			message += "\n\nPosition: " + _xmlReader.LinePosition;
+			string message = "\n\nFile: " + _inputStream?.Name;
+			message += "\n\nLine: " + _xmlReader?.LineNumber;
+			message += "\n\nPosition: " + _xmlReader?.LinePosition;
 			return message;
 		}
 	}
@@ -228,7 +210,7 @@ public class XmlTextProcessor
 	/// This function is really just a wrapper around the RunProcess which does the real work.  We just use this function
 	/// to do the error handling.
 	/// </remarks>
-	public void Process(XmlHandlerList handlers, object data)
+	public void Process(XmlHandlerList handlers, object? data)
 	{
 		try
 		{
@@ -253,7 +235,7 @@ public class XmlTextProcessor
 	/// An instance of XMLHandlerList which has the handlers for elements that this element contains.
 	/// </param>
 	/// <param name="data">Optional data passed to the handler.</param>
-	private void RunProcess(XmlHandlerList handlers, object data)
+	private void RunProcess(XmlHandlerList handlers, object? data)
 	{
 		if (_xmlReader == null)
 		{
@@ -467,7 +449,7 @@ public class XmlTextProcessor
 	{
 		System.Diagnostics.Debug.Assert(_xmlReader != null);
 		
-		AttributeList attributes = new AttributeList();
+		AttributeList attributes = new();
 
 		if (_xmlReader.HasAttributes)
 		{
