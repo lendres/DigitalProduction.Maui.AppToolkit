@@ -1,5 +1,3 @@
-using System;
-
 namespace DigitalProduction.XML;
 
 /// <summary>
@@ -98,11 +96,11 @@ public class XmlHandler
 	/// Equivalent function used as a predicate to determine if this FileExtension is equivalent to a second.
 	/// </summary>
 	/// <param name="obj">XMLHandler to compare to.</param>
-	override public bool Equals(object obj)
+	override public bool Equals(object? obj)
 	{
-		if (obj is XmlHandler)
+		if (obj is XmlHandler xmlHandler)
 		{
-			return _elementName == ((XmlHandler)obj)._elementName;
+			return _elementName == xmlHandler._elementName;
 		}
 
 		return false;
