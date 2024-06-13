@@ -7,8 +7,8 @@ public class XmlHandlerList
 {
 	#region Fields
 
-	private Dictionary<string, XmlHandler>			_handlers;
-	private XmlHandler[]							_uniqueHandlers;
+	private readonly Dictionary<string, XmlHandler>		_handlers;
+	private readonly XmlHandler[]						_uniqueHandlers;
 
 	#endregion
 
@@ -34,10 +34,12 @@ public class XmlHandlerList
 	/// <param name="elementhandler">Function which handles the element if it is found.</param>
 	public void AddHandler(string elementname, XmlHandlerFunction elementhandler)
 	{
-		XmlHandler handler		= new();
-		handler.Type			= HandlerType.Element;
-		handler.ElementName		= elementname;
-		handler.HandlerFunction	= elementhandler;
+		XmlHandler handler = new()
+		{
+			Type            = HandlerType.Element,
+			ElementName     = elementname,
+			HandlerFunction = elementhandler
+		};
 
 		_handlers.Add(handler.ElementName, handler);
 	}
@@ -83,12 +85,12 @@ public class XmlHandlerList
 	/// <param name="elementname">Name of the element to look for.</param>
 	/// <param name="xmlprocessor">XML processor that is doing the processing.</param>
 	/// <param name="data">Optional data passed to the handler.</param>
-	public void ProcessElement(string elementname, XmlTextProcessor xmlprocessor, object data)
+	public void ProcessElement(string elementname, XmlTextProcessor xmlprocessor, object? data)
 	{
 		// Try to find the element name.
-		if (_handlers.ContainsKey(elementname))
+		if (_handlers.TryGetValue(elementname, out XmlHandler? value))
 		{
-			_handlers[elementname].HandlerFunction?.Invoke(xmlprocessor, data);
+			value.HandlerFunction?.Invoke(xmlprocessor, data);
 			return;
 		}
 

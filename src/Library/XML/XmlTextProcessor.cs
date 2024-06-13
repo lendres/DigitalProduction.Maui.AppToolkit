@@ -77,8 +77,10 @@ public class XmlTextProcessor
 			}
 
 			// Create the XML reader.
-			_xmlReader = new XmlTextReader(_inputStream);
-			_xmlReader.WhitespaceHandling = WhitespaceHandling.None;
+			_xmlReader = new XmlTextReader(_inputStream)
+			{
+				WhitespaceHandling = WhitespaceHandling.None
+			};
 
 			// Read the header stuff and get to the first element.
 			while (_xmlReader.NodeType != XmlNodeType.Element)

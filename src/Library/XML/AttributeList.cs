@@ -7,7 +7,7 @@ public class AttributeList : IEnumerable<Attribute>
 {
 	#region Fields
 
-	private List<Attribute>		_attributes;
+	private readonly List<Attribute>		_attributes		= [];
 
 	#endregion
 
@@ -18,7 +18,6 @@ public class AttributeList : IEnumerable<Attribute>
 	/// </summary>
 	public AttributeList()
 	{
-		_attributes = new List<Attribute>();
 	}
 
 	#endregion
@@ -49,7 +48,7 @@ public class AttributeList : IEnumerable<Attribute>
 	/// Returns the Attribute at position "number" if it exists, null otherwise.
 	/// </summary>
 	/// <param name="number">Which Attribute to get.</param>
-	public Attribute GetAttribute(int number)
+	public Attribute? GetAttribute(int number)
 	{
 		if (number < _attributes.Count || number >= 0)
 		{
