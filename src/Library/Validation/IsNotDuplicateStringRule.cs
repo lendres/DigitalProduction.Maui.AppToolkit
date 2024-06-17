@@ -30,11 +30,6 @@ public class IsNotDuplicateStringRule : ValidationRuleBase<string>
 			return false;
 		}
 
-		if (ExcludeValue is null)
-		{
-			return false;
-		}
-
 		if (value == ExcludeValue)
 		{
 			// The "new" (entered) value is the same as it was (unchanged).  This is ok.
