@@ -22,4 +22,9 @@ public delegate void CallBack();
 /// </summary>
 public delegate void NoArgumentsEventHandler();
 
+/// <summary>
+/// A delegate for when errors occur and notification is required.
+/// </summary>
+public delegate void OnErrorEventHandler(string message);
+
 #endregion
