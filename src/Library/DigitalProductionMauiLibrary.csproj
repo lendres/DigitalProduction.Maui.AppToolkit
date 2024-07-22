@@ -33,4 +33,16 @@
 	  </Reference>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="UI\Views\PopupView.xaml.cs">
+	    <DependentUpon>PopupView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="UI\Views\PopupView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

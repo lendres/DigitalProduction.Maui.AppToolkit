@@ -122,38 +122,50 @@ public static partial class Path
 	}
 
 	/// <summary>
-	/// Checks that a path is savable.  It has to be a valid file name, the directory must exist, and
-	/// it cannot already be an existing, write only file.
+	/// Checks that a path is savable.  It has to be a valid file name, the directory must exist, it cannot already
+	/// be an existing, write only file, and it cannot be locked by another process (open somewhere else).
 	/// </summary>
 	/// <param name="path"></param>
 	public static bool PathIsWritable(string path)
 	{
 		// First thing to check is that we have a file name.
-		bool saveable = IsValidFileName(path) == PathValidationResult.Valid;
-
-		if (saveable)
+		if (!(IsValidFileName(path) == PathValidationResult.Valid))
 		{
-			// The next thing to check is that the directory exists.
-			if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(path)))
-			{
-				saveable = false;
-			}
-			else
-			{
-				// If the file already exists, we must be able to overwrite it.
-				if (System.IO.File.Exists(path))
-				{
-					// Now check to make sure the file is not locked.
-					System.IO.FileAttributes fileAttributes = System.IO.File.GetAttributes(path);
-					if ((fileAttributes & System.IO.FileAttributes.ReadOnly) == System.IO.FileAttributes.ReadOnly)
-					{
-						saveable = false;
-					}
-				}
-			}
+			return false;
 		}
 
-		return saveable;
+		// The next thing to check is that the directory exists.
+		if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(path)))
+		{
+			return false;
+		}
+
+		// If nothing exists in the current location, we are ok and do not need to check further.
+		if (!System.IO.File.Exists(path))
+		{
+			return true;
+		}
+
+		// File exists, so check to make sure the file is not read only.
+		System.IO.FileAttributes fileAttributes = System.IO.File.GetAttributes(path);
+		if ((fileAttributes & System.IO.FileAttributes.ReadOnly) == System.IO.FileAttributes.ReadOnly)
+		{
+			return false;
+		}
+
+		// Check that it is not locked by another process.
+		try
+		{
+			using (FileStream fileStream = File.OpenWrite(path))
+			{
+			}
+		}
+		catch (Exception)
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	#endregion
