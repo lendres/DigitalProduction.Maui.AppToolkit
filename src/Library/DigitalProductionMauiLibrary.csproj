@@ -39,7 +39,6 @@
 
 	<ItemGroup>
 	  <Compile Update="UI\Views\AboutView1.xaml.cs">
-	    <SubType>Code</SubType>
 	    <DependentUpon>AboutView1.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="UI\Views\PopupView.xaml.cs">
@@ -49,7 +48,6 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="UI\Views\AboutView1.xaml">
-	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\Views\PopupView.xaml">
