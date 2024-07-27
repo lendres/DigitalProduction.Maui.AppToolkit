@@ -26,11 +26,11 @@ public class ConverterTests
 		string errorMessage									= "Enum description test failed.";
 		EnumToDescriptionConverter<TestingType> converter	= new();
 
-		TestingType result = converter.ConvertFrom("Type 1");
-		Assert.True(result == TestingType.Type1, errorMessage);
-
-		string stringResult = converter.ConvertBackTo(TestingType.Type1);
+		string stringResult = (string)converter.Convert(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
 		Assert.True(stringResult == "Type 1", errorMessage);
+
+		TestingType result = (TestingType)converter.ConvertBack("Type 1", typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
+		Assert.True(result == TestingType.Type1, errorMessage);
 	}
 
 	/// <summary>
@@ -42,11 +42,11 @@ public class ConverterTests
 		string errorMessage					= "Enum description test failed.";
 		ConcreteEnumDescription converter	= new();
 
-		TestingType result = converter.ConvertFrom("Type 1");
-		Assert.True(result == TestingType.Type1, errorMessage);
-
-		string stringResult = converter.ConvertBackTo(TestingType.Type1);
+		string stringResult = (string)converter.Convert(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
 		Assert.True(stringResult == "Type 1", errorMessage);
+
+		TestingType result = (TestingType)converter.ConvertBack("Type 1", typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
+		Assert.True(result == TestingType.Type1, errorMessage);
 	}
 
 	#endregion
