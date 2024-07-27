@@ -12,7 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRunnerApp", "TestRunnerApp\TestRunnerApp.csproj", "{5C8EA134-D46E-438A-A8D3-5EE7A03B2B94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestRunnerApp", "TestRunnerApp\TestRunnerApp.csproj", "{5C8EA134-D46E-438A-A8D3-5EE7A03B2B94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalProductionDotNetLibrary", "..\..\C Sharp Dot Net Library\src\Library\DigitalProductionDotNetLibrary.csproj", "{2EDF5B4B-71F1-4C73-8D17-9B062463D044}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,10 @@ Global
 		{5C8EA134-D46E-438A-A8D3-5EE7A03B2B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C8EA134-D46E-438A-A8D3-5EE7A03B2B94}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C8EA134-D46E-438A-A8D3-5EE7A03B2B94}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2EDF5B4B-71F1-4C73-8D17-9B062463D044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EDF5B4B-71F1-4C73-8D17-9B062463D044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EDF5B4B-71F1-4C73-8D17-9B062463D044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EDF5B4B-71F1-4C73-8D17-9B062463D044}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
