@@ -118,7 +118,7 @@ namespace DigitalProduction.UnitTests
 			// Deserialize the object creating a new instance.  Then we set the path to the location the file was deserialized
 			// from.  That way the file can be saved back to that location if required.
 #if WINDOWS
-			T company		= Serialization.DeserializeObject<T>(path);
+			T? company		= Serialization.DeserializeObject<T>(path);
 			return company;
 #else
 			return null;

@@ -26,11 +26,11 @@ public class ConverterTests
 		string errorMessage									= "Enum description test failed.";
 		EnumToDescriptionConverter<TestingType> converter	= new();
 
-		TestingType result = (TestingType)converter.Convert("Type 1", typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
-		Assert.True(result == TestingType.Type1, errorMessage);
-
-		string stringResult = (string)converter.ConvertBack(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
+		string stringResult = (string)converter.Convert(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
 		Assert.True(stringResult == "Type 1", errorMessage);
+
+		TestingType result = (TestingType)converter.ConvertBack("Type 1", typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
+		Assert.True(result == TestingType.Type1, errorMessage);
 	}
 
 	/// <summary>
@@ -42,11 +42,11 @@ public class ConverterTests
 		string errorMessage					= "Enum description test failed.";
 		ConcreteEnumDescription converter	= new();
 
-		TestingType result = (TestingType)converter.Convert("Type 1", typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
-		Assert.True(result == TestingType.Type1, errorMessage);
-
-		string stringResult = (string)converter.ConvertBack(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
+		string stringResult = (string)converter.Convert(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
 		Assert.True(stringResult == "Type 1", errorMessage);
+
+		TestingType result = (TestingType)converter.ConvertBack("Type 1", typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
+		Assert.True(result == TestingType.Type1, errorMessage);
 	}
 
 	#endregion
