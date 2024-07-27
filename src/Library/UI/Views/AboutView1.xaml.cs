@@ -9,13 +9,8 @@ public partial class AboutView1 : PopupView
 	public AboutView1(AboutViewModel viewModel)
 	{
 		BindingContext = viewModel;
+		InitializeComponent();
 	}
 
-	#endregion
-
-	#region Properties
-	#endregion
-
-	#region Events
 	#endregion
 }

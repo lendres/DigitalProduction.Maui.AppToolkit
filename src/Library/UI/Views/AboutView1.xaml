@@ -2,26 +2,62 @@
 <dpui:PopupView
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:viewmodel="clr-namespace:DigitalProduction.ViewModels"
 	xmlns:dpui="clr-namespace:DigitalProduction.UI"
 	x:Class="DigitalProduction.UI.AboutView1"
+	x:DataType="viewmodel:AboutViewModel"
 	CanBeDismissedByTappingOutsideOfPopup="False">
 
-	<!--<Frame StyleClass="PopupFrameStyle" MinimumWidthRequest="550">-->
-	<Frame MinimumWidthRequest="550">
+	<Frame StyleClass="PopupFrameStyle" MinimumWidthRequest="500" MinimumHeightRequest="300">
 
-		<VerticalStackLayout StyleClass="VerticalLayoutStyle" >
+		<VerticalStackLayout StyleClass="VerticalLayoutStyle">
 
-			<!--<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Start"/>-->
-			<Label Text="{Binding Title}" x:Name="TitleLabel" HorizontalOptions="Start"/>
+			<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Start"/>
 
-			<Label Text="Author(s):"/>
-			<Label Text="{Binding Authors}"/>
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Author(s):" StyleClass="TitleLabel"/>
+				<Label Text="{Binding Authors}"/>
+			</VerticalStackLayout>
 
-			<Label Text="Version:"/>
-			<Label Text="{Binding Version}"/>
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Version:" StyleClass="TitleLabel"/>
+				<Label Text="{Binding Version}"/>
+			</VerticalStackLayout>
 
-			<Label Text="Report issues:"/>
-			<Label Text="{Binding IssuesAddress}"/>
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Website:" StyleClass="TitleLabel"/>
+				<Label>
+					<Label.FormattedText>
+						<FormattedString>
+							<dpui:HyperlinkSpan 
+								Text="{Binding Website}"
+                                Url="{Binding Website}" />
+						</FormattedString>
+					</Label.FormattedText>
+				</Label>
+			</VerticalStackLayout>
+
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Report issues:" StyleClass="TitleLabel"/>
+				<Label>
+					<Label.FormattedText>
+						<FormattedString>
+							<dpui:HyperlinkSpan 
+								Text="{Binding IssuesAddress}"
+                                Url="{Binding IssuesAddress}" />
+						</FormattedString>
+					</Label.FormattedText>
+				</Label>
+			</VerticalStackLayout>
+
+			<HorizontalStackLayout StyleClass="BottomButtonRowStyle">
+				<Button 
+					Text="Close"
+					StyleClass="StandardSizeButtonStyle"
+					HorizontalOptions="End"
+					Clicked="OnCancelButtonClicked"/>
+			</HorizontalStackLayout>
 
 		</VerticalStackLayout>
 	</Frame>
