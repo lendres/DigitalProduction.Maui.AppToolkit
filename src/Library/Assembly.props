@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project>
 	<PropertyGroup>
+		<Title>XInclude Dot Net</Title>
 		<Product>C Sharp Maui Library</Product>
 		<Copyright>Lance A. Endres</Copyright>
 		<Company>Digital Production</Company>

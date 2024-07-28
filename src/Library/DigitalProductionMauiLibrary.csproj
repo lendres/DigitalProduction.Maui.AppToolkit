@@ -18,7 +18,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<RootNamespace>DigitalProduction</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title>Digital Production Maui Library</Title>
+		<Title></Title>
 		<Authors>Lance A. Endres</Authors>
 		<PackageProjectUrl>https://github.com/lendres/C-Sharp-Maui-Library</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -31,6 +31,7 @@
 	<!-- Import information from the folder containing the project if the files exists -->
 	<Import Project="$(MSBuildProjectDirectory)/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Assembly.props')" />
 	<Import Project="$(MSBuildProjectDirectory)/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Version.props')" />
+	
 	<ItemGroup>
 	  <None Include="..\..\LICENSE">
 	    <Pack>True</Pack>
@@ -45,15 +46,9 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="DigitalProductionDotNetLibrary" Version="0.1.1" />
+		<PackageReference Include="DigitalProductionDotNetLibrary" Version="0.1.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.70" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Reference Include="XInclude">
-	    <HintPath>..\..\References\XInclude Maui.dll</HintPath>
-	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
