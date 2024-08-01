@@ -33,20 +33,18 @@ public partial class AboutViewModel : ObservableObject
 	[ObservableProperty]
 	private string				_issuesAddress			= "";
 
-
-
 	#endregion
 
 	#region Construction
 
-	public AboutViewModel()
+	public AboutViewModel(bool threeDigitVersion = true)
 	{
 		System.Reflection.Assembly? entryAssembly = System.Reflection.Assembly.GetEntryAssembly();
 		System.Diagnostics.Debug.Assert(entryAssembly != null);
 
 		Title			= string.Format("About {0}", DigitalProduction.Reflection.Assembly.Product(entryAssembly));
 		Product			= DigitalProduction.Reflection.Assembly.Product(entryAssembly);
-		Version			= DigitalProduction.Reflection.Assembly.Version(entryAssembly);
+		Version			= DigitalProduction.Reflection.Assembly.Version(entryAssembly, threeDigitVersion);
 		Authors			= DigitalProduction.Reflection.Assembly.Authors(entryAssembly);
 		Copyright		= DigitalProduction.Reflection.Assembly.Copyright(entryAssembly);
 		Company			= DigitalProduction.Reflection.Assembly.Company(entryAssembly);
