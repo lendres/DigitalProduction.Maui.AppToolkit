@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
+using System.Reflection;
 
 namespace DigitalProduction.Converters;
 
@@ -9,13 +11,17 @@ namespace DigitalProduction.Converters;
 /// </summary>
 public class AreDebuggingConverter : IValueConverter
 {
+	private Assembly Assembly { get => Assembly.GetEntryAssembly()!; }
+
+	public List<DebuggableAttribute> DebuggableAttributes { get => new(Assembly.GetCustomAttributes(false).OfType<DebuggableAttribute>()); }
+
+	public bool IsJustInTimeTrackingEnabled { get => DebuggableAttributes.FirstOrDefault()!.IsJITTrackingEnabled; }
+
+	public string AssemblyName { get => Assembly.GetName().Name!; }
+
 	public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
-		#if DEBUG
-			return true;
-		#else
-			return false;
-		#endif
+		return IsJustInTimeTrackingEnabled;
 	}
 
 	public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
