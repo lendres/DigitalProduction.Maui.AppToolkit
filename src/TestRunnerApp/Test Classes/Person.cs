@@ -1,93 +1,46 @@
 ﻿using System.Xml.Serialization;
 
-namespace DigitalProduction.UnitTests
+namespace DigitalProduction.UnitTests;
+
+/// <summary>
+/// A person.
+/// </summary>
+public class Person
 {
+	#region Construction
+
 	/// <summary>
-	/// A person.
+	/// Constructor to populate fields.
 	/// </summary>
-	public class Person
+	public Person(string name, int age, Gender gender)
 	{
-		#region Members
+		Name	= name;
+		Age		= age;
+		Gender	= gender;
+	}
 
-		private string				_name				= "";
-		private int					_age				= 0;
-		private	Gender				_gender				= Gender.Female;
+	#endregion
 
-		#endregion
+	#region Properties
 
-		#region Construction
+	/// <summary>
+	/// Name.
+	/// </summary>
+	[XmlAttribute("name")]
+	public string Name { get; set; } = "";
 
-		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		public Person() {}
+	/// <summary>
+	/// Age.
+	/// </summary>
+	[XmlAttribute("age")]
+	public int Age { get; set; } = 0;
 
-		/// <summary>
-		/// Constructor to populate fields.
-		/// </summary>
-		public Person(string name, int age, Gender gender)
-		{
-			_name		= name;
-			_age		= age;
-			_gender		= gender;
-		}
+	/// <summary>
+	/// Gender.
+	/// </summary>
+	[XmlAttribute("gender")]
+	public Gender Gender  { get; set; } = Gender.Female;
 
-		#endregion
+	#endregion
 
-		#region Properties
-
-		/// <summary>
-		/// Name.
-		/// </summary>
-		[XmlAttribute("name")]
-		public string Name
-		{
-			get
-			{
-				return _name;
-			}
-
-			set
-			{
-				_name = value;
-			}
-		}
-
-		/// <summary>
-		/// Age.
-		/// </summary>
-		[XmlAttribute("age")]
-		public int Age
-		{
-			get
-			{
-				return _age;
-			}
-
-			set
-			{
-				_age = value;
-			}
-		}
-
-		/// <summary>
-		/// Gender.
-		/// </summary>
-		[XmlAttribute("gender")]
-		public Gender Gender
-		{
-			get
-			{
-				return _gender;
-			}
-
-			set
-			{
-				_gender = value;
-			}
-		}
-
-		#endregion
-
-	} // End class.
-} // End namespace.
+} // End class.

@@ -1,95 +1,46 @@
 ﻿using System.Xml.Serialization;
 
-namespace DigitalProduction.UnitTests
+namespace DigitalProduction.UnitTests;
+
+/// <summary>
+/// A company asset.
+/// </summary>
+public class Asset
 {
+	#region Construction
+
 	/// <summary>
-	/// A company asset.
+	/// Constructor.
 	/// </summary>
-	public class Asset
+	public Asset(string name, int value, string description)
 	{
-		#region Members
+		Name			= name;
+		Value			= value;
+		Description	= description;
+	}
 
-		private string				_name				= "";
-		private int					_value				= 0;
-		private string				_description		= "";
+	#endregion
 
-		#endregion
+	#region Properties
 
-		#region Construction
+	/// <summary>
+	/// Name.
+	/// </summary>
+	[XmlAttribute("name")]
+	public string Name { get; set; } = "";
 
-		/// <summary>
-		/// Default constructor.
-		/// </summary>
-		public Asset()
-		{
-		}
+	/// <summary>
+	/// Value.
+	/// </summary>
+	[XmlAttribute("value")]
+	public int Value { get; set; } = 0;
 
-		/// <summary>
-		/// Constructor.
-		/// </summary>
-		public Asset(string name, int value, string description)
-		{
-			_name			= name;
-			_value			= value;
-			_description	= description;
-		}
+	/// <summary>
+	/// Description.
+	/// </summary>
+	[XmlElement("description")]
+	public string Description { get; set; } = "";
 
-		#endregion
+	#endregion
 
-		#region Properties
-
-		/// <summary>
-		/// Name.
-		/// </summary>
-		[XmlAttribute("name")]
-		public string Name
-		{
-			get
-			{
-				return _name;
-			}
-
-			set
-			{
-				_name = value;
-			}
-		}
-
-		/// <summary>
-		/// Value.
-		/// </summary>
-		[XmlAttribute("value")]
-		public int Value
-		{
-			get
-			{
-				return _value;
-			}
-
-			set
-			{
-				_value = value;
-			}
-		}
-
-		/// <summary>
-		/// Description.
-		/// </summary>
-		[XmlElement("description")]
-		public string Description
-		{
-			get
-			{
-				return _description;
-			}
-
-			set
-			{
-				_description = value;
-			}
-		}
-
-		#endregion
-
-	} // End class.
-} // End namespace.
+} // End class.

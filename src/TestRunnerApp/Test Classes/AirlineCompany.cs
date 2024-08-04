@@ -1,50 +1,27 @@
 ﻿using System.Xml.Serialization;
 using System.ComponentModel;
 
-namespace DigitalProduction.UnitTests
+namespace DigitalProduction.UnitTests;
+
+/// <summary>
+/// An airline company.
+/// </summary>
+[XmlRoot("airline")]
+[DisplayName("Airline")]
+[Description("A company that owns and operates airplanes.")]
+public class AirlineCompany : Company
 {
+	#region Construction
+	#endregion
+
+	#region Properties
+
 	/// <summary>
-	/// An airline company.
+	/// Number of planes the airline has available.
 	/// </summary>
-	[XmlRoot("airline")]
-	[DisplayName("Airline")]
-	[Description("A company that owns and operates airplanes.")]
-	public class AirlineCompany : Company
-	{
-		#region Members
+	[XmlAttribute("numberofplanes")]
+	public int NumberOfPlanes { get; set; } = 0;
 
-		private int				_numberOfPlanes;
+	#endregion
 
-		#endregion
-
-		#region Construction
-
-		public AirlineCompany()
-		{
-		}
-
-		#endregion
-
-		#region Properties
-
-		/// <summary>
-		/// Number of planes the airline has available.
-		/// </summary>
-		[XmlAttribute("numberofplanes")]
-		public int NumberOfPlanes
-		{
-			get
-			{
-				return _numberOfPlanes;
-			}
-
-			set
-			{
-				_numberOfPlanes = value;
-			}
-		}
-
-		#endregion
-
-	} // End class.
-} // End namespace.
+} // End class.

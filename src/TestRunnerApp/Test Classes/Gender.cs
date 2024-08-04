@@ -1,23 +1,22 @@
 ﻿using System.ComponentModel;
 
-namespace DigitalProduction.UnitTests
+namespace DigitalProduction.UnitTests;
+
+/// <summary>
+/// Gender of a person.
+/// </summary>
+public enum Gender
 {
-	/// <summary>
-	/// Gender of a person.
-	/// </summary>
-	public enum Gender
-	{
-		/// <summary>A woman.</summary>
-		[Description("Woman")]
-		Female,
+	/// <summary>A woman.</summary>
+	[Description("Woman")]
+	Female,
 
-		/// <summary>A man.</summary>
-		[Description("Man")]
-		Male,
+	/// <summary>A man.</summary>
+	[Description("Man")]
+	Male,
 
-		/// <summary>The number of types/items in the enumeration.</summary>
-		[Description("Length")]
-		Length
+	/// <summary>The number of types/items in the enumeration.</summary>
+	[Description("Length")]
+	Length
 
-	} // End enum.
-} // End namespace.
+} // End enum.
