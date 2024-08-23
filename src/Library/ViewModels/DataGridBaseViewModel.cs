@@ -106,7 +106,7 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 			// Cannot insert past last position.
 			if (position > Items.Count-1)
 			{
-				position = Items.Count-1;
+				position = Items.Count;
 			}
 
 			Items.Insert(position, item);
