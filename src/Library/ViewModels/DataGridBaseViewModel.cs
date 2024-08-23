@@ -54,7 +54,7 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 	#region Commands
 
 	[RelayCommand]
-	private void Refresh()
+	public virtual void Refresh()
 	{
 		IsRefreshing = true;
 		// Do work here.
@@ -62,20 +62,20 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 	}
 
 	[RelayCommand]
-	private void EditComplete()
+	public virtual void EditComplete()
 	{
 		ItemToEdit = null;
 	}
 
 	[RelayCommand]
-	private void Edit(T item)
+	public virtual void Edit(T item)
 	{
 		ArgumentNullException.ThrowIfNull(item);
 		ItemToEdit = item;
 	}
 
 	[RelayCommand]
-	protected virtual void Tapped(object item)
+	public virtual void Tapped(object item)
 	{
 		if (item is T tItem)
 		{
@@ -87,7 +87,7 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 
 	#region Methods
 
-	public void ReplaceSelected(T newItem)
+	public virtual void ReplaceSelected(T newItem)
 	{
 		if (SelectedItem != null && Items != null)
 		{
@@ -99,14 +99,14 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 		}
 	}
 
-	public void Insert(T item, int position = 0)
+	public virtual void Insert(T item, int position = 0)
 	{
 		if (Items != null)
 		{
 			// Cannot insert past last position.
 			if (position > Items.Count-1)
 			{
-				position = Items.Count-1;
+				position = Items.Count;
 			}
 
 			Items.Insert(position, item);
@@ -114,7 +114,7 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 		}
 	}
 	
-	public void Delete()
+	public virtual void Delete()
 	{
 		if (SelectedItem != null && Items != null)
 		{
@@ -123,7 +123,7 @@ public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropert
 		}
 	}
 
-	public void Sort(IComparer<T> comparer)
+	public virtual void Sort(IComparer<T> comparer)
 	{
 		if (Items is not null)
 		{
