@@ -18,7 +18,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<RootNamespace>DigitalProduction</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title></Title>
+		<Title>Digital Production Maui Library</Title>
 		<Authors>Lance A. Endres</Authors>
 		<PackageProjectUrl>https://github.com/lendres/C-Sharp-Maui-Library</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
