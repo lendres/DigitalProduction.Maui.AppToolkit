@@ -18,7 +18,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<RootNamespace>DigitalProduction</RootNamespace>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title></Title>
+		<Title>Digital Production Maui Library</Title>
 		<Authors>Lance A. Endres</Authors>
 		<PackageProjectUrl>https://github.com/lendres/C-Sharp-Maui-Library</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -29,8 +29,8 @@
 	</PropertyGroup>
 
 	<!-- Import information from the folder containing the project if the files exists -->
-	<Import Project="$(MSBuildProjectDirectory)/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Assembly.props')" />
-	<Import Project="$(MSBuildProjectDirectory)/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Version.props')" />
+	<Import Project="$(MSBuildProjectDirectory)/Publishing/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')" />
+	<Import Project="$(MSBuildProjectDirectory)/Publishing/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')" />
 	
 	<ItemGroup>
 	  <None Include="..\..\LICENSE">
@@ -44,11 +44,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.3" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="DigitalProductionDotNetLibrary" Version="0.1.3" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.71" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.71" />
+		<PackageReference Include="DigitalProductionDotNetLibrary" Version="0.2.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.80" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.80" />
 	</ItemGroup>
 
 	<ItemGroup>
