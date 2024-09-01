@@ -2,9 +2,10 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
-    <Style TargetType="ActivityIndicator">
+	<Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>
 
@@ -31,8 +32,8 @@
         <Setter Property="BorderWidth" Value="0"/>
         <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="Padding" Value="14,10"/>
-        <Setter Property="MinimumHeightRequest" Value="44"/>
-        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="MinimumHeightRequest" Value="38"/>
+        <Setter Property="MinimumWidthRequest" Value="100"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -417,11 +418,62 @@
         <Setter Property="IconColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
     </Style>
 
-    <Style TargetType="TabbedPage">
-        <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" />
-        <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
-        <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
-        <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
-    </Style>
+	<Style TargetType="TabbedPage">
+		<Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}" />
+		<Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
+		<Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+		<Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
+	</Style>
+
+	<!-- ADDITIONS -->
+	<Style x:Key="LabelSectionTitle" TargetType="Label">
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
+		<Setter Property="FontSize" Value="18" />
+	</Style>
+
+	<!-- Popups -->
+	<Style TargetType="toolkit:Popup" ApplyToDerivedTypes="True">
+		<Setter Property="Color" Value="Transparent"/>
+	</Style>
+	<Style TargetType="Frame" Class="PopupFrameStyle">
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightGray}, Dark={StaticResource Gray900}}"/>
+		<Setter Property="CornerRadius" Value="20"/>
+	</Style>
+	<Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle">
+		<Setter Property="Spacing" Value="10"/>
+		<Setter Property="Padding" Value="0,0"/>
+	</Style>
+	<Style TargetType="HorizontalStackLayout" x:Key="ButtonRowStyleBase">
+		<Setter Property="Spacing" Value="20"/>
+		<Setter Property="Padding" Value="0"/>
+	</Style>
+	<Style TargetType="HorizontalStackLayout"  BasedOn="{StaticResource ButtonRowStyleBase}" Class="BottomButtonRowStyle">
+		<Setter Property="Margin" Value="0,8,0,0"/>
+		<Setter Property="VerticalOptions" Value="End"/>
+		<Setter Property="HorizontalOptions" Value="End"/>
+	</Style>
+
+	<!--<Style TargetType="Button" Class="StandardSizeButtonStyle">
+		<Setter Property="HeightRequest" Value="38"/>
+		<Setter Property="WidthRequest" Value="100"/>
+		<Setter Property="VerticalOptions" Value="Center"/>
+	</Style>-->
+
+	<Style TargetType="Label" Class="Title">
+		<Setter Property="FontSize" Value="22"/>
+		<Setter Property="FontFamily" Value="OpenSans-Semibold"/>
+		<Setter Property="FontAttributes" Value="Bold" />
+		<Setter Property="HorizontalOptions" Value="Center" />
+	</Style>
+	<Style TargetType="Label" x:Key="SmallLabelBase">
+		<Setter Property="VerticalTextAlignment" Value="Start"/>
+		<Setter Property="HorizontalTextAlignment" Value="Start"/>
+		<Setter Property="HorizontalOptions" Value="Start"/>
+		<Setter Property="VerticalOptions" Value="Start"/>
+	</Style>
+	<Style TargetType="Label" Class="TitleLabel" BasedOn="{StaticResource SmallLabelBase}">
+		<Setter Property="TextColor" Value="{StaticResource ControlTitleLight}"/>
+		<Setter Property="FontSize" Value="14"/>
+	</Style>
 
 </ResourceDictionary>

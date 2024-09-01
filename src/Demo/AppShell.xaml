@@ -3,7 +3,7 @@
     x:Class="DPMauiDemo.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:DPMauiDemo"
+    xmlns:local="clr-namespace:DPMauiDemo.Pages"
 
     Title="DPMauiDemo">
 
@@ -27,7 +27,11 @@
 		<ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
 	</FlyoutItem>
 
-
+	<FlyoutItem Title="Dialogs"
+                Route="DialogsGalleryPage"
+                Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
+		<ShellContent ContentTemplate="{DataTemplate local:DialogsGalleryPage}" />
+	</FlyoutItem>
 
 	<!--<ShellContent
         Title="Home"

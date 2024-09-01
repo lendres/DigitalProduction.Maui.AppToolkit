@@ -42,4 +42,9 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+	<!-- ADDITIONS -->
+	<Color x:Key="LightGray">#EFEFEF</Color>
+	<Color x:Key="ControlTitleLight">#6E6E6E</Color>
+
 </ResourceDictionary>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project>
+	<PropertyGroup>
+		<Title>Digital Production Maui Library Demonstration and Testing</Title>
+		<Product>C Sharp Maui Library Demonstration</Product>
+		<Copyright>Lance A. Endres</Copyright>
+		<Company>Digital Production</Company>
+		<Description>A collection of C# classes, utilities, and controls for .Net Maui.</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="DigitalProduction.Reflection.AuthorsAttribute">
+			<_Parameter1>Lance A. Endres</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="DigitalProduction.Reflection.WebsiteAttribute">
+			<_Parameter1>https://github.com/lendres/C-Sharp-Maui-Library</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="DigitalProduction.Reflection.IssuesAddressAttribute">
+			<_Parameter1>https://github.com/lendres/C-Sharp-Maui-Library/issues</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+</Project>

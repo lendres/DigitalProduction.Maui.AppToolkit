@@ -1,5 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using DigitalProduction.ViewModels;
 using DPMauiDemo.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DPMauiDemo.ViewModels;
 
@@ -12,14 +13,14 @@ public abstract class BaseGalleryViewModel : BaseViewModel
 			throw new InvalidOperationException($"Duplicate {nameof(SectionModel)}.{nameof(SectionModel.ViewModelType)} found for {duplicatedSectionModels[0].ViewModelType}");
 		}
 
-		Items = items.OrderBy(x => x.Title).ToList();
+		Items = [.. items.OrderBy(x => x.Title)];
 	}
 
 	public IReadOnlyList<SectionModel> Items { get; }
 
 	static bool DoesItemsArrayContainDuplicates(in SectionModel[] items, [NotNullWhen(true)] out IReadOnlyList<SectionModel>? duplicatedSectionModels)
 	{
-		var discoveredDuplicatedSectionModels = new List<SectionModel>();
+		List<SectionModel> discoveredDuplicatedSectionModels = [];
 
 		var itemsGroupedByViewModelType = items.GroupBy(x => x.ViewModelType);
 		foreach (var duplicatedItemsGroups in itemsGroupedByViewModelType.Where(x => x.Count() > 1))
@@ -27,7 +28,7 @@ public abstract class BaseGalleryViewModel : BaseViewModel
 			discoveredDuplicatedSectionModels.AddRange(duplicatedItemsGroups);
 		}
 
-		if (discoveredDuplicatedSectionModels.Any())
+		if (discoveredDuplicatedSectionModels.Count!=0)
 		{
 			duplicatedSectionModels = discoveredDuplicatedSectionModels;
 			return true;

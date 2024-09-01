@@ -1,14 +1,15 @@
-﻿using DPMauiDemo.Pages;
+﻿using DigitalProduction.ViewModels;
+using DPMauiDemo.Pages;
 using DPMauiDemo.ViewModels;
 
 namespace DPMauiDemo;
 
 public partial class AppShell : Shell
 {
-	static readonly IReadOnlyDictionary<Type, (Type GalleryPageType, Type ContentPageType)> viewModelMappings = new Dictionary<Type, (Type, Type)>();
-	//new[]
-	//{
-	//};
+	private static readonly IReadOnlyDictionary<Type, (Type GalleryPageType, Type ContentPageType)> viewModelMappings = new Dictionary<Type, (Type, Type)>(
+	[
+		CreateViewModelMapping<AboutPage, EmptyViewModel, DialogsGalleryPage, DialogsGalleryViewModel>(),
+	]);
 
 	public AppShell()
 	{

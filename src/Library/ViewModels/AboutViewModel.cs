@@ -2,7 +2,7 @@
 
 namespace DigitalProduction.ViewModels;
 
-public partial class AboutViewModel : ObservableObject
+public partial class AboutViewModel : BaseViewModel
 {
 	#region Fields
 
