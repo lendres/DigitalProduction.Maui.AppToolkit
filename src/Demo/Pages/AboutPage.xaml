@@ -20,13 +20,11 @@
                    VerticalOptions="Start" 
                    HorizontalOptions="FillAndExpand" />
 
-			<Label Text="Add files to Publishing/Assembly.props and ./Publishing/Version.props"/>
-			<Label Text="Add import lines to project file."/>
-			<!--<Import Project="$(MSBuildProjectDirectory)/Publishing/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')" />
-				<Import Project="$(MSBuildProjectDirectory)/Publishing/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')" />
-				"/>-->
+			<Label Grid.Row="1" Text="Add files to Publishing/Assembly.props and ./Publishing/Version.props. Add import lines to project file:"/>
+			<Label Grid.Row="2" Text="&lt;Import Project=&quot;$(MSBuildProjectDirectory)/Publishing/Assembly.props&quot; Condition=&quot;Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')&quot; /&gt;"/>
+			<Label Grid.Row="3" Text="&lt;Import Project=&quot;$(MSBuildProjectDirectory)/Publishing/Version.props&quot; Condition=&quot;Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')&quot; /&gt;"/>
             
-            <Button Grid.Row="1"
+            <Button Grid.Row="4"
                     CornerRadius="23"
                     HorizontalOptions="FillAndExpand"
                     Clicked="OnButtonClicked"
