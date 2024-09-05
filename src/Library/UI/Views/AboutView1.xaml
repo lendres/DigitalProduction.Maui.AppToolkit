@@ -9,7 +9,7 @@
 	x:DataType="viewmodel:AboutViewModel"
 	CanBeDismissedByTappingOutsideOfPopup="False">
 
-	<Frame StyleClass="PopupFrameStyle" MinimumWidthRequest="500" MinimumHeightRequest="300">
+	<Frame StyleClass="PopupFrameStyle" MinimumWidthRequest="500" MinimumHeightRequest="330">
 
 		<VerticalStackLayout StyleClass="VerticalLayoutStyle">
 
@@ -43,7 +43,7 @@
 				<Label>
 					<Label.FormattedText>
 						<FormattedString>
-							<dpui:HyperlinkSpan 
+							<dpui:HyperlinkSpan
 								Text="{Binding IssuesAddress}"
                                 Url="{Binding IssuesAddress}" />
 						</FormattedString>
