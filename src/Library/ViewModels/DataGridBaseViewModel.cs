@@ -11,7 +11,7 @@ namespace DigitalProduction.ViewModels;
 /// Base class for viewmodels that display a DataGrid.
 /// </summary>
 /// <typeparam name="T">A class that is used as a bindable object in the DataGrid.</typeparam>
-public partial class DataGridBaseViewModel<T> : ObservableObject, INotifyPropertyChanged where T : class
+public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyChanged where T : class
 {
 	#region Fields
 

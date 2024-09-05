@@ -14,7 +14,7 @@ public class HyperlinkSpan : Span
     public HyperlinkSpan()
     {
         //TextDecorations	= TextDecorations.Underline;
-        TextColor = Colors.Blue;
+        //TextColor = Colors.Blue;
         GestureRecognizers.Add(new TapGestureRecognizer
         {
             // Launcher.OpenAsync is provided by Essentials.
