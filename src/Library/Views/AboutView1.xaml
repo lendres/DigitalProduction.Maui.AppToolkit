@@ -28,28 +28,12 @@
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Website:" StyleClass="TitleLabel"/>
-				<Label>
-					<Label.FormattedText>
-						<FormattedString>
-							<dpcontrols:HyperlinkSpan 
-								Text="{Binding Website}"
-                                Url="{Binding Website}" />
-						</FormattedString>
-					</Label.FormattedText>
-				</Label>
+				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}" />
 			</VerticalStackLayout>
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Report issues:" StyleClass="TitleLabel"/>
-				<Label>
-					<Label.FormattedText>
-						<FormattedString>
-							<dpcontrols:HyperlinkSpan
-								Text="{Binding IssuesAddress}"
-                                Url="{Binding IssuesAddress}" />
-						</FormattedString>
-					</Label.FormattedText>
-				</Label>
+				<dpcontrols:HyperlinkLabel Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" />
 			</VerticalStackLayout>
 
 			<HorizontalStackLayout StyleClass="BottomButtonRowStyle">
