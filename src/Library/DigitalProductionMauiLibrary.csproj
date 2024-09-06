@@ -54,21 +54,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="UI\Views\AboutView1.xaml.cs">
+	  <Compile Update="Views\AboutView1.xaml.cs">
 	    <DependentUpon>AboutView1.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="UI\Views\PopupView.xaml.cs">
+	  <Compile Update="Views\PopupView.xaml.cs">
 	    <DependentUpon>PopupView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="UI\Views\AboutView1.xaml">
+	  <MauiXaml Update="Controls\HyperlinkLabel.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="UI\Views\PopupView.xaml">
+	  <MauiXaml Update="Views\AboutView1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PopupView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="UI\ContentPages\" />
 	</ItemGroup>
 
 </Project>

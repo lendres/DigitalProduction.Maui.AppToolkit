@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.Views;
 
-namespace DigitalProduction.UI;
+namespace DigitalProduction.Views;
 
 public partial class PopupView : Popup
 {
