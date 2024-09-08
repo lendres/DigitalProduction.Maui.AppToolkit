@@ -8,8 +8,8 @@ public partial class AboutView1 : PopupView
 
 	public AboutView1(AboutViewModel viewModel)
 	{
-		BindingContext = viewModel;
 		InitializeComponent();
+		BindingContext = viewModel;
 	}
 
 	#endregion
