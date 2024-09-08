@@ -8,11 +8,9 @@ namespace DigitalProduction.UI;
 public static class AppTools
 {
 	#region Fields
-
 	#endregion
 
 	#region Properties
-
 	#endregion
 
 	#region Methods
