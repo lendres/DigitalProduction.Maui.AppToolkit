@@ -1,6 +1,6 @@
 ﻿using DigitalProduction.ViewModels;
 
-namespace DigitalProduction.UI;
+namespace DigitalProduction.Views;
 
 public partial class AboutView1 : PopupView
 {

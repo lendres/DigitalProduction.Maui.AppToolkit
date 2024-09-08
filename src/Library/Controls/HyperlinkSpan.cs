@@ -1,4 +1,4 @@
-﻿namespace DigitalProduction.UI;
+﻿namespace DigitalProduction.Controls;
 
 public class HyperlinkSpan : Span
 {
