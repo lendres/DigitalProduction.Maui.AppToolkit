@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Maui.Views;
-using DigitalProduction.UI;
+using DigitalProduction.Views;
 using DigitalProduction.ViewModels;
 using DPMauiDemo.ViewModels;
 

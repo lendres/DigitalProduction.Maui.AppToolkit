@@ -6,7 +6,6 @@ namespace DigitalProduction.UI;
 
 public static partial class LifecycleEventsInstaller
 {
-
 	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder)
 	{
 		builder.ConfigureLifecycleEvents(events =>
