@@ -38,6 +38,6 @@ public partial class HyperlinkLabel : ContentView
 
 	public HyperlinkLabel()
 	{
-		//InitializeComponent();
+		InitializeComponent();
 	}
 }
