@@ -10,7 +10,7 @@
     x:DataType="viewmmodel:EmptyViewModel">
    
     <pages:BasePage.Content>
-        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+		<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
               RowSpacing="5"
               ColumnSpacing="5"
               ColumnDefinitions="*">
@@ -23,8 +23,11 @@
 			<Label Grid.Row="1" Text="Add files to Publishing/Assembly.props and ./Publishing/Version.props. Add import lines to project file:"/>
 			<Label Grid.Row="2" Text="&lt;Import Project=&quot;$(MSBuildProjectDirectory)/Publishing/Assembly.props&quot; Condition=&quot;Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')&quot; /&gt;"/>
 			<Label Grid.Row="3" Text="&lt;Import Project=&quot;$(MSBuildProjectDirectory)/Publishing/Version.props&quot; Condition=&quot;Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')&quot; /&gt;"/>
-            
-            <Button Grid.Row="4"
+			<Label Grid.Row="4" Text="Remove from the project file:"/>
+			<Label Grid.Row="5" Text="Version/&gt;...&lt;/Version/&gt; &lt;Title>...&lt;/Title/&gt; &lt;Product>...&lt;/Product/&gt; &lt;ApplicationDisplayVersion&gt;...&lt;/ApplicationDisplayVersion&gt; &lt;ApplicationVersion&gt;...&lt;/ApplicationVersion&gt;"/>
+			<Label Grid.Row="6" Text="then save the project file and rebuild the solution."/>
+
+			<Button Grid.Row="7"
                     CornerRadius="23"
                     HorizontalOptions="FillAndExpand"
                     Clicked="OnButtonClicked"
