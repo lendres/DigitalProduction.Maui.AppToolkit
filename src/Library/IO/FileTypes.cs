@@ -2,9 +2,7 @@
 
 public static class FileTypes
 {
-	/// <summary>
-	/// CSV (comma separated value) file.
-	/// </summary>
+	/// <summary>CSV (comma separated value) file.</summary>
 	public static FilePickerFileType CommaSeparatedValue
 	{
 		get
@@ -47,9 +45,7 @@ public static class FileTypes
 		}
 	}
 
-	/// <summary>
-	/// Word document file types.
-	/// </summary>
+	/// <summary>Word document file types.</summary>
 	public static FilePickerFileType WordDoc
 	{
 		get
@@ -87,9 +83,7 @@ public static class FileTypes
 		}
 	}
 
-	/// <summary>
-	/// XML file types.
-	/// </summary>
+	/// <summary>XML file types.</summary>
 	public static FilePickerFileType Xml
 	{
 		get
@@ -123,6 +117,49 @@ public static class FileTypes
 					DevicePlatform.WinUI, new[]
 					{
 						".xml",
+						".txt",
+						".text"
+						//"*/*"
+					}
+				},
+			});
+		}
+	}
+
+	/// <summary>XSLT file types.</summary>
+	public static FilePickerFileType Xslt
+	{
+		get
+		{
+			return new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+			{
+				{
+					DevicePlatform.iOS, new[]
+					{
+						"public.xslt",
+						"public.plain-text",
+						"public.text"
+					}
+				},
+				{
+					DevicePlatform.macOS, new[]
+					{
+						"public.xslt",
+						"public.plain-text",
+						"public.text"
+					}
+				},
+				{
+					DevicePlatform.Android, new[]
+					{
+						"text/xslt",
+						"text/plain"
+					}
+				},
+				{
+					DevicePlatform.WinUI, new[]
+					{
+						".xslt",
 						".txt",
 						".text"
 						//"*/*"
