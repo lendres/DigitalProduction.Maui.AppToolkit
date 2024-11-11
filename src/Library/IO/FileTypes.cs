@@ -137,6 +137,7 @@ public static class FileTypes
 					DevicePlatform.iOS, new[]
 					{
 						"public.xslt",
+						"public.xsl",
 						"public.plain-text",
 						"public.text"
 					}
@@ -145,6 +146,7 @@ public static class FileTypes
 					DevicePlatform.macOS, new[]
 					{
 						"public.xslt",
+						"public.xsl",
 						"public.plain-text",
 						"public.text"
 					}
@@ -153,6 +155,7 @@ public static class FileTypes
 					DevicePlatform.Android, new[]
 					{
 						"text/xslt",
+						"text/xsl",
 						"text/plain"
 					}
 				},
@@ -160,9 +163,9 @@ public static class FileTypes
 					DevicePlatform.WinUI, new[]
 					{
 						".xslt",
+						".xsl",
 						".txt",
 						".text"
-						//"*/*"
 					}
 				},
 			});
