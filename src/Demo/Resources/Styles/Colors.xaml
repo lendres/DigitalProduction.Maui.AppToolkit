@@ -48,6 +48,6 @@
 	<Color x:Key="ControlTitleLight">#6E6E6E</Color>
 
 	<Color x:Key="HyperLinkLight">Blue</Color>
-	<Color x:Key="HyperLinkDark">#28C2D1</Color>
+	<Color x:Key="HyperLinkDark">#28C2FF</Color>
 
 </ResourceDictionary>
