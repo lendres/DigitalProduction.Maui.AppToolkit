@@ -17,7 +17,7 @@
                 Text="Hello, World!"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" 
-				BackgroundColor="{StaticResource ControlTitleLight}"/>
+				BackgroundColor="{StaticResource Gray500}"/>
 
             <Label
                 Text="Welcome to &#10;.NET Multi-platform App UI"
@@ -25,7 +25,7 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
-			<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Start"/>
+			<!--<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Start"/>
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Author(s):" StyleClass="TitleLabel"/>
@@ -35,7 +35,7 @@
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Version:" StyleClass="TitleLabel"/>
 				<Label Text="{Binding Version}"/>
-			</VerticalStackLayout>
+			</VerticalStackLayout>-->
 
 		</VerticalStackLayout>
     </ScrollView>
