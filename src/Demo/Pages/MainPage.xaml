@@ -25,7 +25,19 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
-        </VerticalStackLayout>
+			<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Start"/>
+
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Author(s):" StyleClass="TitleLabel"/>
+				<Label Text="{Binding Authors}"/>
+			</VerticalStackLayout>
+
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Version:" StyleClass="TitleLabel"/>
+				<Label Text="{Binding Version}"/>
+			</VerticalStackLayout>
+
+		</VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
