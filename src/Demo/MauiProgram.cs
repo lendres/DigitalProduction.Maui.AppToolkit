@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.ApplicationModel;
 using CommunityToolkit.Maui.Markup;
 using CommunityToolkit.Maui.Media;
 using CommunityToolkit.Maui.Storage;
+using DigitalProduction;
 using DigitalProduction.ViewModels;
 using DPMauiDemo.Pages;
 using DPMauiDemo.ViewModels;
@@ -19,6 +20,7 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
 			.UseMauiCommunityToolkitMarkup()
+			.UseDigitalProduction()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
