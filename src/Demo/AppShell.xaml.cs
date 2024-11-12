@@ -16,7 +16,6 @@ public partial class AppShell : Shell
 		InitializeComponent();
 	}
 
-
 	public static string GetPageRoute<TViewModel>() where TViewModel : BaseViewModel
 	{
 		return GetPageRoute(typeof(TViewModel));
