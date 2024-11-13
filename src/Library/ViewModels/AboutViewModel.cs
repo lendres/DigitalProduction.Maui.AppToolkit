@@ -37,7 +37,12 @@ public partial class AboutViewModel : BaseViewModel
 
 	#region Construction
 
-	public AboutViewModel(bool threeDigitVersion = true)
+	public AboutViewModel() :
+		this(true)
+	{
+	}
+
+	public AboutViewModel(bool threeDigitVersion)
 	{
 		System.Reflection.Assembly? entryAssembly = System.Reflection.Assembly.GetEntryAssembly();
 		System.Diagnostics.Debug.Assert(entryAssembly != null);
