@@ -1,6 +1,6 @@
 ﻿namespace DigitalProduction.Controls;
 
-public partial class HyperlinkSpan : Span
+public partial class HyperlinkLabel2 : Label
 {
     public static readonly BindableProperty UrlProperty =
         BindableProperty.Create(nameof(Url), typeof(string), typeof(HyperlinkSpan), null);
@@ -11,10 +11,8 @@ public partial class HyperlinkSpan : Span
         set { SetValue(UrlProperty, value); }
     }
 
-    public HyperlinkSpan()
+    public HyperlinkLabel2()
     {
-        //TextDecorations	= TextDecorations.Underline;
-        TextColor = Microsoft.Maui.Graphics.Colors.Blue;
         GestureRecognizers.Add(new TapGestureRecognizer
         {
             // Launcher.OpenAsync is provided by Essentials.

@@ -7,7 +7,7 @@
 	<Label>
 		<Label.FormattedText>
 			<FormattedString>
-				<dpcontrols:HyperlinkSpan x:Name="Link"/>
+				<dpcontrols:HyperlinkSpan x:Name="_hyperlinkSpan"/>
 			</FormattedString>
 		</Label.FormattedText>
 	</Label>

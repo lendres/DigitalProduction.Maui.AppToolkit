@@ -5,5 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:dpcontrols="clr-namespace:DigitalProduction.Controls;assembly=DigitalProductionMauiLibrary"
 	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+	<!--<Style TargetType="{x:Type dpcontrols:HyperlinkSpan}">
+		<Setter Property="TextColor" Value="{DynamicResource White}"/>
+	</Style>-->
 
+	<Style TargetType="{x:Type dpcontrols:HyperlinkLabel}" x:Key="HyperLinkStyle" Class="HyperLinkStyle">
+		<Setter Property="TextColor" Value="{DynamicResource Magenta}"/>
+	</Style>
+
+	<Style TargetType="Label" Class="LabelTestStyle">
+		<Setter Property="TextColor" Value="{DynamicResource Magenta}"/>
+	</Style>
 </ResourceDictionary>
