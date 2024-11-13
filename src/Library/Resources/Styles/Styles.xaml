@@ -487,7 +487,7 @@
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource HyperLinkLight}, Dark={DynamicResource HyperLinkDark}}"/>
 	</Style>
 
-	<!-- Other -->
+	<!-- Miscellaneous -->
 	<Style TargetType="TabBar">
 		<Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource BackgroundMid}}"/>
 		<Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={DynamicResource DarkGray}, Dark={DynamicResource White}}"/>
@@ -507,5 +507,41 @@
 		<Setter Property="VerticalOptions" Value="End"/>
 		<Setter Property="HorizontalOptions" Value="End"/>
 	</Style>
+
+	<!-- DataGrid -->
+	<Style TargetType="ContentView" Class="DataGridContentViewStyle" >
+		<Setter Property="HorizontalOptions" Value="Start"/>
+		<Setter Property="VerticalOptions" Value="Fill"/>
+		<Setter Property="Padding" Value="6,0"/>
+	</Style>
+	<Style TargetType="Label" Class="DataGridLabelStyle">
+		<Setter Property="HorizontalOptions" Value="Start"/>
+		<Setter Property="VerticalOptions" Value="Center"/>
+	</Style>
+
+	<Style TargetType="Label" x:Key="DataGridTitle">
+		<Setter Property="FontAttributes" Value="Bold" />
+		<Setter Property="TextColor" Value="Black" />
+		<Setter Property="FontSize" Value="18" />
+		<Setter Property="HorizontalOptions" Value="Center" />
+		<Setter Property="VerticalOptions" Value="Center" />
+		<Setter Property="LineBreakMode" Value="TailTruncation" />
+	</Style>
+
+	<DataTemplate x:Key="DataGridDefaultCellTempate" x:DataType="x:String">
+		<ContentView StyleClass="DataGridContentViewStyle">
+			<Label Text="{Binding}" StyleClass="DataGridLabelStyle"/>
+		</ContentView>
+	</DataTemplate>
+
+	<dg:PaletteCollection x:Key="DataGridColorPaletteLight">
+		<Color>#F2F2F2</Color>
+		<Color>White</Color>
+	</dg:PaletteCollection>
+
+	<dg:PaletteCollection x:Key="DataGridColorPaletteDark">
+		<Color>#404040</Color>
+		<Color>#292929</Color>
+	</dg:PaletteCollection>
 
 </ResourceDictionary>
