@@ -1,6 +1,6 @@
 ﻿namespace DigitalProduction.Controls;
 
-public partial class HyperlinkLabel2 : Label
+public partial class HyperlinkLabel : Label
 {
     public static readonly BindableProperty UrlProperty =
         BindableProperty.Create(nameof(Url), typeof(string), typeof(HyperlinkSpan), null);
@@ -11,7 +11,7 @@ public partial class HyperlinkLabel2 : Label
         set { SetValue(UrlProperty, value); }
     }
 
-    public HyperlinkLabel2()
+    public HyperlinkLabel()
     {
         GestureRecognizers.Add(new TapGestureRecognizer
         {
