@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:dpcontrols="clr-namespace:DigitalProduction.Controls;assembly=DigitalProductionMauiLibrary"
 	x:Class="DigitalProduction.Resources.Styles.Styles">
 
 	<Style TargetType="ActivityIndicator">
@@ -402,9 +403,9 @@
 	</Style>
 
 	<Style TargetType="Shell" ApplyToDerivedTypes="True">
-		<Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={DynamicResource White}, Dark={DynamicResource OffBlack}}" />
-		<Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={DynamicResource SecondaryDarkText}}" />
-		<Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={DynamicResource SecondaryDarkText}}" />
+		<Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource OffBlack}}"/>
+		<Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={DynamicResource White}, Default={DynamicResource White}}"/>
+		<Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={DynamicResource DarkGray}, Dark={DynamicResource White}}"/>
 		<Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray950}}" />
 		<Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray200}}" />
 		<Setter Property="Shell.NavBarHasShadow" Value="False" />
@@ -468,9 +469,43 @@
 		<Setter Property="HorizontalOptions" Value="Start"/>
 		<Setter Property="VerticalOptions" Value="Start"/>
 	</Style>
-	<Style TargetType="Label" Class="TitleLabel" BasedOn="{StaticResource SmallLabelBase}">
-		<Setter Property="TextColor" Value="{DynamicResource Gray500}"/>
+	<Style TargetType="Label" Class="ControlLabel" BasedOn="{StaticResource SmallLabelBase}">
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray600}, Dark={DynamicResource Gray400}}"/>
 		<Setter Property="FontSize" Value="14"/>
+	</Style>
+	<Style TargetType="Label" Class="InvalidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ErrorColorLight}, Dark={DynamicResource ErrorColorDark}}"/>
+		<Setter Property="FontSize" Value="12"/>
+	</Style>
+	<Style TargetType="Label" Class="ValidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ValidColorLight}, Dark={DynamicResource ValidColorDark}}"/>
+		<Setter Property="FontSize" Value="12"/>
+	</Style>
+
+	<!-- Hyperlink -->
+	<!--<Style TargetType="{x:Type dpcontrols:HyperlinkSpan}">
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource HyperLinkLight}, Dark={DynamicResource HyperLinkDark}}"/>
+	</Style>-->
+
+	<!-- Other -->
+	<Style TargetType="TabBar">
+		<Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource BackgroundMid}}"/>
+		<Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={DynamicResource DarkGray}, Dark={DynamicResource White}}"/>
+		<Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TabOff}"/>
+		<Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource Yellow100Accent}"/>
+	</Style>
+
+	<Style x:Key="HorizontalBoarder" TargetType="BoxView">
+		<Setter Property="BackgroundColor" Value="White"/>
+		<Setter Property="HeightRequest" Value="1"/>
+		<Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+		<Setter Property="Margin" Value="0,5"/>
+	</Style>
+
+	<Style TargetType="HorizontalStackLayout"  BasedOn="{StaticResource ButtonRowStyleBase}" Class="BottomButtonRowStyle">
+		<Setter Property="Margin" Value="0,8,0,0"/>
+		<Setter Property="VerticalOptions" Value="End"/>
+		<Setter Property="HorizontalOptions" Value="End"/>
 	</Style>
 
 </ResourceDictionary>
