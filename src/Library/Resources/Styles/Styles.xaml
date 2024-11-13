@@ -483,7 +483,7 @@
 	</Style>
 
 	<!-- Hyperlink -->
-	<Style TargetType="{x:Type dpcontrols:HyperlinkLabel2}">
+	<Style TargetType="{x:Type dpcontrols:HyperlinkLabel}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource HyperLinkLight}, Dark={DynamicResource HyperLinkDark}}"/>
 	</Style>
 

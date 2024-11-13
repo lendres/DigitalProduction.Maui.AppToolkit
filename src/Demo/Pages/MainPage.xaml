@@ -13,42 +13,27 @@
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25" HorizontalOptions="Center">
 
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" 
-				BackgroundColor="{StaticResource HyperLinkDark}"/>
+			<Label Text="{Binding Title}" Style="{StaticResource SubHeadline}"/>
 
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-
-
-			<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Center"/>
-
-			<!--
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Author(s):" StyleClass="TitleLabel"/>
-				<Label Text="{Binding Authors}"/>
+				<Label Text="Author(s):" StyleClass="LargeControlLabel"/>
+				<Label Text="{Binding Authors}" StyleClass="LargeLabel"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Version:" StyleClass="TitleLabel"/>
-				<Label Text="{Binding Version}"/>
-			</VerticalStackLayout>-->
-
-			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Test" StyleClass="TitleLabel"/>
-				<dpcontrols:HyperlinkLabel2 Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" />
-				<dpcontrols:HyperlinkLabel2 Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" TextColor="{StaticResource Magenta}" />
-				<dpcontrols:HyperlinkLabel2 Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" FontAttributes="Bold" FontSize="20" />
-				<Label Text="HyperLinkLabel 2" StyleClass="LabelTestStyle"/>
-				<dpcontrols:HyperlinkLabel2 Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" StyleClass="HyperLinkStyle" />
-				<Label Text="This is a test." StyleClass="LabelTestStyle"/>
+				<Label Text="Version:" StyleClass="LargeControlLabel"/>
+				<Label Text="{Binding Version}" StyleClass="LargeLabel"/>
 			</VerticalStackLayout>
 
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Website:" StyleClass="LargeControlLabel"/>
+				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}"  StyleClass="LargeHyperLink"/>
+			</VerticalStackLayout>
+
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Report issues:" StyleClass="LargeControlLabel"/>
+				<dpcontrols:HyperlinkLabel Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}"  StyleClass="LargeHyperLink"/>
+			</VerticalStackLayout>
 
 		</VerticalStackLayout>
     </ScrollView>
