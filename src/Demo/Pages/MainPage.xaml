@@ -41,7 +41,7 @@
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Test" StyleClass="TitleLabel"/>
-				<dpcontrols:HyperlinkLabel2 x:Name="_link" Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" />
+				<dpcontrols:HyperlinkLabel2 Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" />
 				<dpcontrols:HyperlinkLabel2 Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" TextColor="{StaticResource Magenta}" />
 				<dpcontrols:HyperlinkLabel2 Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" FontAttributes="Bold" FontSize="20" />
 				<Label Text="HyperLinkLabel 2" StyleClass="LabelTestStyle"/>

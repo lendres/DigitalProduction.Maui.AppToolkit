@@ -483,9 +483,9 @@
 	</Style>
 
 	<!-- Hyperlink -->
-	<!--<Style TargetType="{x:Type dpcontrols:HyperlinkSpan}">
+	<Style TargetType="{x:Type dpcontrols:HyperlinkLabel2}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource HyperLinkLight}, Dark={DynamicResource HyperLinkDark}}"/>
-	</Style>-->
+	</Style>
 
 	<!-- Other -->
 	<Style TargetType="TabBar">
