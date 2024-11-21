@@ -13,7 +13,18 @@ public partial class AboutPage : BasePage<EmptyViewModel>
 		InitializeComponent();
 	}
 
-	async void OnButtonClicked(object? sender, EventArgs args)
+	async void OnButtonAbout1Clicked(object? sender, EventArgs args)
+	{
+		AboutView1 view = new(
+			new AboutViewModel(true)
+			{
+				ShowDocumentationAddress = false
+			}
+		);
+		_ = await Shell.Current.ShowPopupAsync(view);
+	}
+
+	async void OnButtonAbout2Clicked(object? sender, EventArgs args)
 	{
 		AboutView1 view = new(new AboutViewModel(true));
 		_ = await Shell.Current.ShowPopupAsync(view);
