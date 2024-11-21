@@ -17,7 +17,7 @@
 			<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Start"/>
 
 			<VerticalStackLayout IsVisible="{Binding ShowCopyright}" StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Author(s):" StyleClass="TitleLabel"/>
+				<Label Text="Copyright:" StyleClass="TitleLabel"/>
 				<Label Text="{Binding Copyright}"/>
 			</VerticalStackLayout>
 
