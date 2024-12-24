@@ -28,7 +28,7 @@
 	</Style>
 
 	<Style TargetType="Button">
-		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource White}, Dark={DynamicResource PrimaryDarkText}}" />
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource White}, Dark={DynamicResource White}}" />
 		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}" />
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
@@ -41,14 +41,23 @@
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal" />
+					<VisualState x:Name="Normal"/>
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
-							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}" />
-							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}" />
+							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"/>
 						</VisualState.Setters>
 					</VisualState>
-					<VisualState x:Name="PointerOver" />
+					<VisualState x:Name="Pressed">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Blue200Accent}, Dark={DynamicResource Blue200Accent}}"/>
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="PointerOver">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Blue100Accent}, Dark={DynamicResource Blue100Accent}}"/>
+						</VisualState.Setters>
+					</VisualState>
 				</VisualStateGroup>
 			</VisualStateGroupList>
 		</Setter>

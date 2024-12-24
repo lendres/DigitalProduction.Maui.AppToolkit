@@ -65,6 +65,7 @@
 	<Color x:Key="Cyan100Accent">#28C2D1</Color>
 	<Color x:Key="Cyan200Accent">#7BDDEF</Color>
 	<Color x:Key="Cyan300Accent">#C3F2F4</Color>
+	<Color x:Key="Blue050Accent">#2878DB</Color>
 	<Color x:Key="Blue100Accent">#3E8EED</Color>
 	<Color x:Key="Blue200Accent">#72ACF1</Color>
 	<Color x:Key="Blue300Accent">#A7CBF6</Color>
