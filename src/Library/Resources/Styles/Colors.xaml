@@ -70,6 +70,13 @@
 	<Color x:Key="Blue200Accent">#72ACF1</Color>
 	<Color x:Key="Blue300Accent">#A7CBF6</Color>
 
+	<!-- Controls. -->
+	<Color x:Key="DataGridActiveRowColor">#8899AA</Color>
+	<Color x:Key="DataGridHeaderBackgroundColor">#E0E6F8</Color>
+	<Color x:Key="DataGridFooterBackgroundColor">#E0E6F8</Color>
+	<Color x:Key="DataGridBackgroundColorLight">#CCCCCC</Color>
+	<Color x:Key="DataGridBackgroundColorDark">#171717</Color>
+
 	<!-- Brushes -->
 	<SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
 	<SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>

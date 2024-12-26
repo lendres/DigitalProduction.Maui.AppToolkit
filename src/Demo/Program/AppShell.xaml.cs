@@ -8,12 +8,14 @@ public partial class AppShell : Shell
 {
 	private static readonly IReadOnlyDictionary<Type, (Type GalleryPageType, Type ContentPageType)> viewModelMappings = new Dictionary<Type, (Type, Type)>(
 	[
-		CreateViewModelMapping<AboutPage, EmptyViewModel, DialogsGalleryPage, DialogsGalleryViewModel>(),
+		CreateViewModelMapping<AboutPage, AboutPageViewModel, ControlsGalleryPage, ControlsGalleryViewModel>(),
+		CreateViewModelMapping<DataGridPage, DataGridPageViewModel, DialogsGalleryPage, DialogsGalleryViewModel>()
 	]);
 
 	public AppShell()
 	{
 		InitializeComponent();
+		Routing.RegisterRoute(nameof(DataGridExamplePage), typeof(DataGridExamplePage));
 	}
 
 	public static string GetPageRoute<TViewModel>() where TViewModel : BaseViewModel

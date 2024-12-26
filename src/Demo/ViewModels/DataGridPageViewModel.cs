@@ -2,6 +2,6 @@
 
 namespace DPMauiDemo.ViewModels;
 
-public class EmptyViewModel : BaseViewModel
+public partial class DataGridPageViewModel : BaseViewModel
 {
 }
