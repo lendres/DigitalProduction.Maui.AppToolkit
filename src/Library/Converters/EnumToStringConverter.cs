@@ -4,7 +4,7 @@ using System.Globalization;
 namespace DigitalProduction.Converters;
 
 /// <summary>
-///     Converts an <see cref="Enum" /> to its underlying <see cref="int" /> value.
+///     Converts an <see cref="Enum"/> to its underlying <see cref="int"/> value.
 /// </summary>
 public class EnumToStringConverter<TEnum> : IValueConverter where TEnum : struct
 {

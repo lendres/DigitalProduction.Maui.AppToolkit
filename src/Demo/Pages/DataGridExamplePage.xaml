@@ -18,7 +18,7 @@
 	</ContentPage.Resources>
 
 	<ScrollView>
-		<VerticalStackLayout Padding="30,0" Spacing="0" MaximumWidthRequest="650">
+		<VerticalStackLayout Padding="30,0" Spacing="20" MaximumWidthRequest="650">
 
 			<!-- Temporary Placeholder -->
 			<Label
@@ -38,20 +38,17 @@
 					<HorizontalStackLayout Grid.Column="0" StyleClass="TopButtonRowStyle">
 						<Button
 							Text="New"
-							HorizontalOptions="Start"
-							/>
+							HorizontalOptions="Start"/>
 
 						<Button 
 							Text="Edit"
 							IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
-							HorizontalOptions="Start"
-							/>
+							HorizontalOptions="Start"/>
 
 						<Button 
 							Text="Delete"
 							IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
-							HorizontalOptions="Start"
-							/>
+							HorizontalOptions="Start"/>
 					</HorizontalStackLayout>
 
 					<Button 

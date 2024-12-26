@@ -17,26 +17,26 @@
                FontSize="24"
                HorizontalTextAlignment="Start"
                Text="Examples"
-               VerticalTextAlignment="Center" />
+               VerticalTextAlignment="Center"/>
 
 	</Shell.FlyoutHeader>
 
 	<FlyoutItem Title="Welcome"
                 Route="WelcomePage"
                 Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
-		<ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+		<ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
 	</FlyoutItem>
 
 	<FlyoutItem Title="Controls"
                 Route="ControlsGalleryPage"
                 Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
-		<ShellContent ContentTemplate="{DataTemplate local:ControlsGalleryPage}" />
+		<ShellContent ContentTemplate="{DataTemplate local:ControlsGalleryPage}"/>
 	</FlyoutItem>
 
 	<FlyoutItem Title="Dialogs"
                 Route="DialogsGalleryPage"
                 Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
-		<ShellContent ContentTemplate="{DataTemplate local:DialogsGalleryPage}" />
+		<ShellContent ContentTemplate="{DataTemplate local:DialogsGalleryPage}"/>
 	</FlyoutItem>
 
 </Shell>

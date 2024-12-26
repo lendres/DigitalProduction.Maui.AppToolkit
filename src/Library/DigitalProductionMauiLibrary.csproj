@@ -31,14 +31,14 @@
 	</PropertyGroup>
 
 	<!-- Import information from the folder containing the project if the files exists -->
-	<Import Project="$(MSBuildProjectDirectory)/Publishing/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')" />
-	<Import Project="$(MSBuildProjectDirectory)/Publishing/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')" />
+	<Import Project="$(MSBuildProjectDirectory)/Publishing/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')"/>
+	<Import Project="$(MSBuildProjectDirectory)/Publishing/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')"/>
 	<ItemGroup>
-	  <Compile Remove="UI\**" />
-	  <EmbeddedResource Remove="UI\**" />
-	  <MauiCss Remove="UI\**" />
-	  <MauiXaml Remove="UI\**" />
-	  <None Remove="UI\**" />
+	  <Compile Remove="UI\**"/>
+	  <EmbeddedResource Remove="UI\**"/>
+	  <MauiCss Remove="UI\**"/>
+	  <MauiXaml Remove="UI\**"/>
+	  <None Remove="UI\**"/>
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -53,12 +53,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="akgul.Maui.DataGrid" Version="4.0.5" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.3" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="DigitalProductionDotNetLibrary" Version="0.3.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.82" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.82" />
+		<PackageReference Include="akgul.Maui.DataGrid" Version="4.0.5"/>
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.3"/>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2"/>
+		<PackageReference Include="DigitalProductionDotNetLibrary" Version="0.3.0"/>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.82"/>
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.82"/>
 	</ItemGroup>
 
 	<ItemGroup>

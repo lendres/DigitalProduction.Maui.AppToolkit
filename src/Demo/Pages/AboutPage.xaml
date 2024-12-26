@@ -18,7 +18,7 @@
             <Label Text="The AboutView1 is a popup that shows basic information about the application."
                    Grid.Row="0"
                    VerticalOptions="Start" 
-                   HorizontalOptions="FillAndExpand" />
+                   HorizontalOptions="FillAndExpand"/>
 
 			<Label Grid.Row="1" Text="Add files to Publishing/Assembly.props and ./Publishing/Version.props. Add import lines to project file:"/>
 			<Label Grid.Row="2" Text="&lt;Import Project=&quot;$(MSBuildProjectDirectory)/Publishing/Assembly.props&quot; Condition=&quot;Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')&quot; /&gt;"/>

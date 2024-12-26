@@ -33,17 +33,17 @@
 
 			<VerticalStackLayout IsVisible="{Binding ShowWebsite}" StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Website:" StyleClass="TitleLabel"/>
-				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}" />
+				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowIssuesAddress}" StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Report issues:" StyleClass="TitleLabel"/>
-				<dpcontrols:HyperlinkLabel Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" />
+				<dpcontrols:HyperlinkLabel Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowDocumentationAddress}" StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Documentation:" StyleClass="TitleLabel"/>
-				<dpcontrols:HyperlinkLabel Text="{Binding DocumentationAddress}" Url="{Binding DocumentationAddress}" />
+				<dpcontrols:HyperlinkLabel Text="{Binding DocumentationAddress}" Url="{Binding DocumentationAddress}"/>
 			</VerticalStackLayout>
 
 			<HorizontalStackLayout StyleClass="BottomButtonRowStyle">

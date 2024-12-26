@@ -5,7 +5,7 @@ using System.Globalization;
 namespace DigitalProduction.Converters;
 
 /// <summary>
-///     Converts an <see cref="Enum" /> to a <see cref="string"/> that is extracted from its <see cref="MessageAttribute"/>.
+///     Converts an <see cref="Enum"/> to a <see cref="string"/> that is extracted from its <see cref="MessageAttribute"/>.
 /// </summary>
 public class EnumToMessageConverter : BaseConverterOneWay<Enum, string, Type>
 {
