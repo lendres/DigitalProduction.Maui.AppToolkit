@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace DPMauiDemo;
+﻿namespace DPMauiDemo;
 
 /// <summary>
 /// A person.
