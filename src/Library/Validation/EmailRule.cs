@@ -1,4 +1,4 @@
-﻿namespace DigitalProduction.Validation;
+﻿namespace DigitalProduction.Maui.Validation;
 
 /// <summary>
 /// Email validation rule.

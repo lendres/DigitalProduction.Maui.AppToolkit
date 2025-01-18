@@ -1,4 +1,4 @@
-﻿namespace DigitalProduction.UI;
+﻿namespace DigitalProduction.Maui.UI;
 
 public static partial class LifecycleEventsInstaller
 {

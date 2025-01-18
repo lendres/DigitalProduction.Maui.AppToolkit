@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace DigitalProduction.ViewModels;
+namespace DigitalProduction.Maui.ViewModels;
 
 /// <summary>
 /// Base class for viewmodels that display a DataGrid.

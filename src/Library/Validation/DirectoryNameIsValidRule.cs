@@ -1,6 +1,6 @@
 ﻿using DigitalProduction.IO;
 
-namespace DigitalProduction.Validation;
+namespace DigitalProduction.Maui.Validation;
 
 /// <summary>
 /// File must exist validation rule.
@@ -13,5 +13,5 @@ namespace DigitalProduction.Validation;
 public class DirectoryNameIsValidRule : ValidationRuleBase<string>
 {
 	public override bool Check(string? value) =>
-		IO.Path.IsValidDirectory(value) == PathValidationResult.Valid;
+		DigitalProduction.IO.Path.IsValidDirectory(value) == PathValidationResult.Valid;
 }

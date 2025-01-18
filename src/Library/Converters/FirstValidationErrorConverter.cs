@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using CommunityToolkit.Maui.Converters;
 
-namespace DigitalProduction.Converters;
+namespace DigitalProduction.Maui.Converters;
 
 /// <summary>
 /// Gets the first string out of an enumerable.

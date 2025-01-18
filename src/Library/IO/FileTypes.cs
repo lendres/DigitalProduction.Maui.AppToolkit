@@ -1,4 +1,4 @@
-﻿namespace DigitalProduction.IO;
+﻿namespace DigitalProduction.Maui.IO;
 
 public static class FileTypes
 {

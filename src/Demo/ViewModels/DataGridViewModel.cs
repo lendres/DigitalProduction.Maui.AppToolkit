@@ -1,4 +1,4 @@
-﻿using DigitalProduction.ViewModels;
+﻿using DigitalProduction.Maui.ViewModels;
 using System.Collections.ObjectModel;
 
 namespace DPMauiDemo.ViewModels;

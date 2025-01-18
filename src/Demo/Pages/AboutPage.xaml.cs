@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Maui.Views;
-using DigitalProduction.Views;
+using DigitalProduction.Maui.Views;
 using DPMauiDemo.ViewModels;
 
 namespace DPMauiDemo.Pages;
@@ -15,7 +15,7 @@ public partial class AboutPage : BasePage<AboutPageViewModel>
 	async void OnButtonAbout1Clicked(object? sender, EventArgs args)
 	{
 		AboutView1 view = new(
-			new DigitalProduction.ViewModels.AboutViewModel(true)
+			new DigitalProduction.Maui.ViewModels.AboutViewModel(true)
 			{
 				ShowDocumentationAddress = false
 			}
@@ -25,7 +25,7 @@ public partial class AboutPage : BasePage<AboutPageViewModel>
 
 	async void OnButtonAbout2Clicked(object? sender, EventArgs args)
 	{
-		AboutView1 view = new(new DigitalProduction.ViewModels.AboutViewModel(true));
+		AboutView1 view = new(new DigitalProduction.Maui.ViewModels.AboutViewModel(true));
 		_ = await Shell.Current.ShowPopupAsync(view);
 	}
 }

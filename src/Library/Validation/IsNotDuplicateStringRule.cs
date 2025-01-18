@@ -1,4 +1,4 @@
-﻿using DigitalProduction.Validation;
+﻿using DigitalProduction.Maui.Validation;
 using DigitalProduction.Exceptions;
 
 namespace Data.Translation.Validation;

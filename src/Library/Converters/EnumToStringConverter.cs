@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
 
-namespace DigitalProduction.Converters;
+namespace DigitalProduction.Maui.Converters;
 
 /// <summary>
 ///     Converts an <see cref="Enum"/> to its underlying <see cref="int"/> value.

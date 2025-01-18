@@ -3,7 +3,7 @@ using CommunityToolkit.Maui.ApplicationModel;
 using CommunityToolkit.Maui.Markup;
 using CommunityToolkit.Maui.Media;
 using CommunityToolkit.Maui.Storage;
-using DigitalProduction.ViewModels;
+using DigitalProduction.Maui.ViewModels;
 using DPMauiDemo.Pages;
 using DPMauiDemo.ViewModels;
 using Microsoft.Extensions.Logging;

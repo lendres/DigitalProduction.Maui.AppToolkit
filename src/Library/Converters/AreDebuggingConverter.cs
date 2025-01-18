@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 
-namespace DigitalProduction.Converters;
+namespace DigitalProduction.Maui.Converters;
 
 /// <summary>
 /// Returns true if debugging, false otherwise.  Useful to have debugging controls, but have them hidden in production code.

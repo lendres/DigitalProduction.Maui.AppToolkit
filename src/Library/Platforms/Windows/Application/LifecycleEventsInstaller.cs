@@ -2,7 +2,7 @@
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Windowing;
 
-namespace DigitalProduction.UI;
+namespace DigitalProduction.Maui.UI;
 
 public static partial class LifecycleEventsInstaller
 {
@@ -21,7 +21,7 @@ public static partial class LifecycleEventsInstaller
 					// Microsoft.UI.Xaml.Window window
 					window.ExtendsContentIntoTitleBar = false;
 
-					AppWindow? appWindow = DigitalProduction.UI.AppTools.GetAppWindow((MauiWinUIWindow)window);
+					AppWindow? appWindow = DigitalProduction.Maui.UI.AppTools.GetAppWindow((MauiWinUIWindow)window);
 
 					switch (appWindow?.Presenter)
 					{
@@ -31,9 +31,9 @@ public static partial class LifecycleEventsInstaller
 							if (winUIWindow.GetWindow() is Window mauiWindow)
 							{
 								// Set the restored position.
-								DigitalProduction.UI.AppTools.RestoreWindowPosition(mauiWindow, "MainWindow");
+								DigitalProduction.Maui.UI.AppTools.RestoreWindowPosition(mauiWindow, "MainWindow");
 
-								OverlappedPresenterState state = DigitalProduction.UI.AppTools.GetWindowState("MainWindow");
+								OverlappedPresenterState state = DigitalProduction.Maui.UI.AppTools.GetWindowState("MainWindow");
 								if (state == OverlappedPresenterState.Maximized)
 								{
 									overLappedPresenter.Maximize();
