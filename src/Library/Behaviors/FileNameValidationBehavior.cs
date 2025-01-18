@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Maui.Behaviors;
 using DigitalProduction.IO;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DigitalProduction.Maui.Behaviors;
 
