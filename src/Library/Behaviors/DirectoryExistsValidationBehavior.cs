@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui.Behaviors;
-using DigitalProduction.Behaviors;
 
 namespace DigitalProduction.Behaviors;
 

@@ -1,6 +1,4 @@
-﻿using DigitalProduction.IO;
-
-namespace DigitalProduction.Validation;
+﻿namespace DigitalProduction.Validation;
 
 /// <summary>
 /// File must exist validation rule.

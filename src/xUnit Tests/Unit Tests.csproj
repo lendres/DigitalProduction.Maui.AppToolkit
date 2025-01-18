@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library\DigitalProductionMauiLibrary.csproj" />
+    <ProjectReference Include="..\Library\DigitalProduction.Maui.csproj" />
   </ItemGroup>
 
   <ItemGroup>
