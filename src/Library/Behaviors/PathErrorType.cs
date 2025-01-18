@@ -2,7 +2,7 @@
 using DigitalProduction.Reflection;
 
 
-namespace DigitalProduction.Behaviors
+namespace DigitalProduction.Maui.Behaviors
 {
 	/// <summary>
 	/// Add summary here.

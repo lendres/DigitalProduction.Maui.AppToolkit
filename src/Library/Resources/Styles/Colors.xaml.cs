@@ -1,4 +1,4 @@
-namespace DigitalProduction.Resources.Styles;
+namespace DigitalProduction.Maui.Resources.Styles;
 
 public partial class Colors : ResourceDictionary
 {

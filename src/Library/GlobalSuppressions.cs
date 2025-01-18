@@ -8,4 +8,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE0028:Simplify collection initialization", Justification = "<Pending>")]
 [assembly: SuppressMessage("Style", "IDE0305:Simplify collection initialization", Justification = "<Pending>", Scope = "member", Target = "~M:DigitalProduction.Reflection.Enumerations.GetAllDescriptionAttributesForTypeAsArray``1~System.String[]")]
 [assembly: SuppressMessage("Style", "IDE0057:Use range operator", Justification = "<Pending>", Scope = "member", Target = "~M:DigitalProduction.Strings.Format.TrimEnd(System.String,System.String)~System.String")]
-[assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "<Pending>", Scope = "namespace", Target = "~N:DigitalProduction.UI")]
+[assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "<Pending>", Scope = "namespace", Target = "~N:DigitalProduction.Maui.UI")]

@@ -1,6 +1,6 @@
-﻿using DigitalProduction.ViewModels;
+﻿using DigitalProduction.Maui.ViewModels;
 
-namespace DigitalProduction.Views;
+namespace DigitalProduction.Maui.Views;
 
 public partial class AboutView1 : PopupView
 {

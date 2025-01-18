@@ -1,7 +1,7 @@
 ﻿using DigitalProduction.Exceptions;
 using System.Globalization;
 
-namespace DigitalProduction.Converters;
+namespace DigitalProduction.Maui.Converters;
 
 public class EnumToDescriptionConverter<TEnum> : IValueConverter where TEnum : struct
 {
