@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Windowing;
 
-namespace DigitalProduction.UI;
+namespace DigitalProduction.Maui.UI;
 
 /// <summary>
 /// 

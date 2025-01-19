@@ -1,4 +1,4 @@
-﻿using DigitalProduction.ViewModels;
+﻿using DigitalProduction.Maui.ViewModels;
 
 namespace DPMauiDemo.Models;
 
@@ -9,10 +9,10 @@ public sealed class SectionModel
 	// The Create methods allow us to use a constrained generic to ensure TViewModel inherits from BaseViewModel.
 	private SectionModel(in Type viewModelType, in string title, in Color color, in string description)
 	{
-		ViewModelType = viewModelType;
-		Title = title;
-		Description = description;
-		Color = color;
+		ViewModelType	= viewModelType;
+		Title			= title;
+		Description		= description;
+		Color			= color;
 	}
 
 	// Factory pattern using constrained generic to ensure TViewModel inherits from BaseViewModel.

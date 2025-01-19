@@ -1,10 +1,10 @@
 ﻿using System.Globalization;
 using System.Reflection;
 
-namespace DigitalProduction.Converters;
+namespace DigitalProduction.Maui.Converters;
 
 /// <summary>
-///     Convert an <see cref="Enum" /> to corresponding <see cref="bool" />
+///     Convert an <see cref="Enum"/> to corresponding <see cref="bool"/>
 /// </summary>
 public class SingleEnumToBoolConverter<TEnum> : IValueConverter where TEnum : Enum
 {

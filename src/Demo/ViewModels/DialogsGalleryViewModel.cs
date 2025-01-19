@@ -3,7 +3,7 @@ using DPMauiDemo.Pages;
 
 namespace DPMauiDemo.ViewModels;
 
-public class DialogsGalleryViewModel() : BaseGalleryViewModel(
+public partial class DialogsGalleryViewModel() : BaseGalleryViewModel(
 [
-	SectionModel.Create<EmptyViewModel>(nameof(AboutPage), "About views for displaying information about the application."),
+	SectionModel.Create<DataGridPageViewModel>(nameof(DataGridPage), "DataGrid examples.")
 ]);

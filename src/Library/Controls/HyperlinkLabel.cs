@@ -1,4 +1,4 @@
-﻿namespace DigitalProduction.Controls;
+﻿namespace DigitalProduction.Maui.Controls;
 
 public partial class HyperlinkLabel : Label
 {

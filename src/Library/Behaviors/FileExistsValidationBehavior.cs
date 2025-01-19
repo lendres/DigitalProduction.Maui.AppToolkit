@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.Behaviors;
 
-namespace DigitalProduction.Behaviors;
+namespace DigitalProduction.Maui.Behaviors;
 
 /// <summary>
 /// The <see cref="FileExistsValidationBehavior"/> is a behavior that allows the user to determine if a file exists.  Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.

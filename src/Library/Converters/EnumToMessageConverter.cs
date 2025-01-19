@@ -2,10 +2,10 @@
 using DigitalProduction.Reflection;
 using System.Globalization;
 
-namespace DigitalProduction.Converters;
+namespace DigitalProduction.Maui.Converters;
 
 /// <summary>
-///     Converts an <see cref="Enum" /> to a <see cref="string"/> that is extracted from its <see cref="MessageAttribute"/>.
+///     Converts an <see cref="Enum"/> to a <see cref="string"/> that is extracted from its <see cref="MessageAttribute"/>.
 /// </summary>
 public class EnumToMessageConverter : BaseConverterOneWay<Enum, string, Type>
 {

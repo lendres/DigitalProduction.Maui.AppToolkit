@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:pages="clr-namespace:DPMauiDemo.Pages"
+	x:Class="DPMauiDemo.Pages.DataGridPage"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:DPMauiDemo.ViewModels"
+	x:TypeArguments="viewmodel:DataGridPageViewModel"
+	x:DataType="viewmodel:DataGridPageViewModel">
+	<pages:BasePage.Content>
+		<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+              RowSpacing="5"
+              ColumnSpacing="5"
+              ColumnDefinitions="*">
+
+			<Button Grid.Row="0"
+                    CornerRadius="23"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnButtonDataGrid1Clicked"
+                    Text="DataGrid Example 1"/>
+
+		</Grid>
+	</pages:BasePage.Content>
+</pages:BasePage>

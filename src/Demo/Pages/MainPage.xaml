@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 xmlns:dpcontrols="clr-namespace:DigitalProduction.Controls;assembly=DigitalProductionMauiLibrary"
-			 xmlns:libraryviewmodel="clr-namespace:DigitalProduction.ViewModels;assembly=DigitalProductionMauiLibrary"
-			 x:DataType="libraryviewmodel:AboutViewModel"
-             x:Class="DPMauiDemo.Pages.MainPage">
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui"
+	xmlns:libraryviewmodel="clr-namespace:DigitalProduction.Maui.ViewModels;assembly=DigitalProduction.Maui"
+	x:DataType="libraryviewmodel:AboutViewModel"
+	x:Class="DPMauiDemo.Pages.MainPage">
 
 	<ContentPage.BindingContext>
 		<libraryviewmodel:AboutViewModel/>

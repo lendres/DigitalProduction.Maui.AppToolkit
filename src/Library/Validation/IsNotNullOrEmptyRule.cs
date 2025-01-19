@@ -1,4 +1,4 @@
-﻿namespace DigitalProduction.Validation;
+﻿namespace DigitalProduction.Maui.Validation;
 
 /// <summary>
 /// Is not null or empty validation rule for string.

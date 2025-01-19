@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <RootNamespace>xUnit_Tests</RootNamespace>
+    <RootNamespace>UnitTests</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library\DigitalProductionMauiLibrary.csproj" />
+    <ProjectReference Include="..\Library\DigitalProduction.Maui.csproj" />
   </ItemGroup>
 
   <ItemGroup>

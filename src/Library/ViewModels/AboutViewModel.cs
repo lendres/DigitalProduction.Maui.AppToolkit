@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace DigitalProduction.ViewModels;
+namespace DigitalProduction.Maui.ViewModels;
 
 public partial class AboutViewModel : BaseViewModel
 {

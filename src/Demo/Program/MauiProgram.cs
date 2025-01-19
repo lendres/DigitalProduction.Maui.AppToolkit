@@ -3,7 +3,7 @@ using CommunityToolkit.Maui.ApplicationModel;
 using CommunityToolkit.Maui.Markup;
 using CommunityToolkit.Maui.Media;
 using CommunityToolkit.Maui.Storage;
-using DigitalProduction.ViewModels;
+using DigitalProduction.Maui.ViewModels;
 using DPMauiDemo.Pages;
 using DPMauiDemo.ViewModels;
 using Microsoft.Extensions.Logging;
@@ -34,11 +34,13 @@ public static class MauiProgram
 		return builder.Build();
 	}
 
-
 	static void RegisterViewsAndViewModels(in IServiceCollection services)
 	{
+		services.AddTransient<ControlsGalleryPage, ControlsGalleryViewModel>();
+		services.AddTransientWithShellRoute<AboutPage, AboutPageViewModel>();
+
 		services.AddTransient<DialogsGalleryPage, DialogsGalleryViewModel>();
-		services.AddTransientWithShellRoute<AboutPage, EmptyViewModel>();
+		services.AddTransientWithShellRoute<DataGridPage, DataGridPageViewModel>();
 	}
 
 	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) where TPage : BasePage<TViewModel>

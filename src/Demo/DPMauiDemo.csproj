@@ -67,13 +67,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Library\DigitalProductionMauiLibrary.csproj" />
+	  <ProjectReference Include="..\Library\DigitalProduction.Maui.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\AboutPage.xaml.cs">
-	    <DependentUpon>AboutPage.xaml</DependentUpon>
-	  </Compile>
+	  <MauiXaml Update="Pages\DataGridExamplePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\DataGridPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

@@ -3,10 +3,10 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-	xmlns:viewmodel="clr-namespace:DigitalProduction.ViewModels"
-	xmlns:dpcontrols="clr-namespace:DigitalProduction.Controls"
-	xmlns:dpviews="clr-namespace:DigitalProduction.Views"
-	x:Class="DigitalProduction.Views.AboutView1"
+	xmlns:viewmodel="clr-namespace:DigitalProduction.Maui.ViewModels"
+	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls"
+	xmlns:dpviews="clr-namespace:DigitalProduction.Maui.Views"
+	x:Class="DigitalProduction.Maui.Views.AboutView1"
 	x:DataType="viewmodel:AboutViewModel"
 	CanBeDismissedByTappingOutsideOfPopup="False">
 
@@ -17,7 +17,7 @@
 			<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Start"/>
 
 			<VerticalStackLayout IsVisible="{Binding ShowCopyright}" StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Author(s):" StyleClass="TitleLabel"/>
+				<Label Text="Copyright:" StyleClass="TitleLabel"/>
 				<Label Text="{Binding Copyright}"/>
 			</VerticalStackLayout>
 
@@ -33,17 +33,17 @@
 
 			<VerticalStackLayout IsVisible="{Binding ShowWebsite}" StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Website:" StyleClass="TitleLabel"/>
-				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}" />
+				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowIssuesAddress}" StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Report issues:" StyleClass="TitleLabel"/>
-				<dpcontrols:HyperlinkLabel Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}" />
+				<dpcontrols:HyperlinkLabel Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowDocumentationAddress}" StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Documentation:" StyleClass="TitleLabel"/>
-				<dpcontrols:HyperlinkLabel Text="{Binding DocumentationAddress}" Url="{Binding DocumentationAddress}" />
+				<dpcontrols:HyperlinkLabel Text="{Binding DocumentationAddress}" Url="{Binding DocumentationAddress}"/>
 			</VerticalStackLayout>
 
 			<HorizontalStackLayout StyleClass="BottomButtonRowStyle">

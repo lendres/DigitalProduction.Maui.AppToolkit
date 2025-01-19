@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Windowing;
 
-namespace DigitalProduction.Controls;
+namespace DigitalProduction.Maui.Controls;
 
 public partial class DigitalProductionMainPage
 {
@@ -37,13 +37,13 @@ public partial class DigitalProductionMainPage
 		switch (appWindow?.Presenter)
 		{
 			case OverlappedPresenter overLappedPresenter:
-				DigitalProduction.UI.AppTools.SaveWindowState(overLappedPresenter.State, "MainWindow");
+				DigitalProduction.Maui.UI.AppTools.SaveWindowState(overLappedPresenter.State, "MainWindow");
 
 				if (overLappedPresenter.State == OverlappedPresenterState.Restored)
 				{
 					// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
 					// size which is not what we want.
-					DigitalProduction.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
+					DigitalProduction.Maui.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
 				}
 				break;
 		}
@@ -53,7 +53,7 @@ public partial class DigitalProductionMainPage
 	{
 		if (GetParentWindow().Handler.PlatformView is MauiWinUIWindow mauiWinUIWindow)
 		{
-			return DigitalProduction.UI.AppTools.GetAppWindow(mauiWinUIWindow);
+			return DigitalProduction.Maui.UI.AppTools.GetAppWindow(mauiWinUIWindow);
 		}
 		else
 		{

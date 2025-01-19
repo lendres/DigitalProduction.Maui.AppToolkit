@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace DigitalProduction.Validation;
+namespace DigitalProduction.Maui.Validation;
 
 /// <summary>
 /// Validatable object template.

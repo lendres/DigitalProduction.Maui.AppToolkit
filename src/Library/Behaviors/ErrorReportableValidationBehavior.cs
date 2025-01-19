@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.Behaviors;
 
-namespace DigitalProduction.Behaviors;
+namespace DigitalProduction.Maui.Behaviors;
 
 /// <summary>
 /// The <see cref="ErrorReportableValidationBehavior{T, TError}"/> is a behavior that allows the user to determine get an error code. Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
