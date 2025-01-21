@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Maui.Markup;
-using DPMauiDemo.Models;
-using DPMauiDemo.ViewModels;
+using DigitalProduction.Demo.Models;
+using DigitalProduction.Demo.ViewModels;
 using static CommunityToolkit.Maui.Markup.GridRowsColumns;
 
-namespace DPMauiDemo.Pages;
+namespace DigitalProduction.Demo.Pages;
 
 public abstract class BaseGalleryPage<TViewModel> : BasePage<TViewModel> where TViewModel : BaseGalleryViewModel
 {

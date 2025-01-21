@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace DPMauiDemo;
+namespace DigitalProduction.Demo;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

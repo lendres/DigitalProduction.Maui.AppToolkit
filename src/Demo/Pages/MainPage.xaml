@@ -5,7 +5,7 @@
 	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui.AppToolKit"
 	xmlns:libraryviewmodel="clr-namespace:DigitalProduction.Maui.ViewModels;assembly=DigitalProduction.Maui.AppToolKit"
 	x:DataType="libraryviewmodel:AboutViewModel"
-	x:Class="DPMauiDemo.Pages.MainPage">
+	x:Class="DigitalProduction.Demo.Pages.MainPage">
 
 	<ContentPage.BindingContext>
 		<libraryviewmodel:AboutViewModel/>

@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace DPMauiDemo;
+namespace DigitalProduction.Demo;
 
 public class Program
 {

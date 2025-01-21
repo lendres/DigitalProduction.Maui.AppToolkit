@@ -1,4 +1,4 @@
-﻿namespace DPMauiDemo;
+﻿namespace DigitalProduction.Demo;
 
 /// <summary>
 /// A person.

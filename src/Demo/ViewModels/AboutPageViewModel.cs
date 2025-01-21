@@ -1,6 +1,6 @@
 ﻿using DigitalProduction.Maui.ViewModels;
 
-namespace DPMauiDemo.ViewModels;
+namespace DigitalProduction.Demo.ViewModels;
 
 public class AboutPageViewModel : BaseViewModel
 {

@@ -1,6 +1,6 @@
-using DPMauiDemo.ViewModels;
+using DigitalProduction.Demo.ViewModels;
 
-namespace DPMauiDemo.Pages;
+namespace DigitalProduction.Demo.Pages;
 
 public partial class DataGridPage : BasePage<DataGridPageViewModel>
 {

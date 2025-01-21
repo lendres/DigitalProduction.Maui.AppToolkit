@@ -1,6 +1,6 @@
-﻿using DPMauiDemo.ViewModels;
+﻿using DigitalProduction.Demo.ViewModels;
 
-namespace DPMauiDemo.Pages;
+namespace DigitalProduction.Demo.Pages;
 
 public class ControlsGalleryPage(IDeviceInfo deviceInfo, ControlsGalleryViewModel galleryViewModel) :
 	BaseGalleryPage<ControlsGalleryViewModel>("Controls", deviceInfo, galleryViewModel)
