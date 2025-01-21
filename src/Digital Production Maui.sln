@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalProduction.Maui", "Library\DigitalProduction.Maui.csproj", "{86F07573-F64E-4014-9B56-689E86E19B41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit Tests", "xUnit Tests\Unit Tests.csproj", "{CAB00C3B-8D42-4C7F-99E6-28FA49237940}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit Tests", "Unit Tests\Unit Tests.csproj", "{CAB00C3B-8D42-4C7F-99E6-28FA49237940}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28ABA369-5311-4964-9CEB-66196C9BB9CA}"
 	ProjectSection(SolutionItems) = preProject

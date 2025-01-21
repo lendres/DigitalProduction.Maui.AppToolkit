@@ -43,8 +43,9 @@ public static class MauiProgram
 		services.AddTransientWithShellRoute<DataGridPage, DataGridPageViewModel>();
 	}
 
-	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) where TPage : BasePage<TViewModel>
-																												where TViewModel : BaseViewModel
+	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 
+		where TPage : BasePage<TViewModel>
+		where TViewModel : BaseViewModel
 	{
 		return services.AddTransientWithShellRoute<TPage, TViewModel>(AppShell.GetPageRoute<TViewModel>());
 	}

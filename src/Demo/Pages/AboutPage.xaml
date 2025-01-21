@@ -7,37 +7,42 @@
     x:Class="DPMauiDemo.Pages.AboutPage"
     xmlns:viewmodel="clr-namespace:DPMauiDemo.ViewModels"
     x:TypeArguments="viewmodel:AboutPageViewModel"
-    x:DataType="viewmodel:AboutPageViewModel">
+    x:DataType="viewmodel:AboutPageViewModel"
+	Title="About Popups">
 		
     <pages:BasePage.Content>
-		<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-              RowSpacing="5"
-              ColumnSpacing="5"
-              ColumnDefinitions="*">
+		<Grid 
+			RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+			RowSpacing="5"
+			ColumnSpacing="5"
+			ColumnDefinitions="*">
             
-            <Label Text="The AboutView1 is a popup that shows basic information about the application."
-                   Grid.Row="0"
-                   VerticalOptions="Start" 
-                   HorizontalOptions="FillAndExpand"/>
+            <Label
+				Text="The AboutView1 is a popup that shows basic information about the application."
+				Grid.Row="0"
+				VerticalOptions="Start" 
+				HorizontalOptions="FillAndExpand"/>
 
 			<Label Grid.Row="1" Text="Add files to Publishing/Assembly.props and ./Publishing/Version.props. Add import lines to project file:"/>
 			<Label Grid.Row="2" Text="&lt;Import Project=&quot;$(MSBuildProjectDirectory)/Publishing/Assembly.props&quot; Condition=&quot;Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')&quot; /&gt;"/>
 			<Label Grid.Row="3" Text="&lt;Import Project=&quot;$(MSBuildProjectDirectory)/Publishing/Version.props&quot; Condition=&quot;Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')&quot; /&gt;"/>
 			<Label Grid.Row="4" Text="Remove from the project file:"/>
-			<Label Grid.Row="5" Text="Version/&gt;...&lt;/Version/&gt; &lt;Title>...&lt;/Title/&gt; &lt;Product>...&lt;/Product/&gt; &lt;ApplicationDisplayVersion&gt;...&lt;/ApplicationDisplayVersion&gt; &lt;ApplicationVersion&gt;...&lt;/ApplicationVersion&gt;"/>
+			<Label Grid.Row="5" Text="&lt;Version&gt;...&lt;/Version&gt; &lt;Title&gt;...&lt;/Title&gt; &lt;Product&gt;...&lt;/Product&gt; &lt;ApplicationDisplayVersion&gt;...&lt;/ApplicationDisplayVersion&gt; &lt;ApplicationVersion&gt;...&lt;/ApplicationVersion&gt;"/>
 			<Label Grid.Row="6" Text="then save the project file and rebuild the solution."/>
 
-			<Button Grid.Row="7"
-                    CornerRadius="23"
-                    HorizontalOptions="FillAndExpand"
-                    Clicked="OnButtonAbout1Clicked"
-                    Text="Show About Without Documentation"/>
+			<Button
+				Grid.Row="7"
+				CornerRadius="23"
+				HorizontalOptions="FillAndExpand"
+				Clicked="OnButtonAbout1Clicked"
+				Text="Show About Without Documentation"/>
 
-			<Button Grid.Row="8"
-                    CornerRadius="23"
-                    HorizontalOptions="FillAndExpand"
-                    Clicked="OnButtonAbout2Clicked"
-                    Text="Show About With Documentation"/>
-        </Grid>
+			<Button
+				Grid.Row="8"
+				CornerRadius="23"
+				HorizontalOptions="FillAndExpand"
+				Clicked="OnButtonAbout2Clicked"
+				Text="Show About With Documentation"/>
+		</Grid>
     </pages:BasePage.Content>
 </pages:BasePage>

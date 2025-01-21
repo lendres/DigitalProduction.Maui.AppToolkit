@@ -6,6 +6,23 @@
 	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui"
 	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
+	<Style x:Key="BorderGalleryCard" TargetType="Border">
+		<Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}"/>
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}"/>
+		<Setter Property="Padding" Value="16"/>
+		<Setter Property="StrokeThickness" Value="1"/>
+		<Setter Property="StrokeShape" Value="RoundRectangle 8"/>
+		<Setter Property="Shadow">
+			<Setter.Value>
+				<Shadow
+                    Brush="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray950}}"
+                    Opacity=".5"
+                    Radius="4"
+                    Offset="2,2"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
 	<Style TargetType="Label" Class="LargeControlLabel" BasedOn="{StaticResource SmallLabelBase}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray600}, Dark={DynamicResource Gray400}}"/>
 		<Setter Property="FontSize" Value="16"/>
