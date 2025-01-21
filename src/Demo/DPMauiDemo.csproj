@@ -82,7 +82,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Library\DigitalProduction.Maui.csproj" />
+	  <ProjectReference Include="..\Library\DigitalProduction.Maui.AppToolKit.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
