@@ -36,8 +36,6 @@ public static class MauiProgram
 
 	static void RegisterViewsAndViewModels(in IServiceCollection services)
 	{
-		services.AddTransientWithShellRoute<WelcomePage, AboutViewModel>();
-		
 		services.AddTransient<ControlsGalleryPage, ControlsGalleryViewModel>();
 		services.AddTransientWithShellRoute<AboutPage, AboutPageViewModel>();
 
