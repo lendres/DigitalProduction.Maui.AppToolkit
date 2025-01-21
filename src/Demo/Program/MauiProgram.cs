@@ -36,6 +36,8 @@ public static class MauiProgram
 
 	static void RegisterViewsAndViewModels(in IServiceCollection services)
 	{
+		services.AddTransientWithShellRoute<WelcomePage, AboutViewModel>();
+		
 		services.AddTransient<ControlsGalleryPage, ControlsGalleryViewModel>();
 		services.AddTransientWithShellRoute<AboutPage, AboutPageViewModel>();
 
@@ -43,8 +45,9 @@ public static class MauiProgram
 		services.AddTransientWithShellRoute<DataGridPage, DataGridPageViewModel>();
 	}
 
-	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) where TPage : BasePage<TViewModel>
-																												where TViewModel : BaseViewModel
+	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 
+		where TPage : BasePage<TViewModel>
+		where TViewModel : BaseViewModel
 	{
 		return services.AddTransientWithShellRoute<TPage, TViewModel>(AppShell.GetPageRoute<TViewModel>());
 	}

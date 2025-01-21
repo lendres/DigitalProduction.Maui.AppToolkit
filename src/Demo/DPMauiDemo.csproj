@@ -55,6 +55,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Pages\WelcomePage.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Pages\WelcomePage.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiAsset Include="Resources\AppIcon\appicon.svg" />
 	  <MauiAsset Include="Resources\AppIcon\appiconfg.svg" />
 	</ItemGroup>
