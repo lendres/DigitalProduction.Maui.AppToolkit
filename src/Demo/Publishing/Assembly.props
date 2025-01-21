@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project>
 	<PropertyGroup>
-		<Title>Digital Production Maui Library Demonstration and Testing</Title>
-		<Product>C Sharp Maui Library Demonstration</Product>
+		<Title>DigitalProduction.Maui Application Toolkit Demonstration</Title>
+		<Product>DigitalProduction.Maui.AppToolkit Demonstration</Product>
 		<Copyright>Lance A. Endres</Copyright>
 		<Company>Digital Production</Company>
 		<Description>A collection of C# classes, utilities, and controls for .Net Maui.</Description>

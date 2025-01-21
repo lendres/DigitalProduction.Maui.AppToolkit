@@ -14,7 +14,7 @@
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25" HorizontalOptions="Center">
 
-			<Label Text="{Binding Title}" Style="{StaticResource SubHeadline}"/>
+			<Label Text="{Binding Product}" Style="{StaticResource SubHeadline}"/>
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Author(s):" StyleClass="LargeControlLabel"/>
