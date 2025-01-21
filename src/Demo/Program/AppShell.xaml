@@ -14,6 +14,7 @@
             Padding="{OnPlatform Default='4,0', iOS='4, 100, 4, 0', MacCatalyst='4, 100, 4, 0'}"
             FontSize="24"
             HorizontalTextAlignment="Start"
+			IsVisible="{OnPlatform WinUI=false, Default=true}"
             Text="Examples"
             VerticalTextAlignment="Center"/>
 
