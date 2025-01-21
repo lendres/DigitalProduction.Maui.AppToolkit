@@ -32,6 +32,11 @@
 			</VerticalStackLayout>
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Documentation:" StyleClass="LargeControlLabel"/>
+				<dpcontrols:HyperlinkLabel Text="{Binding DocumentationAddress}" Url="{Binding DocumentationAddress}"  StyleClass="LargeHyperLink"/>
+			</VerticalStackLayout>
+
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Report issues:" StyleClass="LargeControlLabel"/>
 				<dpcontrols:HyperlinkLabel Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}"  StyleClass="LargeHyperLink"/>
 			</VerticalStackLayout>
