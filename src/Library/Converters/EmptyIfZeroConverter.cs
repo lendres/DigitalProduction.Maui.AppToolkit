@@ -3,9 +3,9 @@
 namespace DigitalProduction.Maui.Converters;
 
 /// <summary>
-/// Returns true if debugging, false otherwise.  Useful to have debugging controls, but have them hidden in production code.
+/// Returns an empty string if a number is zero.  Otherwise, it returns the value of the number.
 /// 
-/// E.g.: IsVisible="{Binding ., Converter={StaticResource AreDebuggingConverter}}"
+/// Useful to avoid displaying anything if a number is zero.
 /// </summary>
 public class EmptyIfZeroConverter : IValueConverter
 {
@@ -17,7 +17,7 @@ public class EmptyIfZeroConverter : IValueConverter
 			{
 				if ((int)value == 0)
 				{
-					return "";
+					return string.Empty;
 				}
 				else
 				{

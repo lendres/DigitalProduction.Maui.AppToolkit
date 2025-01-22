@@ -1,4 +1,4 @@
-﻿namespace DPMauiDemo.Pages;
+﻿namespace DigitalProduction.Demo.Pages;
 
 public partial class DataGridExamplePage : ContentPage
 {

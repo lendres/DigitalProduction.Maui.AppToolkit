@@ -1,7 +1,7 @@
 ﻿using DigitalProduction.Maui.ViewModels;
 using System.Diagnostics;
 
-namespace DPMauiDemo.Pages;
+namespace DigitalProduction.Demo.Pages;
 
 public abstract class BasePage<TViewModel>(TViewModel viewModel) : BasePage(viewModel) where TViewModel : BaseViewModel
 {

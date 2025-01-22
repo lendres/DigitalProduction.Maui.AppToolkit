@@ -1,2 +1,4 @@
-# C# Maui Library
-A collection of tools and common classes for developing .Net Maui applications.
+# DigitalProduction.Maui.AppToolkit
+A collection of classes, utilities, and resources for building .Net Maui applications faster and conistently.
+
+It includes Views (Pages and Popups), ViewModels, Validation, FileTypes, Converations, and Validation components.

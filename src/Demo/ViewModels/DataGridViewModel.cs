@@ -1,7 +1,7 @@
 ﻿using DigitalProduction.Maui.ViewModels;
 using System.Collections.ObjectModel;
 
-namespace DPMauiDemo.ViewModels;
+namespace DigitalProduction.Demo.ViewModels;
 
 public class DataGridViewModel : DataGridBaseViewModel<Person>
 {

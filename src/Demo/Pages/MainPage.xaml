@@ -3,9 +3,9 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui"
-	xmlns:libraryviewmodel="clr-namespace:DigitalProduction.Maui.ViewModels;assembly=DigitalProduction.Maui"
+	xmlns:libraryviewmodel="clr-namespace:DigitalProduction.Maui.ViewModels;assembly=DigitalProduction.Maui.AppToolKit"
 	x:DataType="libraryviewmodel:AboutViewModel"
-	x:Class="DPMauiDemo.Pages.MainPage">
+	x:Class="DigitalProduction.Demo.Pages.MainPage">
 
 	<ContentPage.BindingContext>
 		<libraryviewmodel:AboutViewModel/>
@@ -29,6 +29,11 @@
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Website:" StyleClass="LargeControlLabel"/>
 				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}"  StyleClass="LargeHyperLink"/>
+			</VerticalStackLayout>
+
+			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+				<Label Text="Documentation:" StyleClass="LargeControlLabel"/>
+				<dpcontrols:HyperlinkLabel Text="{Binding DocumentationAddress}" Url="{Binding DocumentationAddress}"  StyleClass="LargeHyperLink"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">

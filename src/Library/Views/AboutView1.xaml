@@ -4,7 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 	xmlns:viewmodel="clr-namespace:DigitalProduction.Maui.ViewModels"
-	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls"
+	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui"
 	xmlns:dpviews="clr-namespace:DigitalProduction.Maui.Views"
 	x:Class="DigitalProduction.Maui.Views.AboutView1"
 	x:DataType="viewmodel:AboutViewModel"

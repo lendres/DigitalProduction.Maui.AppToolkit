@@ -2,7 +2,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using System;
 
-namespace DPMauiDemo;
+namespace DigitalProduction.Demo;
 {
 	internal class Program : MauiApplication
 	{

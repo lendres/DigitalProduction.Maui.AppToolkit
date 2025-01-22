@@ -1,7 +1,7 @@
-﻿using DPMauiDemo.Models;
-using DPMauiDemo.Pages;
+﻿using DigitalProduction.Demo.Models;
+using DigitalProduction.Demo.Pages;
 
-namespace DPMauiDemo.ViewModels;
+namespace DigitalProduction.Demo.ViewModels;
 
 public partial class ControlsGalleryViewModel() : BaseGalleryViewModel(
 [
