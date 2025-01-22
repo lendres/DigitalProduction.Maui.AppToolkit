@@ -5,7 +5,7 @@ using static CommunityToolkit.Maui.Markup.GridRowsColumns;
 
 namespace DigitalProduction.Demo.Pages;
 
-public abstract class BaseGalleryPage<TViewModel> : BasePage<TViewModel> where TViewModel : BaseGalleryViewModel
+public abstract partial class BaseGalleryPage<TViewModel> : BasePage<TViewModel> where TViewModel : BaseGalleryViewModel
 {
 	protected BaseGalleryPage(string title, IDeviceInfo deviceInfo, TViewModel viewModel) : base(viewModel)
 	{
@@ -36,7 +36,7 @@ public abstract class BaseGalleryPage<TViewModel> : BasePage<TViewModel> where T
 		}
 	}
 
-	sealed class GalleryDataTemplate() : DataTemplate(CreateDataTemplate)
+	sealed partial class GalleryDataTemplate() : DataTemplate(CreateDataTemplate)
 	{
 
 		enum Row { TopPadding, Content, BottomPadding }
@@ -60,7 +60,7 @@ public abstract class BaseGalleryPage<TViewModel> : BasePage<TViewModel> where T
 			}
 		};
 
-		sealed class Card : Border
+		sealed partial class Card : Border
 		{
 			public Card()
 			{
