@@ -1,0 +1,1 @@
+﻿This file is used for testing.  It is copied to the working directory during compiling.

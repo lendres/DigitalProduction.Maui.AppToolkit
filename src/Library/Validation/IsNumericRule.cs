@@ -1,7 +1,7 @@
 ﻿using DigitalProduction.Maui.Validation;
 using System.Globalization;
 
-namespace Data.Translation.Validation;
+namespace DigitalProduction.Maui.Validation;
 
 /// <summary>
 /// Is not null or empty validation rule for string.
@@ -13,13 +13,13 @@ namespace Data.Translation.Validation;
 /// </remarks>
 public class IsNumericRule : ValidationRuleBase<string>
 {
-	public double MinimumValue { get; set; } = double.MinValue;
+	public double	MinimumValue { get; set; }			= double.MinValue;
 
-	public double MaximumValue { get; set; } = double.MaxValue;
+	public double	MaximumValue { get; set; }			= double.MaxValue;
 
-	public double MinimumDecimalPlaces { get; set; } = 0;
+	public double	MinimumDecimalPlaces { get; set; }	= 0;
 
-	public double MaximumDecimalPlaces { get; set; } = double.MaxValue;
+	public double	MaximumDecimalPlaces { get; set; }	= double.MaxValue;
 
 	public override bool Check(string? value)
 	{
