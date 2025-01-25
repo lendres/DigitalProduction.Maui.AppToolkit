@@ -19,7 +19,7 @@ public class ConverterTests
 	#region Tests
 
 	/// <summary>
-	/// Test to convert a relative path to an absolute path.
+	/// Test to get the description from an enumeration.
 	/// </summary>
 	[Fact]
 	public void EnumToDescriptionConverterTest()
@@ -50,9 +50,12 @@ public class ConverterTests
 		Assert.True(result == TestingType.Type1, errorMessage);
 	}
 
-		/// <summary>
-	/// Test to convert a relative path to an absolute path.
+	/// <summary>
+	/// Test to determine if the software is being debugged.
 	/// </summary>
+	/// <remarks>
+	/// For this test to pass, you must used the correct configuration, debugging or release.
+	/// </remarks>
 	[Fact]
 	public void AreDebuggingConverterTest()
 	{
@@ -71,7 +74,7 @@ public class ConverterTests
 
 		bool result = (bool)converter.Convert(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
 
-		// Create a string array with the lines of text
+		// Create a string array with the lines of text.
 		string[] lines = {
 			mode,
 			"Result: "+result.ToString(),
