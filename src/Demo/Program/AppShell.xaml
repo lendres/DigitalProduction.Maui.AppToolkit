@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="DPMauiDemo.AppShell"
+    x:Class="DigitalProduction.Demo.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:DPMauiDemo.Pages"
-
-    Title="DPMauiDemo">
+    xmlns:local="clr-namespace:DigitalProduction.Demo.Pages"
+	FlyoutBehavior="{OnPlatform WinUI=Locked, Default=Flyout}"
+	FlyoutBackgroundColor="{OnPlatform WinUI=Transparent, Default={AppThemeBinding Light= White, Dark= Black}}"
+    Title="Examples">
 
 	<Shell.FlyoutHeader>
-		<Label Margin="{OnPlatform Default='0,0,0,12',
-                                   iOS='0',
-                                   MacCatalyst='0'}"
-               Padding="{OnPlatform Default='4,0',
-                                    iOS='4, 100, 4, 0',
-                                    MacCatalyst='4, 100, 4, 0'}"
-               FontSize="24"
-               HorizontalTextAlignment="Start"
-               Text="Examples"
-               VerticalTextAlignment="Center"/>
+		<Label
+			Margin="{OnPlatform Default='0,0,0,12', iOS='0', MacCatalyst='0'}"
+            Padding="{OnPlatform Default='4,0', iOS='4, 100, 4, 0', MacCatalyst='4, 100, 4, 0'}"
+            FontSize="24"
+            HorizontalTextAlignment="Start"
+			IsVisible="{OnPlatform WinUI=false, Default=true}"
+            Text="Examples"
+            VerticalTextAlignment="Center"/>
 
 	</Shell.FlyoutHeader>
 
-	<FlyoutItem Title="Welcome"
-                Route="WelcomePage"
-                Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
+	<FlyoutItem 
+		Title="Welcome"
+		Route="WelcomePage"
+		Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
 		<ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
 	</FlyoutItem>
 
-	<FlyoutItem Title="Controls"
-                Route="ControlsGalleryPage"
-                Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
+	<FlyoutItem 
+		Title="Controls"
+		Route="ControlsGalleryPage"
+		Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
 		<ShellContent ContentTemplate="{DataTemplate local:ControlsGalleryPage}"/>
 	</FlyoutItem>
 
-	<FlyoutItem Title="Dialogs"
-                Route="DialogsGalleryPage"
-                Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
+	<FlyoutItem 
+		Title="Dialogs"
+		Route="DialogsGalleryPage"
+		Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
 		<ShellContent ContentTemplate="{DataTemplate local:DialogsGalleryPage}"/>
 	</FlyoutItem>
 

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project>
 	<PropertyGroup>
-		<Title>DigitalProduction.Maui</Title>
-		<Product>DigitalProduction.Maui</Product>
+		<Title>DigitalProduction.Maui.AppToolkit</Title>
+		<Product>DigitalProduction.Maui.AppToolkit</Product>
 		<Copyright>Lance A. Endres</Copyright>
 		<Company>Digital Production</Company>
-		<Description>A collection of classes, utilities, and controls for .Net Maui.</Description>
+		<Description>A collection of classes, utilities, and resources for building .Net Maui applications faster and conistently.</Description>
 	</PropertyGroup>
 
 	<ItemGroup>

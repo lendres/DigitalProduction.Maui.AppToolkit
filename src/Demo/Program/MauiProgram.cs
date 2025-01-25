@@ -4,11 +4,11 @@ using CommunityToolkit.Maui.Markup;
 using CommunityToolkit.Maui.Media;
 using CommunityToolkit.Maui.Storage;
 using DigitalProduction.Maui.ViewModels;
-using DPMauiDemo.Pages;
-using DPMauiDemo.ViewModels;
+using DigitalProduction.Demo.Pages;
+using DigitalProduction.Demo.ViewModels;
 using Microsoft.Extensions.Logging;
 
-namespace DPMauiDemo;
+namespace DigitalProduction.Demo;
 
 public static class MauiProgram
 {
@@ -43,8 +43,9 @@ public static class MauiProgram
 		services.AddTransientWithShellRoute<DataGridPage, DataGridPageViewModel>();
 	}
 
-	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) where TPage : BasePage<TViewModel>
-																												where TViewModel : BaseViewModel
+	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 
+		where TPage : BasePage<TViewModel>
+		where TViewModel : BaseViewModel
 	{
 		return services.AddTransientWithShellRoute<TPage, TViewModel>(AppShell.GetPageRoute<TViewModel>());
 	}

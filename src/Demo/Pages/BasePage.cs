@@ -1,14 +1,10 @@
 ﻿using DigitalProduction.Maui.ViewModels;
 using System.Diagnostics;
 
-namespace DPMauiDemo.Pages;
+namespace DigitalProduction.Demo.Pages;
 
-public abstract class BasePage<TViewModel> : BasePage where TViewModel : BaseViewModel
+public abstract class BasePage<TViewModel>(TViewModel viewModel) : BasePage(viewModel) where TViewModel : BaseViewModel
 {
-	protected BasePage(TViewModel viewModel) : base(viewModel)
-	{
-	}
-
 	public new TViewModel BindingContext => (TViewModel)base.BindingContext;
 }
 

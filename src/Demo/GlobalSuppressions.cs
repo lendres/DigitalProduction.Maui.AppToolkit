@@ -5,5 +5,5 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "<Pending>", Scope = "namespace", Target = "~N:DPMauiDemo.ViewModels")]
-[assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "<Pending>", Scope = "namespace", Target = "~N:DPMauiDemo")]
+[assembly: SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "May be used later.", Scope = "member", Target = "~M:DigitalProduction.Demo.Pages.BaseGalleryPage`1.#ctor(System.String,Microsoft.Maui.Devices.IDeviceInfo,`0)")]
+[assembly: SuppressMessage("Performance", "CA1826:Do not use Enumerable methods on indexable collections", Justification = "Readability", Scope = "member", Target = "~M:DigitalProduction.Demo.Pages.BaseGalleryPage`1.HandleSelectionChanged(System.Object,Microsoft.Maui.Controls.SelectionChangedEventArgs)")]

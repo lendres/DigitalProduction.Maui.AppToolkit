@@ -1,4 +1,4 @@
-﻿using Data.Translation.Validation;
+﻿using DigitalProduction.Maui.Validation;
 
 namespace DigitalProduction.UnitTests;
 
@@ -13,7 +13,26 @@ public class ValidationTests
 	#region Tests
 
 	/// <summary>
-	/// Test to convert a relative path to an absolute path.
+	/// Test for files existing/not existing.
+	/// </summary>
+	[Fact]
+	public void FileExists()
+	{
+		string                  file                    = "Test File.txt";
+		string                  noFile                  = "Does Not Exist File.fake";
+
+		FileExistsRule			fileExistsRule			= new();
+		FileDoesNotExistsRule	fileDoesNotExistRule	= new();
+
+		Assert.True(fileExistsRule.Check(file));
+		Assert.True(fileDoesNotExistRule.Check(noFile));
+
+		Assert.False(fileExistsRule.Check(noFile));
+		Assert.False(fileDoesNotExistRule.Check(file));
+	}
+
+	/// <summary>
+	/// Test for is numeric rule.
 	/// </summary>
 	[Fact]
 	public void IsNumericRuleTest()
