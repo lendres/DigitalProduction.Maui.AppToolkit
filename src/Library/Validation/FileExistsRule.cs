@@ -8,9 +8,9 @@
 /// https://github.com/dotnet-architecture/eshop-mobile-client
 /// Copyright (c) 2020 .NET Application Architecture - Reference Apps
 /// </remarks>
-public class FileExistsRule : ValidationRuleBase<string>
+public class FileExistsRule : FileExistsBase
 {
 	public override bool Check(string? value) =>
 		!string.IsNullOrWhiteSpace(value) &&
-		File.Exists(value);
+		FileExists(value);
 }

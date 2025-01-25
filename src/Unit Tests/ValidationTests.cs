@@ -8,6 +8,10 @@ namespace DigitalProduction.UnitTests;
 public class ValidationTests
 {
 	#region Members
+		
+	private string		_file		= "Test File.txt";
+	private string		_noFile		= "Does Not Exist File.fake";
+
 	#endregion
 
 	#region Tests
@@ -16,19 +20,49 @@ public class ValidationTests
 	/// Test for files existing/not existing.
 	/// </summary>
 	[Fact]
-	public void FileExists()
+	public void FileExistsSimple()
 	{
-		string                  file                    = "Test File.txt";
-		string                  noFile                  = "Does Not Exist File.fake";
 
 		FileExistsRule			fileExistsRule			= new();
 		FileDoesNotExistsRule	fileDoesNotExistRule	= new();
 
-		Assert.True(fileExistsRule.Check(file));
-		Assert.True(fileDoesNotExistRule.Check(noFile));
+		Assert.True(fileExistsRule.Check(_file));
+		Assert.True(fileDoesNotExistRule.Check(_noFile));
 
-		Assert.False(fileExistsRule.Check(noFile));
-		Assert.False(fileDoesNotExistRule.Check(file));
+		Assert.False(fileExistsRule.Check(_noFile));
+		Assert.False(fileDoesNotExistRule.Check(_file));
+	}
+
+	/// <summary>
+	/// Test for files existing/not existing.
+	/// </summary>
+	[Fact]
+	public void FileExistsWithSearchDirectory()
+	{
+		// Setup, create a directory for testing and add a new file.
+		string tempDirectory	= DigitalProduction.IO.Path.GetTemporaryDirectory();
+		string newFile			= Path.Combine(tempDirectory, "New File.txt");
+		File.Copy(_file, newFile);
+
+
+		FileExistsRule          fileExistsRule          = new()
+		{
+			SearchDirectories = [tempDirectory]
+		};
+		FileDoesNotExistsRule	fileDoesNotExistRule	= new()
+		{
+			SearchDirectories = [tempDirectory]
+		};
+
+		Assert.True(fileExistsRule.Check(newFile));
+		Assert.True(fileDoesNotExistRule.Check(_noFile));
+
+		Assert.False(fileExistsRule.Check(_noFile));
+		Assert.False(fileDoesNotExistRule.Check(newFile));
+
+		// Clean up.
+		File.Delete(Path.Combine(tempDirectory, newFile));
+		Directory.Delete(tempDirectory);
 	}
 
 	/// <summary>

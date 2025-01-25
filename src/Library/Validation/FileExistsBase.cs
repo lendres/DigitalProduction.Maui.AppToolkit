@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DigitalProduction.Maui.Validation;
 
-namespace DigitalProduction.Maui.Validation;
-
-internal abstract class FileExistsBase : ValidationRuleBase<string>
+public abstract class FileExistsBase : ValidationRuleBase<string>
 {
-public List<string>? Values { get; set; }
+	public List<string> SearchDirectories { get; set; } = [];
+
+	protected bool FileExists(string fileName)
+	{
+		// Check if the full path was provided or if it exists in the current directory.
+		if (File.Exists(fileName))
+		{
+			return true;
+		}
+
+		// Search any specified directories.
+		foreach (string directory in SearchDirectories)
+		{
+			if (File.Exists(Path.Combine(directory, fileName)))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }
