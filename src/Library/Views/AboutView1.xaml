@@ -10,7 +10,7 @@
 	x:DataType="viewmodel:AboutViewModel"
 	CanBeDismissedByTappingOutsideOfPopup="False">
 
-	<Frame StyleClass="PopupFrameStyle" MinimumWidthRequest="500" MinimumHeightRequest="330">
+	<Border StyleClass="PopupFrameStyle" MinimumWidthRequest="500" MinimumHeightRequest="330">
 
 		<VerticalStackLayout StyleClass="VerticalLayoutStyle">
 
@@ -55,6 +55,6 @@
 			</HorizontalStackLayout>
 
 		</VerticalStackLayout>
-	</Frame>
+	</Border>
 
 </dpviews:PopupView>

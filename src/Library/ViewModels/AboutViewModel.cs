@@ -5,61 +5,6 @@ namespace DigitalProduction.Maui.ViewModels;
 public partial class AboutViewModel : BaseViewModel
 {
 	#region Fields
-
-	[ObservableProperty]
-	private string				_title						= "";
-	
-	[ObservableProperty]
-	private string				_product					= "";
-
-	[ObservableProperty]
-	private string				_version					= "";
-
-	[ObservableProperty]
-	private bool				_showVersion				= true;
-
-	[ObservableProperty]
-	private string				_authors					= "";
-
-	[ObservableProperty]
-	private bool				_showAuthors				= true;
-
-	[ObservableProperty]
-	private string				_copyright					= "";
-
-	[ObservableProperty]
-	private bool				_showCopyright				= true;
-
-	[ObservableProperty]
-	private string				_company					= "";
-
-	[ObservableProperty]
-	private bool				_showCompany				= true;
-
-	[ObservableProperty]
-	private string				_Description				= "";
-
-	[ObservableProperty]
-	private bool				_showDescription			= true;
-
-	[ObservableProperty]
-	private string				_website					= "";
-
-	[ObservableProperty]
-	private bool				_showWebsite				= true;
-
-	[ObservableProperty]
-	private string				_issuesAddress				= "";
-
-	[ObservableProperty]
-	private bool				_showIssuesAddress			= true;
-
-	[ObservableProperty]
-	private string				_documentationAddress		= "";
-
-	[ObservableProperty]
-	private bool				_showDocumentationAddress	= true;
-
 	#endregion
 
 	#region Construction
@@ -85,6 +30,64 @@ public partial class AboutViewModel : BaseViewModel
 		IssuesAddress			= DigitalProduction.Reflection.Assembly.IssuesAddress(entryAssembly);
 		DocumentationAddress	= DigitalProduction.Reflection.Assembly.DocumentationAddress(entryAssembly);
 	}
+
+	#endregion
+
+	#region Properties
+
+	[ObservableProperty]
+	public partial string			Title { get; set; }						= "";
+	
+	[ObservableProperty]
+	public partial string			Product { get; set; }					= "";
+
+	[ObservableProperty]
+	public partial string			Version { get; set; }					= "";
+
+	[ObservableProperty]
+	public partial bool				ShowVersion { get; set; }				= true;
+
+	[ObservableProperty]
+	public partial string			Authors { get; set; }					= "";
+
+	[ObservableProperty]
+	public partial bool				ShowAuthors { get; set; }				= true;
+
+	[ObservableProperty]
+	public partial string			Copyright { get; set; }					= "";
+
+	[ObservableProperty]
+	public partial bool				ShowCopyright { get; set; }				= true;
+
+	[ObservableProperty]
+	public partial string			Company { get; set; }					= "";
+
+	[ObservableProperty]
+	public partial bool				ShowCompany { get; set; }				= true;
+
+	[ObservableProperty]
+	public partial string			Description { get; set; }				= "";
+
+	[ObservableProperty]
+	public partial bool				ShowDescription { get; set; }			= true;
+
+	[ObservableProperty]
+	public partial string			Website { get; set; }					= "";
+
+	[ObservableProperty]
+	public partial bool				ShowWebsite { get; set; }				= true;
+
+	[ObservableProperty]
+	public partial string			IssuesAddress { get; set; }				= "";
+
+	[ObservableProperty]
+	public partial bool				ShowIssuesAddress { get; set; }			= true;
+
+	[ObservableProperty]
+	public partial string			DocumentationAddress { get; set; }		= "";
+
+	[ObservableProperty]
+	public partial bool				ShowDocumentationAddress { get; set; }	= true;
 
 	#endregion
 		

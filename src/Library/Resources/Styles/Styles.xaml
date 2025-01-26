@@ -442,9 +442,12 @@
 	<Style TargetType="toolkit:Popup" ApplyToDerivedTypes="True">
 		<Setter Property="Color" Value="Transparent"/>
 	</Style>
-	<Style TargetType="Frame" Class="PopupFrameStyle">
-		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource Gray900}}"/>
-		<Setter Property="CornerRadius" Value="20"/>
+	<Style TargetType="Border" Class="PopupFrameStyle">
+		<Setter Property="Background" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource Gray900}}"/>
+		<Setter Property="Padding" Value="20"/>
+		<Setter Property="Border.StrokeShape">
+			<RoundRectangle CornerRadius="20"/>
+		</Setter>
 	</Style>
 
 	<!-- Layouts -->
