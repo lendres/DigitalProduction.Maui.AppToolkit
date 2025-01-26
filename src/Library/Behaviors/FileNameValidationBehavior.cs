@@ -6,7 +6,7 @@ namespace DigitalProduction.Maui.Behaviors;
 /// <summary>
 /// The <see cref="FileNameValidationBehavior"/> is a behavior that allows the user to determine if a file exists.  Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
 /// </summary>
-public class FileNameValidationBehavior : ErrorReportableValidationBehavior<string, PathValidationResult>
+public partial class FileNameValidationBehavior : ErrorReportableValidationBehavior<string, PathValidationResult>
 {
 	/// <summary>
 	/// Backing BindableProperty for the <see cref="RequireFileToExist"/> property.
