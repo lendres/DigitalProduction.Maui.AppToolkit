@@ -14,33 +14,6 @@ namespace DigitalProduction.Maui.ViewModels;
 public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyChanged where T : class
 {
 	#region Fields
-
-	[ObservableProperty]
-	private bool									_modified						= false;
-
-	[ObservableProperty]
-	private ObservableCollection<T>?				_items;
-
-	[ObservableProperty]
-	private T?										_selectedItem					= null;
-
-	[ObservableProperty]
-	private T?										_itemToEdit						= null;
-
-	[ObservableProperty]
-	private bool									_isRefreshing					= false;
-
-	[ObservableProperty]
-	private bool									_headerBordersVisible			= false;
-
-	[ObservableProperty]
-	private Thickness								_borderThickness				= new(0);
-
-	[ObservableProperty]
-	private SelectionMode							_selectionMode					= SelectionMode.Single;
-
-	public static ImmutableList<SelectionMode>		SelectionModes					=> Enum.GetValues<SelectionMode>().Cast<SelectionMode>().ToImmutableList();
-
 	#endregion
 
 	#region Construction
@@ -48,6 +21,37 @@ public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyCh
 	public DataGridBaseViewModel()
 	{
 	}
+
+	#endregion
+
+	#region Properties
+
+	[ObservableProperty]
+	public partial bool								Modified { get; set; }						= false;
+
+	[ObservableProperty]
+	public partial ObservableCollection<T>?			Items { get; set; }
+
+	[ObservableProperty]
+	public partial T?								SelectedItem { get; set; }					= null;
+
+	[ObservableProperty]
+	public partial T?								ItemToEdit { get; set; }					= null;
+
+	[ObservableProperty]
+	public partial bool								IsRefreshing { get; set; }					= false;
+
+	[ObservableProperty]
+	public partial bool								HeaderBordersVisible { get; set; }			= false;
+
+	[ObservableProperty]
+	public partial Thickness						BorderThickness { get; set; }				= new(0);
+
+	[ObservableProperty]
+	public partial SelectionMode					SelectionMode { get; set; }					= SelectionMode.Single;
+
+	public static ImmutableList<SelectionMode>		SelectionModes	{ get => Enum.GetValues<SelectionMode>().Cast<SelectionMode>().ToImmutableList(); }
+
 
 	#endregion
 
@@ -77,7 +81,7 @@ public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyCh
 	[RelayCommand]
 	public virtual void Tapped(object item)
 	{
-		if (item is T tItem)
+		if (item is T)
 		{
 			Debug.WriteLine($@"Item tapped: {item}");
 		}
@@ -127,7 +131,7 @@ public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyCh
 	{
 		if (Items is not null)
 		{
-			List<T> ordered = Items.Order(comparer).ToList();
+			List<T> ordered = [.. Items.Order(comparer)];
 			Items.Clear();
 
 			foreach (T item in ordered)
