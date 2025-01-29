@@ -34,6 +34,7 @@
 
 	<PropertyGroup>
 		<LangVersion>preview</LangVersion>
+		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
 	</PropertyGroup>
 
 	<!-- Import information from the folder containing the project if the files exists -->
