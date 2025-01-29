@@ -1,11 +1,14 @@
 ﻿using CommunityToolkit.Maui.Behaviors;
 using DigitalProduction.IO;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DigitalProduction.Maui.Behaviors;
 
 /// <summary>
 /// The <see cref="FileNameValidationBehavior"/> is a behavior that allows the user to determine if a file exists.  Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
 /// </summary>
+[RequiresUnreferencedCode($"{nameof(TextValidationBehavior)} is not trim safe because it uses bindings with string paths.")]
+[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
 public partial class FileNameValidationBehavior : ErrorReportableValidationBehavior<string, PathValidationResult>
 {
 	/// <summary>

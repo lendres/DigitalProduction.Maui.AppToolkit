@@ -4,6 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 	xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
 	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
 	x:Class="DigitalProduction.Demo.Pages.ValidationPage"
     xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
@@ -26,7 +27,11 @@
 					Placeholder="Input File"
 					Text="{Binding InputFile.Value}">
 					<Entry.Behaviors>
-						<toolkit:EventToCommandBehavior Command="{Binding ValidateInputFileCommand}" EventName="TextChanged"/>
+						<toolkit:EventToCommandBehavior
+                           x:TypeArguments="system:EventArgs"
+                           Command="{Binding ValidateInputFileCommand}"
+                           BindingContext="{Binding Path=BindingContext, Source={x:Reference InputFileEntry}, x:DataType=Entry}"
+                           EventName="TextChanged"/>
 					</Entry.Behaviors>
 				</Entry>
 				<Label Grid.Row="2" Grid.Column="0" StyleClass="InvalidLabelStyle"
@@ -44,7 +49,11 @@
 					Placeholder="Output Directory"
 					Text="{Binding OutputDirectory.Value}">
 					<Entry.Behaviors>
-						<toolkit:EventToCommandBehavior Command="{Binding ValidateOutputDirectoryCommand}" EventName="TextChanged"/>
+						<toolkit:EventToCommandBehavior
+                            x:TypeArguments="system:EventArgs"
+                            Command="{Binding ValidateOutputDirectoryCommand}"
+                            BindingContext="{Binding Path=BindingContext, Source={x:Reference OutputDirectoryEntry}, x:DataType=Entry}"
+                            EventName="TextChanged"/>
 					</Entry.Behaviors>
 				</Entry>
 				<Label Grid.Row="2" Grid.Column="0" StyleClass="InvalidLabelStyle"

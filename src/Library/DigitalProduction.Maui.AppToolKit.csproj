@@ -4,7 +4,7 @@
 		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Apparently this needs to be the same as the target frameworks version but with "41" as the last digit. -->
-		<WindowsSdkPackageVersion Condition="$([MSBuild]::IsOSPlatform('windows'))">10.0.19041.41</WindowsSdkPackageVersion>
+		<!--<WindowsSdkPackageVersion Condition="$([MSBuild]::IsOSPlatform('windows'))">10.0.19041.41</WindowsSdkPackageVersion>-->
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<UseMaui>true</UseMaui>
@@ -61,7 +61,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="akgul.Maui.DataGrid" Version="4.0.6" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="11.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="DigitalProduction.Net" Version="0.6.0" />
 		<PackageReference Include="DigitalProduction.Maui" Version="0.5.0" />
