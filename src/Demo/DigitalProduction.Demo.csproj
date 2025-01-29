@@ -79,7 +79,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
 		<PackageReference Include="CommunityToolkit.Maui.Markup" Version="5.1.0" />
 		<PackageReference Include="DigitalProduction.Maui" Version="0.5.0" />
 		<PackageReference Include="DigitalProduction.Net" Version="0.6.0" />

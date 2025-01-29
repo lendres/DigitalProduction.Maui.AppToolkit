@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui.Behaviors;
+using System.Diagnostics.CodeAnalysis;
 //using System.Diagnostics.CodeAnalysis;
 
 namespace DigitalProduction.Maui.Behaviors;
@@ -7,7 +8,7 @@ namespace DigitalProduction.Maui.Behaviors;
 /// The <see cref="ErrorReportableValidationBehavior{T, TError}"/> is a behavior that allows the user to determine get an error code. Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
 /// </summary>
 //public abstract class ErrorReportableValidationBehavior<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]TError> : ValidationBehavior<T>
-public abstract class ErrorReportableValidationBehavior<T, TError> : ValidationBehavior<T>
+public abstract class ErrorReportableValidationBehavior<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]TError> : ValidationBehavior<T>
 {
 	/// <summary>
 	/// Backing BindableProperty for the <see cref="Error"/> property.
