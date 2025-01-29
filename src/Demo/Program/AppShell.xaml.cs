@@ -8,8 +8,9 @@ public partial class AppShell : Shell
 {
 	private static readonly IReadOnlyDictionary<Type, (Type GalleryPageType, Type ContentPageType)> viewModelMappings = new Dictionary<Type, (Type, Type)>(
 	[
-		CreateViewModelMapping<AboutPage, AboutPageViewModel, ControlsGalleryPage, ControlsGalleryViewModel>(),
-		CreateViewModelMapping<DataGridPage, DataGridPageViewModel, DialogsGalleryPage, DialogsGalleryViewModel>()
+		CreateViewModelMapping<AboutPage, AboutPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
+		CreateViewModelMapping<DataGridPage, DataGridPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
+		CreateViewModelMapping<ValidationPage, ValidationPageViewModel, DialogsGalleryPage, DialogsGalleryViewModel>()
 	]);
 
 	public AppShell()
@@ -35,16 +36,17 @@ public partial class AppShell : Shell
 			throw new KeyNotFoundException($"No map for ${viewModelType} was found on navigation mappings. Please register your ViewModel in {nameof(AppShell)}.{nameof(viewModelMappings)}");
 		}
 
-		var uri = new UriBuilder("", GetPageRoute(mapping.GalleryPageType, mapping.ContentPageType));
+		UriBuilder uri = new("", GetPageRoute(mapping.GalleryPageType, mapping.ContentPageType));
 		return uri.Uri.OriginalString[..^1];
 	}
 
 	static string GetPageRoute(Type galleryPageType, Type contentPageType) => $"//{galleryPageType.Name}/{contentPageType.Name}";
 
-	static KeyValuePair<Type, (Type GalleryPageType, Type ContentPageType)> CreateViewModelMapping<TPage, TViewModel, TGalleryPage, TGalleryViewModel>() where TPage : BasePage<TViewModel>
-																																							where TViewModel : BaseViewModel
-																																							where TGalleryPage : BaseGalleryPage<TGalleryViewModel>
-																																							where TGalleryViewModel : BaseGalleryViewModel
+	static KeyValuePair<Type, (Type GalleryPageType, Type ContentPageType)> CreateViewModelMapping<TPage, TViewModel, TGalleryPage, TGalleryViewModel>()
+		where TPage : BasePage<TViewModel>
+		where TViewModel : BaseViewModel
+		where TGalleryPage : BaseGalleryPage<TGalleryViewModel>
+		where TGalleryViewModel : BaseGalleryViewModel
 	{
 		return new KeyValuePair<Type, (Type GalleryPageType, Type ContentPageType)>(typeof(TViewModel), (typeof(TGalleryPage), typeof(TPage)));
 	}

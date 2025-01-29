@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
+	x:Class="DigitalProduction.Demo.Pages.ValidationPage"
+    xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
+    x:TypeArguments="viewmodel:ValidationPageViewModel"
+    x:DataType="viewmodel:ValidationPageViewModel"
+	Title="ValidationPage">
+
+	<ContentPage.Resources>
+		<dpconverters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter"/>
+	</ContentPage.Resources>
+
+	<ScrollView>
+		<VerticalStackLayout StyleClass="VerticalLayoutStyle" MaximumWidthRequest="800">
+
+			<!-- Input File -->
+			<Grid StyleClass="FileBrowsingGridStyle">
+				<Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel"/>
+				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand"
+					x:Name="InputFileEntry"
+					Placeholder="Input File"
+					Text="{Binding InputFile.Value}">
+					<Entry.Behaviors>
+						<toolkit:EventToCommandBehavior
+                           x:TypeArguments="system:EventArgs"
+                           Command="{Binding ValidateInputFileCommand}"
+                           BindingContext="{Binding Path=BindingContext, Source={x:Reference InputFileEntry}, x:DataType=Entry}"
+                           EventName="TextChanged"/>
+					</Entry.Behaviors>
+				</Entry>
+				<Label Grid.Row="2" Grid.Column="0" StyleClass="InvalidLabelStyle"
+					Text="{Binding InputFile.Errors, Converter={StaticResource FirstValidationErrorConverter}}"/>
+				<Button Grid.Row="1" Grid.Column="1" StyleClass="StandardWidthButtonStyle" HorizontalOptions="Center" VerticalOptions="Fill"
+					Text="Browse" SemanticProperties.Hint="Browse for the input file."
+					Clicked="OnBrowseForInputFile"/>
+			</Grid>
+
+			<!-- Output File -->
+			<Grid StyleClass="FileBrowsingGridStyle">
+				<Label Grid.Row="0" Text="Output Directory" StyleClass="ControlLabel"/>
+				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand"
+					x:Name="OutputDirectoryEntry"
+					Placeholder="Output Directory"
+					Text="{Binding OutputDirectory.Value}">
+					<Entry.Behaviors>
+						<toolkit:EventToCommandBehavior
+                            x:TypeArguments="system:EventArgs"
+                            Command="{Binding ValidateOutputDirectoryCommand}"
+                            BindingContext="{Binding Path=BindingContext, Source={x:Reference OutputDirectoryEntry}, x:DataType=Entry}"
+                            EventName="TextChanged"/>
+					</Entry.Behaviors>
+				</Entry>
+				<Label Grid.Row="2" Grid.Column="0" StyleClass="InvalidLabelStyle"
+					Text="{Binding OutputDirectory.Errors, Converter={StaticResource FirstValidationErrorConverter}}"/>
+				<Button Grid.Row="1" Grid.Column="1" StyleClass="StandardWidthButtonStyle" HorizontalOptions="Center" VerticalOptions="Fill"
+					Text="Browse" SemanticProperties.Hint="Browse for the output file."
+					Clicked="OnBrowseOutputDirectory"/>
+			</Grid>
+
+			<Button
+				Text="Do Something"
+				StyleClass="StandardHeightButtonStyle"
+				IsEnabled="{Binding IsSubmittable}"
+				Clicked="OnSubmit"/>
+
+
+		</VerticalStackLayout>
+	</ScrollView>
+</pages:BasePage>

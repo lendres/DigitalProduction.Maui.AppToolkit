@@ -10,6 +10,7 @@ namespace DigitalProduction.Maui.Validation;
 /// https://github.com/dotnet-architecture/eshop-mobile-client
 /// Copyright (c) 2020 .NET Application Architecture - Reference Apps
 /// </remarks>
+[AcceptEmptyServiceProvider]
 public class FileNameIsValidRule : ValidationRuleBase<string>
 {
 	public override bool Check(string? value) =>

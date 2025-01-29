@@ -28,14 +28,14 @@
 	</FlyoutItem>
 
 	<FlyoutItem 
-		Title="Controls"
-		Route="ControlsGalleryPage"
+		Title="Views"
+		Route="ViewsGalleryPage"
 		Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
-		<ShellContent ContentTemplate="{DataTemplate local:ControlsGalleryPage}"/>
+		<ShellContent ContentTemplate="{DataTemplate local:ViewsGalleryPage}"/>
 	</FlyoutItem>
 
 	<FlyoutItem 
-		Title="Dialogs"
+		Title="Work Flows"
 		Route="DialogsGalleryPage"
 		Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
 		<ShellContent ContentTemplate="{DataTemplate local:DialogsGalleryPage}"/>
