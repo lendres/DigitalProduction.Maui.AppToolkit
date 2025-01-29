@@ -8,6 +8,8 @@ namespace DigitalProduction.Maui.Behaviors;
 /// The <see cref="ErrorReportableValidationBehavior{T, TError}"/> is a behavior that allows the user to determine get an error code. Additional properties handling validation are inherited from <see cref="ValidationBehavior"/>.
 /// </summary>
 //public abstract class ErrorReportableValidationBehavior<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]TError> : ValidationBehavior<T>
+[RequiresUnreferencedCode($"{nameof(TextValidationBehavior)} is not trim safe because it uses bindings with string paths.")]
+[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
 public abstract class ErrorReportableValidationBehavior<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]TError> : ValidationBehavior<T>
 {
 	/// <summary>
