@@ -88,10 +88,17 @@
 						<dg:DataGridColumn Title="Last Name" PropertyName="LastName" Width="1.0*" SortingEnabled="false"
 							CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
 
-						<dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false"
-								CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
+						<dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false">
+						    <dg:DataGridColumn.CellTemplate>
+							    <DataTemplate x:DataType="x:Int32">
+								    <ContentView StyleClass="DataGridContentViewStyle">
+									    <Label Text="{Binding .}" StyleClass="DataGridLabelStyle"/>
+                                    </ContentView>
+                                </DataTemplate>
+                            </dg:DataGridColumn.CellTemplate>
+                        </dg:DataGridColumn>
 
-					</dg:DataGrid.Columns>
+                </dg:DataGrid.Columns>
 				</dg:DataGrid>
 
 		</VerticalStackLayout>
