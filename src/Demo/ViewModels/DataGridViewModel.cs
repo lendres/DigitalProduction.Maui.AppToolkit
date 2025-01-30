@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace DigitalProduction.Demo.ViewModels;
 
-public class DataGridViewModel : DataGridBaseViewModel<Person>
+public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 {
 
 	public DataGridViewModel()

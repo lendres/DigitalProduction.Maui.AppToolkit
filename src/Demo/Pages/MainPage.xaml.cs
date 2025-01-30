@@ -1,4 +1,6 @@
-﻿namespace DigitalProduction.Demo.Pages;
+﻿using CommunityToolkit.Maui.Storage;
+
+namespace DigitalProduction.Demo.Pages;
 
 public partial class MainPage : ContentPage
 {

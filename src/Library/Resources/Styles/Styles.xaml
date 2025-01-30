@@ -466,6 +466,15 @@
 		<Setter Property="HorizontalOptions" Value="End"/>
 	</Style>
 
+	<Style TargetType="Grid" x:Key="BrowsingStyleBase">
+		<Setter Property="RowSpacing" Value="0"/>
+		<Setter Property="ColumnDefinitions" Value="*,100"/>
+		<Setter Property="ColumnSpacing" Value="8"/>
+	</Style>
+	<Style TargetType="Grid" BasedOn="{StaticResource BrowsingStyleBase}" Class="FileBrowsingGridStyle">
+		<Setter Property="RowDefinitions" Value="27,Auto,16"/>
+	</Style>
+
 	<!-- Label types -->
 	<Style TargetType="Label" x:Key="LabelSectionTitle">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray100}}"/>
@@ -496,6 +505,28 @@
 		<Setter Property="FontSize" Value="12"/>
 	</Style>
 
+	<!-- Control Sizes -->
+	<Style TargetType="Button" Class="StandardSizeButtonStyle">
+		<Setter Property="HeightRequest" Value="38"/>
+		<Setter Property="WidthRequest" Value="100"/>
+		<Setter Property="VerticalOptions" Value="Center"/>
+	</Style>
+
+	<Style TargetType="Button" Class="StandardHeightButtonStyle">
+		<Setter Property="HeightRequest" Value="38"/>
+		<Setter Property="VerticalOptions" Value="Center"/>
+	</Style>
+	<Style TargetType="Button" Class="StandardWidthButtonStyle">
+		<Setter Property="WidthRequest" Value="100"/>
+		<Setter Property="VerticalOptions" Value="Center"/>
+	</Style>
+
+	<Style TargetType="Button" Class="WideButtonStyle">
+		<Setter Property="HeightRequest" Value="38"/>
+		<Setter Property="WidthRequest" Value="140"/>
+		<Setter Property="VerticalOptions" Value="Center"/>
+	</Style>
+
 	<!-- Hyperlink -->
 	<Style TargetType="{x:Type dpcontrols:HyperlinkLabel}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource HyperLinkLight}, Dark={DynamicResource HyperLinkDark}}"/>
@@ -514,12 +545,6 @@
 		<Setter Property="HeightRequest" Value="1"/>
 		<Setter Property="HorizontalOptions" Value="FillAndExpand"/>
 		<Setter Property="Margin" Value="0,5"/>
-	</Style>
-
-	<Style TargetType="HorizontalStackLayout"  BasedOn="{StaticResource ButtonRowStyleBase}" Class="BottomButtonRowStyle">
-		<Setter Property="Margin" Value="0,8,0,0"/>
-		<Setter Property="VerticalOptions" Value="End"/>
-		<Setter Property="HorizontalOptions" Value="End"/>
 	</Style>
 
 	<!-- DataGrid -->
