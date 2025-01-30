@@ -583,4 +583,8 @@
 		<Color>#292929</Color>
 	</dg:PaletteCollection>
 
+    <Style TargetType="VerticalStackLayout" Class="TitleVerticalStackStyle">
+        <Setter Property="Spacing" Value="6"/>
+    </Style>
+
 </ResourceDictionary>
