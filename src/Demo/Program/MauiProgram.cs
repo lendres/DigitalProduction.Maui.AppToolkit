@@ -40,8 +40,8 @@ public static class MauiProgram
 		services.AddTransientWithShellRoute<AboutPage, AboutPageViewModel>();
 		services.AddTransientWithShellRoute<DataGridPage, DataGridPageViewModel>();
 
-		services.AddTransient<DialogsGalleryPage, DialogsGalleryViewModel>();
-		services.AddTransientWithShellRoute<ValidationPage, ValidationPageViewModel>();
+		services.AddTransient<DialogsGalleryPage, WorkFlowsGalleryViewModel>();
+		services.AddTransientWithShellRoute<PathValidationPage, ValidationPageViewModel>();
 	}
 
 	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 

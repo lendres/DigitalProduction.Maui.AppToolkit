@@ -21,7 +21,10 @@
 		<Setter Property="Stroke" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray500}}"/>
 		<Setter Property="StrokeShape" Value="Rectangle"/>
 		<Setter Property="StrokeThickness" Value="1"/>
-	</Style>
+        <Setter Property="Border.StrokeShape">
+            <RoundRectangle CornerRadius="8"/>
+        </Setter>
+    </Style>
 
 	<Style TargetType="BoxView">
 		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>

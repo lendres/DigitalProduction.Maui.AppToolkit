@@ -83,13 +83,18 @@
 		<PackageReference Include="CommunityToolkit.Maui.Markup" Version="5.1.0" />
 		<PackageReference Include="DigitalProduction.Maui" Version="0.5.0" />
 		<PackageReference Include="DigitalProduction.Net" Version="0.6.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.30" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.1" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Library\DigitalProduction.Maui.AppToolKit.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\PathValidationPage.xaml.cs">
+	    <DependentUpon>PathValidationPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -99,7 +104,7 @@
 	  <MauiXaml Update="Pages\DataGridPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ValidationPage.xaml">
+	  <MauiXaml Update="Pages\PathValidationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

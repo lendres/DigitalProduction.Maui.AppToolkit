@@ -2,9 +2,9 @@ using CommunityToolkit.Maui.Storage;
 using DigitalProduction.Demo.ViewModels;
 namespace DigitalProduction.Demo.Pages;
 
-public partial class ValidationPage : BasePage<ValidationPageViewModel>
+public partial class PathValidationPage : BasePage<ValidationPageViewModel>
 {
-	public ValidationPage(ValidationPageViewModel viewModel) :
+	public PathValidationPage(ValidationPageViewModel viewModel) :
 		base(viewModel)
 	{
 		InitializeComponent();

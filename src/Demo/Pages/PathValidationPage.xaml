@@ -6,11 +6,11 @@
 	xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
 	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
-	x:Class="DigitalProduction.Demo.Pages.ValidationPage"
+	x:Class="DigitalProduction.Demo.Pages.PathValidationPage"
     xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
     x:TypeArguments="viewmodel:ValidationPageViewModel"
     x:DataType="viewmodel:ValidationPageViewModel"
-	Title="ValidationPage">
+	Title="Path Validation">
 
 	<ContentPage.Resources>
 		<dpconverters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter"/>
@@ -68,7 +68,6 @@
 				StyleClass="StandardHeightButtonStyle"
 				IsEnabled="{Binding IsSubmittable}"
 				Clicked="OnSubmit"/>
-
 
 		</VerticalStackLayout>
 	</ScrollView>
