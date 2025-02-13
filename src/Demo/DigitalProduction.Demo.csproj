@@ -92,13 +92,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\PathValidationPage.xaml.cs">
+	    <DependentUpon>PathValidationPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Pages\DataGridExamplePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DataGridPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ValidationPage.xaml">
+	  <MauiXaml Update="Pages\PathValidationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
