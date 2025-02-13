@@ -22,11 +22,16 @@
 			</VerticalStackLayout>
 
 			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Version:" StyleClass="LargeControlLabel"/>
+				<Label Text="Demo Version:" StyleClass="LargeControlLabel"/>
 				<Label Text="{Binding Version}" StyleClass="LargeLabel"/>
 			</VerticalStackLayout>
 
-			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+            <VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+                <Label Text="AppToolkit Version:" StyleClass="LargeControlLabel"/>
+                <Label Text="{Binding AppToolkitVersion}" StyleClass="LargeLabel"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Website:" StyleClass="LargeControlLabel"/>
 				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}"  StyleClass="LargeHyperLink"/>
 			</VerticalStackLayout>
