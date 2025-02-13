@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
+	x:Class="DigitalProduction.Demo.Pages.StylesPage"
+    xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
+    x:TypeArguments="viewmodel:StylesPageViewModel"
+    x:DataType="viewmodel:StylesPageViewModel"
+	Title="Styles">
+
+	<ScrollView>
+		<VerticalStackLayout StyleClass="VerticalLayoutStyle" MaximumWidthRequest="800">
+
+			<!-- Input File -->
+			<Grid StyleClass="FileBrowsingGridStyle">
+				<Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel"/>
+				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand"
+					Placeholder="Enter Values"
+					Text="User entered text.">
+				</Entry>
+				<Label Grid.Row="2" Grid.Column="0" StyleClass="InvalidLabelStyle"
+					Text="This is an error message."/>
+				<Button Grid.Row="1" Grid.Column="1" StyleClass="StandardWidthButtonStyle" HorizontalOptions="Center" VerticalOptions="Fill"
+					Text="Enabled" SemanticProperties.Hint="Enabled button style."/>
+			</Grid>
+
+			<Button
+				Text="Disabled Button Style"
+				StyleClass="StandardHeightButtonStyle"
+				IsEnabled="False"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+</pages:BasePage>

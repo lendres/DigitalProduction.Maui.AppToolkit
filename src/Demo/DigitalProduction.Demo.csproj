@@ -92,6 +92,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\StylesPage.xaml.cs">
+	    <DependentUpon>StylesPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\PathValidationPage.xaml.cs">
 	    <DependentUpon>PathValidationPage.xaml</DependentUpon>
 	  </Compile>
@@ -102,6 +105,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DataGridPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\StylesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\PathValidationPage.xaml">
