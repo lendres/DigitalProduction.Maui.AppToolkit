@@ -17,7 +17,7 @@
 	</ContentPage.Resources>
 
 	<ScrollView>
-		<VerticalStackLayout StyleClass="VerticalLayoutStyle" MaximumWidthRequest="800">
+        <VerticalStackLayout StyleClass="VerticalGroupsLayout" MaximumWidthRequest="800">
 
 			<!-- Input File -->
 			<Grid StyleClass="FileBrowsingGridStyle">

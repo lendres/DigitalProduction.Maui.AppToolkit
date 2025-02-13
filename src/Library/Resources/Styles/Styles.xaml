@@ -454,7 +454,7 @@
 	</Style>
 
 	<!-- Layouts -->
-	<Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle">
+    <Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle" x:Key="VerticalLayoutKey">
 		<Setter Property="Spacing" Value="10"/>
 		<Setter Property="Padding" Value="0,0"/>
 	</Style>
