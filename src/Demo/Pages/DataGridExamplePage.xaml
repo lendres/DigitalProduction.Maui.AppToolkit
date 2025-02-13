@@ -30,37 +30,34 @@
 			<!--<Grid RowDefinitions="Auto,*" RowSpacing="20" Padding="20" VerticalOptions="Start">-->
 
 			<Grid Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Start">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="200"/>
-					</Grid.ColumnDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="200"/>
+				</Grid.ColumnDefinitions>
 
-					<HorizontalStackLayout Grid.Column="0" StyleClass="TopButtonRowStyle">
-						<Button
-							Text="New"
-							HorizontalOptions="Start"/>
-
-						<Button 
-							Text="Edit"
-							IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
-							HorizontalOptions="Start"/>
-
-						<Button 
-							Text="Delete"
-							IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
-							HorizontalOptions="Start"/>
-					</HorizontalStackLayout>
+				<HorizontalStackLayout Grid.Column="0" StyleClass="TopButtonRowStyle">
+					<Button
+						Text="New"
+						HorizontalOptions="Start"/>
 
 					<Button 
-						Grid.Column="1"
-						Text="Save"
-						IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
-						IsEnabled="{Binding Modified}"
-						HorizontalOptions="End"/>
+						Text="Edit"
+						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
+						HorizontalOptions="Start"/>
 
-							<!--StyleClass="WideButtonStyle"
-							Command="{Binding SaveConfigurationsCommand}"-->
-				</Grid>
+					<Button 
+						Text="Delete"
+						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
+						HorizontalOptions="Start"/>
+				</HorizontalStackLayout>
+
+				<Button 
+					Grid.Column="1"
+					Text="Save"
+					IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
+					IsEnabled="{Binding Modified}"
+					HorizontalOptions="End"/>
+			</Grid>
 
 				<dg:DataGrid
 					Grid.Row="1"
@@ -80,27 +77,26 @@
 					RowHeight="36" HeaderHeight="40"
 					RowTappedCommand="{Binding TappedCommand}">
 
-					<dg:DataGrid.Columns>
+                <dg:DataGrid.Columns>
 
-						<dg:DataGridColumn Title="First Name" PropertyName="FirstName" Width="1.0*" SortingEnabled="true"
+                    <dg:DataGridColumn Title="First Name" PropertyName="FirstName" Width="1.0*" SortingEnabled="true"
 							CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
 
-						<dg:DataGridColumn Title="Last Name" PropertyName="LastName" Width="1.0*" SortingEnabled="false"
+                    <dg:DataGridColumn Title="Last Name" PropertyName="LastName" Width="1.0*" SortingEnabled="false"
 							CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
 
-						<dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false">
-						    <dg:DataGridColumn.CellTemplate>
-							    <DataTemplate x:DataType="x:Int32">
-								    <ContentView StyleClass="DataGridContentViewStyle">
-									    <Label Text="{Binding .}" StyleClass="DataGridLabelStyle"/>
-                                    </ContentView>
-                                </DataTemplate>
-                            </dg:DataGridColumn.CellTemplate>
-                        </dg:DataGridColumn>
+                    <dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false">
+                        <dg:DataGridColumn.CellTemplate>
+                            <DataTemplate x:DataType="x:Int32">
+                                <ContentView StyleClass="DataGridContentViewStyle">
+                                    <Label Text="{Binding .}" StyleClass="DataGridLabelStyle"/>
+                                </ContentView>
+                            </DataTemplate>
+                        </dg:DataGridColumn.CellTemplate>
+                    </dg:DataGridColumn>
 
                 </dg:DataGrid.Columns>
-				</dg:DataGrid>
-
+            </dg:DataGrid>
 		</VerticalStackLayout>
 	</ScrollView>
 </ContentPage>
