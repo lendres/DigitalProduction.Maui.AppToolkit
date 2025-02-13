@@ -10,3 +10,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "<Pending>", Scope = "namespace", Target = "~N:DigitalProduction.Demo")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Readability", Scope = "member", Target = "~M:DigitalProduction.Demo.ViewModels.DataGridViewModel.#ctor")]
 [assembly: SuppressMessage("Style", "IDE0028:Simplify collection initialization", Justification = "Readability", Scope = "member", Target = "~M:DigitalProduction.Demo.ViewModels.DataGridViewModel.#ctor")]
+[assembly: SuppressMessage("Performance", "CA1859:Use concrete types when possible for improved performance", Justification = "<Pending>", Scope = "member", Target = "~F:DigitalProduction.Demo.AppShell.viewModelMappings")]
