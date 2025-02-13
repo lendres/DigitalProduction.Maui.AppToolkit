@@ -38,17 +38,20 @@
 				<HorizontalStackLayout Grid.Column="0" StyleClass="TopButtonRowStyle">
 					<Button
 						Text="New"
-						HorizontalOptions="Start"/>
+						HorizontalOptions="Start"
+                        Clicked="OnDisplayMessage"/>
 
 					<Button 
 						Text="Edit"
 						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
-						HorizontalOptions="Start"/>
+						HorizontalOptions="Start"
+                        Clicked="OnDisplayMessage"/>
 
 					<Button 
 						Text="Delete"
 						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
-						HorizontalOptions="Start"/>
+						HorizontalOptions="Start"
+                        Clicked="OnDisplayMessage"/>
 				</HorizontalStackLayout>
 
 				<Button 
