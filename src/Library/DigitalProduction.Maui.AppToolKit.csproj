@@ -30,7 +30,6 @@
 		<RepositoryUrl>https://github.com/lendres/C-Sharp-Maui-Library</RepositoryUrl>
 		<PackageTags>C#;.Net;Maui</PackageTags>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<!--<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>-->
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -40,13 +39,6 @@
 	<!-- Import information from the folder containing the project if the files exists -->
 	<Import Project="$(MSBuildProjectDirectory)/Publishing/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')" />
 	<Import Project="$(MSBuildProjectDirectory)/Publishing/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')" />
-	<!--<ItemGroup>
-	  <Compile Remove="UI\**" />
-	  <EmbeddedResource Remove="UI\**" />
-	  <MauiCss Remove="UI\**" />
-	  <MauiXaml Remove="UI\**" />
-	  <None Remove="UI\**" />
-	</ItemGroup>-->
 	
 	<ItemGroup>
 	  <None Include="..\..\LICENSE">
@@ -65,7 +57,7 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="DigitalProduction.Net" Version="0.6.0" />
 		<PackageReference Include="DigitalProduction.Maui" Version="0.5.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
 	</ItemGroup>
 
 	<ItemGroup>

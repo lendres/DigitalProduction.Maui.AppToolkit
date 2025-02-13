@@ -19,9 +19,13 @@ public partial class AboutViewModel : BaseViewModel
 		System.Reflection.Assembly? entryAssembly = System.Reflection.Assembly.GetEntryAssembly();
 		System.Diagnostics.Debug.Assert(entryAssembly != null);
 
+		System.Reflection.Assembly? thisAssembly = System.Reflection.Assembly.GetCallingAssembly();
+		System.Diagnostics.Debug.Assert(thisAssembly != null);
+
 		Title					= string.Format("About {0}", DigitalProduction.Reflection.Assembly.Product(entryAssembly));
 		Product					= DigitalProduction.Reflection.Assembly.Product(entryAssembly);
 		Version					= DigitalProduction.Reflection.Assembly.Version(entryAssembly, threeDigitVersion);
+		AppToolkitVersion		= DigitalProduction.Reflection.Assembly.Version(thisAssembly, threeDigitVersion);
 		Authors					= DigitalProduction.Reflection.Assembly.Authors(entryAssembly);
 		Copyright				= DigitalProduction.Reflection.Assembly.Copyright(entryAssembly);
 		Company					= DigitalProduction.Reflection.Assembly.Company(entryAssembly);
@@ -43,6 +47,9 @@ public partial class AboutViewModel : BaseViewModel
 
 	[ObservableProperty]
 	public partial string			Version { get; set; }					= "";
+
+	[ObservableProperty]
+	public partial string			AppToolkitVersion { get; set; }			= "";
 
 	[ObservableProperty]
 	public partial bool				ShowVersion { get; set; }				= true;

@@ -6,4 +6,9 @@ public partial class DataGridExamplePage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	async void OnDisplayMessage(object sender, EventArgs eventArgs)
+	{
+		await DisplayAlert("Message", "This command is non-functioning.", "Ok");
+	}
 }

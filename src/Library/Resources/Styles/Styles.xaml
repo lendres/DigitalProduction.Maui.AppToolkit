@@ -21,7 +21,10 @@
 		<Setter Property="Stroke" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray500}}"/>
 		<Setter Property="StrokeShape" Value="Rectangle"/>
 		<Setter Property="StrokeThickness" Value="1"/>
-	</Style>
+        <Setter Property="Border.StrokeShape">
+            <RoundRectangle CornerRadius="8"/>
+        </Setter>
+    </Style>
 
 	<Style TargetType="BoxView">
 		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>
@@ -126,7 +129,7 @@
 
 	<Style TargetType="Entry">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={DynamicResource White}}"/>
-		<Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray500}}"/>
@@ -219,8 +222,8 @@
 
 	<Style TargetType="Picker">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource White}}"/>
-		<Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource Gray200}}"/>
-		<Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="MinimumHeightRequest" Value="44"/>
@@ -451,7 +454,7 @@
 	</Style>
 
 	<!-- Layouts -->
-	<Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle">
+    <Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle" x:Key="VerticalLayoutKey">
 		<Setter Property="Spacing" Value="10"/>
 		<Setter Property="Padding" Value="0,0"/>
 	</Style>
@@ -493,7 +496,7 @@
 		<Setter Property="VerticalOptions" Value="Start"/>
 	</Style>
 	<Style TargetType="Label" Class="ControlLabel" BasedOn="{StaticResource SmallLabelBase}">
-		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray600}, Dark={DynamicResource Gray400}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
 		<Setter Property="FontSize" Value="14"/>
 	</Style>
 	<Style TargetType="Label" Class="InvalidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
@@ -582,5 +585,9 @@
 		<Color>#404040</Color>
 		<Color>#292929</Color>
 	</dg:PaletteCollection>
+
+    <Style TargetType="VerticalStackLayout" Class="TitleVerticalStackStyle">
+        <Setter Property="Spacing" Value="6"/>
+    </Style>
 
 </ResourceDictionary>

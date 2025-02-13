@@ -2,7 +2,7 @@
 
 namespace DigitalProduction.Demo.ViewModels;
 
-public partial class DialogsGalleryViewModel() : BaseGalleryViewModel(
+public partial class WorkFlowsGalleryViewModel() : BaseGalleryViewModel(
 [
 	SectionModel.Create<ValidationPageViewModel>("Path Validation", "File and directory validation example.")
 ]);

@@ -10,7 +10,8 @@ public partial class AppShell : Shell
 	[
 		CreateViewModelMapping<AboutPage, AboutPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
 		CreateViewModelMapping<DataGridPage, DataGridPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
-		CreateViewModelMapping<ValidationPage, ValidationPageViewModel, DialogsGalleryPage, DialogsGalleryViewModel>()
+		CreateViewModelMapping<StylesPage, StylesPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
+		CreateViewModelMapping<PathValidationPage, ValidationPageViewModel, WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>()
 	]);
 
 	public AppShell()
