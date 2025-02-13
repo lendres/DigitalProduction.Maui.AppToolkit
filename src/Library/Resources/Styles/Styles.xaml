@@ -222,7 +222,7 @@
 
 	<Style TargetType="Picker">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource White}}"/>
-		<Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource Gray200}}"/>
+        <Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
 		<Setter Property="BackgroundColor" Value="Transparent"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
@@ -454,7 +454,7 @@
 	</Style>
 
 	<!-- Layouts -->
-	<Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle">
+    <Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle" x:Key="VerticalLayoutKey">
 		<Setter Property="Spacing" Value="10"/>
 		<Setter Property="Padding" Value="0,0"/>
 	</Style>
@@ -496,7 +496,7 @@
 		<Setter Property="VerticalOptions" Value="Start"/>
 	</Style>
 	<Style TargetType="Label" Class="ControlLabel" BasedOn="{StaticResource SmallLabelBase}">
-		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray600}, Dark={DynamicResource Gray400}}"/>
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
 		<Setter Property="FontSize" Value="14"/>
 	</Style>
 	<Style TargetType="Label" Class="InvalidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">

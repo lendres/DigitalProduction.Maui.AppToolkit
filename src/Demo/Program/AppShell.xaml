@@ -38,7 +38,7 @@
 		Title="Work Flows"
 		Route="DialogsGalleryPage"
 		Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
-		<ShellContent ContentTemplate="{DataTemplate local:DialogsGalleryPage}"/>
+		<ShellContent ContentTemplate="{DataTemplate local:WorkFlowsGalleryPage}"/>
 	</FlyoutItem>
 
 </Shell>

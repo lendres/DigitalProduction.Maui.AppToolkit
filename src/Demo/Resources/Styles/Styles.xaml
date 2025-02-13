@@ -33,6 +33,10 @@
 		</Setter>
 	</Style>
 
+    <Style TargetType="VerticalStackLayout" BasedOn="{StaticResource VerticalLayoutKey}" Class="VerticalGroupsLayout">
+        <Setter Property="Spacing" Value="30"/>
+    </Style>
+
 	<!--  Values  -->
 	<Thickness x:Key="ContentPadding">20, 0</Thickness>
 
