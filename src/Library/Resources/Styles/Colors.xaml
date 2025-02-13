@@ -49,8 +49,11 @@
 	<Color x:Key="TextSecondaryDark">#f1f1f1</Color>
 
 	<!-- Special Controls -->
-    <Color x:Key="ControlLabelDark">#919191</Color>
-    <Color x:Key="ControlLabelLight">#404040</Color>
+    <Color x:Key="ControlLabelDark">#141414</Color>
+    <Color x:Key="ControlLabelLight">#FFFFFF</Color>
+
+    <Color x:Key="UserEntryControlDark">#919191</Color>
+    <Color x:Key="UserEntryControlLight">#404040</Color>
 
     <Color x:Key="ErrorColorLight">DarkRed</Color>
 	<Color x:Key="ErrorColorDark">Red</Color>
