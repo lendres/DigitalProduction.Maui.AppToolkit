@@ -11,7 +11,7 @@
 	Title="Styles">
 
 	<ScrollView>
-		<VerticalStackLayout StyleClass="VerticalLayoutStyle" MaximumWidthRequest="800">
+		<VerticalStackLayout StyleClass="VerticalLayoutStyle" MaximumWidthRequest="800" Padding="30,50">
 
 			<!-- Input File -->
 			<Grid StyleClass="FileBrowsingGridStyle">
@@ -31,6 +31,36 @@
 				StyleClass="StandardHeightButtonStyle"
 				IsEnabled="False"/>
 
-		</VerticalStackLayout>
+            <VerticalStackLayout StyleClass="TitleVerticalStackStyle">
+                <Label Text="Example Output" StyleClass="ControlLabel"/>
+                <Border Padding="8">
+                    <Label Text="Label used for messages." LineBreakMode="WordWrap"/>
+                </Border>
+            </VerticalStackLayout>
+
+
+            <VerticalStackLayout StyleClass="TitleVerticalStackStyle">
+                <Label Text="Example Output" StyleClass="ControlLabel"/>
+                <Border Padding="8">
+                    <Label Text="Label used for messages." LineBreakMode="WordWrap"/>
+                </Border>
+            </VerticalStackLayout>
+
+            <Picker
+				Title="Picker Example">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Baboon</x:String>
+                        <x:String>Capuchin Monkey</x:String>
+                        <x:String>Blue Monkey</x:String>
+                        <x:String>Squirrel Monkey</x:String>
+                        <x:String>Golden Lion Tamarin</x:String>
+                        <x:String>Howler Monkey</x:String>
+                        <x:String>Japanese Macaque</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+        </VerticalStackLayout>
 	</ScrollView>
 </pages:BasePage>
