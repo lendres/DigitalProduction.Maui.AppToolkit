@@ -28,7 +28,7 @@
 	</FlyoutItem>
 
 	<FlyoutItem 
-		Title="Views"
+		Title="Views and Styles"
 		Route="ViewsGalleryPage"
 		Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
 		<ShellContent ContentTemplate="{DataTemplate local:ViewsGalleryPage}"/>
