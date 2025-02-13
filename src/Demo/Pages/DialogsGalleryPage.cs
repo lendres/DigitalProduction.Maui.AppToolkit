@@ -2,7 +2,7 @@
 
 namespace DigitalProduction.Demo.Pages;
 
-public partial class DialogsGalleryPage(IDeviceInfo deviceInfo, DialogsGalleryViewModel galleryViewModel) :
-	BaseGalleryPage<DialogsGalleryViewModel>("Dialogs", deviceInfo, galleryViewModel)
+public partial class DialogsGalleryPage(IDeviceInfo deviceInfo, WorkFlowsGalleryViewModel galleryViewModel) :
+	BaseGalleryPage<WorkFlowsGalleryViewModel>("Dialogs", deviceInfo, galleryViewModel)
 {
 }
