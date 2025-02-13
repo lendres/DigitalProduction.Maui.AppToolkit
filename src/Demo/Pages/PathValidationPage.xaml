@@ -21,7 +21,7 @@
 
 			<!-- Input File -->
 			<Grid StyleClass="FileBrowsingGridStyle">
-				<Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel"/>
+                <Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel"/>
 				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand"
 					x:Name="InputFileEntry"
 					Placeholder="Input File"

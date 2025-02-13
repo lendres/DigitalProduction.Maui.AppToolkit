@@ -12,37 +12,37 @@
 
 	<Border StyleClass="PopupFrameStyle" MinimumWidthRequest="500" MinimumHeightRequest="330">
 
-		<VerticalStackLayout StyleClass="VerticalLayoutStyle">
+		<VerticalStackLayout StyleClass="VerticalLayoutStyle" Padding="10">
 
 			<Label Text="{Binding Title}" x:Name="TitleLabel" StyleClass="Title" HorizontalOptions="Start"/>
 
 			<VerticalStackLayout IsVisible="{Binding ShowCopyright}" StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Copyright:" StyleClass="TitleLabel"/>
+				<Label Text="Copyright:" StyleClass="ControlLabel"/>
 				<Label Text="{Binding Copyright}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowAuthors}" StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Author(s):" StyleClass="TitleLabel"/>
+				<Label Text="Author(s):" StyleClass="ControlLabel"/>
 				<Label Text="{Binding Authors}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowVersion}" StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Version:" StyleClass="TitleLabel"/>
+				<Label Text="Version:" StyleClass="ControlLabel"/>
 				<Label Text="{Binding Version}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowWebsite}" StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Website:" StyleClass="TitleLabel"/>
+				<Label Text="Website:" StyleClass="ControlLabel"/>
 				<dpcontrols:HyperlinkLabel Text="{Binding Website}" Url="{Binding Website}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowIssuesAddress}" StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Report issues:" StyleClass="TitleLabel"/>
+				<Label Text="Report issues:" StyleClass="ControlLabel"/>
 				<dpcontrols:HyperlinkLabel Text="{Binding IssuesAddress}" Url="{Binding IssuesAddress}"/>
 			</VerticalStackLayout>
 
 			<VerticalStackLayout IsVisible="{Binding ShowDocumentationAddress}" StyleClass="TitleTightVerticalStackStyle">
-				<Label Text="Documentation:" StyleClass="TitleLabel"/>
+				<Label Text="Documentation:" StyleClass="ControlLabel"/>
 				<dpcontrols:HyperlinkLabel Text="{Binding DocumentationAddress}" Url="{Binding DocumentationAddress}"/>
 			</VerticalStackLayout>
 
