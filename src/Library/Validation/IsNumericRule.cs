@@ -4,7 +4,7 @@ using System.Globalization;
 namespace DigitalProduction.Maui.Validation;
 
 /// <summary>
-/// Is not null or empty validation rule for string.
+/// Is not numeric rule.  Checks that the vlaue is a number.
 /// </summary>
 /// <remarks>
 /// Based on:
