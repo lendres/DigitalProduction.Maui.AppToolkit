@@ -101,6 +101,26 @@ public class ValidationTests
 		Assert.False(rule.Check("2.123"), errorMessage);
 	}
 
+	/// <summary>
+	/// Test for is numeric rule.
+	/// </summary>
+	[Fact]
+	public void IsNotZeroNumericRuleTest()
+	{
+		string errorMessage	= "IsNotZeroNumericRule test failed.";
+
+		// Basic checks that non-numeric is false and numeric is true.
+		IsNotZeroNumericRule rule = new();
+
+		Assert.False(rule.Check("A"), errorMessage);
+		Assert.True(rule.Check("01"), errorMessage);
+		Assert.True(rule.Check("1.2"), errorMessage);
+		Assert.True(rule.Check("01.20"), errorMessage);
+		Assert.True(rule.Check("0.00000000001"), errorMessage);
+		Assert.False(rule.Check("0"), errorMessage);
+		Assert.False(rule.Check("0.0"), errorMessage);
+	}
+
 	#endregion
 
 } // End class.
