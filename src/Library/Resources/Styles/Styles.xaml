@@ -557,7 +557,21 @@
 		<Setter Property="Margin" Value="0,5"/>
 	</Style>
 
-	<!-- DataGrid -->
+	<!-- DataGrid Page Layout -->
+	<Style TargetType="Grid" Class="PageGridStyle">
+		<Setter Property="RowSpacing" Value="10"/>
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="RowDefinitions" Value="Auto,*"/>
+	</Style>
+
+	<Style TargetType="Grid" Class="DataGridEditStyle">
+		<Setter Property="RowDefinitions" Value="Auto,*"/>
+		<Setter Property="RowSpacing" Value="20"/>
+		<Setter Property="Padding" Value="20,0"/>
+		<Setter Property="VerticalOptions" Value="Start"/>
+	</Style>
+
+	<!-- DataGrid Styling -->
 	<Style TargetType="ContentView" Class="DataGridContentViewStyle" >
 		<Setter Property="HorizontalOptions" Value="Start"/>
 		<Setter Property="VerticalOptions" Value="Fill"/>
