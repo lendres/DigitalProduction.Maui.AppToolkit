@@ -7,6 +7,7 @@ using DigitalProduction.Maui.ViewModels;
 using DigitalProduction.Demo.Pages;
 using DigitalProduction.Demo.ViewModels;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.LifecycleEvents;
 
 namespace DigitalProduction.Demo;
 
@@ -24,7 +25,19 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-
+		DigitalProduction.Maui.UI.LifecycleEventsInstaller.ConfigureLifecycleEvents(builder);
+		#if WINDOWS
+			builder.ConfigureLifecycleEvents(events =>  
+			{
+				events.AddWindows(windowsLifecycleBuilder =>  
+				{  
+					windowsLifecycleBuilder.OnWindowCreated(window =>  
+					{  
+						window.Title = "Maui AppToolkit";
+					});  
+				});  
+			});
+		#endif
 		RegisterViewsAndViewModels(builder.Services);
 		RegisterEssentials(builder.Services);
 		#if DEBUG
