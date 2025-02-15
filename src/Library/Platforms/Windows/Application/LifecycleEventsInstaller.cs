@@ -6,7 +6,7 @@ namespace DigitalProduction.Maui.UI;
 
 public static partial class LifecycleEventsInstaller
 {
-	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder)
+	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder, bool ensureOnScreen = true)
 	{
 		builder.ConfigureLifecycleEvents(events =>
 		{
@@ -31,7 +31,7 @@ public static partial class LifecycleEventsInstaller
 							if (winUIWindow.GetWindow() is Window mauiWindow)
 							{
 								// Set the restored position.
-								DigitalProduction.Maui.UI.AppTools.RestoreWindowPosition(mauiWindow, "MainWindow");
+								DigitalProduction.Maui.UI.AppTools.RestoreWindowPosition(mauiWindow, "MainWindow", ensureOnScreen);
 
 								OverlappedPresenterState state = DigitalProduction.Maui.UI.AppTools.GetWindowState("MainWindow");
 								if (state == OverlappedPresenterState.Maximized)

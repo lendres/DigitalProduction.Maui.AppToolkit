@@ -7,5 +7,5 @@ public static partial class LifecycleEventsInstaller
 		PlatformConfigureLifecycleEvents(builder);
 	}
 
-	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder);
+	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder, bool ensureOnScreen = true);
 }
