@@ -2,14 +2,23 @@
 
 public abstract class FileExistsBase : ValidationRuleBase<string>
 {
-	public List<string> SearchDirectories { get; set; } = [];
+	public bool				SearchApplicationDirectory { get; set; }	= false;
+	public List<string>		SearchDirectories { get; set; }				= [];
 
 	protected bool FileExists(string fileName)
 	{
 		// Check if the full path was provided or if it exists in the current directory.
-		if (File.Exists(fileName))
+		if (SearchApplicationDirectory)
 		{
-			return true;
+			string? path = DigitalProduction.Reflection.Assembly.ExecutablePath();
+			if (path != null)
+			{
+				path = System.IO.Path.Combine(path, fileName);
+				if (File.Exists(path))
+				{
+					return true;
+				}
+			}
 		}
 
 		// Search any specified directories.
@@ -20,6 +29,7 @@ public abstract class FileExistsBase : ValidationRuleBase<string>
 				return true;
 			}
 		}
+
 		return false;
 	}
 }
