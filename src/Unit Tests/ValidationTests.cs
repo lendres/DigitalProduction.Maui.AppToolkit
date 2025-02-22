@@ -44,7 +44,6 @@ public class ValidationTests
 		string newFile			= Path.Combine(tempDirectory, "New File.txt");
 		File.Copy(_file, newFile);
 
-
 		FileExistsRule          fileExistsRule          = new()
 		{
 			SearchDirectories = [tempDirectory]
