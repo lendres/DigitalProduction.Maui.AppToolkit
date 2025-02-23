@@ -362,7 +362,7 @@
 
 	<Style TargetType="Switch">
 		<Setter Property="OnColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource White}}"/>
-		<Setter Property="ThumbColor" Value="{DynamicResource White}"/>
+		<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
@@ -376,12 +376,12 @@
 					<VisualState x:Name="On">
 						<VisualState.Setters>
 							<Setter Property="OnColor" Value="{AppThemeBinding Light={DynamicResource Secondary}, Dark={DynamicResource Gray200}}"/>
-							<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource White}}"/>
+							<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 						</VisualState.Setters>
 					</VisualState>
 					<VisualState x:Name="Off">
 						<VisualState.Setters>
-							<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Gray400}, Dark={DynamicResource Gray500}}"/>
+							<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 						</VisualState.Setters>
 					</VisualState>
 				</VisualStateGroup>
