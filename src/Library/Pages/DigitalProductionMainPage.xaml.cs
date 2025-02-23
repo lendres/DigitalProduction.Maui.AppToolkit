@@ -4,10 +4,6 @@ namespace DigitalProduction.Maui.Pages;
 
 public partial class DigitalProductionMainPage<TViewModel> : BasePage<TViewModel> where TViewModel : BaseViewModel
 {
-	#region Fields
-
-	#endregion
-
 	#region Construction
 
 	public DigitalProductionMainPage(object? viewModel = null) :

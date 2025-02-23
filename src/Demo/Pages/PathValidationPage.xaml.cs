@@ -1,5 +1,7 @@
 using CommunityToolkit.Maui.Storage;
 using DigitalProduction.Demo.ViewModels;
+using DigitalProduction.Maui.Pages;
+
 namespace DigitalProduction.Demo.Pages;
 
 public partial class PathValidationPage : BasePage<ValidationPageViewModel>
