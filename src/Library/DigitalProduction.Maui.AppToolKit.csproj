@@ -87,6 +87,10 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controls\" />
+	</ItemGroup>
+
 	<!--<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 	  <PackageReference Include="DigitalProduction.Maui">
 	    <Version>0.5.0</Version>

@@ -1,6 +1,8 @@
-﻿namespace DigitalProduction.Maui.Controls;
+﻿using DigitalProduction.Maui.ViewModels;
 
-public partial class DigitalProductionMainPage : ContentPage
+namespace DigitalProduction.Maui.Pages;
+
+public partial class DigitalProductionMainPage<TViewModel> : BasePage<TViewModel> where TViewModel : BaseViewModel
 {
 	#region Fields
 
@@ -8,14 +10,11 @@ public partial class DigitalProductionMainPage : ContentPage
 
 	#region Construction
 
-	public DigitalProductionMainPage()
+	public DigitalProductionMainPage(object? viewModel = null) :
+		base(viewModel)
 	{
-		this.Loaded += this.OnLoaded;	
+		Loaded += OnLoaded;	
 	}
-
-	#endregion
-
-	#region Properties
 
 	#endregion
 
