@@ -53,6 +53,12 @@
                 </Picker.ItemsSource>
             </Picker>
 
-        </VerticalStackLayout>
+			<HorizontalStackLayout Padding="0" Spacing="0" VerticalOptions="Center" HeightRequest="22">
+				<CheckBox VerticalOptions="Center"/>
+				<!-- Enlarge the label so the desenders don't get cut off. -->
+				<Label Text="Check box uses a separate label." VerticalOptions="Center" Margin="0" HeightRequest="25" Padding="0"/>
+			</HorizontalStackLayout>
+
+		</VerticalStackLayout>
 	</ScrollView>
 </pages:BasePage>
