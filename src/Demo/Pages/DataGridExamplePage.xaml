@@ -17,19 +17,15 @@
 		<toolkit:IsNotNullConverter x:Key="IsNotNullConverter"/>
 	</ContentPage.Resources>
 
-	<ScrollView>
-		<VerticalStackLayout Padding="30,0" Spacing="20" MaximumWidthRequest="650">
+	<Grid StyleClass="PageGridStyle" MaximumWidthRequest="700">
+		<Label Grid.Row="0" Text="DataGrid Example" StyleClass="Title"/>
 
-			<!-- Temporary Placeholder -->
-			<Label
-				Text="DataGrid Example"
-				Style="{DynamicResource SubHeadline}"
-				SemanticProperties.HeadingLevel="Level2"/>
-			<BoxView Style="{DynamicResource HorizontalBoarder}"/>
+		<Grid Grid.Row="1" StyleClass="DataGridEditStyle">
 
-			<!--<Grid RowDefinitions="Auto,*" RowSpacing="20" Padding="20" VerticalOptions="Start">-->
-
-			<Grid Grid.Row="0" HorizontalOptions="Fill" VerticalOptions="Start">
+			<Grid
+				Grid.Row="0"
+				HorizontalOptions="Fill"
+				VerticalOptions="Start">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="200"/>
@@ -39,19 +35,19 @@
 					<Button
 						Text="New"
 						HorizontalOptions="Start"
-                        Clicked="OnDisplayMessage"/>
+						Clicked="OnDisplayMessage"/>
 
 					<Button 
 						Text="Edit"
 						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
 						HorizontalOptions="Start"
-                        Clicked="OnDisplayMessage"/>
+						Clicked="OnDisplayMessage"/>
 
 					<Button 
 						Text="Delete"
 						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
 						HorizontalOptions="Start"
-                        Clicked="OnDisplayMessage"/>
+						Clicked="OnDisplayMessage"/>
 				</HorizontalStackLayout>
 
 				<Button 
@@ -62,44 +58,44 @@
 					HorizontalOptions="End"/>
 			</Grid>
 
-				<dg:DataGrid
-					Grid.Row="1"
-					x:Name="_dataGrid"
-					IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
-					ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
-					SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
-					RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
-					BorderColor="{DynamicResource DataGridBorderColor}" BorderThickness="{Binding BorderThickness}"
-					HeaderBackground="{DynamicResource DataGridHeaderBackgroundColor}" HeaderBordersVisible="{Binding HeaderBordersVisible}"
-					BackgroundColor="{AppThemeBinding Light={DynamicResource DataGridBackgroundColorLight}, Dark={DynamicResource DataGridBackgroundColorDark}}"
-					FooterBackground="{DynamicResource DataGridFooterBackgroundColor}"
-					PaginationEnabled="false"
-					ActiveRowColor="{DynamicResource DataGridActiveRowColor}"
-					RowsBackgroundColorPalette="{AppThemeBinding Light={DynamicResource DataGridColorPaletteLight}, Dark={DynamicResource DataGridColorPaletteDark}}"
-					HeaderLabelStyle="{DynamicResource DataGridTitle}"
-					RowHeight="36" HeaderHeight="40"
-					RowTappedCommand="{Binding TappedCommand}">
+			<dg:DataGrid
+				Grid.Row="1"
+				x:Name="_dataGrid"
+				IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
+				ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
+				SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
+				RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+				BorderColor="{DynamicResource DataGridBorderColor}" BorderThickness="{Binding BorderThickness}"
+				HeaderBackground="{DynamicResource DataGridHeaderBackgroundColor}" HeaderBordersVisible="{Binding HeaderBordersVisible}"
+				BackgroundColor="{AppThemeBinding Light={DynamicResource DataGridBackgroundColorLight}, Dark={DynamicResource DataGridBackgroundColorDark}}"
+				FooterBackground="{DynamicResource DataGridFooterBackgroundColor}"
+				PaginationEnabled="false"
+				ActiveRowColor="{DynamicResource DataGridActiveRowColor}"
+				RowsBackgroundColorPalette="{AppThemeBinding Light={DynamicResource DataGridColorPaletteLight}, Dark={DynamicResource DataGridColorPaletteDark}}"
+				HeaderLabelStyle="{DynamicResource DataGridTitle}"
+				RowHeight="36" HeaderHeight="40"
+				RowTappedCommand="{Binding TappedCommand}">
 
-                <dg:DataGrid.Columns>
+				<dg:DataGrid.Columns>
 
-                    <dg:DataGridColumn Title="First Name" PropertyName="FirstName" Width="1.0*" SortingEnabled="true"
-							CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
+					<dg:DataGridColumn Title="First Name" PropertyName="FirstName" Width="1.0*" SortingEnabled="true"
+						CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
 
-                    <dg:DataGridColumn Title="Last Name" PropertyName="LastName" Width="1.0*" SortingEnabled="false"
-							CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
+					<dg:DataGridColumn Title="Last Name" PropertyName="LastName" Width="1.0*" SortingEnabled="false"
+						CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
 
-                    <dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false">
-                        <dg:DataGridColumn.CellTemplate>
-                            <DataTemplate x:DataType="x:Int32">
-                                <ContentView StyleClass="DataGridContentViewStyle">
-                                    <Label Text="{Binding .}" StyleClass="DataGridLabelStyle"/>
-                                </ContentView>
-                            </DataTemplate>
-                        </dg:DataGridColumn.CellTemplate>
-                    </dg:DataGridColumn>
+					<dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false">
+						<dg:DataGridColumn.CellTemplate>
+							<DataTemplate x:DataType="x:Int32">
+								<ContentView StyleClass="DataGridContentViewStyle">
+									<Label Text="{Binding .}" StyleClass="DataGridLabelStyle"/>
+								</ContentView>
+							</DataTemplate>
+						</dg:DataGridColumn.CellTemplate>
+					</dg:DataGridColumn>
 
-                </dg:DataGrid.Columns>
-            </dg:DataGrid>
-		</VerticalStackLayout>
-	</ScrollView>
+				</dg:DataGrid.Columns>
+			</dg:DataGrid>
+		</Grid>
+	</Grid>
 </ContentPage>

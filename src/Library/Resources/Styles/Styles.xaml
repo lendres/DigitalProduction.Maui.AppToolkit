@@ -38,7 +38,7 @@
 		<Setter Property="BorderWidth" Value="0"/>
 		<Setter Property="CornerRadius" Value="8"/>
 		<Setter Property="Padding" Value="14,10"/>
-		<Setter Property="MinimumHeightRequest" Value="38"/>
+		<Setter Property="MinimumHeightRequest" Value="36"/>
 		<Setter Property="MinimumWidthRequest" Value="100"/>
 		<Setter Property="VerticalOptions" Value="Center"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
@@ -133,7 +133,7 @@
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray500}}"/>
-		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumHeightRequest" Value="32"/>
 		<Setter Property="MinimumWidthRequest" Value="44"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
@@ -226,7 +226,7 @@
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource UserEntryControlLight}, Dark={DynamicResource UserEntryControlDark}}"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
-		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumHeightRequest" Value="32"/>
 		<Setter Property="MinimumWidthRequest" Value="44"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
@@ -362,7 +362,7 @@
 
 	<Style TargetType="Switch">
 		<Setter Property="OnColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource White}}"/>
-		<Setter Property="ThumbColor" Value="{DynamicResource White}"/>
+		<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
@@ -376,12 +376,12 @@
 					<VisualState x:Name="On">
 						<VisualState.Setters>
 							<Setter Property="OnColor" Value="{AppThemeBinding Light={DynamicResource Secondary}, Dark={DynamicResource Gray200}}"/>
-							<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource White}}"/>
+							<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 						</VisualState.Setters>
 					</VisualState>
 					<VisualState x:Name="Off">
 						<VisualState.Setters>
-							<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Gray400}, Dark={DynamicResource Gray500}}"/>
+							<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 						</VisualState.Setters>
 					</VisualState>
 				</VisualStateGroup>
@@ -462,8 +462,7 @@
 		<Setter Property="Spacing" Value="10"/>
 		<Setter Property="Padding" Value="0"/>
 	</Style>
-	<Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle" BasedOn="{StaticResource VerticalLayoutKey}">
-	</Style>
+	<Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle" BasedOn="{StaticResource VerticalLayoutKey}"/>
 
 	<Style TargetType="HorizontalStackLayout" x:Key="ButtonRowStyleBase">
 		<Setter Property="Spacing" Value="20"/>
@@ -516,12 +515,6 @@
 	</Style>
 
 	<!-- Control Sizes -->
-	<Style TargetType="Button" Class="StandardSizeButtonStyle">
-		<Setter Property="HeightRequest" Value="38"/>
-		<Setter Property="WidthRequest" Value="100"/>
-		<Setter Property="VerticalOptions" Value="Center"/>
-	</Style>
-
 	<Style TargetType="Button" Class="StandardHeightButtonStyle">
 		<Setter Property="HeightRequest" Value="38"/>
 		<Setter Property="VerticalOptions" Value="Center"/>
@@ -557,7 +550,21 @@
 		<Setter Property="Margin" Value="0,5"/>
 	</Style>
 
-	<!-- DataGrid -->
+	<!-- DataGrid Page Layout -->
+	<Style TargetType="Grid" Class="PageGridStyle">
+		<Setter Property="RowSpacing" Value="10"/>
+		<Setter Property="Padding" Value="0"/>
+		<Setter Property="RowDefinitions" Value="Auto,*"/>
+	</Style>
+
+	<Style TargetType="Grid" Class="DataGridEditStyle">
+		<Setter Property="RowDefinitions" Value="Auto,*"/>
+		<Setter Property="RowSpacing" Value="20"/>
+		<Setter Property="Padding" Value="20,0"/>
+		<Setter Property="VerticalOptions" Value="Start"/>
+	</Style>
+
+	<!-- DataGrid Styling -->
 	<Style TargetType="ContentView" Class="DataGridContentViewStyle" >
 		<Setter Property="HorizontalOptions" Value="Start"/>
 		<Setter Property="VerticalOptions" Value="Fill"/>

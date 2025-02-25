@@ -1,4 +1,5 @@
-﻿using DigitalProduction.Maui.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using DigitalProduction.Maui.ViewModels;
 
 namespace DigitalProduction.Demo.ViewModels;
 
@@ -7,7 +8,7 @@ public partial class StylesPageViewModel : BaseViewModel
 	#region Fields
 	#endregion
 
-	#region Construction and Destruction
+	#region Construction
 
 	public StylesPageViewModel()
 	{
@@ -16,5 +17,9 @@ public partial class StylesPageViewModel : BaseViewModel
 	#endregion
 
 	#region Properties
+
+	[ObservableProperty]
+	public partial bool							EnableControls { get; set; }
+
 	#endregion
 }

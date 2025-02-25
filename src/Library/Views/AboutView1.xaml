@@ -49,7 +49,6 @@
 			<HorizontalStackLayout StyleClass="BottomButtonRowStyle">
 				<Button 
 					Text="Close"
-					StyleClass="StandardSizeButtonStyle"
 					HorizontalOptions="End"
 					Clicked="OnCancelButtonClicked"/>
 			</HorizontalStackLayout>

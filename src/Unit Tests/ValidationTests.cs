@@ -22,13 +22,20 @@ public class ValidationTests
 	[Fact]
 	public void FileExistsSimple()
 	{
-
-		FileExistsRule			fileExistsRule			= new();
-		FileDoesNotExistsRule	fileDoesNotExistRule	= new();
+		FileExistsRule          fileExistsNoSearchRule  = new();
+		FileExistsRule          fileExistsRule			= new()
+		{
+			SearchApplicationDirectory = true
+		};
+		FileDoesNotExistsRule	fileDoesNotExistRule	= new()
+		{
+			SearchApplicationDirectory = true
+		};
 
 		Assert.True(fileExistsRule.Check(_file));
 		Assert.True(fileDoesNotExistRule.Check(_noFile));
 
+		Assert.False(fileExistsNoSearchRule.Check(_file));
 		Assert.False(fileExistsRule.Check(_noFile));
 		Assert.False(fileDoesNotExistRule.Check(_file));
 	}
@@ -43,7 +50,6 @@ public class ValidationTests
 		string tempDirectory	= DigitalProduction.IO.Path.GetTemporaryDirectory();
 		string newFile			= Path.Combine(tempDirectory, "New File.txt");
 		File.Copy(_file, newFile);
-
 
 		FileExistsRule          fileExistsRule          = new()
 		{
