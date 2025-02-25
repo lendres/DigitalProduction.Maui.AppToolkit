@@ -55,7 +55,7 @@ public static class MauiProgram
 		services.AddTransientWithShellRoute<StylesPage, StylesPageViewModel>();
 
 		services.AddTransient<WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>();
-		services.AddTransientWithShellRoute<PathValidationPage, ValidationPageViewModel>();
+		services.AddTransientWithShellRoute<PathValidationPage, PathValidationPageViewModel>();
 	}
 
 	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 
