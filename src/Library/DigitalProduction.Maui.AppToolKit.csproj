@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+		<!--<TargetFrameworks>net9.0-android;</TargetFrameworks>-->
+		<!--<TargetFrameworks>net9.0-ios;net9.0-maccatalyst</TargetFrameworks>-->
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Apparently this needs to be the same as the target frameworks version but with "41" as the last digit. -->
 		<!--<WindowsSdkPackageVersion Condition="$([MSBuild]::IsOSPlatform('windows'))">10.0.19041.41</WindowsSdkPackageVersion>-->
@@ -55,8 +56,8 @@
 		<PackageReference Include="akgul.Maui.DataGrid" Version="4.0.6" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="DigitalProduction.Net" Version="0.6.0" />
-		<PackageReference Include="DigitalProduction.Maui" Version="0.5.0" />
+		<PackageReference Include="DigitalProduction.Net" Version="0.7.0" />
+		<PackageReference Include="DigitalProduction.Maui" Version="0.6.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
 	</ItemGroup>
 

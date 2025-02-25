@@ -2,15 +2,34 @@
 
 public abstract class FileExistsBase : ValidationRuleBase<string>
 {
+	public bool				SearchCurrentDirectory { get; set; }		= false;
 	public bool				SearchApplicationDirectory { get; set; }	= false;
 	public List<string>		SearchDirectories { get; set; }				= [];
 
 	protected bool FileExists(string fileName)
 	{
-		// Check if the full path was provided or if it exists in the current directory.
+		// Check if the full path was provided.
+		if (System.IO.Path.GetDirectoryName(fileName) != null)
+		{
+			if (File.Exists(fileName))
+			{
+				return true;
+			}
+		}
+
+		// Check if it is in the current active directory.
+		if (SearchCurrentDirectory)
+		{
+			if (File.Exists(fileName))
+			{
+				return true;
+			}
+		}
+
+		// Check if it exists in the application directory.
 		if (SearchApplicationDirectory)
 		{
-			string? path = DigitalProduction.Reflection.Assembly.ExecutablePath();
+			string? path = DigitalProduction.Reflection.Assembly.ExecutablePath;
 			if (path != null)
 			{
 				path = System.IO.Path.Combine(path, fileName);
