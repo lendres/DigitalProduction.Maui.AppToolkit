@@ -38,7 +38,7 @@
 		<Setter Property="BorderWidth" Value="0"/>
 		<Setter Property="CornerRadius" Value="8"/>
 		<Setter Property="Padding" Value="14,10"/>
-		<Setter Property="MinimumHeightRequest" Value="38"/>
+		<Setter Property="MinimumHeightRequest" Value="36"/>
 		<Setter Property="MinimumWidthRequest" Value="100"/>
 		<Setter Property="VerticalOptions" Value="Center"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
@@ -133,7 +133,7 @@
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray500}}"/>
-		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumHeightRequest" Value="32"/>
 		<Setter Property="MinimumWidthRequest" Value="44"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
@@ -226,7 +226,7 @@
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource UserEntryControlLight}, Dark={DynamicResource UserEntryControlDark}}"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
-		<Setter Property="MinimumHeightRequest" Value="44"/>
+		<Setter Property="MinimumHeightRequest" Value="32"/>
 		<Setter Property="MinimumWidthRequest" Value="44"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
