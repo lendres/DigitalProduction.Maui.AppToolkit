@@ -9,8 +9,8 @@ public class ValidationTests
 {
 	#region Members
 		
-	private string		_file		= "Test File.txt";
-	private string		_noFile		= "Does Not Exist File.fake";
+	private readonly string		_file		= "Test File.txt";
+	private readonly string		_noFile		= "Does Not Exist File.fake";
 
 	#endregion
 
@@ -34,6 +34,11 @@ public class ValidationTests
 
 		Assert.True(fileExistsRule.Check(_file));
 		Assert.True(fileDoesNotExistRule.Check(_noFile));
+
+		// Check with entire path.
+		string directory	= DigitalProduction.Reflection.Assembly.ExecutablePath!;
+		string fileWithPath	= Path.Combine(directory, _file);
+		Assert.True(fileExistsNoSearchRule.Check(fileWithPath));
 
 		Assert.False(fileExistsNoSearchRule.Check(_file));
 		Assert.False(fileExistsRule.Check(_noFile));

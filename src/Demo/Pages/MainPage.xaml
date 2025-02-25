@@ -22,10 +22,10 @@
 				<Label Text="{Binding Authors}" StyleClass="LargeLabel"/>
 			</VerticalStackLayout>
 
-			<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
+			<!--<VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
 				<Label Text="Demo Version:" StyleClass="LargeControlLabel"/>
 				<Label Text="{Binding Version}" StyleClass="LargeLabel"/>
-			</VerticalStackLayout>
+			</VerticalStackLayout>-->
 
             <VerticalStackLayout StyleClass="TitleTightVerticalStackStyle">
                 <Label Text="AppToolkit Version:" StyleClass="LargeControlLabel"/>

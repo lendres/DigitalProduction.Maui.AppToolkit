@@ -6,7 +6,7 @@ namespace DigitalProduction.Maui.UI;
 
 public static partial class LifecycleEventsInstaller
 {
-	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder, bool ensureOnScreen = true)
+	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder, bool ensureOnScreen)
 	{
 		builder.ConfigureLifecycleEvents(events =>
 		{

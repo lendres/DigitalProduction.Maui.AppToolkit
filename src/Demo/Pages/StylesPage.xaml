@@ -40,7 +40,7 @@
 
             <VerticalStackLayout StyleClass="TitleVerticalStackStyle">
                 <Label Text="Example Output" StyleClass="ControlLabel"/>
-                <Border Padding="8">
+                <Border Padding="10,5,10,8">
 					<Label Text="Label used for messages." LineBreakMode="WordWrap" IsEnabled="{Binding EnableControls}"/>
                 </Border>
             </VerticalStackLayout>
