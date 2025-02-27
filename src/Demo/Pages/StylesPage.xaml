@@ -3,6 +3,7 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui"
 	xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
 	x:Class="DigitalProduction.Demo.Pages.StylesPage"
     xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
@@ -13,30 +14,33 @@
     <ScrollView>
         <VerticalStackLayout StyleClass="VerticalGroupsLayout" MaximumWidthRequest="800">
 
-			<HorizontalStackLayout Padding="0" Spacing="0">
-				<Switch IsToggled="{Binding EnableControls}" VerticalOptions="Center" WidthRequest="20" Margin="0"/>
+			<Grid Padding="0" ColumnDefinitions="55,*">
+				<Switch Grid.Column="0" IsToggled="{Binding EnableControls}" VerticalOptions="Center" WidthRequest="20" Margin="0"/>
 				<!-- Enlarge the label so the desenders don't get cut off. -->
-				<Label Text="Check box uses a separate label." VerticalOptions="Center" HorizontalOptions="Start"/>
-			</HorizontalStackLayout>
+				<Label Grid.Column="1" Text="Toggle between enabled and disabled controls." VerticalOptions="Center" HorizontalOptions="Start"/>
+			</Grid>
 
 			<!-- Input File -->
 			<Grid StyleClass="FileBrowsingGridStyle">
-				<Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel"/>
+				<Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel" IsEnabled="{Binding EnableControls}"/>
 				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand"
 					Placeholder="Enter Values"
 					Text="User entered text."
 					IsEnabled="{Binding EnableControls}">
 				</Entry>
-				<Label Grid.Row="2" Grid.Column="0" StyleClass="InvalidLabelStyle"
-					Text="This is an error message."/>
+				<HorizontalStackLayout Grid.Row="2" Grid.Column="0" Spacing="50">
+					<Label StyleClass="InvalidLabelStyle" Text="This is an error message." IsEnabled="{Binding EnableControls}"/>
+					<Label StyleClass="ValidLabelStyle" Text="This is a success message." IsEnabled="{Binding EnableControls}"/>
+				</HorizontalStackLayout>
 				<Button Grid.Row="1" Grid.Column="1" StyleClass="StandardWidthButtonStyle" HorizontalOptions="Center" VerticalOptions="Fill"
-					Text="Enabled" SemanticProperties.Hint="Enabled button style." IsEnabled="{Binding EnableControls}"/>
+					Text="Browse" IsEnabled="{Binding EnableControls}"/>
 			</Grid>
 
-			<!--<Button
-				Text="Disabled Button Style"
-				StyleClass="StandardHeightButtonStyle"
-				IsEnabled="False"/>-->
+			<!--<dpcontrols:Stepper/>-->
+			<HorizontalStackLayout Spacing="10">
+				<Button Text="Standard" StyleClass="StandardSizeButtonStyle" IsEnabled="{Binding EnableControls}"></Button>
+				<Button Text="q Wide Button p" StyleClass="WideButtonStyle" IsEnabled="{Binding EnableControls}"></Button>
+			</HorizontalStackLayout>
 
             <VerticalStackLayout StyleClass="TitleVerticalStackStyle">
                 <Label Text="Example Output" StyleClass="ControlLabel"/>
@@ -47,6 +51,7 @@
 
             <Picker
 				Title="Picker Example"
+				x:Name="MyPicker"
 				IsEnabled="{Binding EnableControls}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
@@ -67,8 +72,8 @@
 				<Label Text="Check box uses a separate label." VerticalOptions="Center" Margin="0" HeightRequest="25" Padding="0"  IsEnabled="{Binding EnableControls}"/>
 			</HorizontalStackLayout>
 
-			<Switch IsEnabled="{Binding EnableControls}"/>
-			<Slider IsEnabled="{Binding EnableControls}"/>
+			<Switch x:Name="MySwitch" IsEnabled="{Binding EnableControls}"/>
+			<Slider x:Name="MySlider" IsEnabled="{Binding EnableControls}"/>
 
 		</VerticalStackLayout>
 	</ScrollView>

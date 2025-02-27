@@ -7,5 +7,8 @@ public partial class StylesPage : BasePage<StylesPageViewModel>
 		base(viewModel)
 	{
 		InitializeComponent();
+		MyPicker.SelectedIndex = 0;
+		MySwitch.IsToggled = true;
+		MySlider.Value = 0.35;
 	}
 }
