@@ -17,7 +17,7 @@
 			<Button Grid.Row="0"
 					HeightRequest="44"
                     CornerRadius="22"
-                    HorizontalOptions="FillAndExpand"
+                    HorizontalOptions="Fill"
                     Clicked="OnButtonDataGrid1Clicked"
                     Text="DataGrid Example 1"/>
 

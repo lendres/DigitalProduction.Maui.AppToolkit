@@ -650,7 +650,7 @@
 	<Style x:Key="HorizontalBoarder" TargetType="BoxView">
 		<Setter Property="BackgroundColor" Value="White"/>
 		<Setter Property="HeightRequest" Value="1"/>
-		<Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+		<Setter Property="HorizontalOptions" Value="Fill"/>
 		<Setter Property="Margin" Value="0,5"/>
 	</Style>
 

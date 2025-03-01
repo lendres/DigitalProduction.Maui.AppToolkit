@@ -23,7 +23,7 @@
 			<!-- Input File -->
 			<Grid StyleClass="FileBrowsingGridStyle">
 				<Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel" IsEnabled="{Binding EnableControls}"/>
-				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand"
+				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill"
 					Placeholder="Enter Values"
 					Text="User entered text."
 					IsEnabled="{Binding EnableControls}">
