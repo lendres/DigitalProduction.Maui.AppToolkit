@@ -378,6 +378,8 @@
 	</Style>
 
 	<Style TargetType="Switch">
+		<Setter Property="WidthRequest" Value="40"/>
+		<Setter Property="MinimumWidthRequest" Value="40"/>
 		<Setter Property="OnColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource White}}"/>
 		<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
