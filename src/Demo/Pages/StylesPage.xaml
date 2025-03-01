@@ -36,7 +36,8 @@
 					Text="Browse" IsEnabled="{Binding EnableControls}"/>
 			</Grid>
 
-			<!--<dpcontrols:Stepper/>-->
+			<dpcontrols:Stepper Minimum="0" Maximum="10" IsEnabled="{Binding EnableControls}"/>
+
 			<HorizontalStackLayout Spacing="10">
 				<Button Text="Standard" StyleClass="StandardSizeButtonStyle" IsEnabled="{Binding EnableControls}"></Button>
 				<Button Text="q Wide Button p" StyleClass="WideButtonStyle" IsEnabled="{Binding EnableControls}"></Button>
