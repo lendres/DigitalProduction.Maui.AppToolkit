@@ -34,19 +34,19 @@
 				<HorizontalStackLayout Grid.Column="0" StyleClass="TopButtonRowStyle">
 					<Button
 						Text="New"
-						HorizontalOptions="Start"
+						StyleClass="StandardSizeButtonStyle"
 						Clicked="OnDisplayMessage"/>
 
 					<Button 
 						Text="Edit"
 						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
-						HorizontalOptions="Start"
+						StyleClass="StandardSizeButtonStyle"
 						Clicked="OnDisplayMessage"/>
 
 					<Button 
 						Text="Delete"
 						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
-						HorizontalOptions="Start"
+						StyleClass="StandardSizeButtonStyle"
 						Clicked="OnDisplayMessage"/>
 				</HorizontalStackLayout>
 
@@ -55,6 +55,7 @@
 					Text="Save"
 					IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
 					IsEnabled="{Binding Modified}"
+					StyleClass="StandardSizeButtonStyle"
 					HorizontalOptions="End"/>
 			</Grid>
 

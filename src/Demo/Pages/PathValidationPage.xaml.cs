@@ -2,9 +2,9 @@ using CommunityToolkit.Maui.Storage;
 using DigitalProduction.Demo.ViewModels;
 namespace DigitalProduction.Demo.Pages;
 
-public partial class PathValidationPage : BasePage<ValidationPageViewModel>
+public partial class PathValidationPage : BasePage<PathValidationPageViewModel>
 {
-	public PathValidationPage(ValidationPageViewModel viewModel) :
+	public PathValidationPage(PathValidationPageViewModel viewModel) :
 		base(viewModel)
 	{
 		InitializeComponent();
@@ -14,7 +14,7 @@ public partial class PathValidationPage : BasePage<ValidationPageViewModel>
 
 	async void OnBrowseForInputFile(object sender, EventArgs eventArgs)
 	{
-		ValidationPageViewModel? viewModel = BindingContext as ValidationPageViewModel;
+		PathValidationPageViewModel? viewModel = BindingContext as PathValidationPageViewModel;
 		System.Diagnostics.Debug.Assert(viewModel != null);
 		
 		PickOptions pickOptions = new() { PickerTitle="Select an Input File", FileTypes=DigitalProduction.Maui.IO.FileTypes.Xml };

@@ -6,6 +6,7 @@ using CommunityToolkit.Maui.Storage;
 using DigitalProduction.Maui.ViewModels;
 using DigitalProduction.Demo.Pages;
 using DigitalProduction.Demo.ViewModels;
+using DigitalProduction.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
 
@@ -20,6 +21,7 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
 			.UseMauiCommunityToolkitMarkup()
+			.UseDigitalProductionMaui()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -55,7 +57,7 @@ public static class MauiProgram
 		services.AddTransientWithShellRoute<StylesPage, StylesPageViewModel>();
 
 		services.AddTransient<WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>();
-		services.AddTransientWithShellRoute<PathValidationPage, ValidationPageViewModel>();
+		services.AddTransientWithShellRoute<PathValidationPage, PathValidationPageViewModel>();
 	}
 
 	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 

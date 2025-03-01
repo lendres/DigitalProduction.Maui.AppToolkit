@@ -8,8 +8,8 @@
 	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
 	x:Class="DigitalProduction.Demo.Pages.PathValidationPage"
     xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
-    x:TypeArguments="viewmodel:ValidationPageViewModel"
-    x:DataType="viewmodel:ValidationPageViewModel"
+    x:TypeArguments="viewmodel:PathValidationPageViewModel"
+    x:DataType="viewmodel:PathValidationPageViewModel"
 	Title="Path Validation">
 
 	<ContentPage.Resources>

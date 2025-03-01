@@ -5,14 +5,14 @@ using DigitalProduction.Maui.ViewModels;
 
 namespace DigitalProduction.Demo.ViewModels;
 
-public partial class ValidationPageViewModel : BaseViewModel
+public partial class PathValidationPageViewModel : BaseViewModel
 {
 	#region Fields
 	#endregion
 
 	#region Construction and Destruction
 
-	public ValidationPageViewModel()
+	public PathValidationPageViewModel()
 	{
 		AddValidations();
 	}
@@ -46,7 +46,6 @@ public partial class ValidationPageViewModel : BaseViewModel
 		OutputDirectory.Validations.Add(new DirectoryNameIsValidRule	{ ValidationMessage = "The directory path is not valid." });
 		OutputDirectory.Validations.Add(new DirectoryExistsRule			{ ValidationMessage = "The directory does not exist." });
 		ValidateOutputDirectory();
-
 	}
 
 	[RelayCommand]
@@ -62,7 +61,6 @@ public partial class ValidationPageViewModel : BaseViewModel
 		OutputDirectory.Validate();
 		ValidateSubmittable();
 	}
-
 
 	public bool ValidateSubmittable() => IsSubmittable = InputFile.IsValid && OutputDirectory.IsValid;
 

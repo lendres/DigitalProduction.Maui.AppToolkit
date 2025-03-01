@@ -37,7 +37,7 @@
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="BorderWidth" Value="0"/>
 		<Setter Property="CornerRadius" Value="8"/>
-		<Setter Property="Padding" Value="14,10"/>
+		<Setter Property="Padding" Value="4,4"/>
 		<Setter Property="MinimumHeightRequest" Value="32"/>
 		<Setter Property="MinimumWidthRequest" Value="44"/>
 		<Setter Property="VerticalOptions" Value="Center"/>
@@ -354,9 +354,9 @@
 	</Style>
 
 	<Style TargetType="Slider">
-		<Setter Property="MinimumTrackColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource White}}"/>
+		<Setter Property="MinimumTrackColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 		<Setter Property="MaximumTrackColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"/>
-		<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource White}}"/>
+		<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
@@ -502,46 +502,91 @@
 	</Style>
 
 	<!-- Label types -->
-	<Style TargetType="Label" x:Key="LabelSectionTitle">
+	<Style TargetType="Label" ApplyToDerivedTypes="True"  x:Key="LabelSectionTitle">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray100}}"/>
 		<Setter Property="FontSize" Value="18"/>
 	</Style>
+
 	<Style TargetType="Label" Class="Title">
 		<Setter Property="FontSize" Value="22"/>
 		<Setter Property="FontFamily" Value="OpenSans-Semibold"/>
 		<Setter Property="FontAttributes" Value="Bold"/>
 		<Setter Property="HorizontalOptions" Value="Center"/>
 	</Style>
-	<Style TargetType="Label" x:Key="SmallLabelBase">
+
+	<Style TargetType="Label" x:Key="SmallLabelBase" ApplyToDerivedTypes="True"  BasedOn="{StaticResource LabelBaseStyle}">
 		<Setter Property="VerticalTextAlignment" Value="Start"/>
 		<Setter Property="HorizontalTextAlignment" Value="Start"/>
 		<Setter Property="HorizontalOptions" Value="Start"/>
 		<Setter Property="VerticalOptions" Value="Start"/>
 	</Style>
+
 	<Style TargetType="Label" Class="ControlLabel" BasedOn="{StaticResource SmallLabelBase}">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
+		<Setter Property="VisualStateManager.VisualStateGroups">
+			<VisualStateGroupList>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Disabled">
+						<VisualState.Setters>
+							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateGroupList>
+		</Setter>
 		<Setter Property="FontSize" Value="14"/>
 	</Style>
 	<Style TargetType="Label" Class="InvalidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ErrorColorLight}, Dark={DynamicResource ErrorColorDark}}"/>
-		<Setter Property="FontSize" Value="12"/>
-	</Style>
-	<Style TargetType="Label" Class="ValidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
-		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ValidColorLight}, Dark={DynamicResource ValidColorDark}}"/>
+		<Setter Property="VisualStateManager.VisualStateGroups">
+			<VisualStateGroupList>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Disabled">
+						<VisualState.Setters>
+							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateGroupList>
+		</Setter>
 		<Setter Property="FontSize" Value="12"/>
 	</Style>
 
-	<!-- Control Sizes -->
-	<Style TargetType="Button" Class="StandardHeightButtonStyle">
-		<Setter Property="HeightRequest" Value="32"/>
+	<Style TargetType="Label" Class="ValidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ValidColorLight}, Dark={DynamicResource ValidColorDark}}"/>
+		<Setter Property="VisualStateManager.VisualStateGroups">
+			<VisualStateGroupList>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Disabled">
+						<VisualState.Setters>
+							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateGroupList>
+		</Setter>
+		<Setter Property="FontSize" Value="12"/>
 	</Style>
-	<Style TargetType="Button" Class="StandardWidthButtonStyle">
+
+	<!-- Button Sizes -->
+	<Style TargetType="Button" Class="StandardSizeButtonStyle">
+		<Setter Property="HeightRequest" Value="32"/>
 		<Setter Property="WidthRequest" Value="100"/>
 	</Style>
 
 	<Style TargetType="Button" Class="WideButtonStyle">
 		<Setter Property="HeightRequest" Value="32"/>
 		<Setter Property="WidthRequest" Value="140"/>
+	</Style>
+
+	<Style TargetType="Button" Class="StandardHeightButtonStyle">
+		<Setter Property="HeightRequest" Value="32"/>
+	</Style>
+	<Style TargetType="Button" Class="StandardWidthButtonStyle">
+		<Setter Property="WidthRequest" Value="100"/>
 	</Style>
 
 	<!-- Hyperlink -->
@@ -554,7 +599,7 @@
 		<Setter Property="HorizontalOptions" Value="Center"/>
 	</Style>
 
-	<Style TargetType="{x:Type dpcontrols:StepperButton}" ApplyToDerivedTypes="True" BasedOn="{StaticResource ImageButtonBaseStyle}" x:Key="StepperButtonBaseStyle">
+	<Style TargetType="dpcontrols:StepperButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource ImageButtonBaseStyle}" x:Key="StepperButtonBaseStyle">
 		<Setter Property="WidthRequest" Value="22"/>
 		<Setter Property="HeightRequest" Value="22"/>
 		<Setter Property="MinimumWidthRequest" Value="10"/>
@@ -569,6 +614,16 @@
 						<VisualState.Setters>
 							<Setter Property="IconColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>
 							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"/>
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="Pressed">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Blue200Accent}, Dark={DynamicResource Blue200Accent}}"/>
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="PointerOver">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Blue100Accent}, Dark={DynamicResource Blue100Accent}}"/>
 						</VisualState.Setters>
 					</VisualState>
 				</VisualStateGroup>
