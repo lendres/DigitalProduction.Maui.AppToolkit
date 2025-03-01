@@ -72,9 +72,9 @@
 				FooterBackground="{DynamicResource DataGridFooterBackgroundColor}"
 				PaginationEnabled="false"
 				ActiveRowColor="{DynamicResource DataGridActiveRowColor}"
-				RowsBackgroundColorPalette="{AppThemeBinding Light={DynamicResource DataGridColorPaletteLight}, Dark={DynamicResource DataGridColorPaletteDark}}"
-				HeaderLabelStyle="{DynamicResource DataGridTitle}"
-				RowHeight="36" HeaderHeight="40"
+				RowsBackgroundColorPalette="{AppThemeBinding Light={DynamicResource DataGridColorLightPalette}, Dark={DynamicResource DataGridColoDarkrPalette}}"
+				HeaderLabelStyle="{DynamicResource DataGridTitleStyle}"
+				RowHeight="30" HeaderHeight="34"
 				RowTappedCommand="{Binding TappedCommand}">
 
 				<dg:DataGrid.Columns>
@@ -89,7 +89,7 @@
 						<dg:DataGridColumn.CellTemplate>
 							<DataTemplate x:DataType="x:Int32">
 								<ContentView StyleClass="DataGridContentViewStyle">
-									<Label Text="{Binding .}" StyleClass="DataGridLabelStyle"/>
+									<Label Text="{Binding .}" StyleClass="DataGridLabelStyle" HorizontalOptions="Center"/>
 								</ContentView>
 							</DataTemplate>
 						</dg:DataGridColumn.CellTemplate>
