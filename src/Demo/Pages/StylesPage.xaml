@@ -14,7 +14,7 @@
     <ScrollView>
         <VerticalStackLayout StyleClass="VerticalGroupsLayout" MaximumWidthRequest="800">
 
-			<Grid Padding="0" ColumnDefinitions="55,*">
+			<Grid Padding="0" ColumnDefinitions="100,*">
 				<Switch Grid.Column="0" IsToggled="{Binding EnableControls}" VerticalOptions="Center" WidthRequest="20" Margin="0"/>
 				<!-- Enlarge the label so the desenders don't get cut off. -->
 				<Label Grid.Column="1" Text="Toggle between enabled and disabled controls." VerticalOptions="Center" HorizontalOptions="Start"/>
@@ -35,8 +35,6 @@
 				<Button Grid.Row="1" Grid.Column="1" StyleClass="StandardWidthButtonStyle" HorizontalOptions="Center" VerticalOptions="Fill"
 					Text="Browse" IsEnabled="{Binding EnableControls}"/>
 			</Grid>
-
-			<dpcontrols:Stepper Minimum="0" Maximum="10" IsEnabled="{Binding EnableControls}"/>
 
 			<HorizontalStackLayout Spacing="10">
 				<Button Text="Standard" StyleClass="StandardSizeButtonStyle" IsEnabled="{Binding EnableControls}"></Button>
@@ -73,7 +71,11 @@
 				<Label Text="Check box uses a separate label." VerticalOptions="Center" Margin="0" HeightRequest="25" Padding="0"  IsEnabled="{Binding EnableControls}"/>
 			</HorizontalStackLayout>
 
-			<Switch x:Name="MySwitch" IsEnabled="{Binding EnableControls}"/>
+			<HorizontalStackLayout Spacing="40">
+				<dpcontrols:Stepper Minimum="0" Maximum="10" IsEnabled="{Binding EnableControls}"/>
+				<Switch x:Name="MySwitch" IsEnabled="{Binding EnableControls}"/>
+			</HorizontalStackLayout>
+
 			<Slider x:Name="MySlider" IsEnabled="{Binding EnableControls}"/>
 
 		</VerticalStackLayout>
