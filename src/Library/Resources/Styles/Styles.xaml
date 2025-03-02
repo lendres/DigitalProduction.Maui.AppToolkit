@@ -44,7 +44,12 @@
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Normal">
+						<VisualState.Setters>
+							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource White}, Dark={DynamicResource White}}"/>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
+						</VisualState.Setters>
+					</VisualState>
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
 							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>
@@ -82,7 +87,11 @@
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Normal">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
+						</VisualState.Setters>
+					</VisualState>
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
 							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"/>
@@ -594,7 +603,6 @@
 	</Style>
 
 	<!-- Stepper -->
-
 	<Style TargetType="dpcontrols:StepperButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource ImageButtonBaseStyle}" x:Key="StepperButtonBaseStyle">
 		<Setter Property="WidthRequest" Value="22"/>
 		<Setter Property="HeightRequest" Value="22"/>
@@ -608,7 +616,11 @@
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Normal">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
+						</VisualState.Setters>
+					</VisualState>
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
 							<Setter Property="Source" Value="{AppThemeBinding Light=minus_gray600.png, Dark=minus_gray400.png}"/>
@@ -636,7 +648,11 @@
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Normal">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
+						</VisualState.Setters>
+					</VisualState>
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
 							<Setter Property="Source" Value="{AppThemeBinding Light=plus_gray600.png, Dark=plus_gray400.png}"/>
