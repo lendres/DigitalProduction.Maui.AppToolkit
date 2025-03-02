@@ -594,9 +594,6 @@
 	</Style>
 
 	<!-- Stepper -->
-	<Style TargetType="{x:Type dpcontrols:Stepper}">
-		<Setter Property="HorizontalOptions" Value="Center"/>
-	</Style>
 
 	<Style TargetType="dpcontrols:StepperButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource ImageButtonBaseStyle}" x:Key="StepperButtonBaseStyle">
 		<Setter Property="WidthRequest" Value="22"/>
@@ -604,14 +601,17 @@
 		<Setter Property="MinimumWidthRequest" Value="10"/>
 		<Setter Property="MinimumHeightRequest" Value="10"/>
 		<Setter Property="CornerRadius" Value="2"/>
-		<Setter Property="Padding" Value="6"/>
+		<Setter Property="Padding" Value="5"/>
+	</Style>
+	<Style TargetType="dpcontrols:MinusButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperButtonBaseStyle}" x:Key="MinusButtonBaseStyle">
+		<Setter Property="Source" Value="minus_white.png"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
 					<VisualState x:Name="Normal"/>
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
-							<Setter Property="IconColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>
+							<Setter Property="Source" Value="{AppThemeBinding Light=minus_gray600.png, Dark=minus_gray400.png}"/>
 							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"/>
 						</VisualState.Setters>
 					</VisualState>
@@ -629,7 +629,35 @@
 			</VisualStateGroupList>
 		</Setter>
 	</Style>
-	<Style TargetType="dpcontrols:StepperButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperButtonBaseStyle}"/>
+	<Style TargetType="dpcontrols:MinusButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource MinusButtonBaseStyle}"/>
+
+	<Style TargetType="dpcontrols:PlusButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperButtonBaseStyle}" x:Key="PlusButtonBaseStyle">
+		<Setter Property="Source" Value="plus_white.png"/>
+		<Setter Property="VisualStateManager.VisualStateGroups">
+			<VisualStateGroupList>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Disabled">
+						<VisualState.Setters>
+							<Setter Property="Source" Value="{AppThemeBinding Light=plus_gray600.png, Dark=plus_gray400.png}"/>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"/>
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="Pressed">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Blue200Accent}, Dark={DynamicResource Blue200Accent}}"/>
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="PointerOver">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Blue100Accent}, Dark={DynamicResource Blue100Accent}}"/>
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateGroupList>
+		</Setter>
+	</Style>
+	<Style TargetType="dpcontrols:PlusButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource PlusButtonBaseStyle}"/>
 
 	<Style TargetType="dpcontrols:StepperLabel" ApplyToDerivedTypes="True" BasedOn="{StaticResource LabelBaseStyle}" x:Key="StepperLabelBaseStyle">
 		<Setter Property="WidthRequest" Value="30"/>
