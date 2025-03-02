@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
+	xmlns:dg="clr-namespace:Maui.DataGrid;assembly=Maui.DataGrid"
+	xmlns:dptkcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui.AppToolkit"
+	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
+    x:Class="DigitalProduction.Demo.Pages.DataGridStyleExamplePage"
+    xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
+    x:DataType="viewmodel:DataGridViewModel">
+
+	<ContentPage.BindingContext>
+		<viewmodel:DataGridViewModel/>
+	</ContentPage.BindingContext>
+
+	<ContentPage.Resources>
+		<toolkit:IsNotNullConverter x:Key="IsNotNullConverter"/>
+		<dpconverters:EnumToStringConverter x:Key="EnumToStringConverter" x:TypeArguments="dptkcontrols:LayoutStyle"/>
+	</ContentPage.Resources>
+
+	<Grid StyleClass="PageGridStyle" RowDefinitions="auto,auto,44,auto" MaximumWidthRequest="700">
+
+		<Label Grid.Row="0" Text="Loose Style" StyleClass="Title" VerticalOptions="End"/>
+		<dg:DataGrid
+			Grid.Row="1"
+			Style="{DynamicResource DataGridDefaultLooseStyle}"
+			IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
+			ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
+			SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
+			RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+			PaginationEnabled="false"
+			RowTappedCommand="{Binding TappedCommand}">
+			<dg:DataGrid.Columns>
+
+				<dg:DataGridColumn Title="First Name" PropertyName="FirstName" Width="1.0*" SortingEnabled="true"
+					CellTemplate="{StaticResource DataGridDefaultStringCellTempate}"/>
+
+				<dg:DataGridColumn Title="Last Name" PropertyName="LastName" Width="1.0*" SortingEnabled="false"
+					CellTemplate="{StaticResource DataGridDefaultStringCellTempate}"/>
+
+				<dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false"
+					CellTemplate="{StaticResource DataGridDefaultIntCellTempate}"/>
+
+			</dg:DataGrid.Columns>
+		</dg:DataGrid>
+
+		<Label Grid.Row="2" Text="Compact Style" StyleClass="Title" VerticalOptions="End"/>
+		<dg:DataGrid
+			Grid.Row="3"
+			Style="{DynamicResource DataGridDefaultCompactStyle}"
+			IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
+			ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
+			SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
+			RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+			PaginationEnabled="false"
+			RowTappedCommand="{Binding TappedCommand}">
+			<dg:DataGrid.Columns>
+
+				<dg:DataGridColumn Title="First Name" PropertyName="FirstName" Width="1.0*" SortingEnabled="true"
+					CellTemplate="{StaticResource DataGridDefaultStringCellTempate}"/>
+
+				<dg:DataGridColumn Title="Last Name" PropertyName="LastName" Width="1.0*" SortingEnabled="false"
+					CellTemplate="{StaticResource DataGridDefaultStringCellTempate}"/>
+
+				<dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false"
+					CellTemplate="{StaticResource DataGridDefaultIntCellTempate}"/>
+
+			</dg:DataGrid.Columns>
+		</dg:DataGrid>
+	</Grid>
+</ContentPage>

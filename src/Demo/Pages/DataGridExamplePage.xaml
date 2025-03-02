@@ -5,6 +5,8 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
 	xmlns:dg="clr-namespace:Maui.DataGrid;assembly=Maui.DataGrid"
+	xmlns:dptkcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui.AppToolkit"
+	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
     x:Class="DigitalProduction.Demo.Pages.DataGridExamplePage"
     xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
     x:DataType="viewmodel:DataGridViewModel">
@@ -15,12 +17,28 @@
 
 	<ContentPage.Resources>
 		<toolkit:IsNotNullConverter x:Key="IsNotNullConverter"/>
+		<dpconverters:EnumToStringConverter x:Key="EnumToStringConverter" x:TypeArguments="dptkcontrols:LayoutStyle"/>
 	</ContentPage.Resources>
 
-	<Grid StyleClass="PageGridStyle" MaximumWidthRequest="700">
+	<Grid StyleClass="PageGridStyle" RowDefinitions="auto,*" MaximumWidthRequest="700">
 		<Label Grid.Row="0" Text="DataGrid Example" StyleClass="Title"/>
 
-		<Grid Grid.Row="1" StyleClass="DataGridEditStyle">
+		<!--<HorizontalStackLayout Grid.Row="1"
+				RadioButtonGroup.GroupName="StyleSelectorGroup" 
+				RadioButtonGroup.SelectedValue="{Binding StyleType, Converter={StaticResource EnumToStringConverter}}"
+				VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+			--><!--<HorizontalStackLayout.Resources>
+				--><!--<Style TargetType="RadioButton">
+					<Setter Property="ControlTemplate" Value="{StaticResource ButtonRadioTemplate}"/>
+				</Style>--><!--
+			</HorizontalStackLayout.Resources>--><!--
+
+			<RadioButton Content="Loose" Value="Loose"/>
+			<RadioButton Content="Normal" Value="Normal"/>
+			<RadioButton Content="Compact" Value="Compact"/>
+		</HorizontalStackLayout>-->
+
+		<Grid Grid.Row="2" StyleClass="DataGridEditStyle">
 
 			<Grid
 				Grid.Row="0"
@@ -60,40 +78,25 @@
 			</Grid>
 
 			<dg:DataGrid
+				x:Name="PeopleDataGrid"
 				Grid.Row="1"
-				x:Name="_dataGrid"
+				Style="{Binding Style}"
 				IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
 				ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
 				SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
 				RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
-				BorderColor="{DynamicResource DataGridBorderColor}" BorderThickness="{Binding BorderThickness}"
-				HeaderBackground="{DynamicResource DataGridHeaderBackgroundColor}" HeaderBordersVisible="{Binding HeaderBordersVisible}"
-				BackgroundColor="{AppThemeBinding Light={DynamicResource DataGridBackgroundColorLight}, Dark={DynamicResource DataGridBackgroundColorDark}}"
-				FooterBackground="{DynamicResource DataGridFooterBackgroundColor}"
 				PaginationEnabled="false"
-				ActiveRowColor="{DynamicResource DataGridActiveRowColor}"
-				RowsBackgroundColorPalette="{AppThemeBinding Light={DynamicResource DataGridColorLightPalette}, Dark={DynamicResource DataGridColoDarkrPalette}}"
-				HeaderLabelStyle="{DynamicResource DataGridTitleStyle}"
-				RowHeight="30" HeaderHeight="34"
 				RowTappedCommand="{Binding TappedCommand}">
-
 				<dg:DataGrid.Columns>
 
 					<dg:DataGridColumn Title="First Name" PropertyName="FirstName" Width="1.0*" SortingEnabled="true"
-						CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
+						CellTemplate="{StaticResource DataGridDefaultStringCellTempate}"/>
 
 					<dg:DataGridColumn Title="Last Name" PropertyName="LastName" Width="1.0*" SortingEnabled="false"
-						CellTemplate="{StaticResource DataGridDefaultCellTempate}"/>
+						CellTemplate="{StaticResource DataGridDefaultStringCellTempate}"/>
 
-					<dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false">
-						<dg:DataGridColumn.CellTemplate>
-							<DataTemplate x:DataType="x:Int32">
-								<ContentView StyleClass="DataGridContentViewStyle">
-									<Label Text="{Binding .}" StyleClass="DataGridLabelStyle" HorizontalOptions="Center"/>
-								</ContentView>
-							</DataTemplate>
-						</dg:DataGridColumn.CellTemplate>
-					</dg:DataGridColumn>
+					<dg:DataGridColumn Title="Age" PropertyName="Age" Width="0.25*" SortingEnabled="false"
+						CellTemplate="{StaticResource DataGridDefaultIntCellTempate}"/>
 
 				</dg:DataGrid.Columns>
 			</dg:DataGrid>
