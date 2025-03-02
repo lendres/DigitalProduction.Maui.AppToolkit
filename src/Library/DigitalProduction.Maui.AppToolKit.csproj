@@ -34,7 +34,15 @@
 
 	<PropertyGroup>
 		<LangVersion>preview</LangVersion>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
+
+	<Target Name="RunPostBuildEventAfterPack" AfterTargets="Pack">
+		<Warning Text="Warning 1: $(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" />
+		<Warning Text="Warning 2: Calling: $(MSBuildProjectDirectory)" />
+		<Exec Command="call &quot;$(MSBuildProjectDirectory)\Publishing\copy-nuget.bat&quot; &quot;$(MSBuildProjectDirectory)&quot;" />
+	</Target>
+
 
 	<!-- Import information from the folder containing the project if the files exists -->
 	<Import Project="$(MSBuildProjectDirectory)/Publishing/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')" />
@@ -86,29 +94,5 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
-
-	<!--<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
-	  <PackageReference Include="DigitalProduction.Maui">
-	    <Version>0.5.0</Version>
-	  </PackageReference>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-ios'">
-	  <PackageReference Include="DigitalProduction.Maui">
-	    <Version>0.5.0</Version>
-	  </PackageReference>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-maccatalyst'">
-	  <PackageReference Include="DigitalProduction.Maui">
-	    <Version>0.5.0</Version>
-	  </PackageReference>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-windows10.0.19041.0'">
-	  <PackageReference Include="DigitalProduction.Maui">
-	    <Version>0.5.0</Version>
-	  </PackageReference>
-	</ItemGroup>-->
 
 </Project>
