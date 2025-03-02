@@ -14,4 +14,9 @@ public partial class DataGridPage : BasePage<DataGridPageViewModel>
 	{
 		await Shell.Current.GoToAsync(nameof(DataGridExamplePage), true);
 	}
+
+	async void OnButtonDataGrid2Clicked(object? sender, EventArgs args)
+	{
+		await Shell.Current.GoToAsync(nameof(DataGridStyleExamplePage), true);
+	}
 }

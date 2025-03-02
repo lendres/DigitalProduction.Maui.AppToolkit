@@ -52,7 +52,6 @@ public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyCh
 
 	public static ImmutableList<SelectionMode>		SelectionModes	{ get => Enum.GetValues<SelectionMode>().Cast<SelectionMode>().ToImmutableList(); }
 
-
 	#endregion
 
 	#region Commands
