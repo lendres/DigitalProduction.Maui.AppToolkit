@@ -82,6 +82,8 @@
 	<Color x:Key="DataGridFooterBackgroundColor">#E0E6F8</Color>
 	<Color x:Key="DataGridBackgroundColorLight">#CCCCCC</Color>
 	<Color x:Key="DataGridBackgroundColorDark">#171717</Color>
+	<Color x:Key="DataGridBorderColorLight">#081B25</Color>
+	<Color x:Key="DataGridBorderColorDark">#081B25</Color>
 
 	<!-- Brushes -->
 	<SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>

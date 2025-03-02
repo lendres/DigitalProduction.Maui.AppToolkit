@@ -167,7 +167,7 @@
 
 	<Style TargetType="Entry">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={DynamicResource White}}"/>
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource UserEntryControlLight}, Dark={DynamicResource UserEntryControlDark}}"/>
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource UserEntryControlLight}, Dark={DynamicResource UserEntryControlDark}}"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray500}}"/>
@@ -185,13 +185,6 @@
 				</VisualStateGroup>
 			</VisualStateGroupList>
 		</Setter>
-	</Style>
-
-	<Style TargetType="Frame">
-		<Setter Property="HasShadow" Value="False"/>
-		<Setter Property="BorderColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray950}}"/>
-		<Setter Property="CornerRadius" Value="8"/>
-		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource White}, Dark={DynamicResource Black}}"/>
 	</Style>
 
 	<Style TargetType="Label" ApplyToDerivedTypes="True" x:Key="LabelBaseStyle">
@@ -378,6 +371,8 @@
 	</Style>
 
 	<Style TargetType="Switch">
+		<Setter Property="WidthRequest" Value="40"/>
+		<Setter Property="MinimumWidthRequest" Value="40"/>
 		<Setter Property="OnColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource White}}"/>
 		<Setter Property="ThumbColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource PrimaryDark}}"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
@@ -479,7 +474,7 @@
 		<Setter Property="Spacing" Value="10"/>
 		<Setter Property="Padding" Value="0"/>
 	</Style>
-	<Style TargetType="VerticalStackLayout" Class="VerticalLayoutStyle" BasedOn="{StaticResource VerticalLayoutKey}"/>
+	<Style TargetType="VerticalStackLayout" BasedOn="{StaticResource VerticalLayoutKey}" Class="VerticalLayoutStyle"/>
 
 	<Style TargetType="HorizontalStackLayout" x:Key="ButtonRowStyleBase">
 		<Setter Property="Spacing" Value="20"/>
@@ -499,6 +494,10 @@
 	</Style>
 	<Style TargetType="Grid" BasedOn="{StaticResource BrowsingStyleBase}" Class="FileBrowsingGridStyle">
 		<Setter Property="RowDefinitions" Value="27,34,16"/>
+	</Style>
+
+	<Style TargetType="VerticalStackLayout" Class="TitleVerticalStackStyle">
+		<Setter Property="Spacing" Value="6"/>
 	</Style>
 
 	<!-- Label types -->
@@ -595,9 +594,6 @@
 	</Style>
 
 	<!-- Stepper -->
-	<Style TargetType="{x:Type dpcontrols:Stepper}">
-		<Setter Property="HorizontalOptions" Value="Center"/>
-	</Style>
 
 	<Style TargetType="dpcontrols:StepperButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource ImageButtonBaseStyle}" x:Key="StepperButtonBaseStyle">
 		<Setter Property="WidthRequest" Value="22"/>
@@ -605,14 +601,17 @@
 		<Setter Property="MinimumWidthRequest" Value="10"/>
 		<Setter Property="MinimumHeightRequest" Value="10"/>
 		<Setter Property="CornerRadius" Value="2"/>
-		<Setter Property="Padding" Value="6"/>
+		<Setter Property="Padding" Value="5"/>
+	</Style>
+	<Style TargetType="dpcontrols:MinusButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperButtonBaseStyle}" x:Key="MinusButtonBaseStyle">
+		<Setter Property="Source" Value="minus_white.png"/>
 		<Setter Property="VisualStateManager.VisualStateGroups">
 			<VisualStateGroupList>
 				<VisualStateGroup x:Name="CommonStates">
 					<VisualState x:Name="Normal"/>
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
-							<Setter Property="IconColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>
+							<Setter Property="Source" Value="{AppThemeBinding Light=minus_gray600.png, Dark=minus_gray400.png}"/>
 							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"/>
 						</VisualState.Setters>
 					</VisualState>
@@ -630,7 +629,35 @@
 			</VisualStateGroupList>
 		</Setter>
 	</Style>
-	<Style TargetType="dpcontrols:StepperButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperButtonBaseStyle}"/>
+	<Style TargetType="dpcontrols:MinusButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource MinusButtonBaseStyle}"/>
+
+	<Style TargetType="dpcontrols:PlusButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperButtonBaseStyle}" x:Key="PlusButtonBaseStyle">
+		<Setter Property="Source" Value="plus_white.png"/>
+		<Setter Property="VisualStateManager.VisualStateGroups">
+			<VisualStateGroupList>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Disabled">
+						<VisualState.Setters>
+							<Setter Property="Source" Value="{AppThemeBinding Light=plus_gray600.png, Dark=plus_gray400.png}"/>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray600}}"/>
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="Pressed">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Blue200Accent}, Dark={DynamicResource Blue200Accent}}"/>
+						</VisualState.Setters>
+					</VisualState>
+					<VisualState x:Name="PointerOver">
+						<VisualState.Setters>
+							<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Blue100Accent}, Dark={DynamicResource Blue100Accent}}"/>
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateGroupList>
+		</Setter>
+	</Style>
+	<Style TargetType="dpcontrols:PlusButton" ApplyToDerivedTypes="True" BasedOn="{StaticResource PlusButtonBaseStyle}"/>
 
 	<Style TargetType="dpcontrols:StepperLabel" ApplyToDerivedTypes="True" BasedOn="{StaticResource LabelBaseStyle}" x:Key="StepperLabelBaseStyle">
 		<Setter Property="WidthRequest" Value="30"/>
@@ -648,7 +675,7 @@
 	<Style x:Key="HorizontalBoarder" TargetType="BoxView">
 		<Setter Property="BackgroundColor" Value="White"/>
 		<Setter Property="HeightRequest" Value="1"/>
-		<Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+		<Setter Property="HorizontalOptions" Value="Fill"/>
 		<Setter Property="Margin" Value="0,5"/>
 	</Style>
 
@@ -666,9 +693,9 @@
 		<Setter Property="VerticalOptions" Value="Start"/>
 	</Style>
 
-	<!-- DataGrid Styling -->
+	<!-- DataGrid Base Styles -->
 	<Style TargetType="ContentView" Class="DataGridContentViewStyle" >
-		<Setter Property="HorizontalOptions" Value="Start"/>
+		<Setter Property="HorizontalOptions" Value="Fill"/>
 		<Setter Property="VerticalOptions" Value="Fill"/>
 		<Setter Property="Padding" Value="6,0"/>
 	</Style>
@@ -677,33 +704,66 @@
 		<Setter Property="VerticalOptions" Value="Center"/>
 	</Style>
 
-	<Style TargetType="Label" x:Key="DataGridTitle">
+	<Style TargetType="Label" x:Key="DataGridTitleStyle">
 		<Setter Property="FontAttributes" Value="Bold"/>
 		<Setter Property="TextColor" Value="Black"/>
-		<Setter Property="FontSize" Value="18"/>
+		<Setter Property="FontSize" Value="16"/>
 		<Setter Property="HorizontalOptions" Value="Center"/>
 		<Setter Property="VerticalOptions" Value="Center"/>
 		<Setter Property="LineBreakMode" Value="TailTruncation"/>
 	</Style>
 
-	<DataTemplate x:Key="DataGridDefaultCellTempate" x:DataType="x:String">
+	<DataTemplate x:Key="DataGridDefaultStringCellTempate" x:DataType="x:String">
 		<ContentView StyleClass="DataGridContentViewStyle">
 			<Label Text="{Binding}" StyleClass="DataGridLabelStyle"/>
 		</ContentView>
 	</DataTemplate>
 
-	<dg:PaletteCollection x:Key="DataGridColorPaletteLight">
+	<DataTemplate x:Key="DataGridDefaultIntCellTempate" x:DataType="x:Int32">
+		<ContentView StyleClass="DataGridContentViewStyle">
+			<Label Text="{Binding}" StyleClass="DataGridLabelStyle" HorizontalOptions="End"/>
+		</ContentView>
+	</DataTemplate>
+
+	<DataTemplate x:Key="DataGridDefaultBooleanCellTempate" x:DataType="x:Boolean">
+		<ContentView StyleClass="DataGridContentViewStyle">
+			<Label Text="{Binding}" StyleClass="DataGridLabelStyle"/>
+		</ContentView>
+	</DataTemplate>
+
+	<dg:PaletteCollection x:Key="DataGridColorLightPalette">
 		<Color>#F2F2F2</Color>
 		<Color>White</Color>
 	</dg:PaletteCollection>
 
-	<dg:PaletteCollection x:Key="DataGridColorPaletteDark">
+	<dg:PaletteCollection x:Key="DataGridColoDarkrPalette">
 		<Color>#404040</Color>
 		<Color>#292929</Color>
 	</dg:PaletteCollection>
 
-    <Style TargetType="VerticalStackLayout" Class="TitleVerticalStackStyle">
-        <Setter Property="Spacing" Value="6"/>
-    </Style>
+	<!-- DataGrid Top Level Styles -->
+	<Thickness x:Key="DataGridBorderThickness">0</Thickness>
+
+	<Style TargetType="dg:DataGrid" x:Key="DataGridDefaultBaseStyle">
+		<Setter Property="BorderColor" Value="{AppThemeBinding Light={DynamicResource DataGridBorderColorLight}, Dark={DynamicResource DataGridBorderColorDark}}"/>
+		<Setter Property="BorderThickness" Value="{StaticResource DataGridBorderThickness}"/>
+		<Setter Property="HeaderBackground" Value="{DynamicResource DataGridHeaderBackgroundColor}"/>
+		<Setter Property="HeaderBordersVisible" Value="True"/>
+		<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource DataGridBackgroundColorLight}, Dark={DynamicResource DataGridBackgroundColorDark}}"/>
+		<Setter Property="FooterBackground" Value="{DynamicResource DataGridFooterBackgroundColor}"/>
+		<Setter Property="ActiveRowColor" Value="{DynamicResource DataGridActiveRowColor}"/>
+		<Setter Property="RowsBackgroundColorPalette" Value="{AppThemeBinding Light={DynamicResource DataGridColorLightPalette}, Dark={DynamicResource DataGridColoDarkrPalette}}"/>
+		<Setter Property="HeaderLabelStyle" Value="{DynamicResource DataGridTitleStyle}"/>
+	</Style>
+
+	<Style TargetType="dg:DataGrid" BasedOn="{StaticResource DataGridDefaultBaseStyle}" x:Key="DataGridDefaultLooseStyle">
+		<Setter Property="HeaderHeight" Value="40"/>
+		<Setter Property="RowHeight" Value="36"/>
+	</Style>
+
+	<Style TargetType="dg:DataGrid" BasedOn="{StaticResource DataGridDefaultBaseStyle}" x:Key="DataGridDefaultCompactStyle">
+		<Setter Property="HeaderHeight" Value="34"/>
+		<Setter Property="RowHeight" Value="30"/>
+	</Style>
 
 </ResourceDictionary>

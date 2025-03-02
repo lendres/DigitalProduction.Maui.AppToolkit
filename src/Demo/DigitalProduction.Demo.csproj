@@ -81,7 +81,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui.Markup" Version="5.1.0" />
-		<PackageReference Include="DigitalProduction.Maui.Images" Version="1.0.3" />
+		<PackageReference Include="DigitalProduction.Maui.Images" Version="1.1.0" />
 		<PackageReference Include="DigitalProduction.Net" Version="0.7.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
@@ -92,6 +92,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\DataGridStyleExamplePage.xaml.cs">
+	    <DependentUpon>DataGridStyleExamplePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\StylesPage.xaml.cs">
 	    <DependentUpon>StylesPage.xaml</DependentUpon>
 	  </Compile>
@@ -101,6 +104,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\DataGridStyleExamplePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\DataGridExamplePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

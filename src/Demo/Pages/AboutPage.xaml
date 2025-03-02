@@ -21,7 +21,7 @@
 				Text="The AboutView1 is a popup that shows basic information about the application."
 				Grid.Row="0"
 				VerticalOptions="Start" 
-				HorizontalOptions="FillAndExpand"/>
+				HorizontalOptions="Fill"/>
 
 			<Label Grid.Row="1" Text="Add files to Publishing/Assembly.props and ./Publishing/Version.props. Add import lines to project file:"/>
 			<Label Grid.Row="2" Text="&lt;Import Project=&quot;$(MSBuildProjectDirectory)/Publishing/Assembly.props&quot; Condition=&quot;Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')&quot; /&gt;"/>
@@ -33,14 +33,14 @@
 			<Button
 				Grid.Row="7"
 				CornerRadius="23"
-				HorizontalOptions="FillAndExpand"
+				HorizontalOptions="Fill"
 				Clicked="OnButtonAbout1Clicked"
 				Text="Show About Without Documentation"/>
 
 			<Button
 				Grid.Row="8"
 				CornerRadius="23"
-				HorizontalOptions="FillAndExpand"
+				HorizontalOptions="Fill"
 				Clicked="OnButtonAbout2Clicked"
 				Text="Show About With Documentation"/>
 		</Grid>

@@ -8,19 +8,28 @@
     xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
 	x:TypeArguments="viewmodel:DataGridPageViewModel"
 	x:DataType="viewmodel:DataGridPageViewModel">
+
+	<ContentPage.Resources>
+		<Style TargetType="Button" x:Key="PageButtonStyle">
+			<Setter Property="HeightRequest" Value="44"/>
+			<Setter Property="CornerRadius" Value="22"/>
+			<Setter Property="HorizontalOptions" Value="Fill"/>
+		</Style>
+	</ContentPage.Resources>
+
 	<pages:BasePage.Content>
-		<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
-              RowSpacing="5"
-              ColumnSpacing="5"
-              ColumnDefinitions="*">
+		<VerticalStackLayout StyleClass="VerticalLayoutStyle">
 
-			<Button Grid.Row="0"
-					HeightRequest="44"
-                    CornerRadius="22"
-                    HorizontalOptions="FillAndExpand"
-                    Clicked="OnButtonDataGrid1Clicked"
-                    Text="DataGrid Example 1"/>
+			<Button
+				Text="DataGrid Usage Example"
+				Clicked="OnButtonDataGrid1Clicked"
+				Style="{StaticResource PageButtonStyle}"/>
 
-		</Grid>
+			<Button
+				Text="DataGrid Style Examples"
+				Clicked="OnButtonDataGrid2Clicked"
+				Style="{StaticResource PageButtonStyle}"/>
+
+		</VerticalStackLayout>
 	</pages:BasePage.Content>
 </pages:BasePage>
