@@ -9,7 +9,7 @@ public abstract class FileExistsBase : ValidationRuleBase<string>
 	protected bool FileExists(string fileName)
 	{
 		// Check if the full path was provided.
-		if (System.IO.Path.GetDirectoryName(fileName) != null)
+		if (!string.IsNullOrEmpty(System.IO.Path.GetDirectoryName(fileName)))
 		{
 			if (File.Exists(fileName))
 			{
