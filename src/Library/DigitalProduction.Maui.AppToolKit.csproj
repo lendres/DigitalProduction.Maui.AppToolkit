@@ -38,8 +38,6 @@
 	</PropertyGroup>
 
 	<Target Name="RunPostBuildEventAfterPack" AfterTargets="Pack">
-		<Warning Text="Warning 1: $(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" />
-		<Warning Text="Warning 2: Calling: $(MSBuildProjectDirectory)" />
 		<Exec Command="call &quot;$(MSBuildProjectDirectory)\Publishing\copy-nuget.bat&quot; &quot;$(MSBuildProjectDirectory)&quot;" />
 	</Target>
 
@@ -92,6 +90,10 @@
 	  <MauiXaml Update="Views\PopupView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Fonts\" />
 	</ItemGroup>
 
 </Project>
