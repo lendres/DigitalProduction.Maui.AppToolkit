@@ -14,7 +14,6 @@ public static class AppHostBuilderExtensions
     /// <returns>Configured MAUI app builder with custom settings.</returns>
     public static MauiAppBuilder UseDigitalProductionMauiAppToolkit(this MauiAppBuilder builder)
     {
-		builder.UseMauiCommunityToolkit();
         builder.ConfigureFonts(fonts =>
         {
 			fonts.AddFont("IBMPlexMono-Bold.ttf", "IBMPlexMono-Bold");
