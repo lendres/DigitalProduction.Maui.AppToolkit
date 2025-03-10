@@ -94,11 +94,9 @@ public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyCh
 	{
 		if (SelectedItem != null && Items != null)
 		{
-			T selectedItem = SelectedItem;
-			int position = Items.IndexOf(selectedItem);
-			Items.Remove(SelectedItem);
-			Items.Insert(position, newItem);
-			Modified = true;
+			int position = Items.IndexOf(SelectedItem);
+			Delete();
+			Insert(newItem, position);
 		}
 	}
 
