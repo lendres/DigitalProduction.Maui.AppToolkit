@@ -7,6 +7,8 @@ namespace DigitalProduction.Demo.ViewModels;
 
 public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 {
+	#region Construction
+
 	public DataGridViewModel()
 	{
 		Items = new ObservableCollection<Person>()
@@ -41,6 +43,10 @@ public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 		StyleType = LayoutStyle.Loose;
 	}
 
+	#endregion
+
+	#region Style Testing
+
 	[ObservableProperty]
 	public partial Style?							Style { get; set; }
 
@@ -69,4 +75,7 @@ public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 			}
 		}
 	}
+	
+	#endregion
+
 }
