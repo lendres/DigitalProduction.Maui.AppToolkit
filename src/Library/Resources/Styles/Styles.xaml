@@ -462,6 +462,21 @@
 		<Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>
 	</Style>
 
+	<!-- Miscellaneous -->
+	<Style TargetType="TabBar">
+		<Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource BackgroundMid}}"/>
+		<Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={DynamicResource DarkGray}, Dark={DynamicResource White}}"/>
+		<Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TabOff}"/>
+		<Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource Yellow100Accent}"/>
+	</Style>
+
+	<Style x:Key="HorizontalBoarder" TargetType="BoxView">
+		<Setter Property="BackgroundColor" Value="White"/>
+		<Setter Property="HeightRequest" Value="1"/>
+		<Setter Property="HorizontalOptions" Value="Fill"/>
+		<Setter Property="Margin" Value="0,5"/>
+	</Style>
+
 	<!-- Popups -->
 	<Style TargetType="toolkit:Popup" ApplyToDerivedTypes="True">
 		<Setter Property="Color" Value="Transparent"/>
@@ -579,6 +594,13 @@
 		<Setter Property="FontSize" Value="12"/>
 	</Style>
 
+	<Style TargetType="Label" x:Key="LargeErrorMessageStyle">
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ErrorColorLight}, Dark={DynamicResource ErrorColorDark}}"/>
+		<Setter Property="FontSize" Value="18"/>
+		<Setter Property="FontAttributes" Value="Bold"/>
+		<Setter Property="LineBreakMode" Value="WordWrap"/>
+	</Style>
+
 	<!-- Button Sizes -->
 	<Style TargetType="Button" Class="StandardSizeButtonStyle">
 		<Setter Property="HeightRequest" Value="32"/>
@@ -679,21 +701,6 @@
 		<Setter Property="WidthRequest" Value="30"/>
 	</Style>
 	<Style TargetType="dpcontrols:StepperLabel" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperLabelBaseStyle}"/>
-
-	<!-- Miscellaneous -->
-	<Style TargetType="TabBar">
-		<Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource BackgroundMid}}"/>
-		<Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={DynamicResource DarkGray}, Dark={DynamicResource White}}"/>
-		<Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TabOff}"/>
-		<Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource Yellow100Accent}"/>
-	</Style>
-
-	<Style x:Key="HorizontalBoarder" TargetType="BoxView">
-		<Setter Property="BackgroundColor" Value="White"/>
-		<Setter Property="HeightRequest" Value="1"/>
-		<Setter Property="HorizontalOptions" Value="Fill"/>
-		<Setter Property="Margin" Value="0,5"/>
-	</Style>
 
 	<!-- DataGrid Page Layout -->
 	<Style TargetType="Grid" Class="PageGridStyle">

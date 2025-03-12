@@ -84,6 +84,8 @@
 				</Border>
 			</HorizontalStackLayout>
 
+			<Label Text="Large Error" Style="{DynamicResource LargeErrorMessageStyle}"/>
+
 		</VerticalStackLayout>
 	</ScrollView>
 </pages:BasePage>
