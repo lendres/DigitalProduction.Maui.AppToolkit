@@ -50,7 +50,7 @@
 					<Button
 						Text="Add People"
 						StyleClass="StandardSizeButtonStyle"
-						Command="{Binding AddPeopleCommand}}"/>
+						Command="{Binding AddPeopleCommand}"/>
 
 					<Button 
 						Text="Edit"
