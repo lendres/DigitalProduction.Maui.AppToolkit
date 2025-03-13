@@ -26,7 +26,7 @@
 			IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
 			ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
 			SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
-			RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+			RefreshingEnabled="True" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
 			PaginationEnabled="False"
 			RowTappedCommand="{Binding TappedCommand}">
 			<dg:DataGrid.Columns>
@@ -50,8 +50,8 @@
 			IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
 			ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
 			SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
-			RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
-			PaginationEnabled="false"
+			RefreshingEnabled="True" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+			PaginationEnabled="False"
 			RowTappedCommand="{Binding TappedCommand}">
 			<dg:DataGrid.Columns>
 
