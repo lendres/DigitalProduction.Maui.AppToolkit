@@ -240,8 +240,8 @@
 	</Style>
 
 	<Style TargetType="Picker">
-		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource White}}"/>
-        <Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={DynamicResource WarningColor}}"/>
+		<Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource WarningColor}, Dark={DynamicResource WarningColor}}"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource UserEntryControlLight}, Dark={DynamicResource UserEntryControlDark}}"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
@@ -254,7 +254,7 @@
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
 							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
-							<Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
+							<Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray500}}"/>
 						</VisualState.Setters>
 					</VisualState>
 				</VisualStateGroup>
@@ -542,59 +542,36 @@
 		<Setter Property="HorizontalTextAlignment" Value="Start"/>
 		<Setter Property="HorizontalOptions" Value="Start"/>
 		<Setter Property="VerticalOptions" Value="Start"/>
+		<Setter Property="VisualStateManager.VisualStateGroups">
+			<VisualStateGroupList>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Disabled">
+						<VisualState.Setters>
+							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateGroupList>
+		</Setter>
 	</Style>
 
 	<Style TargetType="Label" Class="ControlLabel" BasedOn="{StaticResource SmallLabelBase}">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
-		<Setter Property="VisualStateManager.VisualStateGroups">
-			<VisualStateGroupList>
-				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
-					<VisualState x:Name="Disabled">
-						<VisualState.Setters>
-							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
-						</VisualState.Setters>
-					</VisualState>
-				</VisualStateGroup>
-			</VisualStateGroupList>
-		</Setter>
 		<Setter Property="FontSize" Value="14"/>
 	</Style>
+
 	<Style TargetType="Label" Class="InvalidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ErrorColorLight}, Dark={DynamicResource ErrorColorDark}}"/>
-		<Setter Property="VisualStateManager.VisualStateGroups">
-			<VisualStateGroupList>
-				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
-					<VisualState x:Name="Disabled">
-						<VisualState.Setters>
-							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
-						</VisualState.Setters>
-					</VisualState>
-				</VisualStateGroup>
-			</VisualStateGroupList>
-		</Setter>
 		<Setter Property="FontSize" Value="12"/>
 	</Style>
 
 	<Style TargetType="Label" Class="ValidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ValidColorLight}, Dark={DynamicResource ValidColorDark}}"/>
-		<Setter Property="VisualStateManager.VisualStateGroups">
-			<VisualStateGroupList>
-				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
-					<VisualState x:Name="Disabled">
-						<VisualState.Setters>
-							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
-						</VisualState.Setters>
-					</VisualState>
-				</VisualStateGroup>
-			</VisualStateGroupList>
-		</Setter>
 		<Setter Property="FontSize" Value="12"/>
 	</Style>
 
-	<Style TargetType="Label" x:Key="LargeErrorMessageStyle">
+	<Style TargetType="Label" x:Key="LargeErrorMessageStyle" BasedOn="{StaticResource LabelBaseStyle}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ErrorColorLight}, Dark={DynamicResource ErrorColorDark}}"/>
 		<Setter Property="FontSize" Value="18"/>
 		<Setter Property="FontAttributes" Value="Bold"/>
