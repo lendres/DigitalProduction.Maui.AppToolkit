@@ -240,8 +240,8 @@
 	</Style>
 
 	<Style TargetType="Picker">
-		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={DynamicResource WarningColor}}"/>
-		<Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource WarningColor}, Dark={DynamicResource WarningColor}}"/>
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={DynamicResource White}}"/>
+        <Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource UserEntryControlLight}, Dark={DynamicResource UserEntryControlDark}}"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
 		<Setter Property="FontSize" Value="14"/>
