@@ -44,7 +44,7 @@
 			</HorizontalStackLayout>
 
             <VerticalStackLayout StyleClass="TitleVerticalStackStyle">
-                <Label Text="Example Output" StyleClass="ControlLabel"/>
+				<Label Text="Example Output" StyleClass="ControlLabel" IsEnabled="{Binding EnableControls}"/>
                 <Border Padding="10,5,10,8">
 					<Label Text="Label used for messages." LineBreakMode="WordWrap" IsEnabled="{Binding EnableControls}"/>
                 </Border>
@@ -84,7 +84,7 @@
 				</Border>
 			</HorizontalStackLayout>
 
-			<Label Text="Large Error" Style="{DynamicResource LargeErrorMessageStyle}"/>
+			<Label Text="Large Error" Style="{DynamicResource LargeErrorMessageStyle}" IsEnabled="{Binding EnableControls}"/>
 
 		</VerticalStackLayout>
 	</ScrollView>
