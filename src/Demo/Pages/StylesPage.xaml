@@ -15,7 +15,7 @@
         <VerticalStackLayout StyleClass="VerticalGroupsLayout" MaximumWidthRequest="800">
 
 			<Grid Padding="0" ColumnDefinitions="65,*">
-				<Switch Grid.Column="0" x:Name="EnabledSwitch" IsToggled="{Binding EnableControls}" VerticalOptions="Center" WidthRequest="20" Margin="0" HorizontalOptions="Start"/>
+				<Switch Grid.Column="0" IsToggled="{Binding EnableControls}" VerticalOptions="Center" WidthRequest="20" Margin="0" HorizontalOptions="Start"/>
 				<!-- Enlarge the label so the desenders don't get cut off. -->
 				<Label Grid.Column="1" Text="Toggle between enabled and disabled controls." VerticalOptions="Center" HorizontalOptions="Start"/>
 			</Grid>
@@ -23,11 +23,10 @@
 			<!-- Input File -->
 			<Grid StyleClass="FileBrowsingGridStyle">
 				<Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel" IsEnabled="{Binding EnableControls}"/>
-				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill"
-					Placeholder="Enter Values"
-					Text="User entered text."
-					IsEnabled="{Binding EnableControls}">
-				</Entry>
+				<Grid Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" ColumnDefinitions="*,*" ColumnSpacing="50">
+					<Entry Grid.Column="0" HorizontalOptions="Fill" Placeholder="Enter Values" Text="User entered text." IsEnabled="{Binding EnableControls}"/>
+					<Entry Grid.Column="1" HorizontalOptions="Fill" Placeholder="Enter Values" IsEnabled="{Binding EnableControls}"/>
+				</Grid>
 				<HorizontalStackLayout Grid.Row="2" Grid.Column="0" Spacing="50">
 					<Label StyleClass="InvalidLabelStyle" Text="This is an error message." IsEnabled="{Binding EnableControls}"/>
 					<Label StyleClass="ValidLabelStyle" Text="This is a success message." IsEnabled="{Binding EnableControls}"/>
