@@ -23,18 +23,9 @@ public class ValidationTests
 	[Fact]
 	public void FileExistsSimple()
 	{
-		FileExistsRule          fileExistsNoSearchRule  = new()
-		{
-			SearchCurrentDirectory = false
-		};
-		FileExistsRule          fileExistsRule			= new()
-		{
-			SearchApplicationDirectory = true
-		};
-		FileDoesNotExistsRule	fileDoesNotExistRule	= new()
-		{
-			SearchApplicationDirectory = true
-		};
+		FileExistsRule          fileExistsNoSearchRule  = new() { SearchCurrentDirectory = false };
+		FileExistsRule          fileExistsRule			= new() { SearchApplicationDirectory = true };
+		FileDoesNotExistsRule	fileDoesNotExistRule	= new() { SearchApplicationDirectory = true };
 
 		Assert.True(fileExistsRule.Check(_file));
 		Assert.True(fileDoesNotExistRule.Check(_noFile));
@@ -47,6 +38,10 @@ public class ValidationTests
 		Assert.False(fileExistsNoSearchRule.Check(_file));
 		Assert.False(fileExistsRule.Check(_noFile));
 		Assert.False(fileDoesNotExistRule.Check(_file));
+
+		Assert.False(fileExistsRule.Check(""));
+		Assert.False(fileExistsRule.Check(" "));
+		Assert.False(fileExistsRule.Check(null));
 	}
 
 	/// <summary>
@@ -60,14 +55,8 @@ public class ValidationTests
 		string newFile			= Path.Combine(tempDirectory, "New File.txt");
 		File.Copy(_file, newFile);
 
-		FileExistsRule          fileExistsRule          = new()
-		{
-			SearchDirectories = [tempDirectory]
-		};
-		FileDoesNotExistsRule	fileDoesNotExistRule	= new()
-		{
-			SearchDirectories = [tempDirectory]
-		};
+		FileExistsRule          fileExistsRule          = new() { SearchDirectories = [tempDirectory] };
+		FileDoesNotExistsRule	fileDoesNotExistRule	= new() { SearchDirectories = [tempDirectory] };
 
 		Assert.True(fileExistsRule.Check(newFile));
 		Assert.True(fileDoesNotExistRule.Check(_noFile));
