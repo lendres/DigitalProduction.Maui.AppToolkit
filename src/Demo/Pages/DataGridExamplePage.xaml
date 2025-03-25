@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<pages:BasePage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -9,11 +9,8 @@
 	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
     x:Class="DigitalProduction.Demo.Pages.DataGridExamplePage"
     xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
+	x:TypeArguments="viewmodel:DataGridViewModel"
     x:DataType="viewmodel:DataGridViewModel">
-
-	<ContentPage.BindingContext>
-		<viewmodel:DataGridViewModel/>
-	</ContentPage.BindingContext>
 
 	<ContentPage.Resources>
 		<toolkit:IsNotNullConverter x:Key="IsNotNullConverter"/>
@@ -51,9 +48,9 @@
 
 				<HorizontalStackLayout Grid.Column="0" StyleClass="TopButtonRowStyle">
 					<Button
-						Text="New"
+						Text="Add People"
 						StyleClass="StandardSizeButtonStyle"
-						Clicked="OnDisplayMessage"/>
+						Command="{Binding AddPeopleCommand}"/>
 
 					<Button 
 						Text="Edit"
@@ -65,7 +62,7 @@
 						Text="Delete"
 						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
 						StyleClass="StandardSizeButtonStyle"
-						Clicked="OnDisplayMessage"/>
+						Clicked="OnDelete"/>
 				</HorizontalStackLayout>
 
 				<Button 
@@ -74,6 +71,7 @@
 					IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
 					IsEnabled="{Binding Modified}"
 					StyleClass="StandardSizeButtonStyle"
+					Command="{Binding SaveCommand}"
 					HorizontalOptions="End"/>
 			</Grid>
 
@@ -84,8 +82,8 @@
 				IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
 				ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
 				SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
-				RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
-				PaginationEnabled="false"
+				RefreshingEnabled="True" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+				PaginationEnabled="True"
 				RowTappedCommand="{Binding TappedCommand}">
 				<dg:DataGrid.Columns>
 
@@ -102,4 +100,4 @@
 			</dg:DataGrid>
 		</Grid>
 	</Grid>
-</ContentPage>
+</pages:BasePage>

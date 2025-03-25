@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<pages:BasePage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
@@ -9,11 +9,8 @@
 	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
     x:Class="DigitalProduction.Demo.Pages.DataGridStyleExamplePage"
     xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
+	x:TypeArguments="viewmodel:DataGridViewModel"
     x:DataType="viewmodel:DataGridViewModel">
-
-	<ContentPage.BindingContext>
-		<viewmodel:DataGridViewModel/>
-	</ContentPage.BindingContext>
 
 	<ContentPage.Resources>
 		<toolkit:IsNotNullConverter x:Key="IsNotNullConverter"/>
@@ -29,8 +26,8 @@
 			IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
 			ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
 			SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
-			RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
-			PaginationEnabled="false"
+			RefreshingEnabled="True" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+			PaginationEnabled="False"
 			RowTappedCommand="{Binding TappedCommand}">
 			<dg:DataGrid.Columns>
 
@@ -53,8 +50,8 @@
 			IsVisible="{Binding Items, Converter={StaticResource IsNotNullConverter}}"
 			ItemsSource="{Binding Items}" SelectionMode="{Binding SelectionMode}"
 			SelectedItem="{Binding SelectedItem}" RowToEdit="{Binding ItemToEdit}"
-			RefreshingEnabled="true" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
-			PaginationEnabled="false"
+			RefreshingEnabled="True" PullToRefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}"
+			PaginationEnabled="False"
 			RowTappedCommand="{Binding TappedCommand}">
 			<dg:DataGrid.Columns>
 
@@ -70,4 +67,4 @@
 			</dg:DataGrid.Columns>
 		</dg:DataGrid>
 	</Grid>
-</ContentPage>
+</pages:BasePage>

@@ -1,8 +1,11 @@
-﻿namespace DigitalProduction.Demo.Pages;
+﻿using DigitalProduction.Demo.ViewModels;
 
-public partial class DataGridExamplePage : ContentPage
+namespace DigitalProduction.Demo.Pages;
+
+public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 {
-	public DataGridExamplePage()
+	public DataGridExamplePage(DataGridViewModel viewModel) :
+		base(viewModel)
 	{
 		InitializeComponent();
 	}
@@ -10,5 +13,15 @@ public partial class DataGridExamplePage : ContentPage
 	async void OnDisplayMessage(object sender, EventArgs eventArgs)
 	{
 		await DisplayAlert("Message", "This command is non-functioning.", "Ok");
+	}
+
+	async void OnDelete(object sender, EventArgs eventArgs)
+	{
+		bool result = await DisplayAlert("Delete", "Delete the selected item, do you wish to continue?", "Yes", "No");
+
+		if (result)
+		{
+			BindingContext.Delete();
+		}
 	}
 }
