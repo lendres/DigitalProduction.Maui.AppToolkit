@@ -8,6 +8,11 @@ public abstract class FileExistsBase : ValidationRuleBase<string>
 
 	protected bool FileExists(string? fileName)
 	{
+		if (string.IsNullOrEmpty(fileName))
+		{
+			return false;
+		}
+
 		// Check if the full path was provided.
 		if (!string.IsNullOrEmpty(System.IO.Path.GetDirectoryName(fileName)))
 		{
