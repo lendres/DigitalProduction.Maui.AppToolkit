@@ -10,10 +10,7 @@ public static partial class LifecycleEventsInstaller
 	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder, LifecycleOptions? lifecycleOptions)
 	{
 		// If no options were provided, we default them.
-		if (lifecycleOptions == null)
-		{
-			lifecycleOptions = new LifecycleOptions();
-		}
+		lifecycleOptions ??= new LifecycleOptions();
 
 		builder.ConfigureLifecycleEvents(events =>
 		{
