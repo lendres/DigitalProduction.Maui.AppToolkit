@@ -42,6 +42,10 @@ public static class AppTools
 	{
 		Preferences.Default.Set(name+".Position.X", window.X);
 		Preferences.Default.Set(name+".Position.Y", window.Y);
+	}
+
+	public static void SaveWindowSize(Window window, string name)
+	{
 		Preferences.Default.Set(name+".Position.Width", window.Width);
 		Preferences.Default.Set(name+".Position.Height", window.Height);
 	}

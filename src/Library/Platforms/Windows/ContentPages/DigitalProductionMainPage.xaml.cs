@@ -25,7 +25,8 @@ public partial class DigitalProductionMainPage
 
 				// Add the event handler only after setting the initial position.  Otherwise, it will overwrite the
 				// saved values and we will not get restoration of the correct position.
-				parentWindow.SizeChanged += this.OnSizeChanged;
+				parentWindow.SizeChanged		+= OnSizeChanged;
+				parentWindow.PropertyChanged	+= OnPropertyChanged;
 				break;
 		}
 	}
@@ -43,9 +44,31 @@ public partial class DigitalProductionMainPage
 				{
 					// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
 					// size which is not what we want.
-					DigitalProduction.Maui.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
+					DigitalProduction.Maui.UI.AppTools.SaveWindowSize(GetParentWindow(), "MainWindow");
 				}
 				break;
+		}
+	}
+
+	private void OnPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs eventArgs)
+	{
+		if (eventArgs.PropertyName == "X" || eventArgs.PropertyName == "Y")
+		{
+			AppWindow? appWindow = GetAppWindow();
+
+			switch (appWindow?.Presenter)
+			{
+				case OverlappedPresenter overLappedPresenter:
+					DigitalProduction.Maui.UI.AppTools.SaveWindowState(overLappedPresenter.State, "MainWindow");
+
+					if (overLappedPresenter.State == OverlappedPresenterState.Restored)
+					{
+						// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
+						// size which is not what we want.
+						DigitalProduction.Maui.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
+					}
+					break;
+			}
 		}
 	}
 
