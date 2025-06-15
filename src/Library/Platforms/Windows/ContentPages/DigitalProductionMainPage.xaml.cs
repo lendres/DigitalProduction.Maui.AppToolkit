@@ -43,14 +43,11 @@ public partial class DigitalProductionMainPage
 
 	private void OnPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs eventArgs)
 	{
-		if (eventArgs.PropertyName == "X" || eventArgs.PropertyName == "Y")
+		if ((eventArgs.PropertyName == "X" || eventArgs.PropertyName == "Y") && IsRestoredPresenter())
 		{
-			if (IsRestoredPresenter())
-			{ 
-				// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
-				// size which is not what we want.
-				DigitalProduction.Maui.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
-			}
+			// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
+			// size which is not what we want.
+			DigitalProduction.Maui.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
 		}
 	}
 
@@ -61,8 +58,6 @@ public partial class DigitalProductionMainPage
 		switch (appWindow?.Presenter)
 		{
 			case OverlappedPresenter overLappedPresenter:
-				DigitalProduction.Maui.UI.AppTools.SaveWindowState(overLappedPresenter.State, "MainWindow");
-
 				if (overLappedPresenter.State == OverlappedPresenterState.Restored)
 				{
 					return true;
@@ -71,28 +66,6 @@ public partial class DigitalProductionMainPage
 		}
 
 		return false;
-	}
-
-	private void OnPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs eventArgs)
-	{
-		if (eventArgs.PropertyName == "X" || eventArgs.PropertyName == "Y")
-		{
-			AppWindow? appWindow = GetAppWindow();
-
-			switch (appWindow?.Presenter)
-			{
-				case OverlappedPresenter overLappedPresenter:
-					DigitalProduction.Maui.UI.AppTools.SaveWindowState(overLappedPresenter.State, "MainWindow");
-
-					if (overLappedPresenter.State == OverlappedPresenterState.Restored)
-					{
-						// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
-						// size which is not what we want.
-						DigitalProduction.Maui.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
-					}
-					break;
-			}
-		}
 	}
 
 	protected AppWindow? GetAppWindow()

@@ -2,10 +2,10 @@
 
 public static partial class LifecycleEventsInstaller
 {
-	public static void ConfigureLifecycleEvents(MauiAppBuilder builder)
+	public static void ConfigureLifecycleEvents(MauiAppBuilder builder, LifecycleOptions? lifecycleOptions = null)
 	{
-		PlatformConfigureLifecycleEvents(builder);
+		PlatformConfigureLifecycleEvents(builder, lifecycleOptions);
 	}
 
-	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder, bool ensureOnScreen = true);
+	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder, LifecycleOptions? lifecycleOptions);
 }
