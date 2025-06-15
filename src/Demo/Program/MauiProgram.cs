@@ -32,7 +32,7 @@ public static class MauiProgram
 
 		LifecycleOptions lifecycleOptions = new()
 		{
-			EnsureOnScreen			= true,
+			EnsureOnScreen			= false,
 			DisableMaximizeButton	= false,
 			WindowTitle				= "Maui AppToolkit"
 		};

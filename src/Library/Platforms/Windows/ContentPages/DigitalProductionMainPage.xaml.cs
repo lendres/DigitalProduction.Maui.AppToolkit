@@ -25,7 +25,8 @@ public partial class DigitalProductionMainPage
 
 				// Add the event handler only after setting the initial position.  Otherwise, it will overwrite the
 				// saved values and we will not get restoration of the correct position.
-				parentWindow.SizeChanged += this.OnSizeChanged;
+				parentWindow.SizeChanged		+= OnSizeChanged;
+				parentWindow.PropertyChanged	+= OnPropertyChanged;
 				break;
 		}
 	}

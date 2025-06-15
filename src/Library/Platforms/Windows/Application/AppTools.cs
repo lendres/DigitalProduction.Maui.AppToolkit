@@ -55,13 +55,9 @@ public static class AppTools
 		window.X = Preferences.Default.Get(name+".Position.X", window.X);
 		window.Y = Preferences.Default.Get(name+".Position.Y", window.Y);
 
-		if (ensureOnScreen && window.X < 0)
+		if (ensureOnScreen && (window.X < 0 || window.Y < 0))
 		{
 			window.X = 20;
-		}
-
-		if (ensureOnScreen && window.Y < 0)
-		{
 			window.Y = 20;
 		}
 
