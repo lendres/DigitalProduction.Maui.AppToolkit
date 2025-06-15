@@ -37,9 +37,7 @@
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 	</PropertyGroup>
 
-	<Target Name="RunPostBuildEventAfterPack" AfterTargets="Pack">
-		<Warning Text="Warning 1: $(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" />
-		<Warning Text="Warning 2: Calling: $(MSBuildProjectDirectory)" />
+	<Target Name="RunPostBuildEventAfterPack" AfterTargets="Pack" Condition="'$(Configuration)' == 'Release'">
 		<Exec Command="call &quot;$(MSBuildProjectDirectory)\Publishing\copy-nuget.bat&quot; &quot;$(MSBuildProjectDirectory)&quot;" />
 	</Target>
 
@@ -62,9 +60,9 @@
 		<PackageReference Include="akgul.Maui.DataGrid" Version="4.0.6" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="DigitalProduction.Net" Version="0.7.1" />
-		<PackageReference Include="DigitalProduction.Maui" Version="0.8.1" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
+		<PackageReference Include="DigitalProduction.Net" Version="0.8.12" />
+		<PackageReference Include="DigitalProduction.Maui" Version="0.8.3" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.80" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -92,6 +90,10 @@
 	  <MauiXaml Update="Views\PopupView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Fonts\" />
 	</ItemGroup>
 
 </Project>

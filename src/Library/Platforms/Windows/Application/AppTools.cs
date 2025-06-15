@@ -42,27 +42,27 @@ public static class AppTools
 	{
 		Preferences.Default.Set(name+".Position.X", window.X);
 		Preferences.Default.Set(name+".Position.Y", window.Y);
+	}
+
+	public static void SaveWindowSize(Window window, string name)
+	{
 		Preferences.Default.Set(name+".Position.Width", window.Width);
 		Preferences.Default.Set(name+".Position.Height", window.Height);
 	}
 
-	public static void RestoreWindowPosition(Window window, string name, bool ensureOnScreen = true)
+	public static void RestoreWindowPosition(Window window, string name, bool ensureOnScreen)
 	{
-		window.X        = Preferences.Default.Get(name+".Position.X", window.X);
-		window.Y        = Preferences.Default.Get(name+".Position.Y", window.Y);
+		window.X = Preferences.Default.Get(name+".Position.X", window.X);
+		window.Y = Preferences.Default.Get(name+".Position.Y", window.Y);
 
-		if (ensureOnScreen && window.X < 0)
+		if (ensureOnScreen && (window.X < 0 || window.Y < 0))
 		{
-			window.X = 90;
+			window.X = 20;
+			window.Y = 20;
 		}
 
-		if (ensureOnScreen && window.Y < 0)
-		{
-			window.Y = 40;
-		}
-
-		window.Width    = Preferences.Default.Get(name+".Position.Width", window.Width);
-		window.Height   = Preferences.Default.Get(name+".Position.Height", window.Height);
+		window.Width	= Preferences.Default.Get(name+".Position.Width", window.Width);
+		window.Height	= Preferences.Default.Get(name+".Position.Height", window.Height);
 	}
 
 	#endregion

@@ -1,7 +1,6 @@
-﻿using DigitalProduction.Maui.Validation;
-using DigitalProduction.Exceptions;
+﻿using System.Collections.Generic;
 
-namespace Data.Translation.Validation;
+namespace DigitalProduction.Maui.Validation;
 
 /// <summary>
 /// Is not null or empty validation rule for string.
@@ -17,9 +16,10 @@ public class IsNotDuplicateStringRule : ValidationRuleBase<string>
 
 	public List<string>? Values { get; set; }
 
+	public bool CaseSensitive { get; set; } = false;
+
 	public override bool Check(string? value)
 	{
-
 		if (value is null)
 		{
 			return false;
@@ -30,13 +30,27 @@ public class IsNotDuplicateStringRule : ValidationRuleBase<string>
 			return false;
 		}
 
-		if (value == ExcludeValue)
+		if (CaseSensitive)
 		{
-			// The "new" (entered) value is the same as it was (unchanged).  This is ok.
-			return true;
-		}
+			if (value == ExcludeValue)
+			{
+				// The "new" (entered) value is the same as it was (unchanged).  This is ok.
+				return true;
+			}
 
-		bool exists = Values.Contains(value);
-		return !exists;
+			bool exists = Values.Contains(value);
+			return !exists;
+		}
+		else
+		{
+			if (value.Equals(ExcludeValue, StringComparison.CurrentCultureIgnoreCase))
+			{
+				// The "new" (entered) value is the same as it was (unchanged).  This is ok.
+				return true;
+			}
+
+			bool exists = Values.Any(s => string.Equals(s, value, StringComparison.OrdinalIgnoreCase));
+			return !exists;
+		}
 	}
 }

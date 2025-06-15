@@ -7,10 +7,7 @@ namespace DigitalProduction.Demo.ViewModels;
 
 public partial class PathValidationPageViewModel : BaseViewModel
 {
-	#region Fields
-	#endregion
-
-	#region Construction and Destruction
+	#region Construction
 
 	public PathValidationPageViewModel()
 	{

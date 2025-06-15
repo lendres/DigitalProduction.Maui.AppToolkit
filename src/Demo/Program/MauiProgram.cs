@@ -9,6 +9,7 @@ using DigitalProduction.Demo.ViewModels;
 using DigitalProduction.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
+using DigitalProduction.Maui.UI;
 
 namespace DigitalProduction.Demo;
 
@@ -22,26 +23,24 @@ public static class MauiProgram
 			.UseMauiCommunityToolkit()
 			.UseMauiCommunityToolkitMarkup()
 			.UseDigitalProductionMaui()
+			.UseDigitalProductionMauiAppToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-		DigitalProduction.Maui.UI.LifecycleEventsInstaller.ConfigureLifecycleEvents(builder);
-		#if WINDOWS
-			builder.ConfigureLifecycleEvents(events =>  
-			{
-				events.AddWindows(windowsLifecycleBuilder =>  
-				{  
-					windowsLifecycleBuilder.OnWindowCreated(window =>  
-					{  
-						window.Title = "Maui AppToolkit";
-					});  
-				});  
-			});
-		#endif
+
+		LifecycleOptions lifecycleOptions = new()
+		{
+			EnsureOnScreen			= false,
+			DisableMaximizeButton	= false,
+			WindowTitle				= "Maui AppToolkit"
+		};
+		DigitalProduction.Maui.UI.LifecycleEventsInstaller.ConfigureLifecycleEvents(builder, lifecycleOptions);
+
 		RegisterViewsAndViewModels(builder.Services);
 		RegisterEssentials(builder.Services);
+
 		#if DEBUG
 			builder.Logging.AddDebug();
 		#endif
@@ -54,6 +53,10 @@ public static class MauiProgram
 		services.AddTransient<ViewsGalleryPage, ViewsGalleryViewModel>();
 		services.AddTransientWithShellRoute<AboutPage, AboutPageViewModel>();
 		services.AddTransientWithShellRoute<DataGridPage, DataGridPageViewModel>();
+		services.AddTransient<DataGridExamplePage>();
+		services.AddTransient<DataGridStyleExamplePage>();
+		services.AddTransient<DataGridViewModel>();
+
 		services.AddTransientWithShellRoute<StylesPage, StylesPageViewModel>();
 
 		services.AddTransient<WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>();

@@ -23,11 +23,10 @@
 			<!-- Input File -->
 			<Grid StyleClass="FileBrowsingGridStyle">
 				<Label Grid.Row="0" Text="Input File" StyleClass="ControlLabel" IsEnabled="{Binding EnableControls}"/>
-				<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill"
-					Placeholder="Enter Values"
-					Text="User entered text."
-					IsEnabled="{Binding EnableControls}">
-				</Entry>
+				<Grid Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" ColumnDefinitions="*,*" ColumnSpacing="50">
+					<Entry Grid.Column="0" HorizontalOptions="Fill" Placeholder="Enter Values" Text="User entered text." IsEnabled="{Binding EnableControls}"/>
+					<Entry Grid.Column="1" HorizontalOptions="Fill" Placeholder="Enter Values" IsEnabled="{Binding EnableControls}"/>
+				</Grid>
 				<HorizontalStackLayout Grid.Row="2" Grid.Column="0" Spacing="50">
 					<Label StyleClass="InvalidLabelStyle" Text="This is an error message." IsEnabled="{Binding EnableControls}"/>
 					<Label StyleClass="ValidLabelStyle" Text="This is a success message." IsEnabled="{Binding EnableControls}"/>
@@ -36,13 +35,15 @@
 					Text="Browse" IsEnabled="{Binding EnableControls}"/>
 			</Grid>
 
-			<HorizontalStackLayout Spacing="10">
+			<HorizontalStackLayout Spacing="25">
 				<Button Text="Standard" StyleClass="StandardSizeButtonStyle" IsEnabled="{Binding EnableControls}"></Button>
 				<Button Text="q Wide Button p" StyleClass="WideButtonStyle" IsEnabled="{Binding EnableControls}"></Button>
+				<dpcontrols:Stepper Minimum="0" Maximum="10" IsEnabled="{Binding EnableControls}"/>
+				<Switch x:Name="MySwitch" IsEnabled="{Binding EnableControls}"/>
 			</HorizontalStackLayout>
 
             <VerticalStackLayout StyleClass="TitleVerticalStackStyle">
-                <Label Text="Example Output" StyleClass="ControlLabel"/>
+				<Label Text="Example Output" StyleClass="ControlLabel" IsEnabled="{Binding EnableControls}"/>
                 <Border Padding="10,5,10,8">
 					<Label Text="Label used for messages." LineBreakMode="WordWrap" IsEnabled="{Binding EnableControls}"/>
                 </Border>
@@ -71,12 +72,18 @@
 				<Label Text="Check box uses a separate label." VerticalOptions="Center" Margin="0" HeightRequest="25" Padding="0"  IsEnabled="{Binding EnableControls}"/>
 			</HorizontalStackLayout>
 
-			<HorizontalStackLayout Spacing="40">
-				<dpcontrols:Stepper Minimum="0" Maximum="10" IsEnabled="{Binding EnableControls}"/>
-				<Switch x:Name="MySwitch" IsEnabled="{Binding EnableControls}"/>
+			<Slider x:Name="MySlider" IsEnabled="{Binding EnableControls}"/>
+
+			<HorizontalStackLayout Spacing="25">
+				<Border Padding="10,5,10,8">
+					<Label Text="Fixed width font." FontFamily="IBMPlexMono-Regular" IsEnabled="{Binding EnableControls}"/>
+				</Border>
+				<Border Padding="10,5,10,8">
+					<Label Text="Bold fixed width font." FontFamily="IBMPlexMono-Bold" IsEnabled="{Binding EnableControls}"/>
+				</Border>
 			</HorizontalStackLayout>
 
-			<Slider x:Name="MySlider" IsEnabled="{Binding EnableControls}"/>
+			<Label Text="Large Error" Style="{DynamicResource LargeErrorMessageStyle}" IsEnabled="{Binding EnableControls}"/>
 
 		</VerticalStackLayout>
 	</ScrollView>

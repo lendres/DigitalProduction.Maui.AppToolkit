@@ -6,10 +6,15 @@ public abstract class FileExistsBase : ValidationRuleBase<string>
 	public bool				SearchApplicationDirectory { get; set; }	= false;
 	public List<string>		SearchDirectories { get; set; }				= [];
 
-	protected bool FileExists(string fileName)
+	protected bool FileExists(string? fileName)
 	{
+		if (string.IsNullOrEmpty(fileName))
+		{
+			return false;
+		}
+
 		// Check if the full path was provided.
-		if (System.IO.Path.GetDirectoryName(fileName) != null)
+		if (!string.IsNullOrEmpty(System.IO.Path.GetDirectoryName(fileName)))
 		{
 			if (File.Exists(fileName))
 			{

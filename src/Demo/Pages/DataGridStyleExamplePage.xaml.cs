@@ -1,8 +1,11 @@
-﻿namespace DigitalProduction.Demo.Pages;
+﻿using DigitalProduction.Demo.ViewModels;
 
-public partial class DataGridStyleExamplePage : ContentPage
+namespace DigitalProduction.Demo.Pages;
+
+public partial class DataGridStyleExamplePage : BasePage<DataGridViewModel>
 {
-	public DataGridStyleExamplePage()
+	public DataGridStyleExamplePage(DataGridViewModel viewModel) :
+		base(viewModel)
 	{
 		InitializeComponent();
 	}

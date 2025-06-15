@@ -10,7 +10,5 @@
 /// </remarks>
 public class FileExistsRule : FileExistsBase
 {
-	public override bool Check(string? value) =>
-		!string.IsNullOrWhiteSpace(value) &&
-		FileExists(value);
+	public override bool Check(string? value) => FileExists(value);
 }

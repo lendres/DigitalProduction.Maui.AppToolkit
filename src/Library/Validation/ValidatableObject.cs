@@ -11,11 +11,11 @@ namespace DigitalProduction.Maui.Validation;
 /// https://github.com/dotnet-architecture/eshop-mobile-client
 /// Copyright (c) 2020 .NET Application Architecture - Reference Apps
 /// </remarks>
-public class ValidatableObject<T> : ObservableObject, IValidity
+public partial class ValidatableObject<T> : ObservableObject, IValidity
 {
 	#region Fields
 
-	private     IEnumerable<string>     _errors			= Enumerable.Empty<string>();
+	private     IEnumerable<string>     _errors			= [];
     private		bool					_isValid		= true;
     private		T?						_value;
 

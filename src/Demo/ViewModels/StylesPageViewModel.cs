@@ -19,7 +19,7 @@ public partial class StylesPageViewModel : BaseViewModel
 	#region Properties
 
 	[ObservableProperty]
-	public partial bool							EnableControls { get; set; }
+	public partial bool							EnableControls { get; set; }		= true;
 
 	#endregion
 }

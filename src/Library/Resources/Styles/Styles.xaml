@@ -240,7 +240,7 @@
 	</Style>
 
 	<Style TargetType="Picker">
-		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray900}, Dark={DynamicResource White}}"/>
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Black}, Dark={DynamicResource White}}"/>
         <Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource UserEntryControlLight}, Dark={DynamicResource UserEntryControlDark}}"/>
 		<Setter Property="FontFamily" Value="OpenSansRegular"/>
@@ -254,7 +254,7 @@
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
 							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
-							<Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
+							<Setter Property="TitleColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray500}}"/>
 						</VisualState.Setters>
 					</VisualState>
 				</VisualStateGroup>
@@ -462,6 +462,21 @@
 		<Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource Gray200}}"/>
 	</Style>
 
+	<!-- Miscellaneous -->
+	<Style TargetType="TabBar">
+		<Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource BackgroundMid}}"/>
+		<Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={DynamicResource DarkGray}, Dark={DynamicResource White}}"/>
+		<Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TabOff}"/>
+		<Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource Yellow100Accent}"/>
+	</Style>
+
+	<Style x:Key="HorizontalBoarder" TargetType="BoxView">
+		<Setter Property="BackgroundColor" Value="White"/>
+		<Setter Property="HeightRequest" Value="1"/>
+		<Setter Property="HorizontalOptions" Value="Fill"/>
+		<Setter Property="Margin" Value="0,5"/>
+	</Style>
+
 	<!-- Popups -->
 	<Style TargetType="toolkit:Popup" ApplyToDerivedTypes="True">
 		<Setter Property="Color" Value="Transparent"/>
@@ -527,56 +542,40 @@
 		<Setter Property="HorizontalTextAlignment" Value="Start"/>
 		<Setter Property="HorizontalOptions" Value="Start"/>
 		<Setter Property="VerticalOptions" Value="Start"/>
+		<Setter Property="VisualStateManager.VisualStateGroups">
+			<VisualStateGroupList>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal"/>
+					<VisualState x:Name="Disabled">
+						<VisualState.Setters>
+							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
+						</VisualState.Setters>
+					</VisualState>
+				</VisualStateGroup>
+			</VisualStateGroupList>
+		</Setter>
 	</Style>
 
 	<Style TargetType="Label" Class="ControlLabel" BasedOn="{StaticResource SmallLabelBase}">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ControlLabelLight}, Dark={DynamicResource ControlLabelDark}}"/>
-		<Setter Property="VisualStateManager.VisualStateGroups">
-			<VisualStateGroupList>
-				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
-					<VisualState x:Name="Disabled">
-						<VisualState.Setters>
-							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
-						</VisualState.Setters>
-					</VisualState>
-				</VisualStateGroup>
-			</VisualStateGroupList>
-		</Setter>
 		<Setter Property="FontSize" Value="14"/>
 	</Style>
+
 	<Style TargetType="Label" Class="InvalidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ErrorColorLight}, Dark={DynamicResource ErrorColorDark}}"/>
-		<Setter Property="VisualStateManager.VisualStateGroups">
-			<VisualStateGroupList>
-				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
-					<VisualState x:Name="Disabled">
-						<VisualState.Setters>
-							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
-						</VisualState.Setters>
-					</VisualState>
-				</VisualStateGroup>
-			</VisualStateGroupList>
-		</Setter>
 		<Setter Property="FontSize" Value="12"/>
 	</Style>
 
 	<Style TargetType="Label" Class="ValidLabelStyle" BasedOn="{StaticResource SmallLabelBase}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ValidColorLight}, Dark={DynamicResource ValidColorDark}}"/>
-		<Setter Property="VisualStateManager.VisualStateGroups">
-			<VisualStateGroupList>
-				<VisualStateGroup x:Name="CommonStates">
-					<VisualState x:Name="Normal"/>
-					<VisualState x:Name="Disabled">
-						<VisualState.Setters>
-							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
-						</VisualState.Setters>
-					</VisualState>
-				</VisualStateGroup>
-			</VisualStateGroupList>
-		</Setter>
 		<Setter Property="FontSize" Value="12"/>
+	</Style>
+
+	<Style TargetType="Label" x:Key="LargeErrorMessageStyle" BasedOn="{StaticResource LabelBaseStyle}">
+		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource ErrorColorLight}, Dark={DynamicResource ErrorColorDark}}"/>
+		<Setter Property="FontSize" Value="18"/>
+		<Setter Property="FontAttributes" Value="Bold"/>
+		<Setter Property="LineBreakMode" Value="WordWrap"/>
 	</Style>
 
 	<!-- Button Sizes -->
@@ -679,21 +678,6 @@
 		<Setter Property="WidthRequest" Value="30"/>
 	</Style>
 	<Style TargetType="dpcontrols:StepperLabel" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperLabelBaseStyle}"/>
-
-	<!-- Miscellaneous -->
-	<Style TargetType="TabBar">
-		<Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource BackgroundMid}}"/>
-		<Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Light={DynamicResource DarkGray}, Dark={DynamicResource White}}"/>
-		<Setter Property="Shell.TabBarUnselectedColor" Value="{DynamicResource TabOff}"/>
-		<Setter Property="Shell.TabBarForegroundColor" Value="{DynamicResource Yellow100Accent}"/>
-	</Style>
-
-	<Style x:Key="HorizontalBoarder" TargetType="BoxView">
-		<Setter Property="BackgroundColor" Value="White"/>
-		<Setter Property="HeightRequest" Value="1"/>
-		<Setter Property="HorizontalOptions" Value="Fill"/>
-		<Setter Property="Margin" Value="0,5"/>
-	</Style>
 
 	<!-- DataGrid Page Layout -->
 	<Style TargetType="Grid" Class="PageGridStyle">
