@@ -33,6 +33,29 @@ public partial class DigitalProductionMainPage
 
 	private void OnSizeChanged(object? sender, EventArgs eventArgs)
 	{
+		if (IsRestoredPresenter())
+		{ 
+			// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
+			// size which is not what we want.
+			DigitalProduction.Maui.UI.AppTools.SaveWindowSize(GetParentWindow(), "MainWindow");
+		}
+	}
+
+	private void OnPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs eventArgs)
+	{
+		if (eventArgs.PropertyName == "X" || eventArgs.PropertyName == "Y")
+		{
+			if (IsRestoredPresenter())
+			{ 
+				// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
+				// size which is not what we want.
+				DigitalProduction.Maui.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
+			}
+		}
+	}
+
+	private bool IsRestoredPresenter()
+	{
 		AppWindow? appWindow = GetAppWindow();
 
 		switch (appWindow?.Presenter)
@@ -42,12 +65,12 @@ public partial class DigitalProductionMainPage
 
 				if (overLappedPresenter.State == OverlappedPresenterState.Restored)
 				{
-					// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
-					// size which is not what we want.
-					DigitalProduction.Maui.UI.AppTools.SaveWindowSize(GetParentWindow(), "MainWindow");
+					return true;
 				}
 				break;
 		}
+
+		return false;
 	}
 
 	private void OnPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs eventArgs)
