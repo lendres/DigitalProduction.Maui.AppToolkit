@@ -41,8 +41,10 @@ public static class MauiProgram
 				});  
 			});
 		#endif
+
 		RegisterViewsAndViewModels(builder.Services);
 		RegisterEssentials(builder.Services);
+
 		#if DEBUG
 			builder.Logging.AddDebug();
 		#endif
