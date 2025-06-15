@@ -50,19 +50,19 @@ public static class AppTools
 		Preferences.Default.Set(name+".Position.Height", window.Height);
 	}
 
-	public static void RestoreWindowPosition(Window window, string name, bool ensureOnScreen = true)
+	public static void RestoreWindowPosition(Window window, string name, bool ensureOnScreen)
 	{
 		window.X = Preferences.Default.Get(name+".Position.X", window.X);
 		window.Y = Preferences.Default.Get(name+".Position.Y", window.Y);
 
 		if (ensureOnScreen && window.X < 0)
 		{
-			window.X = 90;
+			window.X = 20;
 		}
 
 		if (ensureOnScreen && window.Y < 0)
 		{
-			window.Y = 40;
+			window.Y = 20;
 		}
 
 		window.Width	= Preferences.Default.Get(name+".Position.Width", window.Width);
