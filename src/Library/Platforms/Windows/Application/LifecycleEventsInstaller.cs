@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.LifecycleEvents;
 using Microsoft.Maui.Platform;
-using Microsoft.UI;
 using Microsoft.UI.Windowing;
 
 namespace DigitalProduction.Maui.UI;
