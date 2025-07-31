@@ -90,17 +90,17 @@ public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyCh
 
 	#region Methods
 
-	public virtual void ReplaceSelected(T newItem)
+	public virtual void ReplaceSelected(T newItem, bool select = true)
 	{
 		if (SelectedItem != null && Items != null)
 		{
 			int position = Items.IndexOf(SelectedItem);
 			Delete();
-			Insert(newItem, position);
+			Insert(newItem, position, select);
 		}
 	}
 
-	public virtual void Insert(T item, int position = 0)
+	public virtual void Insert(T item, int position = 0, bool select = true)
 	{
 		if (Items != null)
 		{
@@ -112,15 +112,38 @@ public partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyPropertyCh
 
 			Items.Insert(position, item);
 			Modified = true;
+
+			if (select)
+			{
+				SelectedItem = item;
+			}
 		}
 	}
 	
-	public virtual void Delete()
+	public virtual void Delete(bool selectNext = true)
 	{
 		if (SelectedItem != null && Items != null)
 		{
+			// If we want to select the next item, we need to know the index of the current item.
+			int currentIndex = Items.IndexOf(SelectedItem);
+
 			Items.Remove(SelectedItem);
-			Modified = true;
+			SelectedItem	= null;
+			Modified		= true;
+
+			if (selectNext)
+			{
+				// If we are not at the end of the list, select the next item.
+				if (currentIndex < Items.Count && currentIndex > -1)
+				{
+					SelectedItem = Items[currentIndex];
+				}
+				else if (Items.Count > 0)
+				{
+					// If we are at the end of the list, select the last item.
+					SelectedItem = Items[^1];
+				}
+			}
 		}
 	}
 
