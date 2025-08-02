@@ -2,6 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using DigitalProduction.Maui.Controls;
 using DigitalProduction.Maui.ViewModels;
+using DigitalProduction.Projects;
+using Microsoft.Maui;
 using System.Collections.ObjectModel;
 
 namespace DigitalProduction.Demo.ViewModels;
@@ -35,6 +37,21 @@ public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 	private void Save()
 	{
 		Modified = false;
+	}
+
+	/// <summary>
+	/// Searches the bibliography for the specified search string in the author and title fields.
+	/// </summary>
+	/// <param name="search">Search term.</param>
+	/// <returns>True if at least one BibEntry is found, false if no entries are found.</returns>
+	public override bool Find(string search)
+	{
+		if (Items == null || Items.Count == 0)
+		{
+			return false;
+		}
+		List<Person> findResults    = [Items[0], Items[2]];
+		return SetSearchResults(search, findResults);
 	}
 
 	#endregion
