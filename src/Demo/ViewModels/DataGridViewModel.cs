@@ -27,10 +27,11 @@ public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 	[RelayCommand]
 	private void AddPeople()
 	{
-		Items!.Add(new Person() { FirstName = "Jane", LastName = "Doe", Age = 30 });
-		Items.Add(new Person() { FirstName = "John", LastName = "Doe", Age = 31	});
-		Items.Add(new Person() { FirstName = "Jim", LastName = "Doe", Age = 6 });
-		Items.Add(new Person() { FirstName = "Jessie", LastName = "Doe", Age = 8 });
+		System.Diagnostics.Debug.Assert(Items != null);
+		Items.Add(new Person() { FirstName = "Jane",	LastName = "Doe",	Age = 30 });
+		Items.Add(new Person() { FirstName = "John",	LastName = "Doe",	Age = 31	});
+		Items.Add(new Person() { FirstName = "Jim",		LastName = "Doe",	Age = 6 });
+		Items.Add(new Person() { FirstName = "Jessie",	LastName = "Doe",	Age = 8 });
 	}
 
 	[RelayCommand]
