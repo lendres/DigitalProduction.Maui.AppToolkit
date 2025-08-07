@@ -9,9 +9,6 @@ namespace DigitalProduction.Demo.Pages;
 public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 {
 	#region Fields
-
-	//private readonly DataGridViewModel		_viewModel;
-
 	#endregion
 
 	#region Construction
@@ -54,18 +51,20 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 			case "Replace":
 				BindingContext.ReplaceSelected(NavigationObject);
 				break;
+			case "Cancel":
+				// Do nothing.
+				break;
 		}
 
 		PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, true);
 	}
 
-	async void OnEditPerson(object sender, EventArgs eventArgs)
+	async void OnEdit(object sender, EventArgs eventArgs)
 	{
-		//await Shell.Current.GoToAsync(nameof(EditRawBibEntryForm), true, new Dictionary<string, object>
-		//{
-		//	{ "AddMode",  false },
-		//	{ "BibEntry", BindingContext.SelectedItem! }
-		//});
+		await Shell.Current.GoToAsync(nameof(PersonEditPage), true, new Dictionary<string, object>
+		{
+			{ "Person", BindingContext.SelectedItem! }
+		});
 	}
 
 	async void OnDelete(object sender, EventArgs eventArgs)
@@ -75,6 +74,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 		if (result)
 		{
 			BindingContext.Delete();
+			PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, true);
 		}
 	}
 }

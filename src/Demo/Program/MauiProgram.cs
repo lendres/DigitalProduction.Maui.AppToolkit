@@ -57,6 +57,9 @@ public static class MauiProgram
 		services.AddTransient<DataGridStyleExamplePage>();
 		services.AddTransient<DataGridViewModel>();
 
+		services.AddTransient<PersonEditPage>();
+		services.AddTransient<PersonViewModel>();
+
 		services.AddTransientWithShellRoute<StylesPage, StylesPageViewModel>();
 
 		services.AddTransient<WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>();

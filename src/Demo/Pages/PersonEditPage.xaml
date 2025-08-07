@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui"
+	xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
+    xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
+    x:DataType="viewmodel:PersonViewModel"
+	x:TypeArguments="viewmodel:PersonViewModel"
+	x:Class="DigitalProduction.Demo.Pages.PersonEditPage">
+
+    <ScrollView>
+        <VerticalStackLayout StyleClass="VerticalGroupsLayout" MaximumWidthRequest="800">
+	
+            <VerticalStackLayout StyleClass="TitleVerticalStackStyle">
+				<Label Text="First Name" StyleClass="ControlLabel"/>
+				<Entry HorizontalOptions="Fill" Placeholder="First Name" Text="{Binding Person.FirstName}"/>
+			</VerticalStackLayout>
+
+			<VerticalStackLayout StyleClass="TitleVerticalStackStyle">
+				<Label Text="Last Name" StyleClass="ControlLabel"/>
+				<Entry HorizontalOptions="Fill" Placeholder="Last Name" Text="{Binding Person.LastName}"/>
+			</VerticalStackLayout>
+
+			<HorizontalStackLayout Spacing="20">
+				<dpcontrols:Stepper Minimum="0" Maximum="100" Value="{Binding Person.Age}"/>
+				<Label Text="Age" StyleClass="ControlLabel"/>
+			</HorizontalStackLayout>
+
+			<HorizontalStackLayout  Grid.Row="2" StyleClass="BottomButtonRowStyle" Padding="0,5,0,0">
+				<Button 
+					Text="OK"
+					HorizontalOptions="End"
+					StyleClass="StandardSizeButtonStyle"
+					Clicked="OnSave"/>
+				<Button 
+					Text="Cancel"
+					StyleClass="StandardSizeButtonStyle"
+					HorizontalOptions="End"
+					Clicked="OnCancel"/>
+			</HorizontalStackLayout>
+
+		</VerticalStackLayout>
+	</ScrollView>
+</pages:BasePage>

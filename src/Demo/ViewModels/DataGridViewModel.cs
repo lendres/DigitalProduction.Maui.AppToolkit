@@ -18,6 +18,9 @@ public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 
 		StyleType = LayoutStyle.Compact;
 		StyleType = LayoutStyle.Loose;
+
+AddPeople();
+SelectedItem = Items.Count > 0 ? Items[0] : null;
 	}
 
 	#endregion

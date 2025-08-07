@@ -56,7 +56,7 @@
 						Text="Edit"
 						IsEnabled="{Binding SelectedItem, Converter={StaticResource IsNotNullConverter}}"
 						StyleClass="StandardSizeButtonStyle"
-						Clicked="OnDisplayMessage"/>
+						Clicked="OnEdit"/>
 
 					<Button 
 						Text="Delete"
