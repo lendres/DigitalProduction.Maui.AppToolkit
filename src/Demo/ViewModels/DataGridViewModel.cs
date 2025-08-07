@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using DigitalProduction.Maui.Controls;
 using DigitalProduction.Maui.ViewModels;
-using DigitalProduction.Projects;
 using Microsoft.Maui;
 using System.Collections.ObjectModel;
 
@@ -18,9 +17,6 @@ public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 
 		StyleType = LayoutStyle.Compact;
 		StyleType = LayoutStyle.Loose;
-
-AddPeople();
-SelectedItem = Items.Count > 0 ? Items[0] : null;
 	}
 
 	#endregion
@@ -32,9 +28,9 @@ SelectedItem = Items.Count > 0 ? Items[0] : null;
 	{
 		System.Diagnostics.Debug.Assert(Items != null);
 		Items.Add(new Person() { FirstName = "Jane",	LastName = "Doe",	Age = 30 });
-		Items.Add(new Person() { FirstName = "John",	LastName = "Doe",	Age = 31 });
 		Items.Add(new Person() { FirstName = "Jim",		LastName = "Doe",	Age = 6 });
-		Items.Add(new Person() { FirstName = "Jessie",	LastName = "Doe",	Age = 8 });
+		Items.Add(new Person() { FirstName = "John",	LastName = "Dough",	Age = 31 });
+		Items.Add(new Person() { FirstName = "Jessica",	LastName = "Dough",	Age = 8 });
 	}
 
 	[RelayCommand]
@@ -54,7 +50,17 @@ SelectedItem = Items.Count > 0 ? Items[0] : null;
 		{
 			return false;
 		}
-		List<Person> findResults    = [Items[0], Items[2]];
+
+		List<Person> findResults    = [];
+
+		foreach (Person person in Items)
+		{
+			if (person.Matches(search))
+			{
+				findResults.Add(person);
+			}
+		}
+
 		return SetSearchResults(search, findResults);
 	}
 

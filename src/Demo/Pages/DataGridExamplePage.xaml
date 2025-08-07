@@ -17,6 +17,33 @@
 		<dpconverters:EnumToStringConverter x:Key="EnumToStringConverter" x:TypeArguments="dptkcontrols:LayoutStyle"/>
 	</ContentPage.Resources>
 
+	<ContentPage.MenuBarItems>
+		<MenuBarItem Text="Menu">
+			<MenuFlyoutItem
+				Text="Find..."
+				Clicked="OnFind">
+				<MenuFlyoutItem.KeyboardAccelerators>
+					<KeyboardAccelerator Key="f" Modifiers="Ctrl"/>
+				</MenuFlyoutItem.KeyboardAccelerators>
+			</MenuFlyoutItem>
+			<MenuFlyoutItem
+				Text="Find Next"
+				Clicked="OnFindNext">
+				<MenuFlyoutItem.KeyboardAccelerators>
+					<KeyboardAccelerator Key="F3"/>
+				</MenuFlyoutItem.KeyboardAccelerators>
+			</MenuFlyoutItem>
+			<MenuFlyoutItem
+				Text="Scroll to Selected"
+				Clicked="OnScrollToSelection">
+				<MenuFlyoutItem.KeyboardAccelerators>
+					<KeyboardAccelerator Key="s"/>
+					<KeyboardAccelerator Key="F4"/>
+				</MenuFlyoutItem.KeyboardAccelerators>
+			</MenuFlyoutItem>
+		</MenuBarItem>
+	</ContentPage.MenuBarItems>
+
 	<Grid StyleClass="PageGridStyle" RowDefinitions="auto,*" MaximumWidthRequest="700">
 		<Label Grid.Row="0" Text="DataGrid Example" StyleClass="Title"/>
 

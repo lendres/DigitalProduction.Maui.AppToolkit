@@ -1,6 +1,7 @@
-﻿using DigitalProduction.Demo.ViewModels;
-using DigitalProduction.Maui.Storage;
-using Microsoft.Maui;
+﻿using CommunityToolkit.Maui.Views;
+using DigitalProduction.Demo.ViewModels;
+using DigitalProduction.Maui.Views;
+using DigitalProduction.Maui.ViewModels;
 
 namespace DigitalProduction.Demo.Pages;
 
@@ -17,6 +18,10 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 		base(viewModel)
 	{
 		InitializeComponent();
+for (int i = 0; i < 50; i++)
+{ 
+	BindingContext.AddPeople();
+}
 	}
 
 	#endregion
@@ -51,6 +56,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 			case "Replace":
 				BindingContext.ReplaceSelected(NavigationObject);
 				break;
+
 			case "Cancel":
 				// Do nothing.
 				break;
@@ -77,4 +83,60 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 			PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, true);
 		}
 	}
+
+	#region Menu
+
+	void OnFind(object sender, EventArgs eventArgs)
+	{
+		ShowFindDialogBox();
+	}
+
+	void OnFindNext(object sender, EventArgs eventArgs)
+	{
+		if (BindingContext.RequireSearchString)
+		{
+			ShowFindDialogBox();
+		}
+		else
+		{
+			FindInDataGridView();
+		}
+	}
+
+	private async void ShowFindDialogBox()
+	{
+		SearchTermsViewModel    viewModel   = new();
+		SearchTermsView         view        = new(viewModel);
+		object?                 result      = await Shell.Current.ShowPopupAsync(view);
+
+		if (result is bool boolResut && boolResut)
+		{
+			bool foundEntries = BindingContext.Find(viewModel.SearchTermsString);
+			if (!foundEntries)
+			{
+				await DisplayAlert("Not Found", "No entries found for the specified search term(s).\nSearch string: "+viewModel.SearchTermsString , "OK");
+			}
+			else
+			{
+				FindInDataGridView();
+			}
+		}
+	}
+
+	private void FindInDataGridView()
+	{
+		BindingContext.SelectNextFoundItem();
+		PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, true);
+	}
+	
+
+	private void OnScrollToSelection(object sender, EventArgs eventArgs)
+	{
+		if (BindingContext.SelectedItem != null)
+		{
+			PeopleDataGrid.ScrollTo(BindingContext.SelectedItem, ScrollToPosition.Center, true);
+		}
+	}
+	
+	#endregion
 }
