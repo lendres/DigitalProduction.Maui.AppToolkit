@@ -35,4 +35,19 @@ public class Person
 
 	#endregion
 
+	#region Methods
+
+	public bool Matches(string search)
+	{
+		if (string.IsNullOrEmpty(search))
+		{
+			return false;
+		}
+
+		return FirstName.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+			   LastName.Contains(search, StringComparison.OrdinalIgnoreCase);
+	}
+
+	#endregion
+
 } // End class.
