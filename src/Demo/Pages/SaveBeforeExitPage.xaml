@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
+	x:Class="DigitalProduction.Demo.Pages.SaveBeforeExitPage"
+    xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
+    x:TypeArguments="viewmodel:SaveBeforeExitPageViewModel"
+    x:DataType="viewmodel:SaveBeforeExitPageViewModel"
+	Title="Save Before Exit">
+
+	<ContentPage.Resources>
+		<dpconverters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter"/>
+	</ContentPage.Resources>
+
+	<ScrollView>
+        <VerticalStackLayout StyleClass="VerticalGroupsLayout" MaximumWidthRequest="400">
+
+			<Label Text="{Binding SaveText}" Style="{DynamicResource LargeErrorMessageStyle}"/>
+
+			<Button
+				Text="Modify"
+				StyleClass="StandardHeightButtonStyle"
+				Command="{Binding ModifyCommand}"/>
+
+			<Button
+				Text="Save"
+				StyleClass="StandardHeightButtonStyle"
+				Command="{Binding SaveCommand}"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+</pages:BasePage>

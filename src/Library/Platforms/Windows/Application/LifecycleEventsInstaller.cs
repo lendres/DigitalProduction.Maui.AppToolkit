@@ -29,6 +29,7 @@ public static partial class LifecycleEventsInstaller
 					SetupPositionSavingAndRestoration(lifecycleOptions, window, appWindow);
 					SetWindowTitle(lifecycleOptions, window);
 					SetDisableMaximizedWindow(lifecycleOptions, appWindow);
+					SetupPromptToSave(lifecycleOptions, window, appWindow);
 				});
 			});
 		});
@@ -80,4 +81,100 @@ public static partial class LifecycleEventsInstaller
 			}
 		}
 	}
+
+	private static void SetupPromptToSave(LifecycleOptions lifecycleOptions, Microsoft.UI.Xaml.Window window, AppWindow? appWindow)
+	{
+		if (!lifecycleOptions.PromptToSaveBeforeClose || appWindow is null)
+		{
+			return;
+		}
+
+		bool isProgrammaticClose = false;
+
+		// AppWindow.Closing supports canceling the close
+		appWindow!.Closing += async (sender, eventArgs) =>
+		{
+            if (isProgrammaticClose)
+            {
+                return;
+            }
+
+            eventArgs.Cancel = true;
+
+            CloseChoice closeChoice = await ShowCloseDialogAsync(window);
+
+            switch (closeChoice)
+            {
+                case CloseChoice.SaveAndExit:
+                    bool saveSucceeded = await SaveBeforeExitAsync();
+                    if (!saveSucceeded)
+                    {
+                        return;
+                    }
+
+                    isProgrammaticClose = true;
+                    window.Close();
+                    break;
+
+                case CloseChoice.ExitWithoutSaving:
+                    isProgrammaticClose = true;
+                    window.Close();
+                    break;
+
+                case CloseChoice.Cancel:
+                default:
+                    break;
+            }
+		};
+	}
+
+    private static async Task<CloseChoice> ShowCloseDialogAsync(Microsoft.UI.Xaml.Window window)
+    {
+        Microsoft.UI.Xaml.FrameworkElement rootElement = (Microsoft.UI.Xaml.FrameworkElement)window.Content;
+
+        Microsoft.UI.Xaml.Controls.ContentDialog dialog = new()
+        {
+            Title = "Unsaved changes",
+            Content = "What would you like to do before closing the application?",
+            PrimaryButtonText = "Save and Exit",
+            SecondaryButtonText = "Exit without Saving",
+            CloseButtonText = "Cancel",
+            DefaultButton = Microsoft.UI.Xaml.Controls.ContentDialogButton.Primary,
+            XamlRoot = rootElement.XamlRoot
+        };
+
+        Microsoft.UI.Xaml.Controls.ContentDialogResult result = await dialog.ShowAsync();
+
+        return result switch
+        {
+            Microsoft.UI.Xaml.Controls.ContentDialogResult.Primary		=> CloseChoice.SaveAndExit,
+            Microsoft.UI.Xaml.Controls.ContentDialogResult.Secondary	=> CloseChoice.ExitWithoutSaving,
+            _															=> CloseChoice.Cancel
+        };
+    }
+
+    private static async Task<bool> SaveBeforeExitAsync()
+    {
+        try
+        {
+            // Put your real save logic here.
+            // Example:
+            // await SomeService.Current.SaveAllAsync();
+
+            await Task.CompletedTask;
+            return true;
+        }
+        catch (Exception)
+        {
+            // Optional: log the exception or show another dialog.
+            return false;
+        }
+    }
+
+    private enum CloseChoice
+    {
+        SaveAndExit,
+        ExitWithoutSaving,
+        Cancel
+    }
 }

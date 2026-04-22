@@ -10,6 +10,7 @@ using DigitalProduction.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
 using DigitalProduction.Maui.UI;
+using DigitalProduction.Maui.Services;
 
 namespace DigitalProduction.Demo;
 
@@ -39,6 +40,7 @@ public static class MauiProgram
 		DigitalProduction.Maui.UI.LifecycleEventsInstaller.ConfigureLifecycleEvents(builder, lifecycleOptions);
 
 		RegisterViewsAndViewModels(builder.Services);
+		RegisterServices(builder.Services);
 		RegisterEssentials(builder.Services);
 
 		#if DEBUG
@@ -61,7 +63,28 @@ public static class MauiProgram
 
 		services.AddTransient<WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>();
 		services.AddTransientWithShellRoute<PathValidationPage, PathValidationPageViewModel>();
+		services.AddTransientWithShellRoute<SaveBeforeExitPage, SaveBeforeExitPageViewModel>();
 	}
+
+	static void RegisterServices(in IServiceCollection services)
+	{
+		services.AddSingleton<ISaveService>(serviceProvider =>
+		{
+			return new SaveService(async cancellationToken =>
+			{
+				await PerformActualSaveAsync(cancellationToken);
+			});
+		});
+	}
+
+    static async Task PerformActualSaveAsync(CancellationToken cancellationToken)
+    {
+        // Call the real save logic here.
+        // Example:
+        // await SomeOtherClass.SaveEverythingAsync(cancellationToken);
+
+        await Task.CompletedTask;
+    }
 
 	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 
 		where TPage : BasePage<TViewModel>
