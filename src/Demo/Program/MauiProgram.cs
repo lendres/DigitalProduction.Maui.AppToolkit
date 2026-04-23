@@ -35,7 +35,8 @@ public static class MauiProgram
 		{
 			EnsureOnScreen			= false,
 			DisableMaximizeButton	= false,
-			WindowTitle				= "Maui AppToolkit"
+			WindowTitle				= "Maui AppToolkit",
+			PromptToSaveBeforeClose = true
 		};
 		DigitalProduction.Maui.UI.LifecycleEventsInstaller.ConfigureLifecycleEvents(builder, lifecycleOptions);
 
@@ -71,23 +72,8 @@ public static class MauiProgram
 
 	static void RegisterServices(in IServiceCollection services)
 	{
-		services.AddSingleton<ISaveService>(serviceProvider =>
-		{
-			return new SaveService(async cancellationToken =>
-			{
-				await PerformActualSaveAsync(cancellationToken);
-			});
-		});
+		services.AddSingleton<ISaveService>(new SaveService());
 	}
-
-    static async Task PerformActualSaveAsync(CancellationToken cancellationToken)
-    {
-        // Call the real save logic here.
-        // Example:
-        // await SomeOtherClass.SaveEverythingAsync(cancellationToken);
-
-        await Task.CompletedTask;
-    }
 
 	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 
 		where TPage : BasePage<TViewModel>

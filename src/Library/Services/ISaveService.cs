@@ -2,11 +2,11 @@
 
 public interface ISaveService
 {
-    bool HasUnsavedChanges { get; }
+    bool IsModified { get; }
 
-    void MarkDirty();
+	Func<bool>? IsModifiedFunction { set; }
 
-    void MarkClean();
+	Func<CancellationToken, Task<bool>>? SaveFunction { set; }
 
-    Task SaveAsync(CancellationToken cancellationToken = default);
+    Task<bool> SaveAsync(CancellationToken cancellationToken = default);
 }

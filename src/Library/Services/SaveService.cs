@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DigitalProduction.Maui.Services;
+﻿namespace DigitalProduction.Maui.Services;
 
 public class SaveService : ISaveService
 {
 	#region Fields
 
-	private Func<CancellationToken, Task>? _saveFunction = null;
+	private Func<bool>?								_isModifiedFunction	= null;
+	private Func<CancellationToken, Task<bool>>?	_saveFunction		= null;
 
 	#endregion
 
@@ -20,7 +15,7 @@ public class SaveService : ISaveService
     {
     }
 
-    public SaveService(Func<CancellationToken, Task> saveFunction)
+    public SaveService(Func<CancellationToken, Task<bool>> saveFunction)
     {
         _saveFunction = saveFunction ?? throw new ArgumentNullException(nameof(saveFunction));
     }
@@ -29,29 +24,44 @@ public class SaveService : ISaveService
 
 	#region Properties
 
-	public bool HasUnsavedChanges { get; private set; }
+	public bool IsModified
+	{
+		get
+		{
+			if (_isModifiedFunction != null)
+			{
+				return _isModifiedFunction();
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+
+	public Func<bool>? IsModifiedFunction
+	{
+		private get	=> _isModifiedFunction;
+		set			=> _isModifiedFunction = value ?? throw new ArgumentNullException(nameof(value));
+	}
+
+	public Func<CancellationToken, Task<bool>>? SaveFunction
+	{
+		private get	=> _saveFunction;
+		set			=> _saveFunction = value ?? throw new ArgumentNullException(nameof(value));
+	}
 
 	#endregion
 
 	#region Methods
 
-	public void MarkDirty()
+    public async Task<bool> SaveAsync(CancellationToken cancellationToken = default)
     {
-        HasUnsavedChanges = true;
-    }
-
-    public void MarkClean()
-    {
-        HasUnsavedChanges = false;
-    }
-
-    public async Task SaveAsync(CancellationToken cancellationToken = default)
-    {
-		if (_saveFunction != null)
+		if (IsModified && SaveFunction != null)
 		{
-			await _saveFunction(cancellationToken);
-			HasUnsavedChanges = false;
+			return await SaveFunction(cancellationToken);
 		}
+		return true;
 	}
 
 	#endregion

@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.LifecycleEvents;
+﻿using DigitalProduction.Maui.Services;
+using Microsoft.Maui.LifecycleEvents;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Windowing;
 
@@ -6,6 +7,17 @@ namespace DigitalProduction.Maui.UI;
 
 public static partial class LifecycleEventsInstaller
 {
+	#region Main Installer
+
+	/// <summary>
+	/// Configures platform-specific application lifecycle events for the Windows platform using the specified builder and
+	/// lifecycle options.
+	/// </summary>
+	/// <remarks>This method sets up event handlers for window creation, including restoring window position, size,
+	/// and state, as well as configuring additional window behaviors. It should be called during application startup to
+	/// ensure correct window lifecycle management.</remarks>
+	/// <param name="builder">The application builder used to configure lifecycle events.</param>
+	/// <param name="lifecycleOptions">The options that control lifecycle event behavior. If null, default options are used.</param>
 	static partial void PlatformConfigureLifecycleEvents(MauiAppBuilder builder, LifecycleOptions? lifecycleOptions)
 	{
 		// If no options were provided, we default them.
@@ -26,6 +38,7 @@ public static partial class LifecycleEventsInstaller
 
 					AppWindow? appWindow = DigitalProduction.Maui.UI.AppTools.GetAppWindow((MauiWinUIWindow)window);
 
+					// Installers for each feature that needs to hook into window events..
 					SetupPositionSavingAndRestoration(lifecycleOptions, window, appWindow);
 					SetWindowTitle(lifecycleOptions, window);
 					SetDisableMaximizedWindow(lifecycleOptions, appWindow);
@@ -35,6 +48,19 @@ public static partial class LifecycleEventsInstaller
 		});
 	}
 
+	#endregion
+
+	/// <summary>
+	/// Configures the saving and restoration of window position and state for the specified window using the provided
+	/// lifecycle options.
+	/// </summary>
+	/// <remarks>This method is intended to be called during window initialization to ensure that the window's
+	/// position and state are preserved across application sessions. Only windows with an OverlappedPresenter are
+	/// supported.</remarks>
+	/// <param name="lifecycleOptions">The lifecycle options that determine how window position and state should be managed, including whether the window
+	/// should be ensured to appear on screen.</param>
+	/// <param name="window">The WinUI window instance whose position and state will be saved and restored.</param>
+	/// <param name="appWindow">The optional AppWindow associated with the window. If null, position and state restoration is not performed.</param>
 	private static void SetupPositionSavingAndRestoration(LifecycleOptions lifecycleOptions, Microsoft.UI.Xaml.Window window, AppWindow? appWindow)
 	{
 		switch (appWindow?.Presenter)
@@ -61,6 +87,14 @@ public static partial class LifecycleEventsInstaller
 		}
 	}
 
+	/// <summary>
+	/// Sets the title of the specified window based on the provided lifecycle options.
+	/// </summary>
+	/// <remarks>If the WindowTitle property in lifecycleOptions is an empty string, the window's title remains
+	/// unchanged.</remarks>
+	/// <param name="lifecycleOptions">The lifecycle options containing the window title to apply. The WindowTitle property is used to determine the new
+	/// title.</param>
+	/// <param name="window">The window whose title is to be set.</param>
 	private static void SetWindowTitle(LifecycleOptions lifecycleOptions, Microsoft.UI.Xaml.Window window)
 	{
 		if (lifecycleOptions.WindowTitle != string.Empty)
@@ -69,6 +103,16 @@ public static partial class LifecycleEventsInstaller
 		}
 	}
 
+	/// <summary>
+	/// Disables the maximize button for the specified window if the lifecycle options indicate that maximizing should be
+	/// disabled.
+	/// </summary>
+	/// <remarks>This method only affects windows with an overlapped presenter. Other window types are not
+	/// modified.</remarks>
+	/// <param name="lifecycleOptions">The lifecycle options that determine whether the maximize button should be disabled. The maximize button is
+	/// disabled if <paramref name="lifecycleOptions.DisableMaximizeButton"/> is set to <see langword="true"/>.</param>
+	/// <param name="appWindow">The window whose maximize button will be disabled if applicable. If <paramref name="appWindow"/> is <see
+	/// langword="null"/>, no action is taken.</param>
 	private static void SetDisableMaximizedWindow(LifecycleOptions lifecycleOptions, AppWindow? appWindow)
 	{
 		if (lifecycleOptions.DisableMaximizeButton)
@@ -82,6 +126,8 @@ public static partial class LifecycleEventsInstaller
 		}
 	}
 
+	#region Prompt to Save Before Close
+
 	private static void SetupPromptToSave(LifecycleOptions lifecycleOptions, Microsoft.UI.Xaml.Window window, AppWindow? appWindow)
 	{
 		if (!lifecycleOptions.PromptToSaveBeforeClose || appWindow is null)
@@ -94,7 +140,9 @@ public static partial class LifecycleEventsInstaller
 		// AppWindow.Closing supports canceling the close
 		appWindow!.Closing += async (sender, eventArgs) =>
 		{
-            if (isProgrammaticClose)
+			ISaveService? saveBeforeExitService = DigitalProduction.Maui.Services.ServiceProvider.GetService<ISaveService>();
+
+            if (isProgrammaticClose || saveBeforeExitService == null || !saveBeforeExitService.IsModified)
             {
                 return;
             }
@@ -106,7 +154,7 @@ public static partial class LifecycleEventsInstaller
             switch (closeChoice)
             {
                 case CloseChoice.SaveAndExit:
-                    bool saveSucceeded = await SaveBeforeExitAsync();
+                    bool saveSucceeded = await saveBeforeExitService.SaveAsync();
                     if (!saveSucceeded)
                     {
                         return;
@@ -134,13 +182,13 @@ public static partial class LifecycleEventsInstaller
 
         Microsoft.UI.Xaml.Controls.ContentDialog dialog = new()
         {
-            Title = "Unsaved changes",
-            Content = "What would you like to do before closing the application?",
-            PrimaryButtonText = "Save and Exit",
-            SecondaryButtonText = "Exit without Saving",
-            CloseButtonText = "Cancel",
-            DefaultButton = Microsoft.UI.Xaml.Controls.ContentDialogButton.Primary,
-            XamlRoot = rootElement.XamlRoot
+            Title				= "Unsaved Changes",
+            Content				= "Do you want to save the changes?",
+            PrimaryButtonText	= "Save",
+            SecondaryButtonText	= "Don't Save",
+            CloseButtonText		= "Cancel",
+            DefaultButton		= Microsoft.UI.Xaml.Controls.ContentDialogButton.Primary,
+            XamlRoot			= rootElement.XamlRoot
         };
 
         Microsoft.UI.Xaml.Controls.ContentDialogResult result = await dialog.ShowAsync();
@@ -153,28 +201,5 @@ public static partial class LifecycleEventsInstaller
         };
     }
 
-    private static async Task<bool> SaveBeforeExitAsync()
-    {
-        try
-        {
-            // Put your real save logic here.
-            // Example:
-            // await SomeService.Current.SaveAllAsync();
-
-            await Task.CompletedTask;
-            return true;
-        }
-        catch (Exception)
-        {
-            // Optional: log the exception or show another dialog.
-            return false;
-        }
-    }
-
-    private enum CloseChoice
-    {
-        SaveAndExit,
-        ExitWithoutSaving,
-        Cancel
-    }
+	#endregion
 }
