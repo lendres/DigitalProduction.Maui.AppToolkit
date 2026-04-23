@@ -1,14 +1,19 @@
 using CommunityToolkit.Maui.Storage;
 using DigitalProduction.Demo.ViewModels;
+
 namespace DigitalProduction.Demo.Pages;
 
 public partial class PathValidationPage : BasePage<PathValidationPageViewModel>
 {
+	#region Construction
+
 	public PathValidationPage(PathValidationPageViewModel viewModel) :
 		base(viewModel)
 	{
 		InitializeComponent();
 	}
+
+	#endregion
 
 	#region Events
 
