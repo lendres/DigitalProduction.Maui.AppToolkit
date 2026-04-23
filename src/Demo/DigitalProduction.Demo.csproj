@@ -97,6 +97,8 @@
 	  </Compile>
 	  <Compile Update="Pages\SaveBeforeExitPage.xaml.cs">
 	    <DependentUpon>SaveBeforeExitPage.xaml</DependentUpon>
+	  <Compile Update="Pages\PersonEditPage.xaml.cs">
+	    <DependentUpon>PersonEditPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\StylesPage.xaml.cs">
 	    <DependentUpon>StylesPage.xaml</DependentUpon>
@@ -117,6 +119,7 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SaveBeforeExitPage.xaml">
+	  <MauiXaml Update="Pages\PersonEditPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\StylesPage.xaml">

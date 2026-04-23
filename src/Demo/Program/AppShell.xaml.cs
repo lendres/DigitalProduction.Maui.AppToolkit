@@ -20,6 +20,7 @@ public partial class AppShell : Shell
 		InitializeComponent();
 		Routing.RegisterRoute(nameof(DataGridExamplePage), typeof(DataGridExamplePage));
 		Routing.RegisterRoute(nameof(DataGridStyleExamplePage), typeof(DataGridStyleExamplePage));
+		Routing.RegisterRoute(nameof(PersonEditPage), typeof(PersonEditPage));
 	}
 
 	public static string GetPageRoute<TViewModel>() where TViewModel : BaseViewModel

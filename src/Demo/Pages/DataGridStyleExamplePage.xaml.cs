@@ -8,5 +8,6 @@ public partial class DataGridStyleExamplePage : BasePage<DataGridViewModel>
 		base(viewModel)
 	{
 		InitializeComponent();
+		BindingContext.AddPeople();
 	}
 }
