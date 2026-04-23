@@ -11,7 +11,8 @@ public partial class AppShell : Shell
 		CreateViewModelMapping<AboutPage, AboutPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
 		CreateViewModelMapping<DataGridPage, DataGridPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
 		CreateViewModelMapping<StylesPage, StylesPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
-		CreateViewModelMapping<PathValidationPage, PathValidationPageViewModel, WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>()
+		CreateViewModelMapping<PathValidationPage, PathValidationPageViewModel, WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>(),
+		CreateViewModelMapping<SaveBeforeExitPage, SaveBeforeExitPageViewModel, WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>()
 	]);
 
 	public AppShell()
@@ -19,6 +20,7 @@ public partial class AppShell : Shell
 		InitializeComponent();
 		Routing.RegisterRoute(nameof(DataGridExamplePage), typeof(DataGridExamplePage));
 		Routing.RegisterRoute(nameof(DataGridStyleExamplePage), typeof(DataGridStyleExamplePage));
+		Routing.RegisterRoute(nameof(PersonEditPage), typeof(PersonEditPage));
 	}
 
 	public static string GetPageRoute<TViewModel>() where TViewModel : BaseViewModel

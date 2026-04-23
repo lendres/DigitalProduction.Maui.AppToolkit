@@ -10,6 +10,7 @@ using DigitalProduction.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
 using DigitalProduction.Maui.UI;
+using DigitalProduction.Maui.Services;
 
 namespace DigitalProduction.Demo;
 
@@ -34,11 +35,13 @@ public static class MauiProgram
 		{
 			EnsureOnScreen			= false,
 			DisableMaximizeButton	= false,
-			WindowTitle				= "Maui AppToolkit"
+			WindowTitle				= "Maui AppToolkit",
+			PromptToSaveBeforeClose = true
 		};
 		DigitalProduction.Maui.UI.LifecycleEventsInstaller.ConfigureLifecycleEvents(builder, lifecycleOptions);
 
 		RegisterViewsAndViewModels(builder.Services);
+		RegisterServices(builder.Services);
 		RegisterEssentials(builder.Services);
 
 		#if DEBUG
@@ -57,10 +60,19 @@ public static class MauiProgram
 		services.AddTransient<DataGridStyleExamplePage>();
 		services.AddTransient<DataGridViewModel>();
 
+		services.AddTransient<PersonEditPage>();
+		services.AddTransient<PersonViewModel>();
+
 		services.AddTransientWithShellRoute<StylesPage, StylesPageViewModel>();
 
 		services.AddTransient<WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>();
 		services.AddTransientWithShellRoute<PathValidationPage, PathValidationPageViewModel>();
+		services.AddTransientWithShellRoute<SaveBeforeExitPage, SaveBeforeExitPageViewModel>();
+	}
+
+	static void RegisterServices(in IServiceCollection services)
+	{
+		services.AddSingleton<ISaveService>(new SaveService());
 	}
 
 	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 

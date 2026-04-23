@@ -82,8 +82,6 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui.Markup" Version="5.1.0" />
 		<PackageReference Include="DigitalProduction.Maui.Images" Version="1.1.0" />
-		<PackageReference Include="DigitalProduction.Net" Version="0.8.12" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.80" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
 	</ItemGroup>
 
@@ -94,6 +92,12 @@
 	<ItemGroup>
 	  <Compile Update="Pages\DataGridStyleExamplePage.xaml.cs">
 	    <DependentUpon>DataGridStyleExamplePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\SaveBeforeExitPage.xaml.cs">
+	    <DependentUpon>SaveBeforeExitPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\PersonEditPage.xaml.cs">
+	    <DependentUpon>PersonEditPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\StylesPage.xaml.cs">
 	    <DependentUpon>StylesPage.xaml</DependentUpon>
@@ -111,6 +115,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DataGridPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SaveBeforeExitPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PersonEditPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\StylesPage.xaml">
