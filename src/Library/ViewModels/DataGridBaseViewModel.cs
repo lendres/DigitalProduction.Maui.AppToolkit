@@ -191,14 +191,27 @@ public abstract partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyP
 			}
 
 			Items.Insert(position, item);
-			Modified = true;
 
-			if (select)
-			{
-				SelectedItem = item;
-			}
-			UpdateFind();
+			FinalizeInsert(item, select);
 		}
+	}
+
+	/// <summary>
+	/// Completes the insert operation by setting the modified flag, selecting the item, and updating the search results.
+	/// Call this method after inserting an item to perform these common tasks.  This is separated out into its own method to allow for reuse 
+	/// if a derived class needs to override the Insert() method to perform additional tasks (such as event hookup) or insert in a different position.
+	/// For example, if an automatic positioning system is used.
+	/// </summary>
+	/// <param name="item"></param>
+	/// <param name="select"></param>
+	protected void FinalizeInsert(T item, bool select = true)
+	{
+		Modified = true;
+		if (select)
+		{
+			SelectedItem = item;
+		}
+		UpdateFind();
 	}
 
 	/// <summary>

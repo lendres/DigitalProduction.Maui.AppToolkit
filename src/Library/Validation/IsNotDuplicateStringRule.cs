@@ -14,7 +14,7 @@ public class IsNotDuplicateStringRule : ValidationRuleBase<string>
 {
 	public string? ExcludeValue { get; set; } = null;
 
-	public List<string>? Values { get; set; }
+	public IEnumerable<string>? Values { get; set; }
 
 	public bool CaseSensitive { get; set; } = false;
 
