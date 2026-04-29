@@ -19,7 +19,7 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 	{
 		Save();
 
-		SaveBeforeExitService						= DigitalProduction.Maui.Services.ServiceProvider.GetService<ISaveService>();
+		SaveBeforeExitService						= saveBeforeExitService;
 		SaveBeforeExitService.IsModifiedFunction	= IsModified;
 		SaveBeforeExitService.SaveFunction			= SaveAsync;
 	}
