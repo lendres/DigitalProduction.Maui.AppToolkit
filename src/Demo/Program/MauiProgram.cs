@@ -72,7 +72,8 @@ public static class MauiProgram
 
 	static void RegisterServices(in IServiceCollection services)
 	{
-		services.AddSingleton<ISaveService>(new SaveService());
+		services.AddSingleton<ISaveService, SaveService>();
+		services.AddSingleton<IPageProvider, PageProvider>();
 	}
 
 	static IServiceCollection AddTransientWithShellRoute<TPage, TViewModel>(this IServiceCollection services) 

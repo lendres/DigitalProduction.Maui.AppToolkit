@@ -31,6 +31,16 @@
 				StyleClass="StandardHeightButtonStyle"
 				Command="{Binding SaveCommand}"/>
 
+			<Button
+				Text="Use From Code Behind"
+				StyleClass="StandardHeightButtonStyle"
+				Clicked="OnNew"/>
+
+			<Button
+				Text="Use From ViewModel"
+				StyleClass="StandardHeightButtonStyle"
+				Command="{Binding PromptForSaveCommand}"/>
+
 		</VerticalStackLayout>
 	</ScrollView>
 </pages:BasePage>

@@ -50,6 +50,8 @@ public static partial class LifecycleEventsInstaller
 
 	#endregion
 
+	#region Window
+
 	/// <summary>
 	/// Configures the saving and restoration of window position and state for the specified window using the provided
 	/// lifecycle options.
@@ -126,6 +128,8 @@ public static partial class LifecycleEventsInstaller
 		}
 	}
 
+	#endregion
+
 	#region Prompt to Save Before Close
 
 	private static void SetupPromptToSave(LifecycleOptions lifecycleOptions, Microsoft.UI.Xaml.Window window, AppWindow? appWindow)
@@ -135,71 +139,36 @@ public static partial class LifecycleEventsInstaller
 			return;
 		}
 
-		bool isProgrammaticClose = false;
+		bool isProgrammaticClose	= false;
+		ISaveService saveService	= IPlatformApplication.Current!.Services.GetRequiredService<ISaveService>();
 
 		// AppWindow.Closing supports canceling the close
 		appWindow!.Closing += async (sender, eventArgs) =>
 		{
-			ISaveService? saveBeforeExitService = DigitalProduction.Maui.Services.ServiceProvider.GetService<ISaveService>();
-
-            if (isProgrammaticClose || saveBeforeExitService == null || !saveBeforeExitService.IsModified)
+            if (isProgrammaticClose)
             {
                 return;
             }
 
             eventArgs.Cancel = true;
 
-            CloseChoice closeChoice = await ShowCloseDialogAsync(window);
+            SaveChoice closeChoice = await saveService.PromptSaveChangesAsync();
 
-            switch (closeChoice)
+			switch (closeChoice)
             {
-                case CloseChoice.SaveAndExit:
-                    bool saveSucceeded = await saveBeforeExitService.SaveAsync();
-                    if (!saveSucceeded)
-                    {
-                        return;
-                    }
-
+                case SaveChoice.ContinueWithoutSaving:
+                case SaveChoice.SaveAndContinue:
+                case SaveChoice.SavingNotRequired:
                     isProgrammaticClose = true;
                     window.Close();
                     break;
 
-                case CloseChoice.ExitWithoutSaving:
-                    isProgrammaticClose = true;
-                    window.Close();
-                    break;
-
-                case CloseChoice.Cancel:
+                case SaveChoice.Cancel:
                 default:
                     break;
             }
 		};
 	}
-
-    private static async Task<CloseChoice> ShowCloseDialogAsync(Microsoft.UI.Xaml.Window window)
-    {
-        Microsoft.UI.Xaml.FrameworkElement rootElement = (Microsoft.UI.Xaml.FrameworkElement)window.Content;
-
-        Microsoft.UI.Xaml.Controls.ContentDialog dialog = new()
-        {
-            Title				= "Unsaved Changes",
-            Content				= "Do you want to save the changes?",
-            PrimaryButtonText	= "Save",
-            SecondaryButtonText	= "Don't Save",
-            CloseButtonText		= "Cancel",
-            DefaultButton		= Microsoft.UI.Xaml.Controls.ContentDialogButton.Primary,
-            XamlRoot			= rootElement.XamlRoot
-        };
-
-        Microsoft.UI.Xaml.Controls.ContentDialogResult result = await dialog.ShowAsync();
-
-        return result switch
-        {
-            Microsoft.UI.Xaml.Controls.ContentDialogResult.Primary		=> CloseChoice.SaveAndExit,
-            Microsoft.UI.Xaml.Controls.ContentDialogResult.Secondary	=> CloseChoice.ExitWithoutSaving,
-            _															=> CloseChoice.Cancel
-        };
-    }
 
 	#endregion
 }
