@@ -8,5 +8,7 @@ public interface ISaveService
 
 	Func<CancellationToken, Task<bool>>? SaveFunction { set; }
 
+	Task<SaveChoice> PromptSaveChangesAsync();
+
     Task<bool> SaveAsync(CancellationToken cancellationToken = default);
 }

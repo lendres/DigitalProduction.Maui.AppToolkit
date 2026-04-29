@@ -15,13 +15,13 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 
 	#region Construction
 
-	public SaveBeforeExitPageViewModel()
+	public SaveBeforeExitPageViewModel(ISaveService saveBeforeExitService)
 	{
 		Save();
 
-		ISaveService saveBeforeExitService			= DigitalProduction.Maui.Services.ServiceProvider.GetService<ISaveService>();
-		saveBeforeExitService.IsModifiedFunction	= IsModified;
-		saveBeforeExitService.SaveFunction			= SaveAsync;
+		SaveBeforeExitService						= saveBeforeExitService;
+		SaveBeforeExitService.IsModifiedFunction	= IsModified;
+		SaveBeforeExitService.SaveFunction			= SaveAsync;
 	}
 
 	#endregion
@@ -30,6 +30,8 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 
 	[ObservableProperty]
 	public partial string SaveText { get; set; } = "Saved";
+
+	public ISaveService SaveBeforeExitService { get; private set; }
 
 	#endregion
 
@@ -47,6 +49,21 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 	{
 		SaveText	= "Saved";
 		_isModified	= false;
+	}
+
+	[RelayCommand]
+	private async Task PromptForSave()
+	{
+		SaveChoice closeChoice = await SaveBeforeExitService.PromptSaveChangesAsync();
+
+		switch (closeChoice)
+		{
+			case SaveChoice.ContinueWithoutSaving:
+				SaveText = "ViewModel without Saving";
+				break;
+			default:
+				return;
+		}
 	}
 
 	public bool IsModified() => _isModified;
