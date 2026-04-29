@@ -18,10 +18,10 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 		base(viewModel)
 	{
 		InitializeComponent();
-for (int i = 0; i < 50; i++)
-{ 
-	BindingContext.AddPeople();
-}
+		for (int i = 0; i < 50; i++)
+		{ 
+			BindingContext.AddPeople();
+		}
 	}
 
 	#endregion
