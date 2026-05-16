@@ -679,6 +679,21 @@
 	</Style>
 	<Style TargetType="dpcontrols:StepperLabel" ApplyToDerivedTypes="True" BasedOn="{StaticResource StepperLabelBaseStyle}"/>
 
+	<!-- Switch and Label Layout -->
+	<Style TargetType="Label" Class="SwitchLabel">
+		<Setter Property="VerticalOptions" Value="Center"/>
+		<Setter Property="VerticalTextAlignment" Value="End"/>
+		<Setter Property="HeightRequest" Value="26"/>
+	</Style>
+	<Style TargetType="Grid" Class="SwitchGridStyle">
+		<Setter Property="ColumnDefinitions" Value="50,*"/>
+		<Setter Property="RowDefinitions" Value="30"/>
+		<Setter Property="RowSpacing" Value="0"/>
+		<Setter Property="ColumnSpacing" Value="10"/>
+		<Setter Property="Margin" Value="0"/>
+		<Setter Property="Padding" Value="0"/>
+	</Style>
+
 	<!-- DataGrid Page Layout -->
 	<Style TargetType="Grid" Class="PageGridStyle">
 		<Setter Property="RowSpacing" Value="10"/>
