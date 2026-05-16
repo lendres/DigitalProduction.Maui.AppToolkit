@@ -41,6 +41,45 @@
 					Clicked="OnBrowseForInputFile"/>
 			</Grid>
 
+			<!-- Conditional Input File -->
+			<VerticalStackLayout StyleClass="VerticalLayoutStyle">
+				<!-- Switch -->
+				<Grid StyleClass="SwitchGridStyle">
+					<Switch Grid.Column="0"  Grid.Row="0" x:Name="AuxiliaryFileSwitch" IsToggled="{Binding UseAuxiliaryFile}">
+						<Switch.Behaviors>
+							<toolkit:EventToCommandBehavior
+							   x:TypeArguments="system:EventArgs"
+							   Command="{Binding ValidateAuxiliaryFileCommand}"
+							   BindingContext="{Binding Path=BindingContext, Source={x:Reference AuxiliaryFileSwitch}, x:DataType=Switch}"
+							   EventName="Toggled"/>
+						</Switch.Behaviors>
+					</Switch>
+					<Label Grid.Column="1" Grid.Row="0"	Text="Use an auxiliary file" StyleClass="SwitchLabel"/>
+				</Grid>
+				<!-- File Browsing -->
+				<Grid StyleClass="FileBrowsingGridStyle">
+					<Label Grid.Row="0" Text="Use Auxiliary File" StyleClass="ControlLabel" IsEnabled="{Binding UseAuxiliaryFile}"/>
+					<Entry Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill"
+						x:Name="AuxiliaryFileEntry"
+						Placeholder="Auxiliary File"
+						Text="{Binding AuxiliaryFile.Value}" IsEnabled="{Binding UseAuxiliaryFile}">
+						<Entry.Behaviors>
+							<toolkit:EventToCommandBehavior
+							   x:TypeArguments="system:EventArgs"
+							   Command="{Binding ValidateAuxiliaryFileCommand}"
+							   BindingContext="{Binding Path=BindingContext, Source={x:Reference AuxiliaryFileEntry}, x:DataType=Entry}"
+							   EventName="TextChanged"/>
+						</Entry.Behaviors>
+					</Entry>
+					<Label Grid.Row="2" Grid.Column="0" StyleClass="InvalidLabelStyle" IsEnabled="{Binding UseAuxiliaryFile}"
+						Text="{Binding AuxiliaryFile.Errors, Converter={StaticResource FirstValidationErrorConverter}}"/>
+					<Button Grid.Row="1" Grid.Column="1" StyleClass="StandardWidthButtonStyle" HorizontalOptions="Center" VerticalOptions="Fill"
+						Text="Browse" SemanticProperties.Hint="Browse for the auxiliary file."
+						Clicked="OnBrowseForAuxiliaryFile" IsEnabled="{Binding UseAuxiliaryFile}"/>
+				</Grid>
+			</VerticalStackLayout>
+
+
 			<!-- Output File -->
 			<Grid StyleClass="FileBrowsingGridStyle">
 				<Label Grid.Row="0" Text="Output Directory" StyleClass="ControlLabel"/>

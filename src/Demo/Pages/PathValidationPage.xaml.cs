@@ -19,9 +19,6 @@ public partial class PathValidationPage : BasePage<PathValidationPageViewModel>
 
 	async void OnBrowseForInputFile(object sender, EventArgs eventArgs)
 	{
-		PathValidationPageViewModel? viewModel = BindingContext as PathValidationPageViewModel;
-		System.Diagnostics.Debug.Assert(viewModel != null);
-		
 		PickOptions pickOptions = new() { PickerTitle="Select an Input File", FileTypes=DigitalProduction.Maui.IO.FileTypes.Xml };
 		FileResult? result      = await BrowseForFile(pickOptions);
 
@@ -31,10 +28,21 @@ public partial class PathValidationPage : BasePage<PathValidationPageViewModel>
 		}
 	}
 
+	async void OnBrowseForAuxiliaryFile(object sender, EventArgs eventArgs)
+	{
+		PickOptions pickOptions = new() { PickerTitle="Select an Auxiliary File", FileTypes=DigitalProduction.Maui.IO.FileTypes.Xml };
+		FileResult? result = await BrowseForFile(pickOptions);
+
+		if (result != null)
+		{
+			AuxiliaryFileEntry.Text = result.FullPath;
+		}
+	}
+
 	async void OnBrowseOutputDirectory(object sender, EventArgs eventArgs)
 	{
-		CancellationToken cancellationToken = new();
-		FolderPickerResult folderResult = await FolderPicker.PickAsync(OutputDirectoryEntry.Text, cancellationToken);
+		CancellationToken cancellationToken	= new();
+		FolderPickerResult folderResult		= await FolderPicker.PickAsync(OutputDirectoryEntry.Text, cancellationToken);
 		if (folderResult.IsSuccessful)
 		{
 			OutputDirectoryEntry.Text = folderResult.Folder.Path;

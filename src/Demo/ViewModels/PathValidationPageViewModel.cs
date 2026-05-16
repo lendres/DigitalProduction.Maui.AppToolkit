@@ -19,11 +19,18 @@ public partial class PathValidationPageViewModel : BaseViewModel
 	#region Properties
 
 	// Input file.
-	[ObservableProperty, NotifyPropertyChangedFor(nameof(IsSubmittable))]
+	[ObservableProperty]
 	public partial ValidatableObject<string>		InputFile { get; set; }							= new();
 
+	// Auxiliary file.
+	[ObservableProperty]
+	public partial bool								UseAuxiliaryFile { get; set; }
+
+	[ObservableProperty]
+	public partial ValidatableObject<string>		AuxiliaryFile { get; set; } = new();
+
 	// Directory.
-	[ObservableProperty, NotifyPropertyChangedFor(nameof(IsSubmittable))]
+	[ObservableProperty]
 	public partial ValidatableObject<string>		OutputDirectory { get; set; }					= new();
 
 	[ObservableProperty]
@@ -37,6 +44,10 @@ public partial class PathValidationPageViewModel : BaseViewModel
 	{
 		InputFile.Validations.Add(new IsNotNullOrEmptyRule	{ ValidationMessage = "A file name is required." });
 		InputFile.Validations.Add(new FileExistsRule		{ ValidationMessage = "The file does not exist." });
+		ValidateInputFile();
+
+		AuxiliaryFile.Validations.Add(new ConditionalIsNotNullOrEmptyRule { IsRequired = () => UseAuxiliaryFile, ValidationMessage = "A file name is required." });
+		AuxiliaryFile.Validations.Add(new ConditionalFileExistsRule { IsRequired = () => UseAuxiliaryFile, ValidationMessage = "The file does not exist." });
 		ValidateInputFile();
 
 		OutputDirectory.Validations.Add(new IsNotNullOrEmptyRule		{ ValidationMessage = "A directory is required." });
@@ -53,13 +64,20 @@ public partial class PathValidationPageViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
+	private void ValidateAuxiliaryFile()
+	{
+		AuxiliaryFile.Validate();
+		ValidateSubmittable();
+	}
+
+	[RelayCommand]
 	private void ValidateOutputDirectory()
 	{
 		OutputDirectory.Validate();
 		ValidateSubmittable();
 	}
 
-	public bool ValidateSubmittable() => IsSubmittable = InputFile.IsValid && OutputDirectory.IsValid;
+	public bool ValidateSubmittable() => IsSubmittable = InputFile.IsValid && AuxiliaryFile.IsValid && OutputDirectory.IsValid;
 
 	#endregion
 }
