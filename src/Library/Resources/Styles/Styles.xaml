@@ -189,6 +189,7 @@
 					<VisualState x:Name="Disabled">
 						<VisualState.Setters>
 							<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
+							<Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={DynamicResource Gray300}, Dark={DynamicResource Gray600}}"/>
 						</VisualState.Setters>
 					</VisualState>
 				</VisualStateGroup>
