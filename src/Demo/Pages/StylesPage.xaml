@@ -85,6 +85,8 @@
 
 			<Label Text="Large Error" Style="{DynamicResource LargeErrorMessageStyle}" IsEnabled="{Binding EnableControls}"/>
 
+			<Editor HorizontalOptions="Fill" Text="This is an example editor." IsEnabled="{Binding EnableControls}"/>
+
 		</VerticalStackLayout>
 	</ScrollView>
 </pages:BasePage>
