@@ -1,0 +1,45 @@
+<toolkit:Popup
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	x:Class="DigitalProduction.Maui.Views.ThreeButtonView"
+	CanBeDismissedByTappingOutsideOfPopup="False">
+
+	<Border
+		Padding="20"
+		StrokeThickness="1"
+		BackgroundColor="{DynamicResource BackgroundColor}">
+
+		<VerticalStackLayout Spacing="16" HorizontalOptions="Fill">
+
+			<Label Text="Select an Option" x:Name="_titleLabel" StyleClass="Title" HorizontalOptions="Start"/>
+
+			<Label Text="Do you want to save the changes?"/>
+
+			<VerticalStackLayout Spacing="10" HorizontalOptions="Fill" >
+
+				<Button
+					Text="Save and Continue"
+					StyleClass="SelectorButtonStyle"
+					HorizontalOptions="Fill"
+					Clicked="OnButton1Clicked"/>
+
+				<Button
+					Text="Continue without Saving"
+					StyleClass="SelectorButtonStyle"
+					HorizontalOptions="Fill"
+					Clicked="OnButton2Clicked"/>
+
+				<Button
+					Text="Cancel"
+					StyleClass="SelectorButtonStyle"
+					HorizontalOptions="Fill"
+					Clicked="OnButton3Clicked"/>
+
+			</VerticalStackLayout>
+
+		</VerticalStackLayout>
+
+	</Border>
+
+</toolkit:Popup>

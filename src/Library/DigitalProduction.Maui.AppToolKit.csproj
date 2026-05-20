@@ -74,6 +74,9 @@
 	  <Compile Update="Views\PopupView.xaml.cs">
 	    <DependentUpon>PopupView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\ThreeButtonView.xaml.cs">
+	    <DependentUpon>ThreeButtonView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -92,7 +95,7 @@
 	  <MauiXaml Update="Views\SearchTermsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ThreeButtonDialog.xaml">
+	  <MauiXaml Update="Views\ThreeButtonView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

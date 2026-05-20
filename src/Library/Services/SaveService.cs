@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Maui.ApplicationModel;
+using CommunityToolkit.Maui.Views;
+using DigitalProduction.Maui.Views;
 
 namespace DigitalProduction.Maui.Services;
 
@@ -59,8 +61,8 @@ public class SaveService : ISaveService
 
 	#region Methods
 
-    public async Task<SaveChoice> PromptSaveChangesAsync()
-    {
+	public async Task<SaveChoice> PromptSaveChangesAsync()
+	{
 		if (!IsModified)
 		{
 			return SaveChoice.SavingNotRequired;
@@ -68,33 +70,24 @@ public class SaveService : ISaveService
 
 		Page? page = _pageProvider.Page;
 
-        if (page == null)
-        {
-            return SaveChoice.Cancel;
-        }
+		if (page == null)
+		{
+			return SaveChoice.Cancel;
+		}
 
-        string result = await page.DisplayActionSheet(
-            "Do you want to save the changes?",
-            null,
-            null,
-            _saveAndContinueText,
-            _continueWithoutSavingText,
-			_cancelOptionText
-		);
+		object? result			= await page.ShowPopupAsync(new SaveChangesView());
+		SaveChoice saveChoice	= result as SaveChoice? ?? SaveChoice.Cancel;
 
-        switch (result)
-        {
-			case _saveAndContinueText:
-				bool saveSucceeded = await SaveAsync();
-				return saveSucceeded ? SaveChoice.SaveAndContinue : SaveChoice.Cancel;
-
-			case _continueWithoutSavingText:
-				return SaveChoice.ContinueWithoutSaving;
-
-			default:
-				return SaveChoice.Cancel;
-        };
-    }
+		if (saveChoice == SaveChoice.SaveAndContinue)
+		{
+			bool saveSucceeded = await SaveAsync();
+			return saveSucceeded ? SaveChoice.SaveAndContinue : SaveChoice.Cancel;
+		}
+		else
+		{
+			return saveChoice;
+		}
+	}
 
     public async Task<bool> SaveAsync(CancellationToken cancellationToken = default)
     {
