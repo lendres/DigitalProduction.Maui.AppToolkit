@@ -597,6 +597,10 @@
 		<Setter Property="WidthRequest" Value="100"/>
 	</Style>
 
+	<Style TargetType="Button" Class="SelectorButtonStyle">
+		<Setter Property="HeightRequest" Value="32"/>
+	</Style>
+
 	<!-- Hyperlink -->
 	<Style TargetType="{x:Type dpcontrols:HyperlinkLabel}">
 		<Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource HyperLinkLight}, Dark={DynamicResource HyperLinkDark}}"/>

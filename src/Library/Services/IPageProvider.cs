@@ -2,5 +2,5 @@
 
 public interface IPageProvider
 {
-    Page? CurrentPage { get; set; }
+    Page? Page { get; set; }
 }

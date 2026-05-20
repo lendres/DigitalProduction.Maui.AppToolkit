@@ -44,6 +44,12 @@
 	<!-- Import information from the folder containing the project if the files exists -->
 	<Import Project="$(MSBuildProjectDirectory)/Publishing/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')" />
 	<Import Project="$(MSBuildProjectDirectory)/Publishing/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')" />
+	<ItemGroup>
+	  <Compile Remove="Views\ThreeButtonView.xaml.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Remove="Views\ThreeButtonView.xaml" />
+	</ItemGroup>
 	
 	<ItemGroup>
 	  <None Include="..\..\LICENSE">

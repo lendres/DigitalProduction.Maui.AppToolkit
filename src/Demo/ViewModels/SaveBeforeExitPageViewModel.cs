@@ -7,21 +7,15 @@ namespace DigitalProduction.Demo.ViewModels;
 
 public partial class SaveBeforeExitPageViewModel : BaseViewModel
 {
-	#region Fields
-
-	private bool					_isModified				= false;
-
-	#endregion
-
 	#region Construction
 
 	public SaveBeforeExitPageViewModel(ISaveService saveBeforeExitService)
 	{
 		Save();
 
-		SaveBeforeExitService						= saveBeforeExitService;
-		SaveBeforeExitService.IsModifiedFunction	= IsModified;
-		SaveBeforeExitService.SaveFunction			= SaveAsync;
+		SaveService						= saveBeforeExitService;
+		SaveService.IsModifiedFunction	= GetIsModified;
+		SaveService.SaveFunction		= SaveAsync;
 	}
 
 	#endregion
@@ -31,7 +25,10 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 	[ObservableProperty]
 	public partial string SaveText { get; set; } = "Saved";
 
-	public ISaveService SaveBeforeExitService { get; private set; }
+	[ObservableProperty]
+	public partial bool IsModified { get; set; } = false;
+
+	public ISaveService SaveService { get; private set; }
 
 	#endregion
 
@@ -41,20 +38,20 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 	private void Modify()
 	{
 		SaveText	= "Modified";
-		_isModified	= true;
+		IsModified	= true;
 	}
 
 	[RelayCommand]
 	private void Save()
 	{
 		SaveText	= "Saved";
-		_isModified	= false;
+		IsModified	= false;
 	}
 
 	[RelayCommand]
 	private async Task PromptForSave()
 	{
-		SaveChoice closeChoice = await SaveBeforeExitService.PromptSaveChangesAsync();
+		SaveChoice closeChoice = await SaveService.PromptSaveChangesAsync();
 
 		switch (closeChoice)
 		{
@@ -66,7 +63,7 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 		}
 	}
 
-	public bool IsModified() => _isModified;
+	public bool GetIsModified() => IsModified;
 
 	async Task<bool> SaveAsync(CancellationToken cancellationToken = default)
 	{
