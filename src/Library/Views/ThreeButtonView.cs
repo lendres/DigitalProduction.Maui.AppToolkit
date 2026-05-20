@@ -7,6 +7,10 @@ public class ThreeButtonView<T> : Popup where T : Enum
 {
 	#region Fields
 
+	public T _button1Value = default!;
+	public T _button2Value = default!;
+	public T _button3Value = default!;
+
 	private readonly Label _titleLabel = new()
 	{
 		Text				= "Select an Option",
@@ -19,6 +23,8 @@ public class ThreeButtonView<T> : Popup where T : Enum
 	private readonly Button _button3 = CreateButton("Button 3");
 
 	#endregion
+
+	#region Construction
 
 	public ThreeButtonView()
 	{
@@ -56,6 +62,8 @@ public class ThreeButtonView<T> : Popup where T : Enum
 		_button3.Clicked += OnButton3Clicked;
 	}
 
+	#endregion
+
 	public string Title
 	{
 		get => _titleLabel.Text;
@@ -64,19 +72,34 @@ public class ThreeButtonView<T> : Popup where T : Enum
 
 	public string Message { get; set; } = "Do you want to save the changes?";
 
-	public T Button1Value { get; set; } = default!;
-	public T Button2Value { get; set; } = default!;
-	public T Button3Value { get; set; } = default!;
-
-	public void SetButtons(T button1Value, T button2Value, T button3Value)
+	public T Button1Value
 	{
-		Button1Value = button1Value;
-		Button2Value = button2Value;
-		Button3Value = button3Value;
+		get => _button1Value;
+		set
+		{
+			_button1Value = value;
+			SetButtonText(value, _button1);
+		}
+	}
 
-		SetButtonText(button1Value, _button1);
-		SetButtonText(button2Value, _button2);
-		SetButtonText(button3Value, _button3);
+	public T Button2Value
+	{
+		get => _button2Value;
+		set
+		{
+			_button2Value = value;
+			SetButtonText(value, _button2);
+		}
+	}
+
+	public T Button3Value
+	{
+		get => _button3Value;
+		set
+		{
+			_button3Value = value;
+			SetButtonText(value, _button3);
+		}
 	}
 
 	private static Button CreateButton(string defaultText)

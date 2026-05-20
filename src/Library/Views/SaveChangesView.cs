@@ -10,9 +10,9 @@ public partial class SaveChangesView : ThreeButtonView<SaveChoice>
 	public SaveChangesView()
 	{
 		Title			= "Unsaved Changes";
-		//Button1Value	= SaveChoice.SaveAndContinue;
-		//Button2Value	= SaveChoice.ContinueWithoutSaving;
-		//Button3Value	= SaveChoice.Cancel;
+		Button1Value	= SaveChoice.SaveAndContinue;
+		Button2Value	= SaveChoice.ContinueWithoutSaving;
+		Button3Value	= SaveChoice.Cancel;
 	}
 
 	#endregion
