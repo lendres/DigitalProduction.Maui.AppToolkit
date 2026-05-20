@@ -44,6 +44,12 @@
 	<!-- Import information from the folder containing the project if the files exists -->
 	<Import Project="$(MSBuildProjectDirectory)/Publishing/Assembly.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Assembly.props')" />
 	<Import Project="$(MSBuildProjectDirectory)/Publishing/Version.props" Condition="Exists('$(MSBuildProjectDirectory)/Publishing/Version.props')" />
+	<ItemGroup>
+	  <Compile Remove="Views\ThreeButtonView.xaml.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Remove="Views\ThreeButtonView.xaml" />
+	</ItemGroup>
 	
 	<ItemGroup>
 	  <None Include="..\..\LICENSE">
@@ -74,9 +80,6 @@
 	  <Compile Update="Views\PopupView.xaml.cs">
 	    <DependentUpon>PopupView.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\ThreeButtonView.xaml.cs">
-	    <DependentUpon>ThreeButtonView.xaml</DependentUpon>
-	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -93,9 +96,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SearchTermsView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\ThreeButtonView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

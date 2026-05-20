@@ -3,7 +3,7 @@ using DigitalProduction.Maui.Services;
 
 namespace DigitalProduction.Maui.Views;
 
-public partial class SaveChangesView : ThreeButtonView //<SaveChoice>
+public partial class SaveChangesView : ThreeButtonView<SaveChoice>
 {
 	#region Construction
 
