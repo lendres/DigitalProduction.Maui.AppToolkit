@@ -5,12 +5,10 @@ namespace DigitalProduction.Demo.Pages;
 
 public partial class SaveBeforeExitPage : BasePage<SaveBeforeExitPageViewModel>
 {
-	public SaveBeforeExitPage(SaveBeforeExitPageViewModel viewModel, IPageProvider pageProvider) :
+	public SaveBeforeExitPage(SaveBeforeExitPageViewModel viewModel) :
 		base(viewModel)
 	{
 		InitializeComponent();
-
-//pageProvider.Page = this;
 	}
 
 	async public void OnNew(object sender, EventArgs eventArgs)
