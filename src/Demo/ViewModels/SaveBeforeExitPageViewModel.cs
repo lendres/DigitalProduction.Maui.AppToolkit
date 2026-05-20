@@ -19,9 +19,9 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 	{
 		Save();
 
-		SaveBeforeExitService						= saveBeforeExitService;
-		SaveBeforeExitService.IsModifiedFunction	= IsModified;
-		SaveBeforeExitService.SaveFunction			= SaveAsync;
+		SaveService						= saveBeforeExitService;
+		SaveService.IsModifiedFunction	= IsModified;
+		SaveService.SaveFunction			= SaveAsync;
 	}
 
 	#endregion
@@ -31,7 +31,7 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 	[ObservableProperty]
 	public partial string SaveText { get; set; } = "Saved";
 
-	public ISaveService SaveBeforeExitService { get; private set; }
+	public ISaveService SaveService { get; private set; }
 
 	#endregion
 
@@ -54,7 +54,7 @@ public partial class SaveBeforeExitPageViewModel : BaseViewModel
 	[RelayCommand]
 	private async Task PromptForSave()
 	{
-		SaveChoice closeChoice = await SaveBeforeExitService.PromptSaveChangesAsync();
+		SaveChoice closeChoice = await SaveService.PromptSaveChangesAsync();
 
 		switch (closeChoice)
 		{

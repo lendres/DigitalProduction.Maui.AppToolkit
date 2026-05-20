@@ -66,7 +66,7 @@ public class SaveService : ISaveService
 			return SaveChoice.SavingNotRequired;
 		}
 
-		Page? page = _pageProvider.CurrentPage;
+		Page? page = _pageProvider.Page;
 
         if (page == null)
         {
@@ -79,7 +79,8 @@ public class SaveService : ISaveService
             null,
             _saveAndContinueText,
             _continueWithoutSavingText,
-			_cancelOptionText);
+			_cancelOptionText
+		);
 
         switch (result)
         {

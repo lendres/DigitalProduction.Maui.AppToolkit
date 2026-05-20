@@ -4,5 +4,5 @@ using Microsoft.Maui.Controls;
 
 public class PageProvider : IPageProvider
 {
-    public Page? CurrentPage { get; set; }
+    public Page? Page { get; set; }
 }

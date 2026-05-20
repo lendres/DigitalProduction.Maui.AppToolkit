@@ -10,12 +10,12 @@ public partial class SaveBeforeExitPage : BasePage<SaveBeforeExitPageViewModel>
 	{
 		InitializeComponent();
 
-		pageProvider.CurrentPage = this;
+//pageProvider.Page = this;
 	}
 
 	async public void OnNew(object sender, EventArgs eventArgs)
 	{
-		SaveChoice closeChoice = await BindingContext.SaveBeforeExitService.PromptSaveChangesAsync();
+		SaveChoice closeChoice = await BindingContext.SaveService.PromptSaveChangesAsync();
 
 		switch (closeChoice)
 		{
