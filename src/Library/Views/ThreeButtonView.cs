@@ -32,9 +32,7 @@ public class ThreeButtonView<T> : Popup where T : Enum
 
 		Content = new Border
 		{
-			Padding			= 20,
-			StrokeThickness	= 1,
-			BackgroundColor	= Application.Current?.Resources.TryGetValue("BackgroundColor", out object backgroundColor) == true ? (Color)backgroundColor : Colors.Transparent,
+			StyleClass		= ["PopupFrameStyle"],
 
 			Content = new VerticalStackLayout
 			{
