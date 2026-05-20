@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using DigitalProduction.Maui.Attributes;
 
 namespace DigitalProduction.Maui.Services;
 
@@ -11,19 +12,23 @@ namespace DigitalProduction.Maui.Services;
 /// </summary>
 public enum SaveChoice
 {
-	/// <summary>Cancel the close operation.</summary>
+	/// <summary>Cancel the operation.</summary>
+	[ControlText("Cancel")]
 	[Description("Cancel")]
     Cancel,
 
-	/// <summary>Exit the application without saving changes.</summary>
+	/// <summary>Continue without saving changes.</summary>
+	[ControlText("Continue without Saving")]
 	[Description("Continue without Saving")]
 	ContinueWithoutSaving,
 
-	/// <summary>Save changes and exit the application.</summary>
+	/// <summary>Save changes and continue.</summary>
+	[ControlText("Save and Continue")]
 	[Description("Save and Continue")]
     SaveAndContinue,
 
-	/// <summary>Save changes and exit the application.</summary>
-	[Description("Saving not Requried")]
-    SavingNotRequired
+	/// <summary>Save is not required.</summary>
+	[ControlText("Save not Required")]
+	[Description("Save not Required")]
+    SaveNotRequired
 }

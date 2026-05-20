@@ -20,18 +20,21 @@
 
 				<Button
 					Text="Save and Continue"
+					x:Name="_button1"
 					StyleClass="SelectorButtonStyle"
 					HorizontalOptions="Fill"
 					Clicked="OnButton1Clicked"/>
 
 				<Button
 					Text="Continue without Saving"
+					x:Name="_button2"
 					StyleClass="SelectorButtonStyle"
 					HorizontalOptions="Fill"
 					Clicked="OnButton2Clicked"/>
 
 				<Button
 					Text="Cancel"
+					x:Name="_button3"
 					StyleClass="SelectorButtonStyle"
 					HorizontalOptions="Fill"
 					Clicked="OnButton3Clicked"/>

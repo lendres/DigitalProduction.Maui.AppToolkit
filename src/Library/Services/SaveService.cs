@@ -65,7 +65,7 @@ public class SaveService : ISaveService
 	{
 		if (!IsModified)
 		{
-			return SaveChoice.SavingNotRequired;
+			return SaveChoice.SaveNotRequired;
 		}
 
 		Page? page = _pageProvider.Page;

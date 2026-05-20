@@ -1,10 +1,12 @@
 using CommunityToolkit.Maui.Views;
-using DigitalProduction.Maui.Services;
 
 namespace DigitalProduction.Maui.Views;
 
 public partial class ThreeButtonView : Popup
 {
+	#region Fields
+	#endregion
+
 	#region Construction
 
 	public ThreeButtonView()
@@ -22,30 +24,40 @@ public partial class ThreeButtonView : Popup
 		set => _titleLabel.Text = value;
 	}
 
-	public SaveChoice Button1Option { get; set; } = SaveChoice.SaveAndContinue;
+	public string Button1Text { get; set; } = "Button 1";
 
-	public SaveChoice Button2Option { get; set; } = SaveChoice.ContinueWithoutSaving;
+	public string Button2Text { get; set; } = "Button 2";
 
-	public SaveChoice Button3Option { get; set; } = SaveChoice.Cancel;
+	public string Button3Text { get; set; } = "Button 3";
 
+	public object Button1Value { get; set; } = ButtonChoice.Button1;
+
+	public object Button2Value { get; set; } = ButtonChoice.Button2;
+
+	public object Button3Value { get; set; } = ButtonChoice.Button3;
 	#endregion
 
 	#region Button Click Handlers
 
 	private void OnButton1Clicked(object? sender, EventArgs e)
 	{
-		Close(Button1Option);
+		Close(Button1Value);
 	}
 
 	private void OnButton2Clicked(object? sender, EventArgs e)
 	{
-		Close(Button2Option);
+		Close(Button2Value);
 	}
 
 	private void OnButton3Clicked(object? sender, EventArgs e)
 	{
-		Close(Button3Option);
+		Close(Button3Value);
 	}
 
 	#endregion
+
+	//private void SetButtonText(T value, Button button)
+	//{
+	//	button.Text = DigitalProduction.Reflection.Attributes.GetAttribute<ControlTextAttribute>(value)?.Text;
+	//}
 }

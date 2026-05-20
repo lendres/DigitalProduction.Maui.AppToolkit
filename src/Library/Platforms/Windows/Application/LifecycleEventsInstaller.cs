@@ -158,7 +158,7 @@ public static partial class LifecycleEventsInstaller
             {
                 case SaveChoice.ContinueWithoutSaving:
                 case SaveChoice.SaveAndContinue:
-                case SaveChoice.SavingNotRequired:
+                case SaveChoice.SaveNotRequired:
                     isProgrammaticClose = true;
                     window.Close();
                     break;
