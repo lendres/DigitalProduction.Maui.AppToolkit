@@ -93,6 +93,9 @@
 	  <Compile Update="Pages\DataGridStyleExamplePage.xaml.cs">
 	    <DependentUpon>DataGridStyleExamplePage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\ConverterPage.xaml.cs">
+	    <DependentUpon>ConverterPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\SaveBeforeExitPage.xaml.cs">
 	    <DependentUpon>SaveBeforeExitPage.xaml</DependentUpon>
 	  </Compile>
@@ -115,6 +118,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DataGridPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ConverterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SaveBeforeExitPage.xaml">

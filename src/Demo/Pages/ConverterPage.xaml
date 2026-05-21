@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:pages="clr-namespace:DigitalProduction.Demo.Pages"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+	xmlns:enums="clr-namespace:DigitalProduction.Demo.Enums"
+	xmlns:dpconverters="clr-namespace:DigitalProduction.Maui.Converters;assembly=DigitalProduction.Maui.AppToolkit"
+	xmlns:viewmodel="clr-namespace:DigitalProduction.Demo.ViewModels"
+	x:Class="DigitalProduction.Demo.Pages.ConvertersPage"
+    x:TypeArguments="viewmodel:ConvertersPageViewModel"
+    x:DataType="viewmodel:ConvertersPageViewModel"
+	Title="Converters">
+
+	<ContentPage.Resources>
+		<dpconverters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter"/>
+		<dpconverters:AreDebuggingConverter x:Key="AreDebuggingConverter"/>
+		<dpconverters:EnumToStringConverter x:Key="TestingEnumToStringConverter" x:TypeArguments="enums:TestingType"/>
+		<dpconverters:EnumToDescriptionConverter x:Key="TestingEnumToDescriptionConverter" x:TypeArguments="enums:TestingType"/>
+		<dpconverters:SingleEnumToBoolConverter x:Key="TestingEnumToBoolConverter1" x:TypeArguments="enums:TestingType" Enum="Type2"/>
+		<dpconverters:SingleEnumToBoolConverter x:Key="TestingEnumToBoolConverter2" x:TypeArguments="enums:TestingType"/>
+		<dpconverters:SingleEnumToBoolConverter x:Key="TestingEnumToBoolConverter3" x:TypeArguments="enums:TestingType" Enum="Type1" ResultIfEqual="False"/>
+	</ContentPage.Resources>
+
+	<ScrollView>
+        <VerticalStackLayout StyleClass="VerticalGroupsLayout" MaximumWidthRequest="650">
+
+			<Grid ColumnDefinitions="400,*" RowDefinitions="auto,auto,auto,auto,auto,auto" HorizontalOptions="Fill">
+				<!-- Are debugging converter. -->
+				<Label Grid.Row="0" Grid.Column="0" Text="Are Debugging Converter"/>
+				<Label Grid.Row="0" Grid.Column="1" Text="Not Debugging" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+				<Label Grid.Row="0" Grid.Column="1" Text="Debugging" IsVisible="{Binding ., Converter={StaticResource AreDebuggingConverter}}" BackgroundColor="LightCoral" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+
+				<!-- Enum to string converter. -->
+				<Label Grid.Row="1" Grid.Column="0" Text="Enum to String Converter"/>
+				<Label Grid.Row="1" Grid.Column="1" Text="{Binding EnumValue, Converter={StaticResource TestingEnumToStringConverter}}" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+
+				<!-- Enum to description converter. -->
+				<Label Grid.Row="2" Grid.Column="0" Text="Enum to Description Converter"/>
+				<Label Grid.Row="2" Grid.Column="1" Text="{Binding EnumValue, Converter={StaticResource TestingEnumToDescriptionConverter}}" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+
+				<!-- Enum to bool converter. -->
+				<Label Grid.Row="3" Grid.Column="0" Text="Enum to Bool Converter via Property (is Type2)"/>
+				<Label Grid.Row="3" Grid.Column="1" Text="{Binding EnumValue, Converter={StaticResource TestingEnumToBoolConverter1}}" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+				<Label Grid.Row="4" Grid.Column="0" Text="Enum to Bool Converter via Parameter (is Type3)"/>
+				<Label Grid.Row="4" Grid.Column="1" Text="{Binding EnumValue, Converter={StaticResource TestingEnumToBoolConverter2}, ConverterParameter={x:Static enums:TestingType.Type3}}" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+
+				<Label Grid.Row="5" Grid.Column="0" Text="Enum to Inverted Bool Converter (is Type1)"/>
+				<Label Grid.Row="5" Grid.Column="1" Text="{Binding EnumValue, Converter={StaticResource TestingEnumToBoolConverter3}, ConverterParameter={x:Static enums:TestingType.Type1}}" HorizontalOptions="Fill" HorizontalTextAlignment="Center"/>
+
+			</Grid>
+			<Button Text="Cycle Enum Value" Command="{Binding CycleEnumValueCommand}" StyleClass="StandardHeightButton"/>
+		</VerticalStackLayout>
+	</ScrollView>
+</pages:BasePage>
