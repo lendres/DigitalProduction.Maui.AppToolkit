@@ -18,9 +18,9 @@
 		<dpconverters:AreDebuggingConverter x:Key="AreDebuggingConverter"/>
 		<dpconverters:EnumToStringConverter x:Key="TestingEnumToStringConverter" x:TypeArguments="enums:TestingType"/>
 		<dpconverters:EnumToDescriptionConverter x:Key="TestingEnumToDescriptionConverter" x:TypeArguments="enums:TestingType"/>
-		<dpconverters:SingleEnumToBoolConverter x:Key="TestingEnumToBoolConverter1" x:TypeArguments="enums:TestingType" Enum="Type2"/>
+		<dpconverters:SingleEnumToBoolConverter x:Key="TestingEnumToBoolConverter1" x:TypeArguments="enums:TestingType" ValueToCompare="Type2"/>
 		<dpconverters:SingleEnumToBoolConverter x:Key="TestingEnumToBoolConverter2" x:TypeArguments="enums:TestingType"/>
-		<dpconverters:SingleEnumToBoolConverter x:Key="TestingEnumToBoolConverter3" x:TypeArguments="enums:TestingType" Enum="Type1" ResultIfEqual="False"/>
+		<dpconverters:SingleEnumToBoolConverter x:Key="TestingEnumToBoolConverter3" x:TypeArguments="enums:TestingType" ValueToCompare="Type1" ResultIfEqual="False"/>
 	</ContentPage.Resources>
 
 	<ScrollView>

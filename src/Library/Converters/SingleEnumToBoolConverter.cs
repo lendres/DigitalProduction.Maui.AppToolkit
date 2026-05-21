@@ -6,7 +6,7 @@ namespace DigitalProduction.Maui.Converters;
 /// <summary>
 ///     Convert an <see cref="System.Enum"/> to corresponding <see cref="bool"/>
 /// </summary>
-public class SingleEnumToBoolConverter<TEnum> : IValueConverter where TEnum : struct, Enum
+public class SingleEnumToBoolConverter<TEnum> : IValueConverter where TEnum : Enum
 {
 	/// <inheritdoc/>
 	public bool DefaultConvertReturnValue { get; set; } = false;
@@ -16,7 +16,7 @@ public class SingleEnumToBoolConverter<TEnum> : IValueConverter where TEnum : st
 	/// <summary>
 	/// Enum value to compare against (optional).
 	/// </summary>
-	public TEnum? Enum { get; set; } = null;
+	public TEnum? ValueToCompare { get; set; } = default;
 
 	/// <summary>
 	/// The result to return when the value and the provided Enum property or the passed parameter are equal. If
@@ -41,14 +41,14 @@ public class SingleEnumToBoolConverter<TEnum> : IValueConverter where TEnum : st
 		ArgumentNullException.ThrowIfNull(value);
 
 		bool areEqual = DefaultConvertReturnValue;
-		if (Enum is null)
+		if (parameter is not null)
 		{
-			ArgumentNullException.ThrowIfNull(parameter);
 			areEqual = CompareTwoEnums((Enum)value, (TEnum)parameter);
 		}
 		else
 		{
-			areEqual = CompareTwoEnums((Enum)value, (TEnum)Enum);
+			ArgumentNullException.ThrowIfNull(ValueToCompare);
+			areEqual = CompareTwoEnums((Enum)value, (TEnum)ValueToCompare);
 		}
 
 		return ResultIfEqual ? areEqual : !areEqual;
@@ -69,7 +69,7 @@ public class SingleEnumToBoolConverter<TEnum> : IValueConverter where TEnum : st
 
 		if (valueToCheckType.GetTypeInfo().GetCustomAttribute<FlagsAttribute>() != null)
 		{
-			return referenceEnumValue.Value.HasFlag(valueToCheck);
+			return referenceEnumValue.HasFlag(valueToCheck);
 		}
 
 		return Equals(valueToCheck, referenceEnumValue);

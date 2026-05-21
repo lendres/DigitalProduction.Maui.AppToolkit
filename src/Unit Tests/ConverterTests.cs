@@ -96,7 +96,7 @@ public class ConverterTests
 	public void EnumToTrueConverterTest()
 	{
 		string errorMessage = "Enum to bool test failed.";
-		SingleEnumToBoolConverter<TestingType> converter = new() { Enum = TestingType.Type2 };
+		SingleEnumToBoolConverter<TestingType> converter = new() { ValueToCompare = TestingType.Type2 };
 
 		// Test using the property.
 		bool result = (bool)converter.Convert(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
@@ -122,7 +122,7 @@ public class ConverterTests
 	public void EnumToFalseConverterTest()
 	{
 		string errorMessage = "Enum to bool test failed.";
-		SingleEnumToBoolConverter<TestingType> converter = new() { Enum = TestingType.Type1, ResultIfEqual = false };
+		SingleEnumToBoolConverter<TestingType> converter = new() { ValueToCompare = TestingType.Type1, ResultIfEqual = false };
 
 		// Test using the property.
 		bool result = (bool)converter.Convert(TestingType.Type1, typeof(TestingType), null, System.Globalization.CultureInfo.CurrentCulture);
