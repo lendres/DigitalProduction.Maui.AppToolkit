@@ -21,7 +21,7 @@
 		</Border.Resources>
 
 		<VerticalStackLayout StyleClass="VerticalLayoutStyle">
-			<Label Text="BibTeX Search" StyleClass="Title" HorizontalOptions="Start"/>
+			<Label Text="Find" StyleClass="Title" HorizontalOptions="Start"/>
 
 			<VerticalStackLayout StyleClass="TitleVerticalStackStyle">
 				<Label Text="Search Terms" StyleClass="ControlLabel"/>

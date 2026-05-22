@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace DigitalProduction.Maui.Views;
+namespace DigitalProduction.Maui.Enums;
 
 /// <summary>
 /// Specifies the user's choice when prompted to save changes before continuing. This enumeration is used to 
@@ -9,17 +9,17 @@ namespace DigitalProduction.Maui.Views;
 ///
 /// The "Description" attribute can be accessed using Reflection to get a string representing the enumeration type.
 /// </summary>
-public enum ButtonChoice
+public enum SearchResult
 {
-	/// <summary>Button 1.</summary>
-	[Description("Button 1")]
-    Button1,
+	/// <summary>No items found.</summary>
+	[Description("No Items Found")]
+    NoItemsFound,
 
-	/// <summary>Button 2.</summary>
-	[Description("Button 2")]
-	Button2,
+	/// <summary>Next item found.</summary>
+	[Description("Next Item Found")]
+	NextItemFound,
 
-	/// <summary>Button 3.</summary>
-	[Description("Button 3")]
-    Button3
+	/// <summary>No more found items.</summary>
+	[Description("No More Found Items")]
+	NoMoreFoundItems
 }
