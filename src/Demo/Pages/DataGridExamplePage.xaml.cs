@@ -1,7 +1,8 @@
 ﻿using CommunityToolkit.Maui.Views;
 using DigitalProduction.Demo.ViewModels;
-using DigitalProduction.Maui.Views;
+using DigitalProduction.Maui.Enums;
 using DigitalProduction.Maui.ViewModels;
+using DigitalProduction.Maui.Views;
 
 namespace DigitalProduction.Demo.Pages;
 
@@ -18,7 +19,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 		base(viewModel)
 	{
 		InitializeComponent();
-		for (int i = 0; i < 50; i++)
+		for (int i = 0; i < 10; i++)
 		{ 
 			BindingContext.AddPeople();
 		}
@@ -62,7 +63,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 				break;
 		}
 
-		PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, true);
+		PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, false);
 	}
 
 	async void OnEdit(object sender, EventArgs eventArgs)
@@ -80,7 +81,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 		if (result)
 		{
 			BindingContext.Delete();
-			PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, true);
+			PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, false);
 		}
 	}
 
@@ -111,8 +112,8 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 
 		if (result is bool boolResut && boolResut)
 		{
-			bool foundEntries = BindingContext.Find(viewModel.SearchTermsString);
-			if (!foundEntries)
+			SearchResult foundEntries = BindingContext.Find(viewModel.SearchTermsString);
+			if (foundEntries == SearchResult.NoItemsFound)
 			{
 				await DisplayAlert("Not Found", "No entries found for the specified search term(s).\nSearch string: "+viewModel.SearchTermsString , "OK");
 			}
@@ -125,16 +126,21 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 
 	private void FindInDataGridView()
 	{
-		BindingContext.SelectNextFoundItem();
-		PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, true);
+		if (BindingContext.SelectNextFoundItem() == SearchResult.NoMoreFoundItems)
+		{
+			DisplayAlert("Find", "No more entries found.", "OK");
+		}
+		else
+		{
+			PeopleDataGrid.ScrollTo(BindingContext.SelectedItem!, ScrollToPosition.Center, false);
+		}
 	}
 	
-
 	private void OnScrollToSelection(object sender, EventArgs eventArgs)
 	{
 		if (BindingContext.SelectedItem != null)
 		{
-			PeopleDataGrid.ScrollTo(BindingContext.SelectedItem, ScrollToPosition.Center, true);
+			PeopleDataGrid.ScrollTo(BindingContext.SelectedItem, ScrollToPosition.Center, false);
 		}
 	}
 	

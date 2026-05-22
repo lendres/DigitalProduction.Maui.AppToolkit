@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DigitalProduction.Maui.Controls;
+using DigitalProduction.Maui.Enums;
 using DigitalProduction.Maui.ViewModels;
 using Microsoft.Maui;
 using System.Collections.ObjectModel;
@@ -44,14 +45,9 @@ public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 	/// </summary>
 	/// <param name="search">Search term.</param>
 	/// <returns>True if at least one BibEntry is found, false if no entries are found.</returns>
-	public override bool Find(string search)
+	public override SearchResult Find(string search)
 	{
-		if (Items == null || Items.Count == 0)
-		{
-			return false;
-		}
-
-		List<Person> findResults    = [];
+		List<Person> findResults = [];
 
 		foreach (Person person in Items)
 		{

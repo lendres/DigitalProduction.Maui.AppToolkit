@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DigitalProduction.Maui.Enums;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -105,7 +106,7 @@ public abstract partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyP
 	/// </summary>
 	/// <param name="search">Search term.</param>
 	/// <returns>True if at least one item is found, false if no entries are found.</returns>
-	public abstract bool Find(string search);
+	public abstract SearchResult Find(string search);
 
 	/// <summary>
 	/// Internal method to update the current search results.
@@ -124,7 +125,7 @@ public abstract partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyP
 	/// <param name="search"></param>
 	/// <param name="findResults"></param>
 	/// <returns>True if the results contain items, false otherwise.</returns>
-	protected bool SetSearchResults(string search, List<T> findResults)
+	protected SearchResult SetSearchResults(string search, List<T> findResults)
 	{
 		// Reset index for new search.	
 		_findIndex  = 0;
@@ -134,29 +135,37 @@ public abstract partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyP
 		{
 			_findString		= search;
 			_findResults	= findResults;
-			return true;
+			return SearchResult.NextItemFound;
 		}
 		else
 		{
 			_findString		= null;
 			_findResults	= null;
-			return false;
+			return SearchResult.NoItemsFound;
 		}
 	}
 
 	/// <summary>
 	/// Selects the next found item in the search results.
 	/// </summary>
-	public void SelectNextFoundItem()
+	public SearchResult SelectNextFoundItem()
 	{
-		T searchBibEntry	= _findResults![_findIndex++];
-		SelectedItem		= searchBibEntry;
-		
+		if (_findResults == null || _findResults.Count == 0)
+		{
+			return SearchResult.NoItemsFound;
+		}
+
 		// Reset index if we reach the end of the list.
 		if (_findIndex >= _findResults.Count)
 		{
 			_findIndex = 0;
+			return SearchResult.NoMoreFoundItems;
 		}
+
+		T entry			= _findResults![_findIndex++];
+		SelectedItem	= entry;
+		
+		return SearchResult.NextItemFound;
 	}
 
 	/// <summary>
