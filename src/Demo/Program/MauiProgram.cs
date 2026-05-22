@@ -68,6 +68,7 @@ public static class MauiProgram
 		services.AddTransient<WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>();
 		services.AddTransientWithShellRoute<PathValidationPage, PathValidationPageViewModel>();
 		services.AddTransientWithShellRoute<SaveBeforeExitPage, SaveBeforeExitPageViewModel>();
+		services.AddTransientWithShellRoute<ConvertersPage, ConvertersPageViewModel>();
 	}
 
 	static void RegisterServices(in IServiceCollection services)

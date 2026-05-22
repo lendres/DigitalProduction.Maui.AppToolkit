@@ -12,7 +12,8 @@ public partial class AppShell : Shell
 		CreateViewModelMapping<DataGridPage, DataGridPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
 		CreateViewModelMapping<StylesPage, StylesPageViewModel, ViewsGalleryPage, ViewsGalleryViewModel>(),
 		CreateViewModelMapping<PathValidationPage, PathValidationPageViewModel, WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>(),
-		CreateViewModelMapping<SaveBeforeExitPage, SaveBeforeExitPageViewModel, WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>()
+		CreateViewModelMapping<SaveBeforeExitPage, SaveBeforeExitPageViewModel, WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>(),
+		CreateViewModelMapping<ConvertersPage, ConvertersPageViewModel, WorkFlowsGalleryPage, WorkFlowsGalleryViewModel>()
 	]);
 
 	public AppShell()
