@@ -5,6 +5,7 @@ using DigitalProduction.Maui.Enums;
 using DigitalProduction.Maui.ViewModels;
 using Microsoft.Maui;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace DigitalProduction.Demo.ViewModels;
 
@@ -47,6 +48,8 @@ public partial class DataGridViewModel : DataGridBaseViewModel<Person>
 	/// <returns>True if at least one BibEntry is found, false if no entries are found.</returns>
 	public override SearchResult Find(string search)
 	{
+		Trace.Assert(Items != null);
+
 		List<Person> findResults = [];
 
 		foreach (Person person in Items)
