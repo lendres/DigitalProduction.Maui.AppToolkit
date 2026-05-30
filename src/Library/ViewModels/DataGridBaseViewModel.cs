@@ -33,7 +33,11 @@ public abstract partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyP
 	#region Properties
 
 	[ObservableProperty]
+	[NotifyPropertyChangedFor(nameof(IsSubmittable))]
 	public partial bool								Modified { get; set; }						= false;
+
+	[ObservableProperty]
+	public partial bool								IsSubmittable { get; set; }					= false;
 
 	[ObservableProperty]
 	public partial ObservableCollection<T>?			Items { get; set; }
@@ -59,6 +63,19 @@ public abstract partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyP
 	public static ImmutableList<SelectionMode>		SelectionModes	{ get => Enum.GetValues<SelectionMode>().Cast<SelectionMode>().ToImmutableList(); }
 
 	public bool										RequireSearchString { get => _findString == null; }
+
+	#endregion
+
+	#region Events
+
+	/// <summary>
+	/// Update the validation when the modified flag changes.
+	/// </summary>
+	/// <param name="value">The new value of the Modified property.</param>
+	partial void OnModifiedChanged(bool value)
+	{
+		ValidateSubmittable();
+	}
 
 	#endregion
 
@@ -97,6 +114,13 @@ public abstract partial class DataGridBaseViewModel<T> : BaseViewModel, INotifyP
 	#endregion
 
 	#region Methods
+
+	/// <summary>
+	/// Validates whether the current state of the viewmodel allows for submission (saving, etc.) and sets the IsSubmittable property accordingly.
+	/// Allows for derived classes to provide their own validation logic by overriding this method.
+	/// </summary>
+	/// <returns></returns>
+	public virtual bool ValidateSubmittable() => IsSubmittable = Modified;
 
 	/// <summary>
 	/// Searches the bibliography for the specified search string in the author and title fields.
