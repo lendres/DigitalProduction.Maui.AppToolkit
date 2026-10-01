@@ -27,6 +27,7 @@ public partial class DigitalProductionMainPage
 				// saved values and we will not get restoration of the correct position.
 				parentWindow.SizeChanged		+= OnSizeChanged;
 				parentWindow.PropertyChanged	+= OnPropertyChanged;
+				appWindow.Changed				+= OnAppWindowChanged;
 				break;
 		}
 	}
@@ -48,6 +49,15 @@ public partial class DigitalProductionMainPage
 			// Only save the postion and size in the restored state.  Otherwise we are just save and restoring the maximized
 			// size which is not what we want.
 			DigitalProduction.Maui.UI.AppTools.SaveWindowPosition(GetParentWindow(), "MainWindow");
+		}
+	}
+
+	private void OnAppWindowChanged(AppWindow sender, AppWindowChangedEventArgs eventArgs)
+	{
+		if (sender.Presenter is OverlappedPresenter presenter)
+		{
+			// Save on window changes so persistence does not depend on a normal exit.
+			DigitalProduction.Maui.UI.AppTools.SaveWindowState(presenter.State, "MainWindow");
 		}
 	}
 
