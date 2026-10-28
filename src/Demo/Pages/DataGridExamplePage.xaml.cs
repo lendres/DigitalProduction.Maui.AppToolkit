@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Views;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Extensions;
 using DigitalProduction.Demo.ViewModels;
 using DigitalProduction.Maui.Enums;
 using DigitalProduction.Maui.ViewModels;
@@ -108,9 +109,9 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 	{
 		SearchTermsViewModel    viewModel   = new();
 		SearchTermsView         view        = new(viewModel);
-		object?                 result      = await Shell.Current.ShowPopupAsync(view);
+		var                     result      = await Shell.Current.ShowPopupAsync<bool>(view, new PopupOptions { CanBeDismissedByTappingOutsideOfPopup = false, Shape = null, Shadow = null });
 
-		if (result is bool boolResut && boolResut)
+		if (!result.WasDismissedByTappingOutsideOfPopup && result.Result)
 		{
 			SearchResult foundEntries = BindingContext.Find(viewModel.SearchTermsString);
 			if (foundEntries == SearchResult.NoItemsFound)

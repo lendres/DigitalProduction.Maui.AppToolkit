@@ -9,8 +9,7 @@
 	xmlns:viewmodel="clr-namespace:DigitalProduction.Maui.ViewModels"
 	x:Class="DigitalProduction.Maui.Views.SearchTermsView"
 	x:DataType="viewmodel:SearchTermsViewModel"
-	x:Name="self"
-	CanBeDismissedByTappingOutsideOfPopup="False">
+	x:Name="self">
 
 	<Border StyleClass="PopupFrameStyle" MinimumWidthRequest="850" MinimumHeightRequest="220">
 

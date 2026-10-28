@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.ApplicationModel;
-using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Extensions;
 using DigitalProduction.Maui.Views;
 
 namespace DigitalProduction.Maui.Services;
@@ -75,8 +76,8 @@ public class SaveService : ISaveService
 			return SaveChoice.Cancel;
 		}
 
-		object? result			= await page.ShowPopupAsync(new SaveChangesView());
-		SaveChoice saveChoice	= result as SaveChoice? ?? SaveChoice.Cancel;
+		var result = await page.ShowPopupAsync<SaveChoice>(new SaveChangesView(), new PopupOptions { CanBeDismissedByTappingOutsideOfPopup = false, Shape = null, Shadow = null });
+		SaveChoice saveChoice	= result.WasDismissedByTappingOutsideOfPopup ? SaveChoice.Cancel : result.Result;
 
 		if (saveChoice == SaveChoice.SaveAndContinue)
 		{
