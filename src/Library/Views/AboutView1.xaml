@@ -7,8 +7,7 @@
 	xmlns:dpcontrols="clr-namespace:DigitalProduction.Maui.Controls;assembly=DigitalProduction.Maui"
 	xmlns:dpviews="clr-namespace:DigitalProduction.Maui.Views"
 	x:Class="DigitalProduction.Maui.Views.AboutView1"
-	x:DataType="viewmodel:AboutViewModel"
-	CanBeDismissedByTappingOutsideOfPopup="False">
+	x:DataType="viewmodel:AboutViewModel">
 
 	<Border StyleClass="PopupFrameStyle" MinimumWidthRequest="500" MinimumHeightRequest="330">
 

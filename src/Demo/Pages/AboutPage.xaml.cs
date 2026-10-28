@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui.Views;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Extensions;
 using DigitalProduction.Maui.Views;
 using DigitalProduction.Demo.ViewModels;
 
@@ -20,12 +21,12 @@ public partial class AboutPage : BasePage<AboutPageViewModel>
 				ShowDocumentationAddress = false
 			}
 		);
-		_ = await Shell.Current.ShowPopupAsync(view);
+		_ = await Shell.Current.ShowPopupAsync<bool>(view, new PopupOptions { CanBeDismissedByTappingOutsideOfPopup = false, Shape = null, Shadow = null });
 	}
 
 	async void OnButtonAbout2Clicked(object? sender, EventArgs eventArgs)
 	{
 		AboutView1 view = new(new DigitalProduction.Maui.ViewModels.AboutViewModel(true));
-		_ = await Shell.Current.ShowPopupAsync(view);
+		_ = await Shell.Current.ShowPopupAsync<bool>(view, new PopupOptions { CanBeDismissedByTappingOutsideOfPopup = false, Shape = null, Shadow = null });
 	}
 }

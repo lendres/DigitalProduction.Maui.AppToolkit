@@ -2,7 +2,7 @@
 
 namespace DigitalProduction.Maui.Views;
 
-public partial class PopupView : Popup
+public partial class PopupView : Popup<bool>
 {
 	#region Construction
 

@@ -3,7 +3,7 @@ using DigitalProduction.Maui.Attributes;
 
 namespace DigitalProduction.Maui.Views;
 
-public class ThreeButtonView<T> : Popup where T : Enum
+public class ThreeButtonView<T> : Popup<T> where T : Enum
 {
 	#region Fields
 
@@ -28,7 +28,6 @@ public class ThreeButtonView<T> : Popup where T : Enum
 
 	public ThreeButtonView()
 	{
-		CanBeDismissedByTappingOutsideOfPopup = false;
 
 		Content = new Border
 		{
@@ -110,19 +109,19 @@ public class ThreeButtonView<T> : Popup where T : Enum
 		};
 	}
 
-	private void OnButton1Clicked(object? sender, EventArgs e)
+	private async void OnButton1Clicked(object? sender, EventArgs e)
 	{
-		Close(Button1Value);
+		await CloseAsync(Button1Value);
 	}
 
-	private void OnButton2Clicked(object? sender, EventArgs e)
+	private async void OnButton2Clicked(object? sender, EventArgs e)
 	{
-		Close(Button2Value);
+		await CloseAsync(Button2Value);
 	}
 
-	private void OnButton3Clicked(object? sender, EventArgs e)
+	private async void OnButton3Clicked(object? sender, EventArgs e)
 	{
-		Close(Button3Value);
+		await CloseAsync(Button3Value);
 	}
 
 	private static void SetButtonText(T value, Button button)
