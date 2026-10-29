@@ -82,6 +82,193 @@ public class ValidationBehaviorTests : IDisposable
 		Assert.False(behavior.IsRunning);
 	}
 
+	#region File Name Validation
+
+	[Theory]
+	[InlineData("existing", false, PathValidationResult.Valid)]
+	[InlineData("existing", true, PathValidationResult.Valid)]
+	[InlineData("missing", false, PathValidationResult.Valid)]
+	[InlineData("missing", true, PathValidationResult.PathDoesNotExist)]
+	[InlineData("missing-directory", false, PathValidationResult.Valid)]
+	[InlineData("missing-directory", true, PathValidationResult.PathDoesNotExist)]
+	[InlineData("directory", false, PathValidationResult.Valid)]
+	[InlineData("directory", true, PathValidationResult.PathDoesNotExist)]
+	[InlineData("relative", false, PathValidationResult.Valid)]
+	[InlineData("relative", true, PathValidationResult.Valid)]
+	[InlineData("bare-filename", false, PathValidationResult.Valid)]
+	[InlineData("bare-filename", true, PathValidationResult.Valid)]
+	[InlineData("dot-relative", false, PathValidationResult.Valid)]
+	[InlineData("dot-relative", true, PathValidationResult.Valid)]
+	public async Task FileNameValidationChecksSyntaxAndOptionalFileExistence(string scenario, bool requireFileToExist, PathValidationResult expected)
+	{
+		using FileNameValidationFiles files = new();
+		string value = scenario switch
+		{
+			"existing"          => files.ExistingFile,
+			"missing"           => Path.Combine(files.DirectoryPath, "missing.txt"),
+			"missing-directory" => Path.Combine(files.DirectoryPath, "missing", "input.txt"),
+			"directory"         => files.DirectoryPath,
+			"relative"          => Path.GetRelativePath(Directory.GetCurrentDirectory(), files.ExistingFile),
+			"bare-filename"     => Path.GetFileName(files.CurrentDirectoryFile),
+			"dot-relative"      => "." + Path.DirectorySeparatorChar + Path.GetFileName(files.CurrentDirectoryFile),
+			_                   => throw new ArgumentOutOfRangeException(nameof(scenario))
+		};
+		if (scenario is "existing" or "relative" or "bare-filename" or "dot-relative")
+		{
+			Assert.True(File.Exists(value));
+		}
+
+		using FileNameValidationBehavior behavior = new()
+		{
+			RequireFileToExist	= requireFileToExist,
+			Value				= value
+		};
+		await behavior.ForceValidate();
+
+		Assert.Equal(expected, behavior.Error);
+		Assert.Equal(expected == PathValidationResult.Valid, behavior.IsValid);
+		Assert.Equal(expected != PathValidationResult.Valid, behavior.IsNotValid);
+		Assert.False(behavior.IsRunning);
+	}
+
+	[Theory]
+	[InlineData(null, false, PathValidationResult.ZeroLength)]
+	[InlineData(null, true, PathValidationResult.ZeroLength)]
+	[InlineData("", false, PathValidationResult.ZeroLength)]
+	[InlineData("", true, PathValidationResult.ZeroLength)]
+	[InlineData("   ", false, PathValidationResult.ZeroLength)]
+	[InlineData("   ", true, PathValidationResult.ZeroLength)]
+	[InlineData("invalid?name.txt", false, PathValidationResult.InvalidCharacters)]
+	[InlineData("invalid?name.txt", true, PathValidationResult.InvalidCharacters)]
+	[InlineData(".hidden", false, PathValidationResult.FileNameNotProvided)]
+	[InlineData(".hidden", true, PathValidationResult.FileNameNotProvided)]
+	[InlineData("CON.txt", false, PathValidationResult.DeviceName)]
+	[InlineData("CON.txt", true, PathValidationResult.DeviceName)]
+	public async Task FileNameValidationPreservesSpecificSyntaxErrors(string? name, bool requireFileToExist, PathValidationResult expected)
+	{
+		using FileNameValidationFiles files = new();
+		string? value = string.IsNullOrWhiteSpace(name) ? name : Path.Combine(files.DirectoryPath, name);
+		using FileNameValidationBehavior behavior = new()
+		{
+			RequireFileToExist	= requireFileToExist,
+			Value				= value
+		};
+		await behavior.ForceValidate();
+
+		Assert.Equal(expected, behavior.Error);
+		Assert.False(behavior.IsValid);
+		Assert.True(behavior.IsNotValid);
+		Assert.False(behavior.IsRunning);
+	}
+
+	[Theory]
+	[InlineData(false)]
+	[InlineData(true)]
+	public async Task FileNameValidationRejectsTooLongNamesAndDirectoryOnlyPaths(bool requireFileToExist)
+	{
+		using FileNameValidationFiles files = new();
+		using FileNameValidationBehavior behavior = new()
+		{
+			RequireFileToExist	= requireFileToExist,
+			Value				= Path.Combine(files.DirectoryPath, new string('a', 256))
+		};
+		await behavior.ForceValidate();
+		Assert.Equal(PathValidationResult.TooLong, behavior.Error);
+		Assert.True(behavior.IsNotValid);
+
+		behavior.Value = files.DirectoryPath + Path.DirectorySeparatorChar;
+		await behavior.ForceValidate();
+		Assert.Equal(PathValidationResult.ZeroLength, behavior.Error);
+		Assert.True(behavior.IsNotValid);
+	}
+
+	[Fact]
+	public async Task FileNameValidationRevalidatesWhenTheExistenceOptionOrValueChanges()
+	{
+		using FileNameValidationFiles files = new();
+		using FileNameValidationBehavior behavior = new()
+		{
+			Flags	= ValidationFlags.ValidateOnValueChanged,
+			Value	= Path.Combine(files.DirectoryPath, "missing.txt")
+		};
+		await behavior.ForceValidate();
+		Assert.Equal(PathValidationResult.Valid, behavior.Error);
+
+		behavior.RequireFileToExist = true;
+		Assert.Equal(PathValidationResult.PathDoesNotExist, behavior.Error);
+		Assert.True(behavior.IsNotValid);
+
+		behavior.Value = files.ExistingFile;
+		Assert.Equal(PathValidationResult.Valid, behavior.Error);
+		Assert.True(behavior.IsValid);
+
+		behavior.Value = Path.Combine(files.DirectoryPath, "invalid?name.txt");
+		Assert.Equal(PathValidationResult.InvalidCharacters, behavior.Error);
+		Assert.True(behavior.IsNotValid);
+
+		behavior.RequireFileToExist = false;
+		Assert.Equal(PathValidationResult.InvalidCharacters, behavior.Error);
+
+		behavior.Value = Path.Combine(files.DirectoryPath, "missing.txt");
+		Assert.Equal(PathValidationResult.Valid, behavior.Error);
+		Assert.True(behavior.IsValid);
+		Assert.False(behavior.IsRunning);
+	}
+
+	[Fact]
+	public async Task FileNameValidationRechecksTheFileSystemWhenForced()
+	{
+		using FileNameValidationFiles files = new();
+		using FileNameValidationBehavior behavior = new()
+		{
+			RequireFileToExist	= true,
+			Value				= files.ExistingFile
+		};
+		await behavior.ForceValidate();
+		Assert.Equal(PathValidationResult.Valid, behavior.Error);
+
+		File.Delete(files.ExistingFile);
+		await behavior.ForceValidate();
+		Assert.Equal(PathValidationResult.PathDoesNotExist, behavior.Error);
+		Assert.True(behavior.IsNotValid);
+
+		File.WriteAllText(files.ExistingFile, "restored");
+		await behavior.ForceValidate();
+		Assert.Equal(PathValidationResult.Valid, behavior.Error);
+		Assert.True(behavior.IsValid);
+	}
+
+	/// <summary>
+	/// Owns isolated files for absolute, relative and current-directory filename validation.
+	/// </summary>
+	private sealed class FileNameValidationFiles : IDisposable
+	{
+		public string DirectoryPath { get; }
+		public string ExistingFile { get; }
+		public string CurrentDirectoryFile { get; }
+
+		public FileNameValidationFiles()
+		{
+			string uniqueName		= "FileNameValidation-" + Guid.NewGuid().ToString("N");
+			DirectoryPath			= Path.Combine(Directory.GetCurrentDirectory(), uniqueName);
+			ExistingFile			= Path.Combine(DirectoryPath, "input file.txt");
+			CurrentDirectoryFile	= Path.Combine(Directory.GetCurrentDirectory(), uniqueName + ".txt");
+
+			Directory.CreateDirectory(DirectoryPath);
+			File.WriteAllText(ExistingFile, "existing");
+			File.WriteAllText(CurrentDirectoryFile, "current directory");
+		}
+
+		public void Dispose()
+		{
+			File.Delete(ExistingFile);
+			File.Delete(CurrentDirectoryFile);
+			Directory.Delete(DirectoryPath);
+		}
+	}
+
+	#endregion
+
 	[Fact]
 	public async Task UnsetValuesAreInvalidInsteadOfThrowing()
 	{
