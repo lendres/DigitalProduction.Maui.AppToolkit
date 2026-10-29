@@ -40,9 +40,10 @@ option no longer applies. The built-in path validators handle null input without
 
 The Windows [validation smoke app](src/ValidationSmoke/README.md) checks the actual library in
 a consumer published with full trimming and Native AOT. This verifies these behaviors, not
-Native AOT compatibility of every AppToolkit component or dependency. Shared styles and
-`akgul.Maui.DataGrid` still produce separate publish-time warnings, tracked in
-[#124](https://github.com/lendres/DigitalProduction.Maui.AppToolkit/issues/124). Apple Native AOT and
+Native AOT compatibility of every AppToolkit component or dependency. The shared-style warning
+was fixed in [#124](https://github.com/lendres/DigitalProduction.Maui.AppToolkit/issues/124).
+The external `akgul.Maui.DataGrid` dependency still produces publish-time warnings; investigate
+those if they cause a bug in an application. Apple Native AOT and
 Android runtime execution require validation on their respective hosts/devices.
 
 `FileNameValidationBehavior.RequireFileToExist` currently checks the parent directory only;

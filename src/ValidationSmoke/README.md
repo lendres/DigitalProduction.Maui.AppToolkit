@@ -20,7 +20,8 @@ filenames; attachment to Entry, Editor, SearchBar and Label; automatic text chan
 invalid styles; disabling automatic validation and forcing validation; detachment; and a
 compiled explicit-source binding. It does not exercise native text input or focus interaction.
 
-The behaviors produce no trimming/AOT diagnostics. Publishing currently also reports unrelated
-warnings from AppToolkit's shared `OnPlatformExtension` style and `akgul.Maui.DataGrid` 4.0.6.
-These are not suppressed, and this smoke test does not establish whole-library AOT safety.
+The behaviors and shared Shell foreground style produce no trimming/AOT diagnostics. Publishing
+still reports warnings from the external `akgul.Maui.DataGrid` 4.0.6 dependency. These are not
+suppressed; investigate them if they cause an application bug. This smoke test does not establish
+whole-library AOT safety.
 Apple and Android runtime tests must be run separately on supported hosts/devices.

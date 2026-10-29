@@ -439,7 +439,7 @@
 
 	<Style TargetType="Shell" ApplyToDerivedTypes="True">
 		<Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Gray100}, Dark={DynamicResource OffBlack}}"/>
-		<Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={DynamicResource White}, Default={DynamicResource White}}"/>
+		<Setter Property="Shell.ForegroundColor" Value="{DynamicResource White}"/>
 		<Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={DynamicResource DarkGray}, Dark={DynamicResource White}}"/>
 		<Setter Property="Shell.DisabledColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray950}}"/>
 		<Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={DynamicResource Gray200}, Dark={DynamicResource Gray200}}"/>
