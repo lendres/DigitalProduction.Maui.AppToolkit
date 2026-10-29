@@ -17,13 +17,13 @@ public abstract class TrimSafeValidationBehavior<[DynamicallyAccessedMembers(Dyn
 {
 	#region Fields
 
-	public const string ValidVisualState		= "Valid";
-	public const string InvalidVisualState	= "Invalid";
+	public const string					ValidVisualState			= "Valid";
+	public const string					InvalidVisualState			= "Invalid";
 
-	private ValidationFlags			_currentStatus;
+	private ValidationFlags				_currentStatus;
 	private CancellationTokenSource?	_validationCancellation;
-	private bool					_isAttaching;
-	private bool					_isDisposed;
+	private bool						_isAttaching;
+	private bool						_isDisposed;
 
 	#endregion
 
