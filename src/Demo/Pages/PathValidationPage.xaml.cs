@@ -65,7 +65,7 @@ public partial class PathValidationPage : BasePage<PathValidationPageViewModel>
 
 	async void OnSubmit(object sender, EventArgs eventArgs)
 	{
-		await DisplayAlert("Success", "All entries are valid!", "Ok");
+		await DisplayAlertAsync("Success", "All entries are valid!", "Ok");
 	}
 
 	#endregion
