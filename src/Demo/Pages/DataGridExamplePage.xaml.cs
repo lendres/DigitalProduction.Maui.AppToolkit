@@ -38,7 +38,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 
 	async void OnDisplayMessage(object sender, EventArgs eventArgs)
 	{
-		await DisplayAlert("Message", "This command is non-functioning.", "Ok");
+		await DisplayAlertAsync("Message", "This command is non-functioning.", "Ok");
 	}
 
 	/// <summary>
@@ -77,7 +77,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 
 	async void OnDelete(object sender, EventArgs eventArgs)
 	{
-		bool result = await DisplayAlert("Delete", "Delete the selected item, do you wish to continue?", "Yes", "No");
+		bool result = await DisplayAlertAsync("Delete", "Delete the selected item, do you wish to continue?", "Yes", "No");
 
 		if (result)
 		{
@@ -116,7 +116,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 			SearchResult foundEntries = BindingContext.Find(viewModel.SearchTermsString);
 			if (foundEntries == SearchResult.NoItemsFound)
 			{
-				await DisplayAlert("Not Found", "No entries found for the specified search term(s).\nSearch string: "+viewModel.SearchTermsString , "OK");
+				await DisplayAlertAsync("Not Found", "No entries found for the specified search term(s).\nSearch string: "+viewModel.SearchTermsString , "OK");
 			}
 			else
 			{
@@ -129,7 +129,7 @@ public partial class DataGridExamplePage : BasePage<DataGridViewModel>
 	{
 		if (BindingContext.SelectNextFoundItem() == SearchResult.NoMoreFoundItems)
 		{
-			DisplayAlert("Find", "No more entries found.", "OK");
+			DisplayAlertAsync("Find", "No more entries found.", "OK");
 		}
 		else
 		{
