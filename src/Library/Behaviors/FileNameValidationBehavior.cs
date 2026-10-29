@@ -3,8 +3,14 @@ using DigitalProduction.IO;
 namespace DigitalProduction.Maui.Behaviors;
 
 /// <summary>
-/// The <see cref="FileNameValidationBehavior"/> is a behavior that allows the user to determine if a file exists.  Additional properties handling validation are provided by the trim-safe validation base.
+/// Validates the file name in a full path and optionally requires the file to exist.
+/// Additional properties handling validation are provided by the trim-safe validation base.
 /// </summary>
+/// <remarks>
+/// The value is expected to be a fully qualified file path, including the directory and file name.
+/// Relative paths and bare file names are outside the intended input contract; callers should resolve
+/// them to a full path before validation. This behavior does not enforce or normalize that requirement.
+/// </remarks>
 public partial class FileNameValidationBehavior : ErrorReportableValidationBehavior<string, PathValidationResult>
 {
 	/// <summary>
@@ -14,7 +20,8 @@ public partial class FileNameValidationBehavior : ErrorReportableValidationBehav
 		BindableProperty.Create(nameof(RequireFileToExist), typeof(bool), typeof(FileNameValidationBehavior), default(bool), propertyChanged: OnValidationPropertyChanged);
 
 	/// <summary>
-	/// The associated error found during the validation. This is a bindable property.  It is recommended that the TError type include a "None" error code.
+	/// Specifies whether the full path must identify an existing file. When false, only file name
+	/// validity is checked; the file and its parent directory do not have to exist. This is a bindable property.
 	/// </summary>
 	public bool RequireFileToExist
 	{
@@ -28,6 +35,13 @@ public partial class FileNameValidationBehavior : ErrorReportableValidationBehav
 		if (RequireFileToExist)
 		{
 			Error = DigitalProduction.IO.Path.IsValidFileName(value, new PathValidationOptions() { RequirePathToExist = true });
+			if (Error == PathValidationResult.Valid)
+			{
+				if (!System.IO.File.Exists(value))
+				{
+					Error = PathValidationResult.PathDoesNotExist;
+				}
+			}
 		}
 		else
 		{

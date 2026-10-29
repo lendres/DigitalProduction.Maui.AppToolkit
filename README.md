@@ -46,5 +46,8 @@ The external `akgul.Maui.DataGrid` dependency still produces publish-time warnin
 those if they cause a bug in an application. Apple Native AOT and
 Android runtime execution require validation on their respective hosts/devices.
 
-`FileNameValidationBehavior.RequireFileToExist` currently checks the parent directory only;
-that existing discrepancy is tracked in [#125](https://github.com/lendres/DigitalProduction.Maui.AppToolkit/issues/125).
+`FileNameValidationBehavior` expects a fully qualified path including the directory and file name.
+Callers should resolve relative paths and bare file names before validation; the behavior does
+not enforce or normalize this input contract. With `RequireFileToExist=true`, the file itself
+must exist. With it disabled, only file name validity is checked; the file and parent directory
+do not have to exist.
