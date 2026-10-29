@@ -8,6 +8,10 @@ public partial class PopupView : Popup<bool>
 
 	public PopupView()
 	{
+		// The content supplies its own border and padding. Override the Toolkit's local
+		// defaults here because they take precedence over the implicit Popup style.
+		BackgroundColor	= Colors.Transparent;
+		Padding			= 0;
 	}
 
 	#endregion

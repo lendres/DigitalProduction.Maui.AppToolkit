@@ -28,6 +28,10 @@ public class ThreeButtonView<T> : Popup<T> where T : Enum
 
 	public ThreeButtonView()
 	{
+		// The content supplies its own border and padding. Override the Toolkit's local
+		// defaults here because they take precedence over the implicit Popup style.
+		BackgroundColor	= Colors.Transparent;
+		Padding			= 0;
 
 		Content = new Border
 		{
