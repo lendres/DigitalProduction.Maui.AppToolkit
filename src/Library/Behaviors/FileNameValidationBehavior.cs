@@ -28,6 +28,13 @@ public partial class FileNameValidationBehavior : ErrorReportableValidationBehav
 		if (RequireFileToExist)
 		{
 			Error = DigitalProduction.IO.Path.IsValidFileName(value, new PathValidationOptions() { RequirePathToExist = true });
+			if (Error == PathValidationResult.Valid)
+			{
+				if (!System.IO.File.Exists(value))
+				{
+					Error = PathValidationResult.PathDoesNotExist;
+				}
+			}
 		}
 		else
 		{
