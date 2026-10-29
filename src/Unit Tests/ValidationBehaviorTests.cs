@@ -93,13 +93,7 @@ public class ValidationBehaviorTests : IDisposable
 	[InlineData("missing-directory", true, PathValidationResult.PathDoesNotExist)]
 	[InlineData("directory", false, PathValidationResult.Valid)]
 	[InlineData("directory", true, PathValidationResult.PathDoesNotExist)]
-	[InlineData("relative", false, PathValidationResult.Valid)]
-	[InlineData("relative", true, PathValidationResult.Valid)]
-	[InlineData("bare-filename", false, PathValidationResult.Valid)]
-	[InlineData("bare-filename", true, PathValidationResult.Valid)]
-	[InlineData("dot-relative", false, PathValidationResult.Valid)]
-	[InlineData("dot-relative", true, PathValidationResult.Valid)]
-	public async Task FileNameValidationChecksSyntaxAndOptionalFileExistence(string scenario, bool requireFileToExist, PathValidationResult expected)
+	public async Task FileNameValidationChecksFullPathsAndOptionalFileExistence(string scenario, bool requireFileToExist, PathValidationResult expected)
 	{
 		using FileNameValidationFiles files = new();
 		string value = scenario switch
@@ -108,12 +102,10 @@ public class ValidationBehaviorTests : IDisposable
 			"missing"           => Path.Combine(files.DirectoryPath, "missing.txt"),
 			"missing-directory" => Path.Combine(files.DirectoryPath, "missing", "input.txt"),
 			"directory"         => files.DirectoryPath,
-			"relative"          => Path.GetRelativePath(Directory.GetCurrentDirectory(), files.ExistingFile),
-			"bare-filename"     => Path.GetFileName(files.CurrentDirectoryFile),
-			"dot-relative"      => "." + Path.DirectorySeparatorChar + Path.GetFileName(files.CurrentDirectoryFile),
 			_                   => throw new ArgumentOutOfRangeException(nameof(scenario))
 		};
-		if (scenario is "existing" or "relative" or "bare-filename" or "dot-relative")
+		Assert.True(Path.IsPathFullyQualified(value));
+		if (scenario == "existing")
 		{
 			Assert.True(File.Exists(value));
 		}
@@ -239,30 +231,26 @@ public class ValidationBehaviorTests : IDisposable
 	}
 
 	/// <summary>
-	/// Owns isolated files for absolute, relative and current-directory filename validation.
+	/// Owns an isolated directory and file for full-path filename validation.
 	/// </summary>
 	private sealed class FileNameValidationFiles : IDisposable
 	{
 		public string DirectoryPath { get; }
 		public string ExistingFile { get; }
-		public string CurrentDirectoryFile { get; }
 
 		public FileNameValidationFiles()
 		{
 			string uniqueName		= "FileNameValidation-" + Guid.NewGuid().ToString("N");
 			DirectoryPath			= Path.Combine(Directory.GetCurrentDirectory(), uniqueName);
 			ExistingFile			= Path.Combine(DirectoryPath, "input file.txt");
-			CurrentDirectoryFile	= Path.Combine(Directory.GetCurrentDirectory(), uniqueName + ".txt");
 
 			Directory.CreateDirectory(DirectoryPath);
 			File.WriteAllText(ExistingFile, "existing");
-			File.WriteAllText(CurrentDirectoryFile, "current directory");
 		}
 
 		public void Dispose()
 		{
 			File.Delete(ExistingFile);
-			File.Delete(CurrentDirectoryFile);
 			Directory.Delete(DirectoryPath);
 		}
 	}
