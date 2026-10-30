@@ -8,10 +8,16 @@ public partial class PopupView : Popup<bool>
 
 	public PopupView()
 	{
-		// The content supplies its own border and padding. Override the Toolkit's local
-		// defaults here because they take precedence over the implicit Popup style.
-		BackgroundColor	= Colors.Transparent;
-		Padding			= 0;
+		// Override the Toolkit's local defaults here because they take precedence over the implicit Popup style. This is a bug
+		// reported to the Toolkit team, but it has not been fixed yet. The workaround is to clear the local values for these
+		// properties so that the implicit style can take effect.
+		// CommunityToolkit.Maui issue:
+		// https://github.com/CommunityToolkit/Maui/issues/2747
+		// DigitalProduction.Maui.AppToolkit issue:
+		// https://github.com/lendres/DigitalProduction.Maui.AppToolkit/issues/133
+		// Once fixed, the two lines below can be removed and the implicit style will take effect.
+		ClearValue(BackgroundColorProperty);
+		ClearValue(PaddingProperty);
 	}
 
 	#endregion

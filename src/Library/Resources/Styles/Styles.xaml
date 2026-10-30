@@ -481,6 +481,7 @@
 	<!-- Popups -->
 	<Style TargetType="toolkit:Popup" ApplyToDerivedTypes="True">
 		<Setter Property="BackgroundColor" Value="Transparent"/>
+		<Setter Property="Padding" Value="0"/>
 	</Style>
 	<Style TargetType="Border" Class="PopupFrameStyle">
 		<Setter Property="Background" Value="{AppThemeBinding Light={DynamicResource LightGray}, Dark={DynamicResource Gray900}}"/>
